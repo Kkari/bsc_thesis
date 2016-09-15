@@ -1,5 +1,6 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow.contrib.distributions as tf_dist
 import numpy as np
 
 
@@ -22,11 +23,11 @@ class Rbm:
     All optimizations are made using Geoffrey Hintons paper:
     "A Practical Guide to Training Restricted Boltzmann Machines"
     """
-    def __init__(self, num_hidden=250, visible_unit_type='bin', learning_rate=0.5,
+    def __init__(self,  num_features, num_hidden=250, visible_unit_type='bin', learning_rate=0.001,
                  std_dev=0.1, num_epochs=10, batch_size=10,
                  gibbs_sampling_steps=1, log_device_placement=False,
                  last_update_prob_hidden=True, weight_decay_rate=0.0001,
-                 num_classes=0, num_features=0, name='rbm'):
+                 num_classes=0, name='rbm'):
         """
 
         Optimization parameters:
@@ -60,7 +61,6 @@ class Rbm:
         }
 
         # Tensorflow variables
-        self.num_features = None
         self.input_data = None
         self.h_rand = None
         self.v_rand = None
@@ -107,6 +107,7 @@ class Rbm:
                 self.all_merged = tf.merge_all_summaries()
 
             self.tf_session = tf.Session(graph=self.g, config=tf.ConfigProto(**self.config))
+            self.saver = tf.train.Saver()
 
         self.train_writer = tf.train.SummaryWriter(self.summariesFolder + '/train', self.g)
         self.test_writer = tf.train.SummaryWriter(self.summariesFolder + '/test')
@@ -116,7 +117,7 @@ class Rbm:
     @staticmethod
     def weight_variable(shape, name, initial=None):
         if not initial:
-            initial = tf.truncated_normal(shape, stddev=0.1)
+            initial = tf.truncated_normal(shape=shape, stddev=0.1)
         return tf.Variable(initial, name=name)
 
     @staticmethod
@@ -133,24 +134,29 @@ class Rbm:
     #     p_i = np.count_nonzero(train_dataset[:, i]) / float(train_dataset.shape[0])
     #     init_visible_bias.append(np.log(p_i / (1 - p_i)))
 
+    def free_energy(self, v_sample):
+        wx_b = tf.matmul(v_sample, self.W) + self.h_biases
+        print('sample:', v_sample.get_shape())
+        print('biases:', self.v_biases.get_shape())
+        v_bias_term = tf.matmul(self.input_data, tf.reshape(self.v_biases, [self.num_features, -1]))
+        hidden_term = tf.reduce_sum(tf.log(1 + tf.exp(wx_b)), reduction_indices=1)
+        return v_bias_term - hidden_term
+
     def build_rbm(self, visible_bias_initial=None):
         with tf.name_scope('input'):
             # Create Placeholder values. ------------------------------------------------------------
-            self.input_data = tf.placeholder(tf.float32, shape=(None, self.num_features), name='batch_data')
+            self.input_data = tf.placeholder(tf.float32, shape=[None, self.num_features], name='batch_data')
 
             # This variable will hold a random distribution in every trainings step,
             # it is used to decide the binary state of the hidden variables in the gibbs
             # sampling step.
-            self.h_rand = tf.placeholder(tf.float32, [None, self.num_hidden], name='hidden_random')
-
-            # Same for the visible variables.
-            self.v_rand = tf.placeholder(tf.float32, [None, self.num_features], name='visible_random')
+            self.h_rand = tf.placeholder(tf.float32, shape=[None, self.num_hidden], name='hidden_random')
+            self.v_rand = tf.placeholder(tf.float32, shape=[None, self.num_features], name='hidden_random')
 
         # Initialize the weights and the biases. -------------------------------------------------
         with tf.name_scope('rbm'):
             with tf.name_scope('rbm_weight_layer'):
-                self.W = Rbm.weight_variable([self.num_features, self.num_hidden],
-                                             name='rbm_weights')
+                self.W = Rbm.weight_variable([self.num_features, self.num_hidden], name='rbm_weights')
                 variable_summaries('rbm_weights', self.W)
 
                 self.h_biases = Rbm.bias_variable([self.num_hidden],
@@ -168,7 +174,7 @@ class Rbm:
 
             with tf.name_scope('first_gibbs_sampling_step'):
                 last_update = self.gibbs_sampling_steps == 1
-                h_prob0, h_state0, v_prob, h_prob1, h_state1 = self.gibbs_sampling_step(
+                h_prob0, h_state0, v_prob, v_state, h_prob1, h_state1 = self.gibbs_sampling_step(
                     self.input_data,
                     self.num_features,
                     last_update)
@@ -176,17 +182,9 @@ class Rbm:
             with tf.name_scope('positive_phase'):
                 # Compute the Positive associations. I.e. the when the visible units are
                 # clamped to the input.
-                if self.visible_unit_type == 'bin':
-                    # TODO: Or vprob and hprob0???
-                    positive = tf.matmul(tf.transpose(self.input_data), h_state0, name='positive_phase_bin')
-                    tf.histogram_summary('rbm/positive_phase_bin', positive)
-
-                elif self.visible_unit_type == 'gauss':
-                    positive = tf.matmul(tf.transpose(self.input_data), h_prob0, name='positive_phase_gauss')
-                    tf.histogram_summary('rbm/positive_phase_gauss', positive)
-
-                else:
-                    raise ValueError('Invalid node type.')
+                # TODO: Or vprob and hprob0???
+                positive = tf.matmul(tf.transpose(self.input_data), h_state0, name='positive_phase_bin')
+                tf.histogram_summary('rbm/positive_phase_bin', positive)
 
             with tf.name_scope('gibbs_steps'):
                 # Initiate the free running gibbs sampling part.
@@ -202,26 +200,35 @@ class Rbm:
             with tf.name_scope('negative_phase'):
                 # Compute the negative phase, when we reconstruct the visible nodes form
                 # the hidden ones.
-                negative = tf.matmul(tf.transpose(v_prob), h_prob1, name='negative_phase')
+                # TODO: Or h_prob1?
+                negative = tf.matmul(tf.transpose(v_prob), h_state1, name='negative_phase')
                 tf.histogram_summary('rbm/negative_phase_gauss', negative)
 
-            with tf.name_scope('rbm_weight_update'):
-                # Define the update parameters.
-                w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)  # + self.weight_decay_rate * tf.nn.l2_loss(self.W)
-                tf.histogram_summary('rbm/weight_update', w_upd8)
+            # with tf.name_scope('rbm_weight_update'):
+            #     # Define the update parameters.
+            #     w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)  # + self.weight_decay_rate * tf.nn.l2_loss(self.W)
+            #     tf.histogram_summary('rbm/weight_update', w_upd8)
+            #
+            # with tf.name_scope('rbm_hidden_update'):
+            #     h_bias_upd8 = self.h_biases.assign_add(self.learning_rate *
+            #                                            tf.reduce_mean(h_prob0 - h_prob1, 0))
+            #     tf.histogram_summary('rbm/hidden_bias_update', h_bias_upd8)
+            #
+            # with tf.name_scope('rbm_visible_update'):
+            #     v_bias_upd8 = self.v_biases.assign_add(self.learning_rate *
+            #                                            tf.reduce_mean(self.input_data - v_prob, 0))
+            #     tf.histogram_summary('rbm/visible_bias_update', v_bias_upd8)
+            #
+            # self.updates = [w_upd8, v_bias_upd8, h_bias_upd8]
+            #     v_state = self.sample_visible_distribution(v_prob)
+                cost = tf.reduce_mean(self.free_energy(self.input_data)) - tf.reduce_mean(self.free_energy(v_state))
+                optimizer = tf.train.GradientDescentOptimizer(self.learning_rate).minimize(cost, var_list=[
+                                                                                                 self.W,
+                                                                                                 self.h_biases,
+                                                                                                 self.v_biases
+                                                                                                 ])
 
-            with tf.name_scope('rbm_hidden_update'):
-                h_bias_upd8 = self.h_biases.assign_add(self.learning_rate *
-                                                       tf.reduce_mean(h_prob0 - h_prob1, 0))
-                tf.histogram_summary('rbm/hidden_bias_update', h_bias_upd8)
-
-            with tf.name_scope('rbm_visible_update'):
-                v_bias_upd8 = self.v_biases.assign_add(self.learning_rate *
-                                                       tf.reduce_mean(self.input_data - v_prob, 0))
-                tf.histogram_summary('rbm/visible_bias_update', v_bias_upd8)
-
-            self.updates = [w_upd8, v_bias_upd8, h_bias_upd8]
-
+                self.updates = optimizer
             with tf.name_scope('reconstruction_cost_function'):
                 # Create a mean square cost function node.
                 self.reconstruction_cost = tf.sqrt(tf.reduce_mean(tf.square(self.input_data - v_prob)), name='reconstruction_cost')
@@ -238,15 +245,15 @@ class Rbm:
                 h_prob_predict = tf.nn.sigmoid(tf.matmul(self.input_data, self.W) + self.h_biases)
 
             with tf.name_scope('prediction_weights'):
-                #self.W_prediction = Rbm.weight_variable([self.num_hidden, self.num_classes], name='prediction_weights')
-                self.W_prediction = Rbm.weight_variable([784, self.num_classes], name='prediction_weights')
+                self.W_prediction = Rbm.weight_variable([self.num_hidden, self.num_classes], name='prediction_weights')
+                #self.W_prediction = Rbm.weight_variable([784, self.num_classes], name='prediction_weights')
                 tf.histogram_summary('rbm/prediction_weights', self.W_prediction)
                 self.biases_prediction = Rbm.bias_variable([self.num_classes], name='prediction_biases')
                 tf.histogram_summary('rbm/prediction_biases', self.biases_prediction)
 
             with tf.name_scope('softmax'):
-                #logits = tf.matmul(h_prob_predict, self.W_prediction) + self.biases_prediction
-                logits = tf.matmul(self.input_data, self.W_prediction) + self.biases_prediction
+                logits = tf.matmul(h_prob_predict, self.W_prediction) + self.biases_prediction
+                #logits = tf.matmul(self.input_data, self.W_prediction) + self.biases_prediction
                 self.prediction_y = tf.nn.softmax(logits, name='prediction_softmax')
 
         with tf.name_scope('prediction_optimizer'):
@@ -304,8 +311,7 @@ class Rbm:
                             self.input_data: batch,
                             self.h_rand: np.random.rand(batch.shape[0],
                                                         self.num_hidden),
-                            self.v_rand: np.random.rand(batch.shape[0],
-                                                        batch.shape[1])
+                            self.v_rand: np.random.rand(batch.shape[0], batch.shape[1])
                         }
                     )
 
@@ -320,19 +326,19 @@ class Rbm:
                                 self.input_data: validation_dataset,
                                 self.h_rand: np.random.rand(validation_dataset.shape[0],
                                                             self.num_hidden),
-                                self.v_rand: np.random.rand(validation_dataset.shape[0],
-                                                            validation_dataset.shape[1])
+                                self.v_rand: np.random.rand(validation_dataset.shape[0], validation_dataset.shape[1])
                             })
                         self.train_writer.add_run_metadata(run_metadata, 'step_ep%d_step%d' % (i, j))
                         self.train_writer.add_summary(summary, i)
-                print('Reconstruction loss at epoch %s: %s' % (i, rec_loss))
+                        print('Reconstruction loss at epoch %s: %s' % (i, rec_loss))
+            self.saver.save(sess, './rbmModelTrained')
 
     def dream(self, step_number=10):
         nn_input = self.v_rand
 
         for step in range(step_number):
             last_update = step == (step_number - 1)
-            h_prob0, h_state0, v_prob, hprob1, hstate1 = self.gibbs_sampling_step(
+            h_prob0, h_state0, v_prob, v_state, hprob1, hstate1 = self.gibbs_sampling_step(
                 nn_input,
                 self.num_features,
                 last_update)
@@ -374,7 +380,6 @@ class Rbm:
                                                           feed_dict={self.input_data:  batch_data,
                                                                      self.batch_labels: batch_labels,
                                                                      self.h_rand: np.ones([1, self.num_hidden]),     # We just feed it because we have to.
-                                                                     self.v_rand: np.ones([1, self.num_features])    # We just feed it because we have to.
                                                                      })
                     self.train_writer.add_run_metadata(run_metadata, 'step%d' % step)
                     self.train_writer.add_summary(summary, step)
@@ -385,24 +390,21 @@ class Rbm:
                             feed_dict={self.input_data: batch_data,
                                        self.batch_labels: batch_labels,
                                        self.h_rand: np.random.rand(batch_data.shape[0],
-                                                                   self.num_hidden),
-                                       self.v_rand: np.ones([1, self.num_features])     # We just feed it because we have to.
+                                                                   self.num_hidden)
                                        })
 
             print("test accuracy %g" % session.run(self.accuracy,
                                                    feed_dict={self.input_data: test_data,
                                                               self.batch_labels: test_labels,
                                                               self.h_rand: np.random.rand(test_data.shape[0],
-                                                                                          self.num_hidden),
-                                                              self.v_rand: np.ones([1, self.num_features])
+                                                                                          self.num_hidden)
                                                               }))
 
     def predict(self, data):
         predicted_value = self.tf_session.run(self.prediction_y,
                                               feed_dict={self.input_data: data,
                                                          self.batch_labels: np.ones([1, self.num_classes]),
-                                                         self.h_rand: np.ones([1, self.num_hidden]),
-                                                         self.v_rand: np.ones([1, self.num_features])
+                                                         self.h_rand: np.ones([1, self.num_hidden])
                                                          })
         return predicted_value
 
@@ -416,15 +418,8 @@ class Rbm:
             with tf.name_scope('sample_visible_from_hidden'):
                 # Sample visible from hidden
                 visible_activation = tf.matmul(h_prob0, tf.transpose(self.W)) + self.v_biases
-
-                if self.visible_unit_type == 'bin':
-                    v_probs = tf.nn.sigmoid(visible_activation, name='v_prob_bin_step_' + step)
-
-                elif self.visible_unit_type == 'gauss':
-                    v_probs = tf.truncated_normal((1, num_features), mean=visible_activation, stddev=self.stddev,
-                                                  name='v_prob_gauss_step_' + step)
-                else:
-                    raise ValueError('Invalid node type.')
+                v_probs = tf.nn.sigmoid(visible_activation, name='v_prob_bin_step_' + step)
+                v_state = tf.nn.relu(tf.sign(v_probs - self.v_rand))
 
             with tf.name_scope('second_hidden_sampling'):
                 # Sample hidden from visible.
@@ -433,9 +428,9 @@ class Rbm:
                 if last_update and self.last_update_prob_hidden:
                     h_state1 = h_prob1
                 else:
-                    h_state1 = tf.nn.relu(tf.sign(h_prob1 - self.h_rand), name='h_prob1_last_step_' + step)
+                    h_state1 = tf.nn.relu(tf.sign(h_prob1 - self.h_rand))
 
-        return h_prob0, h_state0, v_probs, h_prob1, h_state1
+        return h_prob0, h_state0, v_probs, v_state, h_prob1, h_state1
 
     def get_model_parameters(self):
         return {

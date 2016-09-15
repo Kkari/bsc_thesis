@@ -3,3 +3,7 @@ __pycache__
 rbm
 convNetSummaries
 MNIST_data
+bsc_source_papers
+checkpoint
+rbmModelTrained
+rbmModelTrained.meta

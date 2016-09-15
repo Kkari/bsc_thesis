@@ -46,9 +46,9 @@ if __name__ == '__main__':
     test_images = test_images[shuffle_test]
     test_labels = test_labels[shuffle_test]
 
-    rbm = Rbm(num_hidden=64, num_epochs=1, num_classes=10, num_features=test_images.shape[1])
+    rbm = Rbm(num_hidden=250, num_epochs=10, num_classes=10, num_features=784)
     rbm.init_rbm()
 
     rbm.fit(train_images, test_images)
-    rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
-                      test_data=mnist.test.images, test_labels=mnist.test.labels)
+    # rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
+    #                   test_data=mnist.test.images, test_labels=mnist.test.labels)
