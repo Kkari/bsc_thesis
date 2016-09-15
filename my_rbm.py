@@ -23,8 +23,8 @@ class Rbm:
     All optimizations are made using Geoffrey Hintons paper:
     "A Practical Guide to Training Restricted Boltzmann Machines"
     """
-    def __init__(self,  num_features, num_hidden=250, visible_unit_type='bin', learning_rate=0.001,
-                 std_dev=0.1, num_epochs=10, batch_size=10,
+    def __init__(self,  num_features, num_hidden=250, visible_unit_type='bin', learning_rate=0.1,
+                 std_dev=0.1, batch_size=10,
                  gibbs_sampling_steps=1, log_device_placement=False,
                  last_update_prob_hidden=True, weight_decay_rate=0.0001,
                  num_classes=0, name='rbm'):
@@ -47,7 +47,6 @@ class Rbm:
         self.learning_rate = learning_rate
 
         # Iteration parameters
-        self.num_epochs = num_epochs
         self.batch_size = batch_size
         self.gibbs_sampling_steps = gibbs_sampling_steps
 
@@ -191,7 +190,7 @@ class Rbm:
                 nn_input = v_prob
                 for step in range(self.gibbs_sampling_steps - 1):
                     last_update = step == (self.gibbs_sampling_steps - 1)
-                    h_prob0, h_state0, v_prob, h_prob1, h_state1 = self.gibbs_sampling_step(
+                    h_prob0, h_state0, v_prob, v_state, h_prob1, h_state1 = self.gibbs_sampling_step(
                         nn_input,
                         self.num_features,
                         last_update)
@@ -204,23 +203,6 @@ class Rbm:
                 negative = tf.matmul(tf.transpose(v_prob), h_state1, name='negative_phase')
                 tf.histogram_summary('rbm/negative_phase_gauss', negative)
 
-            # with tf.name_scope('rbm_weight_update'):
-            #     # Define the update parameters.
-            #     w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)  # + self.weight_decay_rate * tf.nn.l2_loss(self.W)
-            #     tf.histogram_summary('rbm/weight_update', w_upd8)
-            #
-            # with tf.name_scope('rbm_hidden_update'):
-            #     h_bias_upd8 = self.h_biases.assign_add(self.learning_rate *
-            #                                            tf.reduce_mean(h_prob0 - h_prob1, 0))
-            #     tf.histogram_summary('rbm/hidden_bias_update', h_bias_upd8)
-            #
-            # with tf.name_scope('rbm_visible_update'):
-            #     v_bias_upd8 = self.v_biases.assign_add(self.learning_rate *
-            #                                            tf.reduce_mean(self.input_data - v_prob, 0))
-            #     tf.histogram_summary('rbm/visible_bias_update', v_bias_upd8)
-            #
-            # self.updates = [w_upd8, v_bias_upd8, h_bias_upd8]
-            #     v_state = self.sample_visible_distribution(v_prob)
                 cost = tf.reduce_mean(self.free_energy(self.input_data)) - tf.reduce_mean(self.free_energy(v_state))
                 optimizer = tf.train.GradientDescentOptimizer(self.learning_rate).minimize(cost, var_list=[
                                                                                                  self.W,
@@ -284,7 +266,7 @@ class Rbm:
 
         return optimizer, accuracy
 
-    def fit(self, train_dataset, validation_dataset):
+    def fit(self, train_dataset, validation_dataset, num_epochs=10):
         if not self.initialized:
             raise AssertionError('network is not built yet!')
 
@@ -294,7 +276,7 @@ class Rbm:
             sess.run(tf.initialize_all_variables())
 
             print("Train set dimensions: (%s, %s)" % train_dataset.shape)
-            for i in range(self.num_epochs):
+            for i in range(num_epochs):
                 print("epoch: %s" % i)
                 permutation = np.random.permutation(train_dataset.shape[0])
                 train_dataset_permuted = train_dataset[permutation]
@@ -330,7 +312,9 @@ class Rbm:
                             })
                         self.train_writer.add_run_metadata(run_metadata, 'step_ep%d_step%d' % (i, j))
                         self.train_writer.add_summary(summary, i)
-                        print('Reconstruction loss at epoch %s: %s' % (i, rec_loss))
+
+                    if j % 100 == 0:
+                        print('Reconstruction loss at epoch %s step %s: %s' % (i, j, rec_loss))
             self.saver.save(sess, './rbmModelTrained')
 
     def dream(self, step_number=10):
@@ -351,13 +335,12 @@ class Rbm:
                           })
         return result
 
-    def fit_predictor(self, train_data, train_labels, test_data, test_labels):
+    def fit_predictor(self, train_data, train_labels, test_data, test_labels, num_steps=3000):
 
         with self.g.as_default():
             if not self.initialized:
                 raise AssertionError('network is not built yet!')
 
-            num_steps = 20000
             session = self.tf_session
 
             session.run(tf.initialize_variables([self.W_prediction, self.biases_prediction]))
@@ -380,6 +363,9 @@ class Rbm:
                                                           feed_dict={self.input_data:  batch_data,
                                                                      self.batch_labels: batch_labels,
                                                                      self.h_rand: np.ones([1, self.num_hidden]),     # We just feed it because we have to.
+                                                                     self.v_rand: np.random.rand(
+                                                                         batch_data.shape[0],
+                                                                         batch_data.shape[1])
                                                                      })
                     self.train_writer.add_run_metadata(run_metadata, 'step%d' % step)
                     self.train_writer.add_summary(summary, step)
@@ -397,7 +383,10 @@ class Rbm:
                                                    feed_dict={self.input_data: test_data,
                                                               self.batch_labels: test_labels,
                                                               self.h_rand: np.random.rand(test_data.shape[0],
-                                                                                          self.num_hidden)
+                                                                                          self.num_hidden),
+                                                              self.v_rand: np.random.rand(
+                                                                  test_data.shape[0],
+                                                                  test_data.shape[1])
                                                               }))
 
     def predict(self, data):
