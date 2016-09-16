@@ -200,24 +200,33 @@ class Rbm:
                 negative = tf.matmul(tf.transpose(v_prob), h_state1, name='negative_phase')
                 tf.histogram_summary('rbm/negative_phase_gauss', negative)
 
-                with tf.name_scope('rbm_weight_update'):
-                    # Define the update parameters.
-                    dw = (positive - negative) / self.batch_size
-                    self.w_upd8 = self.W.assign_add(self.learning_rate * dw)
-                    #  w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)
-                    tf.histogram_summary('rbm/weight_update', self.w_upd8)
+            with tf.name_scope('rbm_weight_update'):
+                # Define the update parameters.
+                dw = (positive - negative) / self.batch_size
+                self.w_upd8 = self.W.assign_add(self.learning_rate * dw)
+                #  w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)
+                tf.histogram_summary('rbm/weight_update', self.w_upd8)
 
-                with tf.name_scope('rbm_hidden_update'):
-                    self.h_bias_upd8 = self.h_biases.assign_add(self.learning_rate *
-                                                           tf.reduce_mean(h_prob0 - h_prob1, 0))
-                    tf.histogram_summary('rbm/hidden_bias_update', self.h_bias_upd8)
+            with tf.name_scope('rbm_hidden_update'):
+                self.h_bias_upd8 = self.h_biases.assign_add(self.learning_rate *
+                                                       tf.reduce_mean(h_prob0 - h_prob1, 0))
+                tf.histogram_summary('rbm/hidden_bias_update', self.h_bias_upd8)
 
-                with tf.name_scope('rbm_visible_update'):
-                    self.v_bias_upd8 = self.v_biases.assign_add(self.learning_rate *
-                                                           tf.reduce_mean(self.input_data - v_prob, 0))
-                    tf.histogram_summary('rbm/visible_bias_update', self.v_bias_upd8)
+            with tf.name_scope('rbm_visible_update'):
+                self.v_bias_upd8 = self.v_biases.assign_add(self.learning_rate *
+                                                       tf.reduce_mean(self.input_data - v_prob, 0))
+                tf.histogram_summary('rbm/visible_bias_update', self.v_bias_upd8)
 
-                self.updates = [self.w_upd8, self.v_bias_upd8, self.h_bias_upd8]
+            self.updates = [self.w_upd8, self.v_bias_upd8, self.h_bias_upd8]
+
+            # cost = tf.reduce_mean(self.free_energy(self.input_data)) - tf.reduce_mean(self.free_energy(v_state))
+            # optimizer = tf.train.GradientDescentOptimizer(self.learning_rate).minimize(cost, var_list=[
+            #     self.W,
+            #     self.h_biases,
+            #     self.v_biases
+            # ])
+            #
+            # self.updates = optimizer
 
             with tf.name_scope('reconstruction_cost_function'):
                 # Create a mean square cost function node.

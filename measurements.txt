@@ -1,0 +1,26 @@
+rbm + softmax:
+ mnist, 10 epoch, 250 hidden, 30k fine-tuning step,
+ adams train all, direct gradients applied:
+ 	accuracy: 0.9718 
+	rec_loss: 0.0702493
+
+ mnist, 10 epoch, 250 hidden, 30k fine-tuning step,
+ adams train all, adams and energy function:
+ 	accuracy: 9787
+	rec_loss: 0.780636
+
+
+ mnist, 10 epoch, 250 hidden, 30k fine-tuning step,
+ adams train all, gradDesc 0.001 and energy function:
+ 	accuracy: 9763
+	rec_loss: 0.0843256
+	
+ mnist, 10 epoch, 64 hidden, 30k fine-tuning step,
+ adams train all, direct gradients applied:
+ 	accuracy: 0.9593
+	rec_loss: 0.13282
+
+ mnist, 10 epoch, 128 hidden, 30k fine-tuning step,
+ adams train all, direct gradients applied:
+ 	accuracy: 0.9701 
+	rec_loss: 0.0968439
