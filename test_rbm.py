@@ -1,6 +1,7 @@
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
 
+from yadlt.models.rbm_models.rbm import RBM
 from my_rbm import Rbm
 
 if __name__ == '__main__':
@@ -46,9 +47,12 @@ if __name__ == '__main__':
     test_images = test_images[shuffle_test]
     test_labels = test_labels[shuffle_test]
 
-    rbm = Rbm(num_hidden=64, num_classes=10, num_features=784)
+    rbm = Rbm(num_hidden=250, num_classes=10, num_features=784, learning_rate=0.01)
     rbm.init_rbm()
-
-    rbm.fit(mnist.train.images, mnist.test.images, num_epochs=1)
+    rbm.fit(mnist.train.images, mnist.test.images, num_epochs=10)
     rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
-                      test_data=mnist.test.images, test_labels=mnist.test.labels)
+                      test_data=mnist.test.images, test_labels=mnist.test.labels, num_steps=30000)
+
+    # rbm = RBM(num_hidden=250, verbose=1)
+    # rbm.fit(mnist.train.images, mnist.test.images)
+    #
