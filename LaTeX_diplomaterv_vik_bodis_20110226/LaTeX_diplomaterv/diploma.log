@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  26 SEP 2016 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  26 SEP 2016 22:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,14 +391,10 @@ Package hyperref Warning: Option `bookmarks' has already been used,
 (hyperref)                setting the option has no effect on input line 73.
 
 Package hyperref Info: Option `unicode' set `false' on input line 73.
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 73.
-
 Package hyperref Info: Option `pdfnewwindow' set `true' on input line 73.
 Package hyperref Info: Option `colorlinks' set `true' on input line 73.
 (./diploma.aux (./guideline.aux) (./project.aux) (./titlepage.aux)
-(./declaration.aux) (./abstract.aux) (./introduction.aux) (./chapter1.aux)
+(./declaration.aux) (./abstract.aux) (./introduction.aux) (./tensorflow.aux)
 (./chapter2.aux) (./chapter3.aux) (./acknowledgement.aux) (./appendices.aux))
 \openout1 = `diploma.aux'.
 
@@ -542,7 +538,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 \openout2 = `titlepage.aux'.
 
  (./titlepage.tex
-<figures/BMElogo.png, id=136, 975.645pt x 273.02pt>
+<figures/BMElogo.png, id=132, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
  <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
@@ -573,8 +569,14 @@ pdfTeX warning: pdflatex: pop empty color page stack 0
 ]
 \openout2 = `declaration.aux'.
 
- (./declaration.texpdfTeX warning (ext4): destination with the same identifier 
-(name{page.2}) has been already used, duplicate ignored
+ (./declaration.tex
+Overfull \hbox (33.32556pt too wide) in paragraph at lines 9--10
+[]\T1/cmr/m/n/10.95 Alulírott \T1/cmr/m/it/10.95 Kemény Károly\T1/cmr/m/n/10.95
+ , szigorló hallgató kijelentem, hogy ezt a szakdolgozatot/ diplomatervet
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.27 \clearpage
@@ -647,6 +649,18 @@ s hálózatok hogyan fordíthatóak
  []
 
 
+Overfull \hbox (16.64241pt too wide) in paragraph at lines 15--16
+\T1/cmr/m/n/10.95 le effektív programmá, és hogyan lehet bel®lük értékes alkalm
+azásokat készíteni. A szakdolgozat
+ []
+
+
+Overfull \hbox (12.70267pt too wide) in paragraph at lines 15--16
+\T1/cmr/m/n/10.95 egy hosszabb projekt része, ahol egy Tegra mobil chipen kell 
+majd képosztályzó algoritmusokat
+ []
+
+
 Overfull \hbox (32.38774pt too wide) in paragraph at lines 17--18
  []\T1/cmr/bx/n/10.95 Érdekl®désem a neurális hálózatok iránt[] \T1/cmr/m/n/10.
 95 Az önálló labor munkám során és a szakirányomon
@@ -680,7 +694,7 @@ Overfull \hbox (11.78876pt too wide) in paragraph at lines 35--37
 ítás, a hibavisszaterjesztéses
  []
 
-
+[6]
 Overfull \hbox (12.72469pt too wide) in paragraph at lines 38--39
 \T1/cmr/m/n/10.95 modellek nem tudtak a megnövekedett teljesítményt kihasználva
  a neurális hálózatokhoz
@@ -692,7 +706,7 @@ Overfull \hbox (4.393pt too wide) in paragraph at lines 38--39
 pár példát szemelvényezzek
  []
 
-[6]
+
 Overfull \hbox (15.82736pt too wide) in paragraph at lines 43--44
 [] \T1/cmr/m/n/10.95 A tensorflow mint neurális rendszerek kutatására, fejleszt
 ésére és éles üzembe helyezésére
@@ -705,9 +719,9 @@ Overfull \hbox (22.28738pt too wide) in paragraph at lines 54--55
  []
 
 ) [7]
-\openout2 = `chapter1.aux'.
+\openout2 = `tensorflow.aux'.
 
- (./chapter1.tex
+ (./tensorflow.tex
 1. fejezet.
 
 Overfull \hbox (1.1451pt too wide) in paragraph at lines 6--7
@@ -749,50 +763,52 @@ a csatolt nyelv egy változójaként
 
 
 
-])
-Overfull \hbox (7.23463pt too wide) in paragraph at lines 17--153
+]
+Overfull \hbox (14.65402pt too wide) in paragraph at lines 17--18
+\T1/cmr/m/n/10.95 rendelkezésre állású kiszolgálórendszer. A rendszer lehet®vé 
+teszi új architektúrák kiprobálását,
+ []
+
+)
+Overfull \hbox (7.23463pt too wide) in paragraph at lines 22--153
  []\T1/cmr/bx/n/10.95 Mobil környezet[] \T1/cmr/m/n/10.95 A Tensorflow támogatj
 a a mobil eszközön való futást, az el®bbi szcenárió
  []
 
 
-Overfull \hbox (20.44183pt too wide) in paragraph at lines 17--153
+Overfull \hbox (20.44183pt too wide) in paragraph at lines 22--153
 \T1/cmr/m/n/10.95 a könyvtárral egy teljesen járható úttá válik. Ez jelenti az 
 igazi skálázódást, asztali számítógépen
  []
 
-[9]
-\openout2 = `chapter2.aux'.
+[9] [10]
+\openout2 = `neural_image_classification.aux'.
 
- (./chapter2.tex
+ (./neural_image_classification.tex
 2. fejezet.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 4.
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Overfull \hbox (11.8193pt too wide) in paragraph at lines 4--5
-\T1/cmr/m/n/10.95 dokumentum az alábbi linken érhet® el: [][]$\T1/cmtt/m/n/10.9
-5 http : / / vik-[]hk . bme . hu / diplomafelev-[]howto-[]2009$[][]\T1/cmr/m/n/
-10.95 . 
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 2.
+
+
+Overfull \hbox (13.28905pt too wide) in paragraph at lines 12--13
+\T1/cmr/m/n/10.95 hálózat általánosításáról következtetéseket lehessen levonni.
+ Például az halak szuperosztályhoz
  []
 
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
+[11
 
-Overfull \hbox (3.93417pt too wide) in paragraph at lines 14--15
-\T1/cmr/m/n/10.95 szint¶ tudományos kutatást szeretne végezni, vagy multinacion
-ális cégnél akar elhelyezkedni,
+
+
+])
+Overfull \hbox (5.76279pt too wide) in paragraph at lines 22--154
+\T1/cmr/m/n/10.95 lokalizáció, objektum detekció, helyszín felismerés (pl tenge
+rpart, hegyek), helyszín megértés.
  []
 
-
-Overfull \hbox (18.21217pt too wide) in paragraph at lines 14--15
-\T1/cmr/m/n/10.95 verzió mellett dönt, er®sen ajánlott mérlegelni, hogy ez menn
-yi többletmunkát fog a hallgatónak
- []
-
-) [10
-
-
-
-]
+[12]
 \openout2 = `chapter3.aux'.
 
  (./chapter3.tex
@@ -815,7 +831,10 @@ Overfull \hbox (4.22395pt too wide) in paragraph at lines 4--5
  is What You Get\T1/cmr/m/n/10.95 ) típusú szövegszerkeszt®
  []
 
-
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 9.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 Overfull \hbox (29.43704pt too wide) in paragraph at lines 9--10
 \T1/cmr/m/n/10.95 A L[]T[]X dokumentumban címkéket ([]\T1/cmtt/m/n/10.95 \label
 \T1/cmr/m/n/10.95 ) rendelhetünk ábrákhoz, táblázatokhoz, fejezetekhez,
@@ -881,7 +900,7 @@ Overfull \hbox (15.84108pt too wide) in paragraph at lines 16--17
  átszerkeszthet®ség) érdekében. 
  []
 
-[11
+[13
 
 
 
@@ -891,8 +910,6 @@ Overfull \hbox (7.60555pt too wide) in paragraph at lines 18--19
 us programba (pl. CorelDraw)
  []
 
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
 
 Overfull \hbox (25.15495pt too wide) in paragraph at lines 24--25
 \T1/cmr/m/n/10.95 programba is és onnan nagyobb felbontással raszterizálva kime
@@ -906,16 +923,16 @@ e As \T1/cmr/m/n/10.95 opcióval EPS \T1/cmr/m/it/10.95 vektorgrafikus \T1/cmr/m
 /n/10.95 formátumban
  []
 
-[12]
+[14]
 
-LaTeX Warning: Reference `sect:LatexTools' on page 13 undefined on input line 4
+LaTeX Warning: Reference `sect:LatexTools' on page 15 undefined on input line 4
 1.
 
 
-LaTeX Warning: Reference `fig:TexnicCenter' on page 13 undefined on input line 
+LaTeX Warning: Reference `fig:TexnicCenter' on page 15 undefined on input line 
 41.
 
-<figures/TeXnicCenter.png, id=274, 847.66687pt x 520.19344pt>
+<figures/TeXnicCenter.png, id=284, 847.66687pt x 520.19344pt>
 File: figures/TeXnicCenter.png Graphic file (type png)
 
 <use figures/TeXnicCenter.png>
@@ -940,7 +957,7 @@ Overfull \hbox (2.38063pt too wide) in paragraph at lines 53--72
 dát. A táblázat címkéje nem véletlenül
  []
 
-[13 <./figures/TeXnicCenter.png (PNG copy)>]
+[15 <./figures/TeXnicCenter.png (PNG copy)>]
 Overfull \hbox (1.5079pt too wide) in paragraph at lines 98--99
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -959,7 +976,7 @@ or, $\OT1/cmr/bx/n/10.95 y$ \T1/cmr/m/n/10.95 a mérések vektora és $\OT1/cmr/bx
 T1/cmr/bx/n/10.95 C$ \T1/cmr/m/n/10.95 a rendszert leíró paramétermátrixok.
  []
 
-[14]
+[16]
 Overfull \hbox (2.29582pt too wide) in paragraph at lines 134--141
 [][][]$\T1/cmtt/m/n/10.95 http : / / www . ctan . org / tex-[]archive / info / 
 symbols / comprehensive / symbols-[]a4 . pdf$[][]\T1/cmr/m/n/10.95 , 
@@ -977,7 +994,7 @@ Overfull \hbox (0.1495pt too wide) in paragraph at lines 157--209
 efiniáljuk a forrásmunkákat,
  []
 
-[15]
+[17]
 Overfull \hbox (18.551pt too wide) in paragraph at lines 210--211
 \T1/cmr/m/n/10.95 utasítással hozhatjuk létre, a stílusát pedig ugyanitt a []\T
 1/cmtt/m/n/10.95 \bibliographystyle{plain} \T1/cmr/m/n/10.95 utasítással
@@ -1004,22 +1021,22 @@ m/n/10.95 fájl megváltoztatáskor sokszor nincs hatása a változtatásnak
  []
 
 
-LaTeX Warning: Citation `Wettl04' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `Wettl04' on page 18 undefined on input line 216.
 
 
-LaTeX Warning: Citation `Candy86' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `Candy86' on page 18 undefined on input line 216.
 
 
-LaTeX Warning: Citation `Lee87' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `Lee87' on page 18 undefined on input line 216.
 
 
-LaTeX Warning: Citation `KissPhD' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `KissPhD' on page 18 undefined on input line 216.
 
 
-LaTeX Warning: Citation `Schreier00' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `Schreier00' on page 18 undefined on input line 216.
 
 
-LaTeX Warning: Citation `DipPortal' on page 16 undefined on input line 216.
+LaTeX Warning: Citation `DipPortal' on page 18 undefined on input line 216.
 
 
 Overfull \hbox (37.09113pt too wide) in paragraph at lines 216--217
@@ -1033,7 +1050,7 @@ Overfull \hbox (8.00322pt too wide) in paragraph at lines 218--219
 mtt/m/n/10.95 \usepackage[latin2]{inputenc}
  []
 
-[16] [17]
+[18] [19]
 Overfull \hbox (7.67618pt too wide) in paragraph at lines 229--230
 \T1/cmr/m/n/10.95 a tanszék által kiadott, a tanszékvezet® által aláírt feladat
 kiírás, a dolgozat elektronikus
@@ -1057,7 +1074,7 @@ Overfull \hbox (14.503pt too wide) in paragraph at lines 235--236
  továbbfejlesztési lehet®ségek
  []
 
-[18]) [19]
+[20]) [21]
 \openout2 = `acknowledgement.aux'.
 
  (./acknowledgement.tex)
@@ -1072,7 +1089,7 @@ Overfull \hbox (21.17076pt too wide) in paragraph at lines 5--156
 ulensnek való köszönetnyilvánítás
  []
 
-[20
+[22
 
 
 
@@ -1085,11 +1102,11 @@ File: figures/TeXnicCenter.png Graphic file (type png)
  <use figures/TeXnicCenter.png>
 Package pdftex.def Info: figures/TeXnicCenter.png used on input line 17.
 (pdftex.def)             Requested size: 426.79134pt x 261.91376pt.
- [21
+ [23
 
 
 
-]) [22
+]) [24
 
 ]
 \tf@thm=\write5
@@ -1101,12 +1118,13 @@ AED: lastpage setting LastPage
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
 (./diploma.aux (./guideline.aux) (./project.aux) (./titlepage.aux)
-(./declaration.aux) (./abstract.aux) (./introduction.aux) (./chapter1.aux)
-(./chapter2.aux) (./chapter3.aux) (./acknowledgement.aux) (./appendices.aux))
+(./declaration.aux) (./abstract.aux) (./introduction.aux) (./tensorflow.aux)
+(./neural_image_classification.aux) (./chapter3.aux) (./acknowledgement.aux)
+(./appendices.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: 595CC1241961EEEE3069E15732912241;1841.
+(rerunfilecheck)             Checksum: DE73D9A9253F2077A6AD6ACB9697F749;1909.
 
 
 LaTeX Warning: There were undefined references.
@@ -1114,9 +1132,9 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
  ) 
 Here is how much of TeX's memory you used:
- 10877 strings out of 494910
- 161973 string characters out of 6179836
- 312000 words of memory out of 5000000
+ 10886 strings out of 494910
+ 162169 string characters out of 6179836
+ 312089 words of memory out of 5000000
  13706 multiletter control sequences out of 15000+600000
  33730 words of font info for 88 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -1146,10 +1164,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on diploma.pdf (25 pages, 423770 bytes).
+Output written on diploma.pdf (27 pages, 432744 bytes).
 PDF statistics:
- 1240 PDF objects out of 1440 (max. 8388607)
- 546 compressed objects within 6 object streams
- 219 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1263 PDF objects out of 1440 (max. 8388607)
+ 554 compressed objects within 6 object streams
+ 227 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
