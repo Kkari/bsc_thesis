@@ -1,7 +1,7 @@
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
 
-from yadlt.models.rbm_models.rbm import RBM
+# from yadlt.models.rbm_models.rbm import RBM
 from my_rbm import Rbm
 
 if __name__ == '__main__':

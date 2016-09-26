@@ -1,0 +1,56 @@
+%----------------------------------------------------------------------------
+\chapter*{Bevezetõ}\addcontentsline{toc}{chapter}{Bevezetõ}
+%----------------------------------------------------------------------------
+
+\section{Motiváció}
+
+\paragraph{A neurális hálózat} A neurális hálózat egy számítási modell amelyet számos, algoritmikailag nehéz problémára sikeresen lehet alkalmazni. A fõ alkalmazási területeik: osztályozási feladatok, regressziós feladatok, dimenzió csökkentés (kernel PCA), jellemzõ kiemelés. Ezt a modellt sikeresen alkalmazták már az ipar számos területén, a teljesség igénye nélkül: 
+\begin{enumerate}
+\item \emph{képfelismerés:} Ezen a területen talán a legsokrétûbb a felhasználásuk az egyszerû OCR rendszerektõl kezdve egészen a rákos daganatok detektálásáig elterjedt a felhasználásuk. 
+\item \emph{idõsor elõrejelzés:} Komplex idõsor elõrejelzésnél is elõszeretettel használják óket, amikor a sok változót és azoknak összefüggését bonyolultságuknál fogva már nem lehet klasszikus statisztikai módszerekkel megragadni.
+\item \emph{fügvényapproximáció}
+\item \emph{szabályozó algoritmusok}
+\end{enumerate}
+
+\paragraph{Jelen Dolgozat célja} A dolgozat fõ csapásiránya egy áttekintõ kép alkotása a neurális hálózatok felhasználásáról, különös tekintettel a neurális hálózatokkal történõ képosztályozásra. A dolgozatomban arra törekszem hogy a neurális hálózatok gyakorlati alkalmazását ezen az alterületen keresztül ismerjem meg. Mivel tanulmányaim során ilyesféle - matematikai vonatkozású - programozással nem találkoztam jelentõs mértékben, ezért ez egy jó alkalom arra hogy lássam hogy komplex matematikai absztrakciók hogyan öltenek testet szoftverként. Példáúl a sztochasztikus generativ vagy a konvoluciós neurális hálózatok hogyan fordíthatóak le effektív programmá, és hogyan lehet belõlük értékes alkalmazásokat készíteni.
+
+\paragraph{Érdeklõdésem a neurális hálózatok iránt} Az önálló labor munkám során és a szakirányomon oktatott kooperatív és tanuló rendszerek tárgyban találkoztam elõször ezzel a megközelítéssel. Az egyre modernebb ajánló algoritmusok keresése közepedte rá kellett eszmélnem hogy az ajánlórendszerek jövõje is összefonódik a neurális hálózatokéval, így ez a dolgozat habár elsõ látásra nem is látszik, de az önálló laboratóriumi projekt munkám továbbvitele. Egy potenciálisan érdekes, még alig kutatott terület, hogy a termékek hibás és hiányos leírását hogyan lehet augmentálni a termékek feltöltött képeibõl kinyert címke felhõvel. Erre nagy valószínûséggel alkalmazható hálózatok lennének a regionális konvoluciós hálózatok amiket érintõlegesen tárgyalok majd a konvuluciós hálózatokat taglaló fejezetben.
+
+\paragraph{A feladat indokoltsága} Az olvasó jogosan teheti fel magában a kérdést hogy ha ezek a hálózatok már léteznek, sõt sok esetben konfiguráció nélkül "out of the box" jelleggel használhatóak, akkor mi ad létjogosultságot egy ilyen bevezetõ jellegû szakdolgozatnak? Nos, habár az elõzõ pont igaz, mégis manapság minnél inkább érdemes tisztában lenni ezeknek az eszközöknek a képességeivel, és mind fontosabb a korlátaival. Ha valaki egy saját alkalmazásban szeretné õket használni, akkor érdemes tudni hogy:
+\begin{enumerate}
+\item \ Az adott alkalmazáshoz milyen háló típusok használhatóak.
+\item \ Van-e esetleg már elõre tanított modell a feladatunkhoz. 
+\item \ Ha nincs akkor mennyi idõ lenne betanítani egyet.
+\item \ Mennyi helyet és számítást igényelnek az egyes modellek. (Ez erõsen példáúl függ a modell paraméter terének nagyságától)
+\end{enumerate}
+A szakdolgozat végére reményeim szerint az egyetemi tárgyak anyagát továbbfejlesztve egy nagyobb rálátással fogok rendelkezni erre az izgalmas területre.
+
+\paragraph{A dolgozat kontextusa} Ahhoz hogy kontextusba helyezem jelen munkámat a bevezetõ további részében szeretnék egy rövid áttekintést adni a gépi tanulás történelmérõl.
+
+\section{A gépi tanulás igen rövid történelme}
+
+\begin{enumerate}
+\item \ Az elsõ elismerten tanuló gépet Arthur Samuelnek tulajdonítják 1955-ben, ez a konstrukció képes volt megtanulni dámajátékot játszani. Samuel algoritmusai heurisztikus keresési memóriát alkalmaztak annak érdekében hogy a saját tapasztalataikból tanuljanak. A hetvenes évek közepére ez a rendszer már képes volt emberi játékosok legyõzésére is.
+\item \ Következõ fontos pontként Frank Rosenblatt Perceptronját emelném ki, ez volt az elsõ neurális hálózat, 1958-ban alkotta meg Rosenblatt az amerikai hadsereg "US office of Naval Research" laboratóriumában. Már ezt is vizuális minták felismerésére alkották meg eredetileg.
+\item \ A hetvenes éveket csak úgy emlegetik hogy a mesterséges intelligencia tele, miután Marvin Minksy 1969-ben rámutatott a Perceptron korlátaira az emberek elvesztették az érdeklõdésüket a terület iránt.
+1985-ben egy forradalmi újítás, a hibavisszaterjesztéses algoritmus (backpropagation algorithm) törte meg a csendet és keltette fel az emberek érdeklõdését újfent ezen számítási struktúrák iránt. 
+\item \ A kilencvenes években a neurális hálózatok újra kikerültek a középpontból, mert a statisztikusok által alkotott szupport vektor gépek (továbbiakban SVM) lényegesen jobb teljesíményt tudtak elérni, kevesebb tanítással mint a kor hálózatai.
+\item \ A neurális hálózatok következõ virágkorát napjainkban éljük, ennek egyik fõ tényezõ a fejlett neurális struktúrák felfedezése, illetve az hogy a grafikus egységek és a számítási fürtök fejlõdésének köszönhetõen eddig elképzelhetetlen számítási kapacítás áll rendelkezésünkre a hálózataink tanítására. Ezzel szemben a kernel gépeken alapuló modellek nem tudtak a megnövekedett teljesítményt kihasználva a neurális hálózatokhoz hasonló pontosság növekedést elérni. A manapság a neurális hálózatok jelen vannak az élet minden területén ahol szükségünk van mintázatok intelligens felismerésére, lehet az a szolgáltatás hang, kép vagy akár szöveges dokumentumok. Google translate, Shazam, a netflix díj nyertes ajánlási algoritmus, csak hogy pár példát szemelvényezzek a számtalan közül.
+\end{enumerate}
+
+\paragraph{A dolgozat felépítése} A dolgozatomat az alábbi módon szeretném felépíteni:
+\begin{enumerate}
+\item \ A tensorflow mint neurális rendszerek kutatására, fejlesztésére és éles üzembe helyezésére alkalmas platform bemutatása.
+\item \ A tárgyterület irodalmának áttekintése, szemlézve a következõ struktúrákat:
+\begin{enumerate}
+\item \ Egyszerû Softmax neuron mint osztályzó.
+\item \ Egyszerû többrétegû perceptron.
+\item \ Korlátozott boltzmann gépek.
+\item \ Mély hiedelem hálózatok.
+\item \ Konvoluciós Neurális hálózatok
+\item \ Kitekintés a szekvenciális hálózatok felé.
+\item \ A legújabb fejlemények a neurális képfeldolgozás területén.
+\end{enumerate}
+\item \ A saját fejlesztéseim bemutatása, amely egy két egyszerûbb struktúra a fent bemutatottak közül a tensorflow könyvtárral.
+\item \ A mérési eredményeim kiértékelése, tanulságok levonása.
+\end{enumerate}
