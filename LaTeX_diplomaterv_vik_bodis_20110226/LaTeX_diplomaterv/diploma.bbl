@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{rbmGuide}
+Geoffrey Hinton.
+\newblock A practical guide to training restricted boltzmann machines, aug
+  2010.
+\newblock http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf.
+
+\bibitem{backProp}
+Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
+\newblock Rumelhart, david e.; hinton, geoffrey e.; williams, ronald j.
+\newblock October 1986.
+
+\bibitem{waveNet}
+Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
+\newblock Wavenet: A generative model for raw audio.
+\newblock September 2016.
+
+\end{thebibliography}

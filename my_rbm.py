@@ -203,6 +203,8 @@ class Rbm:
             with tf.name_scope('rbm_weight_update'):
                 # Define the update parameters.
                 dw = (positive - negative) / self.batch_size
+                self.dw_serialized = tf.reshape(dw, [-1])
+
                 self.w_upd8 = self.W.assign_add(self.learning_rate * dw)
                 #  w_upd8 = self.W.assign_add(self.learning_rate * (positive - negative) / self.batch_size)
                 tf.histogram_summary('rbm/weight_update', self.w_upd8)
@@ -404,6 +406,15 @@ class Rbm:
                                                               test_data.shape[0],
                                                               test_data.shape[1])
                                                           }))
+
+    def get_dw_as_vector(self, data):
+        dw_serialized = self.tf_session.run(self.dw_serialized,
+                                              feed_dict={
+                                                  self.input_data: data,
+                                                     self.batch_labels: np.ones([1, self.num_classes]),
+                                                     self.h_rand: np.ones([1, self.num_hidden])
+                                                     })
+        return dw_serialized
 
     def predict(self, data):
         predicted_value = self.tf_session.run(self.prediction_y,

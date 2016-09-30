@@ -49,9 +49,11 @@ if __name__ == '__main__':
 
     rbm = Rbm(num_hidden=128, num_classes=10, num_features=784, learning_rate=0.01)
     rbm.init_rbm()
-    rbm.fit(mnist.train.images, mnist.test.images, num_epochs=10)
-    rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
-                      test_data=mnist.test.images, test_labels=mnist.test.labels, num_steps=30000)
+    rbm.fit(mnist.train.images, mnist.test.images, num_epochs=1)
+    print(rbm.get_dw_as_vector([mnist.train.images[0]]))
+    print(rbm.get_dw_as_vector([mnist.train.images[0]]).shape)
+    # rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
+    #                   test_data=mnist.test.images, test_labels=mnist.test.labels, num_steps=30000)
 
     # rbm = RBM(num_hidden=250, verbose=1)
     # rbm.fit(mnist.train.images, mnist.test.images)

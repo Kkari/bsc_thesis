@@ -8,3 +8,4 @@ checkpoint
 rbmModelTrained
 rbmModelTrained.meta
 yadlt
+*.csv

@@ -9,17 +9,21 @@
 \BOOKMARK [1][-]{section.1.3}{A Tensorflow fut\341s k\366zben}{chapter.1}% 9
 \BOOKMARK [0][-]{chapter.2}{A Neur\341lis h\341l\363zatokkal val\363 k\351pfeldolgoz\341s lehetos\351geinek \341ttekint\351se}{}% 10
 \BOOKMARK [1][-]{section.2.1}{Az algoritmusok ki\351rt\351kel\351se}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{A LaTeX-sablon haszn\341lata}{}% 12
-\BOOKMARK [1][-]{section.3.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{\301br\341k \351s t\341bl\341zatok}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Felsorol\341sok \351s list\341k}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{K\351pletek}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.5}{Irodalmi hivatkoz\341sok}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.7}{Alapadatok megad\341sa}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.8}{\332j fejezet \355r\341sa}{chapter.3}% 20
-\BOOKMARK [0][-]{chapter*.30}{K\366sz\366netnyilv\341n\355t\341s}{}% 21
-\BOOKMARK [0][-]{chapter*.30}{Irodalomjegyz\351k}{}% 22
-\BOOKMARK [0][-]{appendix*.31}{F\374ggel\351k}{}% 23
-\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.31}% 24
-\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.31}% 25
+\BOOKMARK [2][-]{subsection.2.1.1}{Az adathalmazok}{section.2.1}% 12
+\BOOKMARK [1][-]{section.2.2}{A Legelterjedtebb neur\341lis h\341l\363zatok k\351pfeldolgoz\341shoz}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.1}{A t\366bbr\351tegu perceptron \(MLP\)}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.2}{A Korl\341tozott Boltzmann G\351p}{section.2.2}% 15
+\BOOKMARK [0][-]{chapter.3}{A LaTeX-sablon haszn\341lata}{}% 16
+\BOOKMARK [1][-]{section.3.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{\301br\341k \351s t\341bl\341zatok}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.3}{Felsorol\341sok \351s list\341k}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.4}{K\351pletek}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.5}{Irodalmi hivatkoz\341sok}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.7}{Alapadatok megad\341sa}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.8}{\332j fejezet \355r\341sa}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter*.54}{K\366sz\366netnyilv\341n\355t\341s}{}% 25
+\BOOKMARK [0][-]{chapter*.55}{Irodalomjegyz\351k}{}% 26
+\BOOKMARK [0][-]{appendix*.56}{F\374ggel\351k}{}% 27
+\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.56}% 28
+\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.56}% 29

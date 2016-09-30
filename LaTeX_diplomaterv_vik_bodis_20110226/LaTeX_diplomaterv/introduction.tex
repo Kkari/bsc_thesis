@@ -8,9 +8,10 @@
 \begin{enumerate}
 \item \emph{képfelismerés:} Ezen a területen talán a legsokrétûbb a felhasználásuk az egyszerû OCR rendszerektõl kezdve egészen a rákos daganatok detektálásáig elterjedt a felhasználásuk. 
 \item \emph{idõsor elõrejelzés:} Komplex idõsor elõrejelzésnél is elõszeretettel használják óket, amikor a sok változót és azoknak összefüggését bonyolultságuknál fogva már nem lehet klasszikus statisztikai módszerekkel megragadni.
-\item \emph{fügvényapproximáció}
-\item \emph{szabályozó algoritmusok}
+\item \emph{beszédszintetizálás:} A 2016 szeptemberében publikált Wavenet struktúra 50\%-ot volt képes javítani Mean Opinion Scoreban az eddigi state-of-the-art beszédszintetizáló rendszereken. Ezt a javulást nyelvfüggetlenül, angolban és mandarin kínaiban is képes volt tartani. \cite{waveNet}
+\item \emph{szabályozó algoritmusok:} Szintén 2016-ban a DeepMind AI alkalmazása a Google egy adatközpontjának a hûtés vezérlésében 40\%-os esést eredményezett az erre fordított kiadásokban.
 \end{enumerate}
+Ezek véleményem szerint mind kifejezetten izgalmas eredmények, tisztán látszik hogy a a terület él, fejlõdik és napról napra formálja a jelfeldolgozásról alkotott képünket.
 
 \paragraph{Jelen Dolgozat célja} A dolgozat fõ csapásiránya egy áttekintõ kép alkotása a neurális hálózatok felhasználásáról, különös tekintettel a neurális hálózatokkal történõ képosztályozásra. A dolgozatomban arra törekszem hogy a neurális hálózatok gyakorlati alkalmazását ezen az alterületen keresztül ismerjem meg. Mivel tanulmányaim során ilyesféle - matematikai vonatkozású - programozással nem találkoztam jelentõs mértékben, ezért ez egy jó alkalom arra hogy lássam hogy komplex matematikai absztrakciók hogyan öltenek testet szoftverként. Példáúl a sztochasztikus generativ vagy a konvoluciós neurális hálózatok hogyan fordíthatóak le effektív programmá, és hogyan lehet belõlük értékes alkalmazásokat készíteni. A szakdolgozat egy hosszabb projekt része, ahol egy Tegra mobil chipen kell majd képosztályzó algoritmusokat alkalmazni. A dolgozat írása alatt értékelõdik ki hogy a projektben a Tensorflow reális alternatíva lesz-e a további munkához, illetve hogy melyik képosztályzó eljárás felelne meg legjobban a céljainknak.
 
@@ -33,7 +34,7 @@ A szakdolgozat végére reményeim szerint az egyetemi tárgyak anyagát továbbfejles
 \item \ Az elsõ elismerten tanuló gépet Arthur Samuelnek tulajdonítják 1955-ben, ez a konstrukció képes volt megtanulni dámajátékot játszani. Samuel algoritmusai heurisztikus keresési memóriát alkalmaztak annak érdekében hogy a saját tapasztalataikból tanuljanak. A hetvenes évek közepére ez a rendszer már képes volt emberi játékosok legyõzésére is.
 \item \ Következõ fontos pontként Frank Rosenblatt Perceptronját emelném ki, ez volt az elsõ neurális hálózat, 1958-ban alkotta meg Rosenblatt az amerikai hadsereg "US office of Naval Research" laboratóriumában. Már ezt is vizuális minták felismerésére alkották meg eredetileg.
 \item \ A hetvenes éveket csak úgy emlegetik hogy a mesterséges intelligencia tele, miután Marvin Minksy 1969-ben rámutatott a Perceptron korlátaira az emberek elvesztették az érdeklõdésüket a terület iránt.
-1985-ben egy forradalmi újítás, a hibavisszaterjesztéses algoritmus (backpropagation algorithm) törte meg a csendet és keltette fel az emberek érdeklõdését újfent ezen számítási struktúrák iránt. 
+1985-ben egy forradalmi újítás, a hibavisszaterjesztéses algoritmus (backpropagation algorithm \cite{backProp} törte meg a csendet és keltette fel az emberek érdeklõdését újfent ezen számítási struktúrák iránt. 
 \item \ A kilencvenes években a neurális hálózatok újra kikerültek a középpontból, mert a statisztikusok által alkotott szupport vektor gépek (továbbiakban SVM) lényegesen jobb teljesíményt tudtak elérni, kevesebb tanítással mint a kor hálózatai.
 \item \ A neurális hálózatok következõ virágkorát napjainkban éljük, ennek egyik fõ tényezõ a fejlett neurális struktúrák felfedezése, illetve az hogy a grafikus egységek és a számítási fürtök fejlõdésének köszönhetõen eddig elképzelhetetlen számítási kapacítás áll rendelkezésünkre a hálózataink tanítására. Ezzel szemben a kernel gépeken alapuló modellek nem tudtak a megnövekedett teljesítményt kihasználva a neurális hálózatokhoz hasonló pontosság növekedést elérni. A manapság a neurális hálózatok jelen vannak az élet minden területén ahol szükségünk van mintázatok intelligens felismerésére, lehet az a szolgáltatás hang, kép vagy akár szöveges dokumentumok. Google translate, Shazam, a netflix díj nyertes ajánlási algoritmus, csak hogy pár példát szemelvényezzek a számtalan közül.
 \end{enumerate}
@@ -43,12 +44,10 @@ A szakdolgozat végére reményeim szerint az egyetemi tárgyak anyagát továbbfejles
 \item \ A tensorflow mint neurális rendszerek kutatására, fejlesztésére és éles üzembe helyezésére alkalmas platform bemutatása.
 \item \ A tárgyterület irodalmának áttekintése, szemlézve a következõ struktúrákat:
 \begin{enumerate}
-\item \ Egyszerû Softmax neuron mint osztályzó.
 \item \ Egyszerû többrétegû perceptron.
 \item \ Korlátozott boltzmann gépek.
 \item \ Mély hiedelem hálózatok.
 \item \ Konvoluciós Neurális hálózatok
-\item \ Kitekintés a szekvenciális hálózatok felé.
 \item \ A legújabb fejlemények a neurális képfeldolgozás területén.
 \end{enumerate}
 \item \ A saját fejlesztéseim bemutatása, amely egy két egyszerûbb struktúra a fent bemutatottak közül a tensorflow könyvtárral.
