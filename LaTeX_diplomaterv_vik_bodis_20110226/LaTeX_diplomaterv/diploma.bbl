@@ -1,4 +1,37 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{genImgDesc}
+Li~Fei-Fei Andrej~Karpathy.
+\newblock Deep visual-semantic alignments for generating image descriptions.
+\newblock April 2015.
+
+\bibitem{alexNet}
+Alex~Krizhevsky et~al.
+\newblock Imagenet classification with deep convolutional neural networks.
+
+\bibitem{resNet}
+Kaiming~He et~al.
+\newblock Deep residual learning for image recognition.
+
+\bibitem{stn}
+Max~Jaderberg et~al.
+\newblock Spatial transformer networks.
+\newblock February 2016.
+
+\bibitem{rcnn}
+Ross~Girschick et~al.
+\newblock Rich feature hierarchies for accurate object detection and semantic
+  segmentation.
+\newblock October 2014.
+
+\bibitem{googLeNet}
+Szegedy et~al.
+\newblock Going deeper with convolutions.
+
+\bibitem{leNet}
+Yann~LeCun et~al.
+\newblock Gradient-based learning applied to document recognition.
+\newblock November 1998.
 
 \bibitem{rbmGuide}
 Geoffrey Hinton.
@@ -6,10 +39,21 @@ Geoffrey Hinton.
   2010.
 \newblock http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf.
 
+\bibitem{deconvnet}
+Rob~Fergus Matthew D.~Zieler.
+\newblock Visualizing and understanding convolutional neural networks.
+\newblock November 2013.
+
 \bibitem{backProp}
 Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
 \newblock Rumelhart, david e.; hinton, geoffrey e.; williams, ronald j.
 \newblock October 1986.
+
+\bibitem{mlpFrontier}
+Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
+\newblock How far can we go without convolution: Improving fully-connected
+  networks.
+\newblock November 2015.
 
 \bibitem{waveNet}
 Kishore~Konda Zhouhan~Lin, Roland~Memisevic.

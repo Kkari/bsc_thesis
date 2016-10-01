@@ -244,6 +244,7 @@ class Rbm:
             with tf.name_scope('sample_rbm_hidden_units'):
                 # Create a softmax for class prediction.
                 h_prob_predict = tf.nn.sigmoid(tf.matmul(self.input_data, self.W) + self.h_biases)
+                self.h_prob_out = h_prob_predict
 
             with tf.name_scope('prediction_weights'):
                 self.W_prediction = Rbm.weight_variable([self.num_hidden, self.num_classes], name='prediction_weights')
@@ -415,6 +416,15 @@ class Rbm:
                                                      self.h_rand: np.ones([1, self.num_hidden])
                                                      })
         return dw_serialized
+
+    def get_h_prob_out(self, data):
+        h_prob_out = self.tf_session.run(self.h_prob_out,
+                                              feed_dict={
+                                                  self.input_data: data,
+                                                  self.batch_labels: np.ones([1, self.num_classes]),
+                                                  self.h_rand: np.ones([1, self.num_hidden])
+                                                  })
+        return h_prob_out
 
     def predict(self, data):
         predicted_value = self.tf_session.run(self.prediction_y,
