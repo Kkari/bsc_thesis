@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa7f518e-8e77-464a-bd98-58438261bf01" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/chapter3.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/chapter3.aux" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Untitled.ipynb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.pdf" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.synctex.gz" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.synctex.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/my_rbm-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/my_rbm-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/acknowledgement.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/acknowledgement.aux" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/appendices.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/appendices.aux" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Diploma_munka_notebook_0.ipynb" afterPath="$PROJECT_DIR$/Diploma_munka_notebook_0.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.log" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.toc" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.toc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/introduction.log" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/introduction.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_rbm.ipynb" afterPath="$PROJECT_DIR$/my_rbm.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_rbm.py" afterPath="$PROJECT_DIR$/my_rbm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_rbm.py" afterPath="$PROJECT_DIR$/test_rbm.py" />
     </list>
     <ignored path="bsc_thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +37,7 @@
       <file leaf-file-name="my_convNet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_convNet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
+            <state relative-caret-position="3762">
               <caret line="214" column="42" selection-start-line="214" selection-start-column="42" selection-end-line="214" selection-end-column="42" />
               <folding />
             </state>
@@ -48,8 +47,8 @@
       <file leaf-file-name="test_rbm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_rbm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="55" />
+            <state relative-caret-position="612">
+              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -60,8 +59,8 @@
       <file leaf-file-name="my_rbm.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my_rbm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="363" column="39" selection-start-line="363" selection-start-column="39" selection-end-line="363" selection-end-column="39" />
+            <state relative-caret-position="6256">
+              <caret line="457" column="28" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="28" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -149,8 +148,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="width" value="1855" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -422,6 +421,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="aa7f518e-8e77-464a-bd98-58438261bf01" name="Default" comment="" />
@@ -433,10 +435,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11111111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18777293" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -448,7 +450,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.775" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="992" y="52" width="928" height="1028" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.775" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="987" y="55" width="938" height="1058" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -492,16 +494,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/my_rbm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.4/dist-packages/tensorflow/python/framework/tensor_shape.py" />
     <entry file="file://$PROJECT_DIR$/test_rbm.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -740,12 +732,37 @@
     <entry file="file://$PROJECT_DIR$/yadlt/core/model.py" />
     <entry file="file://$PROJECT_DIR$/yadlt/models/rbm_models/rbm.py" />
     <entry file="file://$PROJECT_DIR$/yadlt/core/unsupervised_model.py" />
+    <entry file="file://$PROJECT_DIR$/my_convNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="214" column="42" selection-start-line="214" selection-start-column="42" selection-end-line="214" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_rbm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="55" />
+        <state relative-caret-position="612">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tf_slim.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_rbm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6256">
+          <caret line="457" column="28" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -788,24 +805,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_convNet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="214" column="42" selection-start-line="214" selection-start-column="42" selection-end-line="214" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_rbm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="363" column="39" selection-start-line="363" selection-start-column="39" selection-end-line="363" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

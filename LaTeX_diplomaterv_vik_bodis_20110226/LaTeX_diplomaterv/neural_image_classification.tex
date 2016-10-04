@@ -2,6 +2,8 @@
 \chapter{A Neurális hálózatokkal való képfeldolgozás lehetõségeinek áttekintése}
 %----------------------------------------------------------------------------
 
+A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán nagyon sok sikeres és sikertelen kísérlet született annak érdekében hogy hogyan lehetne neurális hálózatokkal képi adatokat feldolgozni. Talán mondhatjuk hogy ezek a hálózatok a legsikeresebb képosztályozó, de korántsem triviális hogy mik az elõnyeik, hátrányaik és az egyes típusok milyen komplexitású jelekkel képesek megbírkózni. Elõször szeretném bemutatni az adathalmazokat amiken ezeket az algoritmusokat kiértékelik, majd eljutni az többrétegû perceptronoktól a konvoluciós hálózatokig, végül a legújabb trendek ismertetésével zárni a fejezetet.
+
 \section{Az algoritmusok kiértékelése}
 
 \subsection{Az adathalmazok}
@@ -140,14 +142,24 @@ Ezzel újradefiniálhatjuk a valószínûségi függvényt:
 p(x) = \frac{e^{-\mathcal{F}(x)}}{Z} \quad \textrm{ahol} \quad Z = \sum_{x}e^{-\mathcal{F}(x)}
 \end{align}
 
-A matematikai oldal további taglalása nélkül reprezentálnám a súlyváltozók update függvényét:
-\begin{align}
+Ami megengedi hogy a következõt írhassuk fel:
+\begin{align} \label{rbmPFromEnergy}
+-\frac{\partial{log\mathcal{p(x)}}}{\partial\theta} 
+\approx 
+\frac{\partial\mathcal{F(x)}}{\partial\theta} - 
+\frac{1}{|\mathcal{N}|}
+\sum_{\widehat{\mathcal{x}} \in \mathcal{N}}
+\frac{\partial \widehat{\mathcal{x}}}{\partial \theta}
+\end{align}
+
+Ha az elõbbi függvényt deriváljuk, akkor megkapjuk a súlyváltozók update függvényét:
+\begin{align} \label{RbmWDirect}
 -\frac{\partial logp(v)}{\partial W_{ij}} = E_v[p(h_i|v) * v_j] - v_j^{(i)} * sigm(W_i * v^{(i)} + c_i)
 \end{align}
-\begin{align}
+\begin{align} \label{RbmCDirect}
 -\frac{\partial logp(v)}{\partial c_i} = E_v[p(h_i|v)] - sigm(W_i * v^{(i)})
 \end{align}
-\begin{align}
+\begin{align} \label{RbmBDirect}
 -\frac{\partial logp(v)}{\partial b_j} = E_v[p(h_i|v) * v_j] - v_j^{(i)}
 \end{align}
 
@@ -224,7 +236,7 @@ Ahol $\mathcal{c}$ és $\mathcal(b)$ az eltolás súlyvektorokat jelzik.
 	\caption{Az ILSVRC gyõztesei} \label{tab:ImagenetTable}
 	\begin{tabular}{ | c | c | c | c | c |}
 	\hline
-	Év & A struktúra neve & Paraméter tér mérete & Tanítás ideje & Top 5 hiba százalék \\ \hline
+	Év & A struktúra neve & Tanítás ideje & Paraméter tér mérete & Top 5 hiba százalék \\ \hline
 	2012 & AlexNet \cite{alexNet} & két GTX 580 GPU-n 5-6 nap & 60 millió & 16\% \\
 	2013 & ZF Net \cite{deconvnet} & egy GTX 580 GPU-n 12 nap & ~60 millió & 11.2\% \\
 	2014 & GoogLeNet \cite{googLeNet} & "néhány high end GPU-n egy héten belül" & 4 millió & 6.7\% \\ 

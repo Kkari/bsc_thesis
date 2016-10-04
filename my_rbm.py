@@ -371,7 +371,7 @@ class Rbm:
 
             # Generate a minibatch.
             batch_data = train_dataset_permuted[offset:(offset + self.batch_size), :]
-            batch_labels = train_labels_permuted[offset:(offset + self.batch_size), :]
+            batch_labels = train_labels_permuted[offset:(offset + self.batch_size)]
 
             self.tf_session.run(self.optimizer,
                                 feed_dict={self.input_data: batch_data,

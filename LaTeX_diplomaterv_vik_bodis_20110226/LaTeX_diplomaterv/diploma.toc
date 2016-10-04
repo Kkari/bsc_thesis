@@ -26,51 +26,60 @@
 \select@language {magyar} \contentsline {paragraph}{Bevezet\'es}{12}{section*.18}
 \select@language {magyar} \contentsline {paragraph}{MNIST}{12}{section*.19}
 \select@language {magyar} \contentsline {paragraph}{CIFAR-10}{12}{section*.20}
-\select@language {magyar} \contentsline {paragraph}{CIFAR-100}{12}{section*.21}
-\select@language {magyar} \contentsline {paragraph}{IMAGENET}{12}{section*.22}
+\select@language {magyar} \contentsline {paragraph}{CIFAR-100}{13}{section*.21}
+\select@language {magyar} \contentsline {paragraph}{IMAGENET}{13}{section*.22}
 \select@language {magyar} \contentsline {subsubsection}{A metrika}{13}{section*.23}
 \select@language {magyar} \contentsline {paragraph}{MNIST \'es CIFAR}{13}{section*.24}
 \select@language {magyar} \contentsline {paragraph}{IMAGENET}{13}{section*.25}
 \select@language {magyar} \contentsline {section}{\numberline {2.2}A Legelterjedtebb neur\'alis h\'al\'ozatok k\'epfeldolgoz\'ashoz}{13}{section.2.2}
 \select@language {magyar} \contentsline {paragraph}{Bevezet\'es}{13}{section*.26}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}A t\"obbr\'eteg\H u perceptron (MLP)}{13}{subsection.2.2.1}
-\select@language {magyar} \contentsline {subsubsection}{Az MLP el\H ozm\'enyei \'es megalkot\'asa}{13}{section*.27}
-\select@language {magyar} \contentsline {paragraph}{El\H ozm\'enyek}{13}{section*.28}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}A t\"obbr\'eteg\H u perceptron (MLP)}{14}{subsection.2.2.1}
+\select@language {magyar} \contentsline {subsubsection}{Az MLP el\H ozm\'enyei \'es megalkot\'asa}{14}{section*.27}
+\select@language {magyar} \contentsline {paragraph}{El\H ozm\'enyek}{14}{section*.28}
 \select@language {magyar} \contentsline {paragraph}{Backpropagation}{14}{section*.30}
-\select@language {magyar} \contentsline {subsubsection}{Az MLP teljes\IeC {\'\i }tm\'enye k\'eposzt\'alyoz\'asi feladatokra}{14}{section*.32}
-\select@language {magyar} \contentsline {paragraph}{Aktiv\IeC {\'\i }t\'as a ter\"uleten.}{14}{section*.33}
-\select@language {magyar} \contentsline {paragraph}{MNIST}{14}{section*.34}
+\select@language {magyar} \contentsline {subsubsection}{Az MLP teljes\IeC {\'\i }tm\'enye k\'eposzt\'alyoz\'asi feladatokra}{15}{section*.32}
+\select@language {magyar} \contentsline {paragraph}{Aktiv\IeC {\'\i }t\'as a ter\"uleten.}{15}{section*.33}
+\select@language {magyar} \contentsline {paragraph}{MNIST}{15}{section*.34}
 \select@language {magyar} \contentsline {subsubsection}{MLP hi\'anyoss\'agai}{15}{section*.36}
 \select@language {magyar} \contentsline {paragraph}{A tanul\'as jellege}{15}{section*.37}
 \select@language {magyar} \contentsline {paragraph}{A strukt\'ura kialak\IeC {\'\i }t\'asa}{15}{section*.38}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.2.2}A Korl\'atozott Boltzmann G\'ep}{15}{subsection.2.2.2}
 \select@language {magyar} \contentsline {paragraph}{Bevezet\'es}{15}{section*.40}
 \select@language {magyar} \contentsline {paragraph}{Az RBM strukt\'ur\'aja}{16}{section*.41}
-\select@language {magyar} \contentsline {paragraph}{Az RBM tan\IeC {\'\i }t\'asa}{17}{section*.44}
-\select@language {magyar} \contentsline {paragraph}{Az RBM \'es DBN el\H otanul\'as eredm\'enyei}{18}{section*.46}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.2.3}State of the art MLP h\'al\'ozatok}{18}{subsection.2.2.3}
-\select@language {magyar} \contentsline {paragraph}{Tov\'abbi kutat\'asok}{18}{section*.48}
+\select@language {magyar} \contentsline {paragraph}{Az RBM tan\IeC {\'\i }t\'asa}{16}{section*.44}
+\select@language {magyar} \contentsline {paragraph}{Az RBM \'es DBN el\H otanul\'as eredm\'enyei}{19}{section*.46}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.3}State of the art MLP h\'al\'ozatok}{19}{subsection.2.2.3}
+\select@language {magyar} \contentsline {paragraph}{Tov\'abbi kutat\'asok}{19}{section*.48}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.2.4}Konvoluci\'os h\'al\'ozatok}{19}{subsection.2.2.4}
 \select@language {magyar} \contentsline {paragraph}{Bevezet\'es}{19}{section*.50}
-\select@language {magyar} \contentsline {paragraph}{Az intuici\'o}{20}{section*.51}
+\select@language {magyar} \contentsline {paragraph}{Az intuici\'o}{19}{section*.51}
 \select@language {magyar} \contentsline {paragraph}{Az IMAGNET}{20}{section*.54}
 \select@language {magyar} \contentsline {paragraph}{\'Ert\'ekel\'es}{20}{section*.56}
 \select@language {magyar} \contentsline {section}{\numberline {2.3}Tov\'abbi \'erdekes ir\'anyok a neur\'alis k\'epfeldolgoz\'asban}{22}{section.2.3}
 \select@language {magyar} \contentsline {paragraph}{R\'egi\'o alap\'u konvoluci\'os h\'al\'ozatok\cite {rcnn}}{22}{section*.57}
-\select@language {magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite {genAdvNet}}{22}{section*.59}
-\select@language {magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite {genImgDesc}}{22}{section*.61}
+\select@language {magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite {genAdvNet}}{23}{section*.59}
+\select@language {magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite {genImgDesc}}{23}{section*.61}
 \select@language {magyar} \contentsline {paragraph}{T\'erbeli transzform\'aci\'os h\'al\'ozatok (STN \cite {stn})}{23}{section*.63}
-\select@language {magyar} \contentsline {chapter}{\numberline {3}A \LaTeX -sablon haszn\'alata}{25}{chapter.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.1}C\IeC {\'\i }mk\'ek \'es hivatkoz\'asok}{25}{section.3.1}
-\select@language {magyar} \contentsline {section}{\numberline {3.2}\'Abr\'ak \'es t\'abl\'azatok}{26}{section.3.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Felsorol\'asok \'es list\'ak}{27}{section.3.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.4}K\'epletek}{28}{section.3.4}
-\select@language {magyar} \contentsline {section}{\numberline {3.5}Irodalmi hivatkoz\'asok}{29}{section.3.5}
-\select@language {magyar} \contentsline {section}{\numberline {3.6}A dolgozat szerkezete \'es a forr\'asf\'ajlok}{32}{section.3.6}
-\select@language {magyar} \contentsline {section}{\numberline {3.7}Alapadatok megad\'asa}{33}{section.3.7}
-\select@language {magyar} \contentsline {section}{\numberline {3.8}\'Uj fejezet \IeC {\'\i }r\'asa}{33}{section.3.8}
-\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{34}{chapter*.73}
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{35}{chapter*.74}
-\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{36}{appendix*.75}
-\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{36}{section.F.1}
-\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{37}{section.F.2}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}H\'al\'ozatok impelment\'al\'asa \'es elemz\'ese tensorflowban}{25}{chapter.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}A baseline oszt\'alyoz\'ok}{25}{section.3.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}A saj\'at magam \'altal kialak\IeC {\'\i }tott fejleszt\H ok\"ornyezet}{25}{section.3.2}
+\select@language {magyar} \contentsline {section}{\numberline {3.3}A saj\'at implement\'aci\'ok bemutat\'asa}{26}{section.3.3}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.1}A h\'al\'ozatok monitoroz\'asa}{26}{subsection.3.3.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.2}A logiszikus regresszi\'o}{26}{subsection.3.3.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.3}A t\"obbr\'eteg\H u perceptron}{27}{subsection.3.3.3}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.4}Az RBM h\'al\'ozat}{27}{subsection.3.3.4}
+\select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{28}{section*.67}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}A \LaTeX -sablon haszn\'alata}{29}{chapter.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}C\IeC {\'\i }mk\'ek \'es hivatkoz\'asok}{29}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}\'Abr\'ak \'es t\'abl\'azatok}{30}{section.4.2}
+\select@language {magyar} \contentsline {section}{\numberline {4.3}Felsorol\'asok \'es list\'ak}{31}{section.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.4}K\'epletek}{32}{section.4.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.5}Irodalmi hivatkoz\'asok}{33}{section.4.5}
+\select@language {magyar} \contentsline {section}{\numberline {4.6}A dolgozat szerkezete \'es a forr\'asf\'ajlok}{36}{section.4.6}
+\select@language {magyar} \contentsline {section}{\numberline {4.7}Alapadatok megad\'asa}{37}{section.4.7}
+\select@language {magyar} \contentsline {section}{\numberline {4.8}\'Uj fejezet \IeC {\'\i }r\'asa}{37}{section.4.8}
+\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{38}{chapter*.78}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{39}{chapter*.79}
+\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{40}{appendix*.80}
+\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{40}{section.F.1}
+\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{41}{section.F.2}

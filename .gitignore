@@ -9,3 +9,4 @@ rbmModelTrained
 rbmModelTrained.meta
 yadlt
 *.csv
+cifar*
