@@ -84,7 +84,7 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 \item Átvezettem egy relu rétegen, amitõl 0 és 1 közé normalizálódott.
 \end{enumerate}
 
-\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és Adamsoptimizerrel. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{RbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide} alapján végeztem.
+\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és Adamsoptimizerrel. Illetve a kísérletezés egy másik dimenziója az volt hogy egyes esetekben megengedtem az RBM felé kapcsolt regresszornak hogy az elõre megtanult súlyokat változtassa (ezt hívjuk fine-tuning-nak), más esetben pedig nem. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{RbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide} alapján végeztem.
 
 \begin{figure}[!ht]
 \centering
@@ -99,3 +99,8 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 \caption{} 
 \label{fig:rbmExpanded}
 \end{figure}
+
+\subsection{Hibrid modellek}
+A kísérletezésünk során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM gépnek. Így hatalmas dimenzió csökkenést értünk el, pl 768-ról 1024-re, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit sajnos nem is tudtam megtanítani reális idõ alatt egy SVM-nek.
+
+\subsection{A Konvoluciós modell}
