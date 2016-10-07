@@ -24,17 +24,20 @@
 \BOOKMARK [2][-]{subsection.3.3.2}{A logiszikus regresszi\363}{section.3.3}% 24
 \BOOKMARK [2][-]{subsection.3.3.3}{A t\366bbr\351tegu perceptron}{section.3.3}% 25
 \BOOKMARK [2][-]{subsection.3.3.4}{Az RBM h\341l\363zat}{section.3.3}% 26
-\BOOKMARK [0][-]{chapter.4}{A LaTeX-sablon haszn\341lata}{}% 27
-\BOOKMARK [1][-]{section.4.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.2}{\301br\341k \351s t\341bl\341zatok}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.3}{Felsorol\341sok \351s list\341k}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.4}{K\351pletek}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.5}{Irodalmi hivatkoz\341sok}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.7}{Alapadatok megad\341sa}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.8}{\332j fejezet \355r\341sa}{chapter.4}% 35
-\BOOKMARK [0][-]{chapter*.78}{K\366sz\366netnyilv\341n\355t\341s}{}% 36
-\BOOKMARK [0][-]{chapter*.79}{Irodalomjegyz\351k}{}% 37
-\BOOKMARK [0][-]{appendix*.80}{F\374ggel\351k}{}% 38
-\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.80}% 39
-\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.80}% 40
+\BOOKMARK [2][-]{subsection.3.3.5}{Hibrid modellek}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.6}{A Konvoluci\363s modell}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.7}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.3}% 29
+\BOOKMARK [0][-]{chapter.4}{A LaTeX-sablon haszn\341lata}{}% 30
+\BOOKMARK [1][-]{section.4.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.2}{\301br\341k \351s t\341bl\341zatok}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.3}{Felsorol\341sok \351s list\341k}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.4}{K\351pletek}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.5}{Irodalmi hivatkoz\341sok}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.7}{Alapadatok megad\341sa}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.8}{\332j fejezet \355r\341sa}{chapter.4}% 38
+\BOOKMARK [0][-]{chapter*.82}{K\366sz\366netnyilv\341n\355t\341s}{}% 39
+\BOOKMARK [0][-]{chapter*.83}{Irodalomjegyz\351k}{}% 40
+\BOOKMARK [0][-]{appendix*.84}{F\374ggel\351k}{}% 41
+\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.84}% 42
+\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.84}% 43

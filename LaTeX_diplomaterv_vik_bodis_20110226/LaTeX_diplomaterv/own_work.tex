@@ -104,3 +104,39 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 A kísérletezésünk során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM gépnek. Így hatalmas dimenzió csökkenést értünk el, pl 768-ról 1024-re, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit sajnos nem is tudtam megtanítani reális idõ alatt egy SVM-nek.
 
 \subsection{A Konvoluciós modell}
+Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy ugyanazt a modellt probálom ki az MNIST és a CIFAR-10 adathalmazon, és megnézni hogy melyik modell hogyan reagál az adat megnövekedett komplexitására. Több hálózatot kiróbáltam, az alapmodell felépítését a \figref{convnet_1}~ábra mutatja. A kísérleteim arra irányultak hogy plusz teljesen összekötött rétegek hozzáadása, esetleg a konvoluciós rétegek más elrendezése milyen eredményre juttat.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm, keepaspectratio]{figures/convnet_1}
+\caption{} 
+\label{fig:convnet_1}
+\end{figure}
+
+\subsection{A konvoluciós modell skálázása}
+Az elõbbiekben bemutatott konvoluciós modell könnyedén tanítható pár perc alatt egy korszerû CPU-n, viszont ha az ember nagyobb modelleket szeretne tanítani akkor ez már nem egy reális alternatíva. Ezekre az esetekre egy nagyobb hálózattal kísérleteztem a CIFAR-10 adathalmazon, aminek a felépítéséte a \figref{convnet_2}~ábra mutatja. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm, keepaspectratio]{figures/convnet_2}
+\caption{} 
+\label{fig:convnet_2}
+\end{figure}
+
+Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm, keepaspectratio]{figures/device_distro}
+\caption{} 
+\label{fig:device_distro}
+\end{figure}
+
+Ez sok esetben teljesen megfelel az elvárásainknak, ha nmem szeretnénk sokat veszõdni a hálózat elosztásával, vagy múgy is tul nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm, keepaspectratio]{figures/tower_parallel}
+\caption{} 
+\label{fig:tower_parallel}
+\end{figure}

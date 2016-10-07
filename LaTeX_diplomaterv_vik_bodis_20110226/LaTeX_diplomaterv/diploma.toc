@@ -69,17 +69,20 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {3.3.3}A t\"obbr\'eteg\H u perceptron}{27}{subsection.3.3.3}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.3.4}Az RBM h\'al\'ozat}{27}{subsection.3.3.4}
 \select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{28}{section*.67}
-\select@language {magyar} \contentsline {chapter}{\numberline {4}A \LaTeX -sablon haszn\'alata}{29}{chapter.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.1}C\IeC {\'\i }mk\'ek \'es hivatkoz\'asok}{29}{section.4.1}
-\select@language {magyar} \contentsline {section}{\numberline {4.2}\'Abr\'ak \'es t\'abl\'azatok}{30}{section.4.2}
-\select@language {magyar} \contentsline {section}{\numberline {4.3}Felsorol\'asok \'es list\'ak}{31}{section.4.3}
-\select@language {magyar} \contentsline {section}{\numberline {4.4}K\'epletek}{32}{section.4.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.5}Irodalmi hivatkoz\'asok}{33}{section.4.5}
-\select@language {magyar} \contentsline {section}{\numberline {4.6}A dolgozat szerkezete \'es a forr\'asf\'ajlok}{36}{section.4.6}
-\select@language {magyar} \contentsline {section}{\numberline {4.7}Alapadatok megad\'asa}{37}{section.4.7}
-\select@language {magyar} \contentsline {section}{\numberline {4.8}\'Uj fejezet \IeC {\'\i }r\'asa}{37}{section.4.8}
-\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{38}{chapter*.78}
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{39}{chapter*.79}
-\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{40}{appendix*.80}
-\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{40}{section.F.1}
-\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{41}{section.F.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.5}Hibrid modellek}{29}{subsection.3.3.5}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.6}A Konvoluci\'os modell}{29}{subsection.3.3.6}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.7}A konvoluci\'os modell sk\'al\'az\'asa}{29}{subsection.3.3.7}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}A \LaTeX -sablon haszn\'alata}{31}{chapter.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}C\IeC {\'\i }mk\'ek \'es hivatkoz\'asok}{31}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}\'Abr\'ak \'es t\'abl\'azatok}{32}{section.4.2}
+\select@language {magyar} \contentsline {section}{\numberline {4.3}Felsorol\'asok \'es list\'ak}{33}{section.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.4}K\'epletek}{34}{section.4.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.5}Irodalmi hivatkoz\'asok}{35}{section.4.5}
+\select@language {magyar} \contentsline {section}{\numberline {4.6}A dolgozat szerkezete \'es a forr\'asf\'ajlok}{38}{section.4.6}
+\select@language {magyar} \contentsline {section}{\numberline {4.7}Alapadatok megad\'asa}{39}{section.4.7}
+\select@language {magyar} \contentsline {section}{\numberline {4.8}\'Uj fejezet \IeC {\'\i }r\'asa}{39}{section.4.8}
+\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{40}{chapter*.82}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{41}{chapter*.83}
+\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{42}{appendix*.84}
+\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{42}{section.F.1}
+\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{43}{section.F.2}

@@ -1,0 +1,45 @@
+\chapter{A mérési eredményeim összegzése}
+Ebben a fejezetben szeretném bemutatni az általam elkészített hálózatok futásának mérési eredményeit. És ezeknek aspektusait:
+\begin{enumerate}
+\item A keretrendszer általános teljesítménye.
+\item A baseline eredmények bemutatása.
+\item Az MLP hálózattal elért eredmények és az ezekbõl levont tanulságok.
+\item A konvoluciós hálózatokkal elért eredmények és ennek összegzése.
+\item A hibrid hálózatokkal elért eredmények.
+\end{itemize}
+
+A gép specifikáció amin általánosságban teszteltem (eltekintve a GPU skálázás résztõl) a következõek:
+\begin{enumerate}
+Memória: 8 Gigabyte DDR4
+CPU: Intel? Core? i7-4702MQ CPU @ 2.20GHz × 8
+\end{itemize}
+A gépben elhelyezkedõ grafikus kártyát nem használtam 
+
+\section{A keretrendszer általános teljesítménye}
+Ebben a részben azt vizsgáltam hogy a tensorflow hogyan bánik az erõforrásokkal. Ennek érdekében több dolgot tettem:
+\begin{itemize}
+\item Egyszerû rendszerszintû méréseket futtattam.
+\item A Tensorboardon keresztül vizsgáltam a hálók teljesítmény és erõforrás karakterisztikáját.
+\item Egy konvolociós hálót kiskáláztam a CPU-ról 1 GPU-ra, majd 2 GPU-ra.
+\end{itemize}
+
+\section{Rendszer szintû mérések.}
+Az elsõ dolog amikor felütötte a fejét a kérdés nálam, hogy mégis hogyan viszonyul teljesítményben a tensorflow a Python de facto gépi tanulás eszközéhez, a Scikit-learnhöz az volt amikor nem sikerült lefuttatnom egy logisztikus regressziót Scikit segítségével a CIFAR-10 adathalmazon mert a teszt gép használhatlanná vált. A két mérés erõforrás karakterisztikáját a \figref{sklearn_cpu}~ábra és a \figref{tf_cpu}~ábra mutatja, ahol az elõbbi a Scikit-learn az utóbbi pedig a Tensorflowban megvalósított közelítõ Logisztikus Regresszió.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=50mm, keepaspectratio]{figures/sklearn_cpu}
+\caption{A Scikit-learnben idított logisztikus regresszió erõforrás igénye.} 
+\label{fig:sklearn_cpu}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=50mm, keepaspectratio]{figures/tf_cpu}
+\caption{A Tensorflownban idított logisztikus regresszió erõforrás igénye.} 
+\label{fig:tf_cpu}
+\end{figure}
+
+Mint látható a scikit-learnben elindított futtatás a teszt gép összes memóriáját felemésztette, illetve a magok kihasználása is nagyon rossz volt, mindössze egyetlen magot használt ki. Ezzel szemben a Tensorflowban approximált modell nagyon egyenletes magkihasználtság mellett minimális memória igénnyel oldotta meg a feladatot. Természetesen nem állítom hogy a két feladat identikus volt, mivel más algoritmusokkal jutottak el a végeredményig. További kutatásaimból kiderült hogy ez a Scikit-learn alapértelmezett optimalizációs algoritmusának köszönhetõ amit a liblinear könyvtár valósít meg. Amikor ezt kicseréltem SAG megoldóra, akkor a gép lefagyásának problémája eltünt, de még mindig konvergencia problémák léptek fel. Az SAG egy kifejezetten új fejlemény a numerikus optimalizáció területén, amit egy 2013-as publikáció mutat be "Minimizing Finite Sums with Stochastic Average Gradient"\cite{sag}.
+Ezen felül még megprobáltam az adathalmazt a ko
+Ez a mérési sorozat úgy gondolom hogy egyértelmûen rávilágít a numerikus optimalizáció kiemelkedõ fontosságára a gépi tanulás applikációkban.
