@@ -6,14 +6,14 @@ Ebben a fejezetben szeretném bemutatni az általam elkészített hálózatok futásána
 \item Az MLP hálózattal elért eredmények és az ezekbõl levont tanulságok.
 \item A konvoluciós hálózatokkal elért eredmények és ennek összegzése.
 \item A hibrid hálózatokkal elért eredmények.
-\end{itemize}
+\end{enumerate}
 
 A gép specifikáció amin általánosságban teszteltem (eltekintve a GPU skálázás résztõl) a következõek:
-\begin{enumerate}
-Memória: 8 Gigabyte DDR4
-CPU: Intel? Core? i7-4702MQ CPU @ 2.20GHz × 8
+\begin{itemize}
+\item Memória: 8 Gigabyte DDR4
+\item CPU: Intel Core i7-4702MQ CPU @ 2.20GHz x 8
 \end{itemize}
-A gépben elhelyezkedõ grafikus kártyát nem használtam 
+A gépben elhelyezkedõ grafikus kártyát nem használtam, az Nvidia hibás eszköz meghajtó programja miatt.
 
 \section{A keretrendszer általános teljesítménye}
 Ebben a részben azt vizsgáltam hogy a tensorflow hogyan bánik az erõforrásokkal. Ennek érdekében több dolgot tettem:
@@ -28,18 +28,194 @@ Az elsõ dolog amikor felütötte a fejét a kérdés nálam, hogy mégis hogyan viszony
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=50mm, keepaspectratio]{figures/sklearn_cpu}
+\includegraphics[width=100mm, keepaspectratio]{figures/sklearn_cpu_liblinear}
 \caption{A Scikit-learnben idított logisztikus regresszió erõforrás igénye.} 
 \label{fig:sklearn_cpu}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=50mm, keepaspectratio]{figures/tf_cpu}
+\includegraphics[width=100mm, keepaspectratio]{figures/tf_cpu}
 \caption{A Tensorflownban idított logisztikus regresszió erõforrás igénye.} 
 \label{fig:tf_cpu}
 \end{figure}
 
 Mint látható a scikit-learnben elindított futtatás a teszt gép összes memóriáját felemésztette, illetve a magok kihasználása is nagyon rossz volt, mindössze egyetlen magot használt ki. Ezzel szemben a Tensorflowban approximált modell nagyon egyenletes magkihasználtság mellett minimális memória igénnyel oldotta meg a feladatot. Természetesen nem állítom hogy a két feladat identikus volt, mivel más algoritmusokkal jutottak el a végeredményig. További kutatásaimból kiderült hogy ez a Scikit-learn alapértelmezett optimalizációs algoritmusának köszönhetõ amit a liblinear könyvtár valósít meg. Amikor ezt kicseréltem SAG megoldóra, akkor a gép lefagyásának problémája eltünt, de még mindig konvergencia problémák léptek fel. Az SAG egy kifejezetten új fejlemény a numerikus optimalizáció területén, amit egy 2013-as publikáció mutat be "Minimizing Finite Sums with Stochastic Average Gradient"\cite{sag}.
-Ezen felül még megprobáltam az adathalmazt a ko
-Ez a mérési sorozat úgy gondolom hogy egyértelmûen rávilágít a numerikus optimalizáció kiemelkedõ fontosságára a gépi tanulás applikációkban.
+Ezen felül még megprobáltam az adathalmazt a newton konjugált-gradiens módszerrel megtanulni. Ez is sikertelen lett az erõforrások hiánya miatt. Ami érthetõ, hiszen egy gyors konvergenciát igér, de még a sima liblinear megoldónál is nagyobb erõforrás igénnyel.
+
+Ez a mérési sorozat úgy gondolom hogy egyértelmûen rávilágít a numerikus optimalizáció kiemelkedõ fontosságára a gépi tanulás applikációkban. Az adathalmaz amin teszteltem a metódusokat nem volt nagy, a CIFAR-10 mindössze 180 megabyte. Amennyiben ezeket a méréseket az akadémia szerverein végeztem volna el, akkor gond nélkül taníthattam volna akármelyik módszerrel. Viszont így, hogy a tesztrendszer is igen korlátozott jól megvilágította a nagy adathalmazokon való tanulás egyik nagy problémáját. Habár a mostani szevereink már hatalmas erõforrásokkal bírnak a klasszikus módszereink amik folyamatosan az egész adathalmazzal való interakciót igénylik, mint mondjuk az eredeti logisztikus regresszió vagy svm tanító algoritmusok mégsem lesznek használhatóak egyszerûen az adathalmaz puszta nagysága miatt. Ezért is fontos hogy a mostani kutatások nagyrésze a numerikus optmalizáció terén a sztochatsztikus módszerekre koncentrál amik véletlenszerûen összeválogatott kis tanító halmazokkal approximálják a teljes adathalmaz tulajdonságait.
+
+//TODO: GPU
+
+\section{A baseline eredmények ismertetése}
+Mint már említettem, két alap metósdus amihez a saját eredményeimet mértem a logsztikus regresszió, és egy egyszerû SVM volt, amihez polynomiális kernelt használtam 3 as fokszámmal és az elsõ rendû tagokat használva. Az eredményeim az eredményiemet az MNIST adathalmazon a \tabref{baselineMNIST}~táblázat, és a \tabref{baselineCIFAR}~táblázat szemlélteti.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{A baseline mérések eremdénye az MNIST adathalmaz nyers pixeljein, használt könyvtár: Scikit-learn} \label{tab:baselineMNIST}
+	\begin{tabular}{ | l | c |}
+	\hline
+	tanuló metódus & Teszt halmaz hiba százaléka \\ \hline
+	Logisztikus regresszió & 8\%\\
+	SVM poly kernel fok: 3 coef0: 1 &  6\%\\
+	\hline
+	\end{tabular}
+\end{table}
+
+Az MNIST-en elért eredmények nem a legjobbak, de egészen optimális eredmények ilyen egyszerû eljárásokkal is. Ezeken sokat lehet javítani a képek elõfeldolgozásával, de ez egy külön szakdolgozat témája lehetne, úgyhogy ezzel most itt nem foglalkozok. Minden struktúrát a nyers adatokon kezdtem el tréningezni, klasszikus elõfeldolgozási lépések alkalmazása nélkül. A teljesség kedvéért megemlítem hogy a legjobb eredmény amit SVM-el értek el az MNIST adahalmazon annak a felépítése a következõ volt: \emph{Virtual SVM, deg-9 poly, 2-pixel jittered}, elõfeldolgozási lépésként csak kiegyenesítést használt (deskewing), az elért teszt hibaszázalék pedig \emph{0.56\%} volt.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{A baseline mérések eremdénye az CIFAR-10 adathalmaz nyers pixeljein, használt könyvtár: Scikit-learn} \label{tab:baselineCIFAR}
+	\begin{tabular}{ | l | c |}
+	\hline
+	tanuló metódus & Teszt halmaz hiba százaléka \\ \hline
+	Logisztikus regresszió & 62\%\\
+	Linear SVM with improved LCC & 26\%\\
+	\hline
+	\end{tabular}
+\end{table}
+
+Mint látni lehet itt ezek a metódusok már közel sem teljesítenek annyira fényesen. Az SVM-et nem én futtattam le, mert ahhoz a teszt gép nem volt elég erõs. Az egy ICML 2010-es konferencián bemutatott eredmény volt, amit a "Improved Local Coordinate Coding using Local Tangents"\cite{svmCIFAR}-ban publikáltak.
+
+\section{Az MLP-vel elvégzett méréseim eredményei}
+
+\subsection{Az MNIST mérések}
+A többrétegû perceptronokról ismeretes hogy a rétegek között teljes kapcsolat van, és az adathalmaznak semmilyen tulajdonságát nem építik bele az architektúrába a priori, nem úgy mint a konvoluciós hálózatok, ahol a transzlációs invariancia elõre feltételezett, és maga a hálózat tartalmazza a kényszereket. Ez alappvetõen abban is megnyílvánul hogy a hálózat nem egy három dimenziós bemenetre (magasság, szélesség, mélység(RGB)) támaszaszkodik, hanem egy egyszerû vektorra. Az MNIST-en elért eredményeimet egy ilyen egyszerû struktúrával a \tabref{mnistMlpMeasurements}~táblázat mutatja be, a méréseket a fejezet elején ismertetett tesztgép CPU-ján végeztem. A bemenet egy 784 elemû vektor volt, ami praktikusan az MNIST adathalmaz egyetlen vektorba lapítva sorról sorra.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{A saját MLP teljesítménye az MNIST adathalmazon, 20 000 tanító batch után. Bemenetek száma: 784, reLu aktivációval, L2 reguralizációval, aminek az együtthatója 0.0005 vot. A súlyokat csonkolt normál eloszlással inicializáltam, standard szórás: 0.1, középérték: 0.0.} \label{tab:mnistMlpMeasurements}
+	\begin{tabular}{ | l | c | c |}
+	\hline
+	neuron struktúra & Optimalizáló algoritmus & Teszt szet hiba százalék \\ \hline
+	10 & SGD learning-rate: 0.5 & 8\%\\
+	1024-10 & SGD learning-rate: 0.5 & 3.9\%\\
+	400-10 & SGD learning-rate: 0.5 & 0.9\%\\
+	400-10 & Adam & 0,9\%\\
+	800-10 & Adam & 0.9\%\\
+	800-10 & SGD learning-rate: 0.5 & 0.55\%\\
+	\hline
+	\end{tabular}
+\end{table}
+
+Látható hogy az elsõ struktúra a logisztikus regresszióval, ami nem meglepõ, hiszen egy egyrétegû struktúra softmax függvénnyel a végén praktikusan ugyanakkora általánosító képességgel rendelkezik mint egy klasszikus módszerekkel tanított multinomiális logisztikus regresszor. Ezen az eredményen lényegesen tudtam javítani miután hozzáadtam egy 1024 elemû rejtett réteget, ami növelte a háló általánosító képessegét, de 20'000 lépés alatt nem volt képes túltanulás nélkül megtanulni a feladatot. Ahogyan csökkentettem a hálózat méretét az csökkentette a túltanulás mértékét és jelentõs teljesítmény növekedést hozott. A 0.9\%-os hiba eredmény már elmondható hogy egészen közel van az eddigi legjobb elért eredményhez 1 rejtett réteggel, ami 0.7\%. Azt vártam volna hogy az Adaptív momentum közelítõ (adam) módszer javít a hálózat eredményén, de nem így lett. Általában az Adam optimalizátor elõnye abban rejlik hogy mivel a momentumot és a tanulási rátát adaptívan számítja minden batchre, ezért kevesebb hiperparamétert kell állítani. Ez természetesen megnövekedett számítás igénnyel szokott járni. A legjobb eredményt az adathalmazon amit elértem az \emph{0.55\%} volt, ami már igen közel jár a legjobb megoldáshoz amit hasonló hálózattal elértek.
+
+A \figref{adamsSum}~ábra és a \figref{sgdSum}~ábra mutatja hogy mekkora hatással van az gradiens keresési eljárás a megtanult súlyokra. Látszik hogy a két eredmény merõben más optimumra állt be. Mint ahogyan a \tabref{MLPTablazat}~tábláztból is látszik, az SGD-t használó hálózat sokkal közelebb került a teszt adathalmaz általános képéhez. Az is nagyon jól látszik a képeken hogy az ADAM optimizátor úgy alakította a koefficienseket hogy lényegesen kissebb változtatásokat tegyen a felületen, ezért egyáltalán nem ugrált annyira a súlyok értéke mint az SGD-nél. Viszont mind a kettõ a veszteségfüggvény stabilítási pontját olyan 2000 iteráció után érte el, onnantól már csak oszcilláltak a maradék 18000 lépésben.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/adamSum}
+\caption{A veszteségfüggvény és a hálózat súly átlagainak a rétegenkénti alakulása ADAM optimizátor mellett.} 
+\label{fig:adamsSum}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/sgdSum}
+\caption{A veszteségfüggvény és a hálózat súly átlagainak a rétegenkénti alakulása SGD optimizátor mellett.} 
+\label{fig:sgdSum}
+\end{figure}
+
+
+\subsection{A CIFAR-10 mérések}
+Miután az mnist adathalmazon sikeres méréseket végeztem egészen egyszerû MLP hálózatokkal kiváncsi lettem hogy ezek a hálózatok mennyire viszik át a teljesítményüket egy fokkal bonyolultabb adathalmazra. A két adathalmaz tulajdonságai egymáshoz képest:
+
+\begin{itemize}
+\item Mindkét adathalmaz 10 osztályt tartalmaz.
+\item Mindkét adathalmaz 10'000 teszt képet tartalmaz, 1000-et osztályonként.
+\item A CIFAR-10es adathalmaz 10'000-rel kevesebb tanító képet tartalmaz, ez osztályonként 1000 darab.
+\item Amíg az MNIST 28x28as fekete fehér képeket tartalmazott, addig a CIFAR-10 32x32-es színes képeket tartalmaz.
+\end{itemize}
+
+Ami rögtön szembetûnik hogy amíg az MNIST 784 dimenziót tartalmazott, addig a CIFAR-10 egy 3072 dimenziós adathalmaz, tehát az adathalmaz komplexitása ha csak tisztán a dimenziókat nézzük akkor a négyszeresére nõtt. Ennek megfelelõen a hálózatok ha ugyanazokat a hálózatokat probáljuk használni, akkor drasztikus teljesítmény csökkenést vagyunk kénytelenek tapasztalni.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{A saját MLP teljesítménye az CIFAR adathalmazon, 20 000 tanító batch után. Bemenetek száma: 3072, reLu aktivációval, L2 reguralizációval, aminek az együtthatója 0.0005 vot. A súlyokat csonkolt normál eloszlással inicializáltam, standard szórás: 0.1, középérték: 0.0.} \label{tab:MLPTablazat}
+	\begin{tabular}{ | l | c | c |}
+	\hline
+	neuron struktúra & Optimalizáló algoritmus & Teszt szet hiba százalék \\ \hline
+	10 & SGD learning-rate: 0.5 & 80\%\\
+	10 & SGD learning-rate: 0.001 & 75\%\\
+	400 - 10 & SGD learning-rate: 0.01 & 79 \%\\
+	1024 - 10 & SGD learning-rate: 0.01 & 90\%\\
+	\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Az elõtanítás eredményeinek összefoglalása}
+Arra a számomra meglepõ eredményre jutottam hogy az elõtanítás az az én méréseim közben minden esetben csak rontott a hálózat klasszifikációs teljesítményén. Az általam várt eredmény az lett volna, hogy az elõtanítás jelentõsen javítani fog a hálók teljesítményén, fõleg nagy neuron számnál. A \tabref{mnistMlpPretrainedTable}~táblázat és a \tabref{cifarMlpPretrainedTable} táblázat mutatja be az eredményeimet.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{Az elõtanított MLP hálozatok eredménye a MNIST adathalmazon, 25 elemû batchekkel.} \label{tab:mnistMlpPretrainedTable}
+	\begin{tabular}{ | l | c | c | c |}
+	\hline
+	neuron struktúra & \parbox[c]{5cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{5cm}{Teszt szet hiba százalék\\elõtanítássa / nélküle} \\ \hline
+	800 - 10 & 15/30 & SGD learning-rate: 0.05 & 92\% / 0.9\% \\
+	500-500-2000-30 & 15/30 & learning-rate: 0.001 & 88,5\% / 3,2\% \\
+	\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{Az elõtanított MLP hálozatok eredménye a CIFAR adathalmazon, 25 elemû batchekkel.} \label{tab:cifarMlpPretrainedTable}
+	\begin{tabular}{ | l | c | c | c |}
+	\hline
+	neuron struktúra & \parbox[c]{5cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{5cm}{Teszt szet hiba százalék\\elõtanítássa / nélküle} \\ \hline
+	400 - 10 & 10/10 & SGD learning-rate: 0.001 & 91\% / 55\% \\
+	500-500-2000-30 & 10/10 & learning-rate: 0.001 & 88,5\% / 3,2\% \\
+	\hline
+	\end{tabular}
+\end{table}
+
+Úgy magyarázom ezeket az elszomorító eredményeket hogy az elõtanítás következtében egy rossz lokális minimumba ragadt be a háló, ahonnan nem tudodd kijönni egyik esetben sem. Ahhoz hogy ezt a feltevésemet igazolja mmegnéztem az mnist adathalmazon tanított nagyméretû (500-500-2000-30 neuron) hálónak a veszteségfüggvényét és a pontosságának a növekedését a validációs adathalmazon.
+Ez elõtanítás nélküli háló mért eredményei a \figref{bigDbnPretrained}~ábrán, az elõtanítással tanított hálónaé pedig a \figref{bigDbnNotPretrained}~ábrán láthatóak. Az ábrákon szépen kijön hogy amíg az elõtanítás nélküli háló mindkét mértéket tenkintve egy viszonylag sima, egyenletes görbét ír le, ami egy minimumhoz konvergál, addig az elõtanított háló beragadt egy rossz lokális minimumba, ahonnan nem tud kikerülni. Ebbõl azt szûrtem le, hogy érdekes módon nem feltétlen azok a jó jellemzõk osztályozáshoz, amik a rekonstrukcióhoz. Pedig nekem egészen intutív lett volna, és az irodalomban is sokat olvastam róla hogy ez az elõnye az RBM-ekkel való elõtanításnak.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/bigDbnPretrained}
+\caption{A 500-500-2000-30 neuronú elõtanított MLP veszteségfüggvényének, és a validációshalmazon való pontosságának alakulása.} 
+\label{fig:bigDbnPretrained}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/bigDbnNotPretrained}
+\caption{A 500-500-2000-30 neuronú \emph{nem} elõtanított MLP veszteségfüggvényének, és a validációshalmazon való pontosságának alakulása.} 
+\label{fig:bigDbnNotPretrained}
+\end{figure}
+
+
+
+\section{A konvoluciós hálózatok eredményei}
+Miután láthattuk hogy az MLP-k már nehezen bírkóznak meg a CIFAR-10 komplexitású feladatokkal a figyelmemet az elméleti részben oly sok helyet elfoglaló konvoluciós architektúrák fel fordítottam. Mivel ezek az architektúrák érik el jelenleg a legjobb eredményeket a neurális jelfeldolgozás széles területén, nem csak képosztályozásban hanem akár beszédszintetizálásban is, ezért nagy reményekkel fordultam ezekhez a struktúrákhoz. Az eredményeimet a \tabref{CnnTablazat}~táblázat mutatja. Az alábbi felsorolás az általam használt hálózatokat írja le.
+\begin{itemize}
+\item conv2d -> relu -> conv2d -> relu -> flatten -> softmax
+\item conv2d -> relu -> maxpool\textunderscore 2x2 -> conv2d -> relu -> maxpool\textunderscore2x2 -> flatten -> fullyconnected -> dropout\textunderscore 0.5 -> softmax
+\end{itemize}
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{A saját MLP teljesítménye az CIFAR adathalmazon, 20 000 tanító batch után. Bemenetek száma: 3072, reLu aktivációval, L2 reguralizációval, aminek az együtthatója 0.0005 vot. A súlyokat csonkolt normál eloszlással inicializáltam, standard szórás: 0.1, középérték: 0.0.} \label{tab:CnnTablazat}
+	\begin{tabular}{ | l | c | c |}
+	\hline
+	A struktúra sorszáma & Optimalizáló algoritmus & Teszt szet hiba százalék \\ \hline
+	1 & ADAM  & 8\%\\
+	2 & SGD ADAM & 1.2\%\\
+	\hline
+	\end{tabular}
+\end{table}
+
+\section{A konvoluciós és az MLP a}
+
+\section{A hibrid architektúrák eredményei}

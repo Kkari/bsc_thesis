@@ -39,6 +39,16 @@ Geoffrey Hinton.
   2010.
 \newblock http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf.
 
+\bibitem{svmCIFAR}
+Tong~Zhang Kai~Yu.
+\newblock Improved local coordinate coding using local tangents.
+\newblock 2010.
+
+\bibitem{sag}
+Francis~Bach Mark~Schidt, Nicolas Le~Rouy.
+\newblock Minimizing finite sums with the stochastic average gradient.
+\newblock September 2013.
+
 \bibitem{deconvnet}
 Rob~Fergus Matthew D.~Zieler.
 \newblock Visualizing and understanding convolutional neural networks.

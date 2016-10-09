@@ -101,7 +101,14 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 \end{figure}
 
 \subsection{Hibrid modellek}
-A kísérletezésünk során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM gépnek. Így hatalmas dimenzió csökkenést értünk el, pl 768-ról 1024-re, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit sajnos nem is tudtam megtanítani reális idõ alatt egy SVM-nek.
+A kísérletezésünk során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM-nek. Így hatalmas dimenzió csökkenést értünk el, pl 784-rõl 64-re az MNIST esetében, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit sajnos nem is tudtam megtanítani reális idõ alatt egy SVM-nek. Ezért letömörítettem az az 3072 dimenziós CIFAR-10 adathalmazt egy 783 dimenziós térbe RBM-ek segítségével ami mindemellé még jellemzõ kiemelést is végzett, és ott tanítottam rajta a szupport vektor gépet, remélve hogy jó osztályozási eredményeket kapok. Ezt két megközelítésben próbáltam meg, az egyik az volt amikor egyetlen RBM-em volt, 3072 bemeneti és 783 kimeneti neuronnal, a másik az volt amikor 3 RBM-et tanítottam meg, minden színcsatornára egyet, és utána ezeket egy tömbbé összefûzve adtam át az SVM-nek. A két megközelítést a \figref{svmRbm}~ábra szemlélteti.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/svmRbm}
+\caption{} 
+\label{fig:svmRbm}
+\end{figure}
 
 \subsection{A Konvoluciós modell}
 Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy ugyanazt a modellt probálom ki az MNIST és a CIFAR-10 adathalmazon, és megnézni hogy melyik modell hogyan reagál az adat megnövekedett komplexitására. Több hálózatot kiróbáltam, az alapmodell felépítését a \figref{convnet_1}~ábra mutatja. A kísérleteim arra irányultak hogy plusz teljesen összekötött rétegek hozzáadása, esetleg a konvoluciós rétegek más elrendezése milyen eredményre juttat.

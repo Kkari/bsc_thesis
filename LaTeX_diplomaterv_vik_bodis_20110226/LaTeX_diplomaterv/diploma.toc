@@ -71,18 +71,20 @@
 \select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{28}{section*.67}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.3.5}Hibrid modellek}{29}{subsection.3.3.5}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.3.6}A Konvoluci\'os modell}{29}{subsection.3.3.6}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.7}A konvoluci\'os modell sk\'al\'az\'asa}{29}{subsection.3.3.7}
-\select@language {magyar} \contentsline {chapter}{\numberline {4}A \LaTeX -sablon haszn\'alata}{31}{chapter.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.1}C\IeC {\'\i }mk\'ek \'es hivatkoz\'asok}{31}{section.4.1}
-\select@language {magyar} \contentsline {section}{\numberline {4.2}\'Abr\'ak \'es t\'abl\'azatok}{32}{section.4.2}
-\select@language {magyar} \contentsline {section}{\numberline {4.3}Felsorol\'asok \'es list\'ak}{33}{section.4.3}
-\select@language {magyar} \contentsline {section}{\numberline {4.4}K\'epletek}{34}{section.4.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.5}Irodalmi hivatkoz\'asok}{35}{section.4.5}
-\select@language {magyar} \contentsline {section}{\numberline {4.6}A dolgozat szerkezete \'es a forr\'asf\'ajlok}{38}{section.4.6}
-\select@language {magyar} \contentsline {section}{\numberline {4.7}Alapadatok megad\'asa}{39}{section.4.7}
-\select@language {magyar} \contentsline {section}{\numberline {4.8}\'Uj fejezet \IeC {\'\i }r\'asa}{39}{section.4.8}
-\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{40}{chapter*.82}
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{41}{chapter*.83}
-\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{42}{appendix*.84}
-\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{42}{section.F.1}
-\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{43}{section.F.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.7}A konvoluci\'os modell sk\'al\'az\'asa}{30}{subsection.3.3.7}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}A m\'er\'esi eredm\'enyeim \"osszegz\'ese}{32}{chapter.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{32}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}Rendszer szint\H u m\'er\'esek.}{33}{section.4.2}
+\select@language {magyar} \contentsline {section}{\numberline {4.3}A baseline eredm\'enyek ismertet\'ese}{34}{section.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.4}Az MLP-vel elv\'egzett m\'er\'eseim eredm\'enyei}{35}{section.4.4}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Az MNIST m\'er\'esek}{35}{subsection.4.4.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}A CIFAR-10 m\'er\'esek}{36}{subsection.4.4.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Az el\H otan\IeC {\'\i }t\'as eredm\'enyeinek \"osszefoglal\'asa}{37}{subsection.4.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.5}A konvoluci\'os h\'al\'ozatok eredm\'enyei}{37}{section.4.5}
+\select@language {magyar} \contentsline {section}{\numberline {4.6}A konvoluci\'os \'es az MLP a}{38}{section.4.6}
+\select@language {magyar} \contentsline {section}{\numberline {4.7}A hibrid architekt\'ur\'ak eredm\'enyei}{38}{section.4.7}
+\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{39}{chapter*.88}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{40}{chapter*.89}
+\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{41}{appendix*.90}
+\select@language {magyar} \contentsline {section}{\numberline {F.1}A TeXnicCenter fel\"ulete}{41}{section.F.1}
+\select@language {magyar} \contentsline {section}{\numberline {F.2}V\'alasz az ,,\'Elet, a vil\'agmindens\'eg, meg minden'' k\'erd\'es\'ere}{42}{section.F.2}

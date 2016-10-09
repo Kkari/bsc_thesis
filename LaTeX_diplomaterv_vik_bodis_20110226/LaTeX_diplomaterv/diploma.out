@@ -27,17 +27,19 @@
 \BOOKMARK [2][-]{subsection.3.3.5}{Hibrid modellek}{section.3.3}% 27
 \BOOKMARK [2][-]{subsection.3.3.6}{A Konvoluci\363s modell}{section.3.3}% 28
 \BOOKMARK [2][-]{subsection.3.3.7}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.3}% 29
-\BOOKMARK [0][-]{chapter.4}{A LaTeX-sablon haszn\341lata}{}% 30
-\BOOKMARK [1][-]{section.4.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.2}{\301br\341k \351s t\341bl\341zatok}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.3}{Felsorol\341sok \351s list\341k}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.4}{K\351pletek}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.5}{Irodalmi hivatkoz\341sok}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.7}{Alapadatok megad\341sa}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.8}{\332j fejezet \355r\341sa}{chapter.4}% 38
-\BOOKMARK [0][-]{chapter*.82}{K\366sz\366netnyilv\341n\355t\341s}{}% 39
-\BOOKMARK [0][-]{chapter*.83}{Irodalomjegyz\351k}{}% 40
-\BOOKMARK [0][-]{appendix*.84}{F\374ggel\351k}{}% 41
-\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.84}% 42
-\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.84}% 43
+\BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 30
+\BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.4}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.4.1}{Az MNIST m\351r\351sek}{section.4.4}% 35
+\BOOKMARK [2][-]{subsection.4.4.2}{A CIFAR-10 m\351r\351sek}{section.4.4}% 36
+\BOOKMARK [2][-]{subsection.4.4.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.4}% 37
+\BOOKMARK [1][-]{section.4.5}{A konvoluci\363s h\341l\363zatok eredm\351nyei}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s \351s az MLP a}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 40
+\BOOKMARK [0][-]{chapter*.88}{K\366sz\366netnyilv\341n\355t\341s}{}% 41
+\BOOKMARK [0][-]{chapter*.89}{Irodalomjegyz\351k}{}% 42
+\BOOKMARK [0][-]{appendix*.90}{F\374ggel\351k}{}% 43
+\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.90}% 44
+\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.90}% 45

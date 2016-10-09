@@ -2,19 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa7f518e-8e77-464a-bd98-58438261bf01" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Untitled.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/figures/Selection_037.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/figures/Selection_049.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/figures/sklearn_cpu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475695723.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697575.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697656.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697730.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697739.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697772.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697816.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697878.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697905.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697943.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475697982.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475698042.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475698173.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475698199.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475698243.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cnn_cifar_1/train/events.out.tfevents.1475698302.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/train/events.out.tfevents.1475743595.kkari-Lenovo-IdeaPad-Z510" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/chapter3.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/chapter3.aux" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.pdf" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.synctex.gz" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.synctex.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/measurements.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/measurements.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/mybib.bib" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/mybib.bib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/neural_image_classification.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/own_work.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/own_work.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/own_work.tex" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/own_work.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/my_rbm-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/my_rbm-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/convnet_experiments-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/convnet_experiments-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ipynb_checkpoints/mlp_experiments-checkpoint.ipynb" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/mlp_experiments-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Diploma_munka_notebook_0.ipynb" afterPath="$PROJECT_DIR$/Diploma_munka_notebook_0.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/acknowledgement.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/acknowledgement.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/appendices.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/appendices.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.aux" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.bbl" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.bbl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.blg" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.blg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.log" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.out" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.toc" afterPath="$PROJECT_DIR$/LaTeX_diplomaterv_vik_bodis_20110226/LaTeX_diplomaterv/diploma.toc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/convnet_experiments.ipynb" afterPath="$PROJECT_DIR$/convnet_experiments.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mlp_experiments.ipynb" afterPath="$PROJECT_DIR$/mlp_experiments.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_rbm.ipynb" afterPath="$PROJECT_DIR$/my_rbm.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_rbm.py" afterPath="$PROJECT_DIR$/my_rbm.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_rbm.py" afterPath="$PROJECT_DIR$/test_rbm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tensorflow_lr.ipynb" afterPath="$PROJECT_DIR$/tensorflow_lr.ipynb" />
     </list>
     <ignored path="bsc_thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,14 +88,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_rbm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="my_rbm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my_rbm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6256">
-              <caret line="457" column="28" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="28" />
+            <state relative-caret-position="2656">
+              <caret line="377" column="75" selection-start-line="377" selection-start-column="75" selection-end-line="377" selection-end-column="75" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mlp_experiments.ipynb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mlp_experiments.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="10" />
             </state>
           </provider>
         </entry>
@@ -176,7 +217,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -212,6 +252,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -436,9 +477,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18777293" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12991266" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -494,7 +535,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/lib/python3.4/dist-packages/tensorflow/python/framework/tensor_shape.py" />
     <entry file="file://$PROJECT_DIR$/test_rbm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -750,17 +790,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tf_slim.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tf_slim.ipynb" />
     <entry file="file://$PROJECT_DIR$/my_rbm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6256">
-          <caret line="457" column="28" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="28" />
+        <state relative-caret-position="2656">
+          <caret line="377" column="75" selection-start-line="377" selection-start-column="75" selection-end-line="377" selection-end-column="75" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -805,6 +839,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlp_experiments.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="-1" />
         </state>
       </provider>
     </entry>
