@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  9 OCT 2016 17:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  10 OCT 2016 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -404,9 +404,9 @@ LaTeX Warning: Label `fig:deconvnet' multiply defined.
 LaTeX Warning: Label `tab:MLPTablazat' multiply defined.
 
 
-LaTeX Warning: Label `tab:MLPTablazat' multiply defined.
+LaTeX Warning: Label `tab:mnistRbmSvmTablazat' multiply defined.
 
-) (./acknowledgement.aux) (./appendices.aux))
+) (./acknowledgement.aux))
 \openout1 = `diploma.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
@@ -549,7 +549,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 \openout2 = `titlepage.aux'.
 
  (./titlepage.tex
-<figures/BMElogo.png, id=214, 975.645pt x 273.02pt>
+<figures/BMElogo.png, id=202, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
  <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
@@ -866,7 +866,7 @@ Overfull \hbox (0.23346pt too wide) in paragraph at lines 40--41
 ta az els® perceptron struktúrát a kései ötvenes
  []
 
-[13] <figures/MLP.png, id=372, 289.08pt x 182.1204pt>
+[13] <figures/MLP.png, id=357, 289.08pt x 182.1204pt>
 File: figures/MLP.png Graphic file (type png)
  <use figures/MLP.png>
 Package pdftex.def Info: figures/MLP.png used on input line 44.
@@ -916,7 +916,7 @@ Overfull \hbox (1.61131pt too wide) in paragraph at lines 90--92
 a általános struktúrát használ, hogy lényegében
  []
 
-<figures/sigmaContour.jpg, id=407, 240.9pt x 236.885pt>
+<figures/sigmaContour.jpg, id=392, 240.9pt x 236.885pt>
 File: figures/sigmaContour.jpg Graphic file (type jpg)
 
 <use figures/sigmaContour.jpg>
@@ -927,7 +927,7 @@ Package pdftex.def Info: figures/sigmaContour.jpg used on input line 95.
 LaTeX Warning: Citation `ExploringStrategies' on page 15 undefined on input lin
 e 103.
 
-[15] <figures/rbm.png, id=428, 146.7081pt x 80.9424pt>
+[15] <figures/rbm.png, id=413, 146.7081pt x 80.9424pt>
 File: figures/rbm.png Graphic file (type png)
  <use figures/rbm.png>
 Package pdftex.def Info: figures/rbm.png used on input line 109.
@@ -938,7 +938,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--110
 eplearning . net /
  []
 
-<figures/rbmFilters.png, id=431, 290.08376pt x 290.08376pt>
+<figures/rbmFilters.png, id=416, 290.08376pt x 290.08376pt>
 File: figures/rbmFilters.png Graphic file (type png)
 
 <use figures/rbmFilters.png>
@@ -974,7 +974,7 @@ Overfull \hbox (8.89966pt too wide) in paragraph at lines 166--167
 el, mert így az egyes neuronokhoz
  []
 
-<figures/gibbs.png, id=460, 1081.03876pt x 403.5075pt>
+<figures/gibbs.png, id=445, 1081.03876pt x 403.5075pt>
 File: figures/gibbs.png Graphic file (type png)
  <use figures/gibbs.png>
 Package pdftex.def Info: figures/gibbs.png used on input line 179.
@@ -997,7 +997,7 @@ Overfull \hbox (6.70601pt too wide) in paragraph at lines 202--203
 eptron gépek egyik legnagyobb
  []
 
-<figures/mlpEvolution.png, id=479, 933.4875pt x 468.75125pt>
+<figures/mlpEvolution.png, id=464, 933.4875pt x 468.75125pt>
 File: figures/mlpEvolution.png Graphic file (type png)
 
 <use figures/mlpEvolution.png>
@@ -1045,7 +1045,7 @@ Overfull \hbox (2.56102pt too wide) in paragraph at lines 216--217
 einte képek feldolgozására alkották
  []
 
-[19] <figures/deconvnet.png, id=493, 682.80093pt x 313.17pt>
+[19] <figures/deconvnet.png, id=478, 682.80093pt x 313.17pt>
 File: figures/deconvnet.png Graphic file (type png)
 
 <use figures/deconvnet.png>
@@ -1057,7 +1057,7 @@ Underfull \hbox (badness 2103) in paragraph at lines 221--221
 :
  []
 
-<figures/deconvnet2.png, id=496, 615.80063pt x 603.0028pt>
+<figures/deconvnet2.png, id=481, 615.80063pt x 603.0028pt>
 File: figures/deconvnet2.png Graphic file (type png)
 
 <use figures/deconvnet2.png>
@@ -1076,7 +1076,7 @@ onvoluciós hálózat amelyet Alex Krizhevsky,
  []
 
 
-Overfull \hbox (74.00008pt too wide) in paragraph at lines 238--247
+Overfull \hbox (43.68517pt too wide) in paragraph at lines 238--247
  [][] 
  []
 
@@ -1099,7 +1099,7 @@ Overfull \hbox (6.2236pt too wide) in paragraph at lines 255--256
 gnosztikus objektum detektor,
  []
 
-<figures/FasterRCNN.png, id=521, 423.83344pt x 386.94562pt>
+<figures/FasterRCNN.png, id=506, 423.83344pt x 386.94562pt>
 File: figures/FasterRCNN.png Graphic file (type png)
 
 <use figures/FasterRCNN.png>
@@ -1116,7 +1116,7 @@ Overfull \hbox (3.84244pt too wide) in paragraph at lines 264--265
  []
 
 [22 <./figures/FasterRCNN.png>]
-<figures/adversarial.png, id=533, 499.8675pt x 167.62625pt>
+<figures/adversarial.png, id=518, 499.8675pt x 167.62625pt>
 File: figures/adversarial.png Graphic file (type png)
 
 <use figures/adversarial.png>
@@ -1127,14 +1127,14 @@ Package pdftex.def Info: figures/adversarial.png used on input line 268.
 LaTeX Warning: Citation `generatingImageDesc' on page 23 undefined on input lin
 e 273.
 
-<figures/caption.png, id=536, 514.17094pt x 423.83344pt>
+<figures/caption.png, id=521, 514.17094pt x 423.83344pt>
 File: figures/caption.png Graphic file (type png)
 
 <use figures/caption.png>
 Package pdftex.def Info: figures/caption.png used on input line 277.
 (pdftex.def)             Requested size: 199.16928pt x 164.17554pt.
  [23 <./figures/adversarial.png> <./figures/caption.png>] <figures/stn.png, id=
-550, 392.46625pt x 292.09125pt>
+535, 392.46625pt x 292.09125pt>
 File: figures/stn.png Graphic file (type png)
  <use figures/stn.png>
 Package pdftex.def Info: figures/stn.png used on input line 286.
@@ -1239,49 +1239,49 @@ Overfull \hbox (5.51494pt too wide) in paragraph at lines 87--88
 imizerrel. Illetve a kísérletezés
  []
 
-<figures/rbmClosed.png, id=615, 1129.21875pt x 814.04124pt>
+<figures/rbmClosed.png, id=600, 1129.21875pt x 814.04124pt>
 File: figures/rbmClosed.png Graphic file (type png)
 
 <use figures/rbmClosed.png>
 Package pdftex.def Info: figures/rbmClosed.png used on input line 91.
 (pdftex.def)             Requested size: 284.52756pt x 205.11215pt.
 
-<figures/rbmExpanded.png, id=616, 1349.04pt x 653.44125pt>
+<figures/rbmExpanded.png, id=601, 1349.04pt x 653.44125pt>
 File: figures/rbmExpanded.png Graphic file (type png)
 
 <use figures/rbmExpanded.png>
 Package pdftex.def Info: figures/rbmExpanded.png used on input line 98.
 (pdftex.def)             Requested size: 284.52756pt x 137.81497pt.
  [28 <./figures/rbmClosed.png> <./figures/rbmExpanded.png>] <figures/svmRbm.png
-, id=628, 1223.57124pt x 947.54pt>
+, id=613, 1223.57124pt x 947.54pt>
 File: figures/svmRbm.png Graphic file (type png)
 
 <use figures/svmRbm.png>
 Package pdftex.def Info: figures/svmRbm.png used on input line 108.
 (pdftex.def)             Requested size: 284.52756pt x 220.32968pt.
 
-<figures/convnet_1.png, id=630, 624.3325pt x 140.525pt>
+<figures/convnet_1.png, id=615, 624.3325pt x 140.525pt>
 File: figures/convnet_1.png Graphic file (type png)
 
 <use figures/convnet_1.png>
 Package pdftex.def Info: figures/convnet_1.png used on input line 118.
 (pdftex.def)             Requested size: 341.43306pt x 76.85155pt.
  [29 <./figures/svmRbm.png>]
-<figures/convnet_2.png, id=638, 1025.8325pt x 212.795pt>
+<figures/convnet_2.png, id=623, 1025.8325pt x 212.795pt>
 File: figures/convnet_2.png Graphic file (type png)
 
 <use figures/convnet_2.png>
 Package pdftex.def Info: figures/convnet_2.png used on input line 128.
 (pdftex.def)             Requested size: 341.43306pt x 70.82649pt.
 
-<figures/device_distro.png, id=640, 678.535pt x 304.13625pt>
+<figures/device_distro.png, id=625, 678.535pt x 304.13625pt>
 File: figures/device_distro.png Graphic file (type png)
 
 <use figures/device_distro.png>
 Package pdftex.def Info: figures/device_distro.png used on input line 137.
 (pdftex.def)             Requested size: 341.43306pt x 153.03766pt.
 
-<figures/tower_parallel.png, id=642, 946.53625pt x 781.92125pt>
+<figures/tower_parallel.png, id=627, 946.53625pt x 781.92125pt>
 File: figures/tower_parallel.png Graphic file (type png)
 
 <use figures/tower_parallel.png>
@@ -1320,7 +1320,7 @@ ségével a CIFAR-10 adathalmazon
 
 
 
-] <figures/sklearn_cpu_liblinear.png, id=665, 701.62125pt x 311.1625pt>
+] <figures/sklearn_cpu_liblinear.png, id=650, 701.62125pt x 311.1625pt>
 File: figures/sklearn_cpu_liblinear.png Graphic file (type png)
 
 <use figures/sklearn_cpu_liblinear.png>
@@ -1328,7 +1328,7 @@ Package pdftex.def Info: figures/sklearn_cpu_liblinear.png used on input line 3
 1.
 (pdftex.def)             Requested size: 284.52756pt x 126.1863pt.
 
-<figures/tf_cpu.png, id=666, 700.6175pt x 306.14375pt>
+<figures/tf_cpu.png, id=651, 700.6175pt x 306.14375pt>
 File: figures/tf_cpu.png Graphic file (type png)
 
 <use figures/tf_cpu.png>
@@ -1388,22 +1388,28 @@ Underfull \hbox (badness 1337) in paragraph at lines 71--71
 ixeljein, használt
  []
 
-[34] [35] <figures/adamSum.jpg, id=698, 976.64874pt x 222.8325pt>
+[34] [35] <figures/adamSum.jpg, id=683, 976.64874pt x 222.8325pt>
 File: figures/adamSum.jpg Graphic file (type jpg)
 
 <use figures/adamSum.jpg>
 Package pdftex.def Info: figures/adamSum.jpg used on input line 111.
 (pdftex.def)             Requested size: 426.79134pt x 97.37677pt.
- <figures/sgdSum.jpg, id=699, 967.615pt x 216.81pt>
+ <figures/sgdSum.jpg, id=684, 967.615pt x 216.81pt>
 File: figures/sgdSum.jpg Graphic file (type jpg)
 
 <use figures/sgdSum.jpg>
 Package pdftex.def Info: figures/sgdSum.jpg used on input line 118.
 (pdftex.def)             Requested size: 426.79134pt x 95.62827pt.
 
-Overfull \hbox (15.75911pt too wide) in paragraph at lines 125--126
-\T1/cmr/m/n/10.95 Miután az mnist adathalmazon sikeres méréseket végeztem egész
-en egyszer¶ MLP hálózatokkal
+Overfull \hbox (10.88892pt too wide) in paragraph at lines 125--126
+ []\T1/cmr/bx/n/10.95 Az MNIST és a CIFAR különbségei[] \T1/cmr/m/n/10.95 Miutá
+n az MNIST adathalmazon sikeres méréseket
+ []
+
+
+Overfull \hbox (7.7227pt too wide) in paragraph at lines 125--126
+\T1/cmr/m/n/10.95 végeztem egészen egyszer¶ MLP hálózatokkal kiváncsi lettem ho
+gy ezek a hálózatok mennyire
  []
 
 
@@ -1417,9 +1423,9 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 151.
 
 
-Overfull \hbox (2.01137pt too wide) in paragraph at lines 152--153
-\T1/cmr/m/n/10.95 várt eredmény az lett volna, hogy az el®tanítás jelent®sen ja
-vítani fog a hálók teljesítményén,
+Overfull \hbox (11.34131pt too wide) in paragraph at lines 152--153
+ []\T1/cmr/bx/n/10.95 Az el®tanulással tanított hálók mérése[] \T1/cmr/m/n/10.9
+5 Arra a számomra meglep® eredményre jutottam
  []
 
 [36 <./figures/adamSum.jpg> <./figures/sgdSum.jpg>]
@@ -1432,7 +1438,19 @@ Overfull \hbox (75.12183pt too wide) in paragraph at lines 171--178
  [][] 
  []
 
-<figures/bigDbnPretrained.jpg, id=708, 640.3925pt x 218.8175pt>
+
+Overfull \hbox (30.72423pt too wide) in paragraph at lines 180--182
+ []\T1/cmr/bx/n/10.95 El®tanulásból levont következtetések[] \T1/cmr/m/n/10.95 
+Úgy magyarázom ezeket az elszomorító eredményeket
+ []
+
+
+Overfull \hbox (45.2329pt too wide) in paragraph at lines 180--182
+\T1/cmr/m/n/10.95 az mnist adathalmazon tanított nagyméret¶ (500-500-2000-30 ne
+uron) hálónak a veszteségfüggvényét
+ []
+
+<figures/bigDbnPretrained.jpg, id=694, 640.3925pt x 218.8175pt>
 File: figures/bigDbnPretrained.jpg Graphic file (type jpg)
 
 <use figures/bigDbnPretrained.jpg>
@@ -1443,7 +1461,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--186
 [][]|\T1/cmr/m/it/9 A 500-500-2000-30 neuronú el®tanított MLP
  []
 
-<figures/bigDbnNotPretrained.jpg, id=709, 643.40375pt x 219.82124pt>
+<figures/bigDbnNotPretrained.jpg, id=695, 643.40375pt x 219.82124pt>
 File: figures/bigDbnNotPretrained.jpg Graphic file (type jpg)
 
 <use figures/bigDbnNotPretrained.jpg>
@@ -1478,10 +1496,85 @@ Overfull \hbox (17.38173pt too wide) in paragraph at lines 200--201
  Az eredményeimet a []. táblázat
  []
 
-[37]) [38 <./figures/bigDbnPretrained.jpg> <./figures/bigDbnNotPretrained.jpg>]
+[37]
+Overfull \hbox (5.04416pt too wide) in paragraph at lines 204--205
+\T1/cmr/m/n/10.95 > flatten -> fullyconnected(1024) -> dropout(0.5) -> fullycon
+nected(1024) -> softmax 
+ []
+
+
+Overfull \hbox (16.73814pt too wide) in paragraph at lines 234--235
+\T1/cmr/m/n/10.95 produkálni. Ennek a magyarázata a transzlációs invariancia ál
+tal a súlyokra vetített kényszerek,
+ []
+
+[38 <./figures/bigDbnPretrained.jpg> <./figures/bigDbnNotPretrained.jpg>]
+Overfull \hbox (5.87149pt too wide) in paragraph at lines 244--245
+\T1/cmr/m/n/10.95 konvoluciós hálózat kb 2,7 millió paraméterb®l. Habár eleinte
+ úgy éreztem hogy a konvoluciós
+ []
+
+
+Overfull \hbox (2.11505pt too wide) in paragraph at lines 246--247
+\T1/cmr/m/n/10.95 számításnak a részleteit a [][]4.9[][]. tábla mutatja az mlp 
+hálózatra, és a  tabrefresourceTableCNN
+ []
+
+
+Overfull \hbox (17.75479pt too wide) in paragraph at lines 282--283
+[]\T1/cmr/m/n/10.95 A fenti két táblázatból több érdekes következtetést is levo
+ntam, ezeket az alábbi felsorolásban
+ []
+
+
+Overfull \hbox (18.23738pt too wide) in paragraph at lines 284--285
+[]\T1/cmr/m/n/10.95 A konvoluciós háló paraméter tere lényegesen nagyobb lett, 
+pedig én intuitívan kissebbnek
+ []
+
+[39]
+Overfull \hbox (9.74898pt too wide) in paragraph at lines 286--287
+[]\T1/cmr/m/n/10.95 A CNN-ben a paraméter tér robbanásáért felel®s egy batch sz
+ámításánál elhanyagolható
+ []
+
+<figures/mlpCnnMnist.jpg, id=719, 649.42625pt x 215.80624pt>
+File: figures/mlpCnnMnist.jpg Graphic file (type jpg)
+
+<use figures/mlpCnnMnist.jpg>
+Package pdftex.def Info: figures/mlpCnnMnist.jpg used on input line 293.
+(pdftex.def)             Requested size: 284.52756pt x 94.55pt.
+
+
+LaTeX Warning: Reference `fig:mlpCnnCIFAR' on page 40 undefined on input line 2
+98.
+
+
+Overfull \hbox (16.39757pt too wide) in paragraph at lines 303--304
+\T1/cmr/m/n/10.95 kötésekkel végülis) elérhet® összes kernel implementációval, 
+és 1-2 paraméter kombinációjukkal.
+ []
+
+
+LaTeX Warning: Reference `tab:cifarBadRbmSvm' on page 40 undefined on input lin
+e 324.
+
+
+Overfull \hbox (14.07661pt too wide) in paragraph at lines 324--325
+[]\T1/cmr/m/n/10.95 Miután az MNIST eredményeken látszik hogy az RBM által eszk
+özölt dimenziócsökkentéssel
+ []
+
+[40 <./figures/mlpCnnMnist.jpg>])
+Overfull \hbox (7.12854pt too wide) in paragraph at lines 339--158
+ []\T1/cmr/bx/n/10.95 Normalizált CIFAR10 RBM SVM[] \T1/cmr/m/n/10.95 Miután no
+rmalizáltam az adatokat a rekonstrukciós
+ []
+
+[41]
 \openout2 = `acknowledgement.aux'.
 
-(./acknowledgement.tex)
+ (./acknowledgement.tex)
 Overfull \hbox (6.22392pt too wide) in paragraph at lines 5--160
 \T1/cmr/m/n/10.95 Ez nem kötelez®, akár törölhet® is. Ha a szerz® szükségét érz
 i, itt lehet köszönetet nyilvánítani
@@ -1493,45 +1586,30 @@ Overfull \hbox (21.17076pt too wide) in paragraph at lines 5--160
 ulensnek való köszönetnyilvánítás
  []
 
-[39
-
-
-
-] (./diploma.bbl) [40
-
-
-]
-\openout2 = `appendices.aux'.
-
- (./appendices.tex
-<figures/TeXnicCenter.png, id=732, 847.66687pt x 520.19344pt>
-File: figures/TeXnicCenter.png Graphic file (type png)
-
-<use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 17.
-(pdftex.def)             Requested size: 426.79134pt x 261.91376pt.
- [41
-
-
- <./figures/TeXnicCenter.png (PNG copy)>])
 [42
 
-]
+
+
+] (./diploma.bbl)
 \tf@thm=\write5
 \openout5 = `diploma.thm'.
 
  
 AED: lastpage setting LastPage
+[43
+
+
+]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
-(./diploma.aux (./guideline.aux) (./project.aux) (./titlepage.aux)
+ (./diploma.aux (./guideline.aux) (./project.aux) (./titlepage.aux)
 (./declaration.aux) (./abstract.aux) (./introduction.aux) (./tensorflow.aux)
 (./neural_image_classification.aux) (./own_work.aux) (./measurements.aux)
-(./acknowledgement.aux) (./appendices.aux))
+(./acknowledgement.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 172.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: E8FC2AB4437EECFF89CD395708D63921;3807.
+(rerunfilecheck)             Checksum: 68EECE7E918201E2DC0EEC2C11804C70;3589.
 
 
 LaTeX Warning: There were undefined references.
@@ -1542,43 +1620,40 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 172.
  ) 
 Here is how much of TeX's memory you used:
- 11143 strings out of 494910
- 166984 string characters out of 6179836
- 282194 words of memory out of 5000000
- 13867 multiletter control sequences out of 15000+600000
- 27700 words of font info for 67 fonts, out of 8000000 for 9000
+ 11140 strings out of 494910
+ 167011 string characters out of 6179836
+ 282803 words of memory out of 5000000
+ 13870 multiletter control sequences out of 15000+600000
+ 26084 words of font info for 63 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 36i,12n,44p,1677b,1167s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0600.600pk> </home/k
-kari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/kkari/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk> </home/kkari/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecti0900.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1000.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm0800.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.60
-0pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home
-/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home/kkari/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/kkari/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecti1095.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecbx1200.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.
-600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </ho
-me/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/kkari/.t
-exmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on diploma.pdf (45 pages, 3863444 bytes).
+ 36i,11n,44p,1677b,1167s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/k
+kari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk> </home/kkari/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecti0900.600pk> </home/kkari/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecrm0800.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx2488.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.60
+0pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home
+/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/kkari/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/kkari/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecbx1200.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecrm1095.600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.
+600pk> </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </ho
+me/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on diploma.pdf (46 pages, 3810442 bytes).
 PDF statistics:
- 1592 PDF objects out of 1728 (max. 8388607)
- 804 compressed objects within 9 object streams
- 295 named destinations out of 1000 (max. 500000)
- 496 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1567 PDF objects out of 1728 (max. 8388607)
+ 793 compressed objects within 8 object streams
+ 300 named destinations out of 1000 (max. 500000)
+ 472 words of extra memory for PDF output out of 10000 (max. 10000000)
 

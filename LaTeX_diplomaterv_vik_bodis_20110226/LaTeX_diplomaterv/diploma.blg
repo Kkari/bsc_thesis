@@ -13,7 +13,6 @@ A level-1 auxiliary file: own_work.aux
 A level-1 auxiliary file: measurements.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
-A level-1 auxiliary file: appendices.aux
 Database file #1: mybib.bib
 Warning--I didn't find a database entry for "ExploringStrategies"
 Warning--I didn't find a database entry for "genAdvNet"
@@ -36,7 +35,7 @@ Warning--empty journal in mlpFrontier
 Warning--empty journal in waveNet
 You've used 14 entries,
             2118 wiz_defined-function locations,
-            573 strings with 5583 characters,
+            572 strings with 5569 characters,
 and the built_in function-call counts, 2877 in all, are:
 = -- 260
 > -- 98

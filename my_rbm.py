@@ -197,7 +197,7 @@ class Rbm:
                 # Compute the negative phase, when we reconstruct the visible nodes form
                 # the hidden ones.
                 # TODO: Or h_prob1?
-                negative = tf.matmul(tf.transpose(v_prob), h_state1, name='negative_phase')
+                negative = tf.matmul(tf.transpose(v_prob), h_prob1, name='negative_phase')
                 tf.histogram_summary('rbm/negative_phase_gauss', negative)
 
             with tf.name_scope('rbm_weight_update'):
