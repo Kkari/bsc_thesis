@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{scalingCNN}
+Scaling convolutional networks.
+\newblock
+  \url{https://www.tensorflow.org/versions/r0.11/tutorials/deep_cnn/index.html}.
+
 \bibitem{genImgDesc}
 Li~Fei-Fei Andrej~Karpathy.
 \newblock Deep visual-semantic alignments for generating image descriptions.
@@ -8,6 +13,11 @@ Li~Fei-Fei Andrej~Karpathy.
 \bibitem{alexNet}
 Alex~Krizhevsky et~al.
 \newblock Imagenet classification with deep convolutional neural networks.
+
+\bibitem{sben}
+Alexander~G. et~al.
+\newblock Learning a deep hybrid model for semi-supervised text classification.
+\newblock 2015.
 
 \bibitem{resNet}
 Kaiming~He et~al.
@@ -48,6 +58,11 @@ Geoffrey Hinton.
 Kurt Hornik.
 \newblock Approximation capabilities of multilayer feedforward network.
 \newblock 1991.
+
+\bibitem{hrbm}
+Yoshua~Bengio Hugo~Larochelle.
+\newblock Classification using discriminative restricted boltzmann machines.
+\newblock 2008.
 
 \bibitem{svmCIFAR}
 Tong~Zhang Kai~Yu.

@@ -166,7 +166,7 @@ b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\
 \end{align}
 
 \subsection{A konvoluciós modell skálázása}
-Az elõbbiekben bemutatott konvoluciós modell könnyedén tanítható pár perc/óra alatt egy korszerû CPU-n, viszont ha az ember nagyobb modelleket szeretne tanítani akkor ez már nem egy reális alternatíva. Ezekre az esetekre egy nagyobb hálózattal kísérleteztem a CIFAR-10 adathalmazon amit az alábbi instrukciók alapján készítettem el\cite{scalingCNN}, aminek a felépítését a \figref{convnet_2}~ábra mutatja. 
+\paragraph{Indoklás} Az elõbbiekben bemutatott konvoluciós modell, és amikkel általánosságban a szakdolgozat keretén belül kísérleteztem könnyedén taníthatóak pár perc/óra alatt egy korszerû CPU-n. Viszont ha az ember nagyobb modelleket szeretne tanítani akkor ez már nem egy reális alternatíva. Ezekre az esetekre egy nagyobb hálózattal kísérleteztem a CIFAR-10 adathalmazon amit az alábbi instrukciók alapján készítettem el\cite{scalingCNN}, aminek a felépítését a \figref{convnet_2}~ábra mutatja. 
 
 \begin{figure}[!ht]
 \centering
@@ -175,7 +175,8 @@ Az elõbbiekben bemutatott konvoluciós modell könnyedén tanítható pár perc/óra al
 \label{fig:convnet_2}
 \end{figure}
 
-Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
+\paragraph{Számítás elosztás}Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
+Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is tul nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
 
 \begin{figure}[!ht]
 \centering
@@ -184,7 +185,6 @@ Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a sz
 \label{fig:device_distro}
 \end{figure}
 
-Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is tul nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
 
 \begin{figure}[!ht]
 \centering
@@ -192,3 +192,27 @@ Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat vesz
 \caption{} 
 \label{fig:tower_parallel}
 \end{figure}
+
+\paragraph{Adatok dinamikus felolvasása} Természetesen az a kérdés is felmerülhet az emberben hogy ez nagyon jó hogy így el tudjuk osztani a számításokat, de az is probléma lehet ha a tanuló adatok nem férnek be a memóriába, akkor nem tudjuk rendesen tanítani õket, kivéve ha valamilyen bonyolult felolvasási kódot irunk hozzá. Hál istennek ezt nem kell megirnunk, hanem be van építve a keretrendszerbe, a Tensorflow erre direkt felolvasási pipelineokat állít a programozó rendelkezésére ennek a felépítését szemlélteti a \figref{tfPipeline}~ábra. Egy ilyen pipelinenak a következõ paraméterei vannak:
+\begin{itemize}
+\item Bemeneti file nevek.
+\item A felolvasásra és elõfeldolgozásra használni kívánt szálak száma.
+\item A megállási kritérium
+\item A pipeline mérete, hogy hány még meg nem tanított kép legyen mindig a pipelineban.
+\end{itemize}
+Ezek után a keretrendszer gondoskodik arrol hogy a szálak mind stratifikáltan, külön fileokból olvassanak fel, illetve ha példányosítunk egy koordinátor objektumot és beregisztráljuk hozzá a pipeline-t akkor a szálak közötti hibakezelésrõl is gondoskodik, hogy egy szál hibája esetén ne akadjon ki a rendszer.
+Ezen felül definiálhatunk még elõfeldolgozási lépéseket minden képhez, az általam használt implementációban például egyszerre 20 feldolgozatlan képet tart a memóriában, ezeket elõször közelítõleg fehéríti (ez is beépített funkció), majd ezt az adathalmazt négyszerezi a következõ képpen:
+\begin{itemize}
+\item A képek véletlenszerû tükrözése.
+\item A kép világosságába való véletlenszerû zaj bevezetése.
+\item A kép kontrasztjának véletlenszerû torzítása.
+\end{itemize}
+Ez jelentõsen növeli a háló általánosító képességét. Majd ezeket az adatokat beadja egy új sorba, ami véletlenszerû batcheket generál a 16 szál képeibõl, és megadhatjuk hogy hány modell vegye kis és dolgozza fel õket egyszerre. Esetemben a torony-parallel elrendezésben ez a GPU-k számától függ.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=120mm, keepaspectratio]{figures/tfPipeline}
+\caption{} 
+\label{fig:tfPipeline}
+\end{figure}
+

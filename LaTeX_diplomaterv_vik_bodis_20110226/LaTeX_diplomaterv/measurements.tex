@@ -304,7 +304,8 @@ Ugyanez a két metrika a CIFAR10 adathalmazon a \figref{mlpCnnCIFAR}~ábrán láthat
 
 
 \section{A hibrid architektúrák eredményei}
-A fent ismertetett hibrid architektúrákból az MNIST adathalmazzal csak azt probáltam ki, ahol 1 darab RBM van. Ezt megtettem a scikit-learn SVM-jében (ez a libsvm python kötésekkel végülis) elérhetõ összes kernel implementációval, és 1-2 paraméter kombinációjukkal. Az eredményeket a \tabref{mnistRbmSvmTablazat}~táblázat szemlélteti. A táblázaton látszik hogy a legtöbb kernel nagyjából ugyanúgy teljesít, kivéve a szigmoid kernel, mert az kiemelkedõen rosszul teljesít a többihez képest. %TODO: Miért?
+
+\paragraph{MNIST} A fent ismertetett hibrid architektúrákból az MNIST adathalmazzal csak azt probáltam ki, ahol 1 darab RBM van. Ezt megtettem a scikit-learn SVM-jében (ez a libsvm python kötésekkel végülis) elérhetõ összes kernel implementációval, és 1-2 paraméter kombinációjukkal. Az eredményeket a \tabref{mnistRbmSvmTablazat}~táblázat szemlélteti. A táblázaton látszik hogy a legtöbb kernel nagyjából ugyanúgy teljesít, kivéve a szigmoid kernel, mert az kiemelkedõen rosszul teljesít a többihez képest. %TODO: Miért?
 
 \begin{table}[ht]
 	\footnotesize
@@ -325,7 +326,25 @@ A fent ismertetett hibrid architektúrákból az MNIST adathalmazzal csak azt probá
 	\end{tabular}
 \end{table}
 
-Miután az MNIST eredményeken látszik hogy az RBM által eszközölt dimenziócsökkentéssel összekötött jellemzõ kiemelés lerövidítette a számítási idõt, és a nyers pixeleken alkalmazott SVM-hez képest nem rontott az osztályozás pontosságában elvégeztem ezeket a méréseket a CIFAR adathalmazon is. Ott kiábránító eredményeket kaptam, az alábbi táblázat közli õket. \tabref{cifarBadRbmSvm}. Mint látszik ez a 90\%-os teszt hiba elfogadhatatlan. Már tanítás közben gyanus volt hogy a 139.0-as pontos rekonstrukció hiba túl nagy az mnisten tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás után rájöttem hogy a probléma ott van hogy amíg az MNIST adahalmaz normalizálva van, a CIFAR-ra ez nem elmondható ott 0 és 255 között terjednek az értékek.
+\paragraph{Aktivációk vizsgálata} Miután ilyen jó eredméneket hozott a 64 rejtett neuronos RBM az adathalmazon elkezdtem érdeklõdni hogy vajon már a neuronok aktivációibõl látszani fog-e az, hogy a kép melyik osztályba fog tartozni. Ehhez azt csináltam hogy az összes képre az MNIST-ben legeneráltam a rejtett neuronok aktivációs valószínûségét, és osztályonként vettem az átlagukat, a minimum és a maximum aktivációt. Ezeket az eredményeket a \figref{rbmActivationProbabilitiesNoFineTuning}~ábra szemlélteti. Felülrõl lefele helyezkednek el a számok 0-tól 9-ig, és a 0 átlagos aktivációs valószínûségei szerint van rendezve, hogy lássam esetleg szabad szemmel a triviális korrelációkat. Mint látható szabad szemmel semmilyen triviális korreláció nem vehetõ ki az értékekbõl, viszont azt érdekesnek találtam hogy a minimum aktivációknál van 1-2 nagyon erõs marker ami mindenképpen jelen van az osztályban, ha egy osztályozó ezt a mintázatot megtanulja, akkor már ez alapján is egészen jó eséllyel zárhat ki mintákat ha ezek az aktivációk hiányoznak. Abban is biztosak lehetünk hogy aminek ilyen magas a negatív értéke, azoknak nagyon kicsi lesz a szórása, mert egyszerûen nincsen hova szorniuk, mivel minden neuron legalább egyszer maximális értéket vesz fel. Persze egy valamire való algoritmus magasabb rendû összefüggéseket tanulna meg. Utánajártam a téma mûvelõi között, de nem authorativ szakirodalomban, és azt tudtam meg hogy egy jól mûködõ RBM-nél ilyen véletlenszerûnek látszó aktivációkat kell látni az aktivációk középértékénel, de valóban nagyon jól disztingváló aktivációk is keletkeznek.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/rbmActivationProbabilitiesNoFineTuning}
+\caption{Az RBM neuronjainak az aktivációs valószínûségeinek az (a) minimumja, (b) maximumja és (c) középértéke (d) szórása 10 epoch után. Felülrõl lefele helyezkednek el a számok 0-tól 9-ig, és a 0 átlagos aktivációs valószínûségei szerint van rendezve.} 
+\label{fig:rbmActivationProbabilitiesNoFineTuning}
+\end{figure}
+
+Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafikont is, amit az \figref{rbmProbZeroViolin}~ábra mutat. A sok adat miatt nem lett egészen hegedû grafikon alakja, de nagyon jól szemlélteti amit látni szerettem volna. Van pár neuron aminek az aktivációja teljesen véletlenszerû az egész tartományban elterûl, de van olyan is ami nagyon jól lokalizált. Sõt, nem egy neuron van ami egy pontba omlik össze, tehát a nullás szám minden esetében 1-et vagy 0-át vesz fel. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/rbmProbZeroViolin}
+\caption{Az RBM aktivációinak a hegedû grafikonja a nullás számra vetítve.} 
+\label{fig:rbmProbZeroViolin}
+\end{figure}
+
+\paragraph{Naiv CIFAR} Miután az MNIST eredményeken látszik hogy az RBM által eszközölt dimenziócsökkentéssel összekötött jellemzõ kiemelés lerövidítette a számítási idõt, és a nyers pixeleken alkalmazott SVM-hez képest nem rontott az osztályozás pontosságában elvégeztem ezeket a méréseket a CIFAR adathalmazon is. Ott kiábránító eredményeket kaptam, az alábbi táblázat közli õket. \tabref{cifarBadRbmSvm}. Mint látszik ez a 90\%-os teszt hiba elfogadhatatlan. Már tanítás közben gyanus volt hogy a 139.0-as pontos rekonstrukció hiba túl nagy az mnisten tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás után rájöttem hogy a probléma ott van hogy amíg az MNIST adahalmaz normalizálva van, a CIFAR-ra ez nem elmondható ott 0 és 255 között terjednek az értékek.
 
 \begin{table}[ht]
 	\footnotesize
@@ -334,10 +353,23 @@ Miután az MNIST eredményeken látszik hogy az RBM által eszközölt dimenziócsökken
 	\begin{tabular}{ | l | c | c |}
 	\hline
 	A kernel & RBM mérete & Teszt szet hiba százalék \\ \hline
-	poly coef0=1 degree=3 & 761 & 90\%\\
+	poly coef0=1 degree=3 & 763 & 90\%\\
 	poly coef0=1 degree=3 & 261 + 261 + 261 & 90\%\\
 	\hline
 	\end{tabular}
 \end{table}
 
-\paragraph{Normalizált CIFAR10 RBM SVM} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. %TODO: folytat. 
+\paragraph{Normalizált CIFAR10} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. És a klasszifikációs eredmények is nagyon sokat javultak, ezt a \tabref{cifarGoodRbmSvm}~táblázat mutatja. Érdekes megfigyelni hogy a színek szerint szétszedett SVM lényegesen jobban teljesített mint az egyben tanított, pedig ugyanannyi neuront használtak és ugyanaddig tanítottam õket.
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{Az RBM + SVM kombináció eredménye az CIFAR adathalmazra különbözõ kernelekkel.} \label{tab:cifarGoodRbmSvm}
+	\begin{tabular}{ | l | c | c |}
+	\hline
+	A kernel & RBM mérete & Teszt szet hiba százalék \\ \hline
+	poly coef0=1 degree=3 & 763 & 56\%\\
+	poly coef0=1 degree=3 & 261 + 261 + 261 & 51\%\\
+	\hline
+	\end{tabular}
+\end{table}

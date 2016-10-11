@@ -198,6 +198,29 @@ Ahol $\mathcal{c}$ és $\mathcal(b)$ az eltolás súlyvektorokat jelzik.
 	\end{tabular}
 \end{table}
 
+\paragraph{További módszerek az RBM használatára osztályozáshoz} Az elõtanulásban nem merül ki az RBM jellegû hálózatok potenciálja, ha osztályozási feldatokról van szó, egy pár további lehetõséget szeretnék még érintõlegesen megemlíteni. 
+\begin{itemize}
+\item Egy másik, lehetõség a szerint az egyes osztályoknak egy RBM-et hozunk létre, és egy Softmax modell-t tanítunk a szabad energia függvényükön. A particiós függvényt ebben az esetben a softmax paraméterei approximálják. 
+\item Egy harmadik lehetõség hogy két külön látható réteg csoportot tartunk, egyet a kép adatoknak, egy másikat pedig a tanító cimkéknek, ebben az esetben az osztályhoz tartozási valószínûséget a teszt vektor, és a cimkék szabad energiájájának eloszlásában határozzunk meg. Tehát minnél alacsonyabb lesz a szabad energia egy cimkével, annál valószínûbb hogy a teszt vektor abba az osztályba tartozik, itt végülis tanulásnál a cimkék és a mintapontok együttes valószínûségi sûrûségfüggvényét becsüljük.
+\item Egy újabb fejlemény Hugo Larochelle Hibrid RBM HRBM\cite{hrbm} struktúrája, amit közvetlen az RBM-en belül kombinálja a generatív és a diszkriminatív modellek elõnyeit, és egyszerre tud tanulni on-line jelleggel cimkézett és cimkézetlen adatokból is.
+A struktúrát a \figref{hrbm}~ábra szemlélteti.
+\item A Larochelle féle strúktúra továbbfejlesztését szintén a \figref{hrbm}~ábra szemlélteti. Ez az úgynevezett "Stacked Boltzmann Experts Network"\cite{sben}. Itt minden szint ad egy valószínûséget a tanító minta osztályzására, és ezeknek az átlagolásával születik meg a végleges predikció. Ezek a hálózatok azért végtelenül izgalmasak, mert habár ha sok a tanító minta, akkor ugyanolyan a teljesítménye mint a klasszikus módszereknek, de ha kevés cimkézet adat áll rendelkezésre, akkor vastagon jobb teljesítményt hoz, mitn ahogyan az a \figref{sbenPerf}~ábra is mutatja. Érdemes megemlíteni hogy a publikációban újságcikkeken, és nem képeken tesztelték.
+\end{itemize}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/hrbm}
+\caption{A (a) Larochelle féle hibrid RBM \cite{hrbm} és (b) annak a többszintû továbbfejlesztése az SBEN\cite{sben} struktúra.} 
+\label{fig:hrbm}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/sbenPerf}
+\caption{Az SBEN\cite{sben} és más, klasszikus struktúrák eredményei a WEBKB adathalmazon, úgy hogy csak a tanító adatok 1\%-a volt felcimkézve (8 példa osztályonként). A mérés teljes riportját az SBEN publikációban\cite{sben} lehet megtalálni.} 
+\label{fig:sbenPerf}
+\end{figure}
+
 \subsection{State of the art MLP hálózatok}
 \paragraph{További kutatások} Az MLP hálózatokat a mai napig nagy érdeklõdés övezi egyszerû struktúrájuk miatt. Látszik hogy az MNIST adathalmazon már nem nagyon van hova javítani az MLP-k teljesítményét, viszony mint azt pár paragrafussal elõbb megemlítettem a paraméter tér csökkentésében még van fejleszteni való ezeken a struktúrákon. Egy igen friss publikáció amelynek címe "How far can we go without convolution: Improving fully-connected networks"\cite{mlpFrontier} arra mutat rá hogy hogyan lehet az MLP hálózatok paraméter terét úgy csökkenteni hogy a sigmoid rétegek közé kis méretû lineáris rétegeket teszünk be, példának okáért legyen a két réteg 1500-2000 neuron, akkor a teljes paraméter terük $1500 * 2000 = 3 000 000$, de ha közé teszünk egy 500 neuronos lineáris rétege, akkor ez lecsökken $150 * 500 + 2000 * 500 = 1 075 000$ paraméterre, ami igen szignifikáns redukciót jelent a hálózat komplexításában. Ez a redukció oly mértékû hogy a fentebb említett publikációban vizsgált legnagyobb struktúra paraméter terég 112 millióról 2.5 millióra csökkentették, összehasonlítás képpen egy modern konvoluciós hálónak 3.5 millió paramétere van. Látható hogy ezzel sikerült a kutatóknak megoldania a többrétegû perceptron gépek egyik legnagyobb problémáját, a mértéktelenûl burjánzó paraméter teret. Ezen felül az eltünõ gradiensek problémáját is orvosolja, amivel itt bõvebben nem foglalkozunk. Viszont az eredményeit a CIFAR-10 \figref{mlpEvolution}~ábra szemlélteti. Az elõbb említett táblázat nagyon jól összefoglalja az MLP-k teljesítményének a fejlõdését a CIFAR-10es adathalmazt használva.
 
