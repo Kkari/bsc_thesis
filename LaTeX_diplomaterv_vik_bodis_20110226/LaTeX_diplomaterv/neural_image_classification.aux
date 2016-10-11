@@ -54,7 +54,8 @@
 \@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.5.}{\ignorespaces A gibbs mintav\'etelez\'esi elj\'ar\'as. Forr\'as: \url {http://recognize-speech.com/images/nicolas/Gibbs.png}\relax }}{18}{figure.caption.45}}
 \newlabel{fig:gibbs}{{2.5}{18}{A gibbs mintavételezési eljárás. Forrás: \protect \url {http://recognize-speech.com/images/nicolas/Gibbs.png}\relax }{figure.caption.45}{}}
 \citation{mlpFrontier}
-\citation{leNet}
+\citation{cybenko}
+\citation{hornik}
 \@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Az RBM \'es DBN el\H otanul\'as eredm\'enyei}{19}{section*.46}}
 \@writefile{lot}{\select@language{magyar} \contentsline {table}{\numberline {2.2.}{\ignorespaces Az MLP teljes\IeC {\'\i }tm\'enye az MNIST adathalmazon\relax }}{19}{table.caption.47}}
 \newlabel{tab:MlpEloTablazat}{{2.2}{19}{Az MLP teljesítménye az MNIST adathalmazon\relax }{table.caption.47}{}}
@@ -62,45 +63,51 @@
 \@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Tov\'abbi kutat\'asok}{19}{section*.48}}
 \@writefile{toc}{\select@language{magyar} \contentsline {subsection}{\numberline {2.2.4}Konvoluci\'os h\'al\'ozatok}{19}{subsection.2.2.4}}
 \@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Bevezet\'es}{19}{section*.50}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Az intuici\'o}{19}{section*.51}}
+\citation{leNet}
 \citation{deconvnet}
 \citation{deconvnet}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.6.}{\ignorespaces Az MLP fejl\H od\'ese a CIFAR-10 adahalmazon. (1) Logiszikus regresszi\'o feh\'er\IeC {\'\i }tett adatokon; (2) Tiszta backpropagation egy 782-10000-10 m\'eret\H u h\'al\'ozaton; (3) Tiszta backpropagation egy 782-10000-10000-10 m\'eret\H u h\'al\'ozaton. (4) Egy 10000-10000-10es h\'al\'ozaton, RBM el\H otan\IeC {\'\i }t\'assal, az utols\'o r\'eteg logisztikus regresszi\'o; (5) Egyr\'eteg\H u 10000 neuronos h\'al\'ozat logisztikus regresszi\'os kimenettel, RBM el\H otan\IeC {\'\i }t\'assal; (6) "Fastfood FFT" model (7) Zerobias autoencoder h\'al\'ozat 4000 rejtett neuronnal \'es logisztikus regresszi\'os kimenettel; (8) 782-4000-1000-4000-10 Z-Lin h\'al\'ozat; (9) 782-4000-1000-4000-1000-4000-1000-4000-10 Z-Lin h\'al\'ozat dropoutokkal; (10) Ugyanaz mint a (8), csak adat augment\'aci\'oval. Az (1)-(5) eredm\'enyek Krizhevsky \'es Hinton 2009-es publik\'aci\'oj\'ab\'ol sz\'armaznak. A legutols\'o az\'ert sz\"urk\IeC {\'\i }tett, mert adat augment\'aci\'ot haszn\'al.\relax }}{20}{figure.caption.49}}
+\newlabel{fig:mlpEvolution}{{2.6}{20}{Az MLP fejlõdése a CIFAR-10 adahalmazon. (1) Logiszikus regresszió fehérített adatokon; (2) Tiszta backpropagation egy 782-10000-10 méretû hálózaton; (3) Tiszta backpropagation egy 782-10000-10000-10 méretû hálózaton. (4) Egy 10000-10000-10es hálózaton, RBM elõtanítással, az utolsó réteg logisztikus regresszió; (5) Egyrétegû 10000 neuronos hálózat logisztikus regressziós kimenettel, RBM elõtanítással; (6) "Fastfood FFT" model (7) Zerobias autoencoder hálózat 4000 rejtett neuronnal és logisztikus regressziós kimenettel; (8) 782-4000-1000-4000-10 Z-Lin hálózat; (9) 782-4000-1000-4000-1000-4000-1000-4000-10 Z-Lin hálózat dropoutokkal; (10) Ugyanaz mint a (8), csak adat augmentációval. Az (1)-(5) eredmények Krizhevsky és Hinton 2009-es publikációjából származnak. A legutolsó azért szürkített, mert adat augmentációt használ.\relax }{figure.caption.49}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Az intuici\'o}{20}{section*.51}}
+\citation{deconvnet}
+\citation{deconvnet}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.7.}{\ignorespaces Az els\H o k\'et szint sz\H ur\H oi egy konvoluci\'os h\'alozatban. Forr\'as: "Visualizing and Understanding Convolutional Neural Networks" \cite  {deconvnet}\relax }}{21}{figure.caption.52}}
+\newlabel{fig:deconvnet}{{2.7}{21}{Az elsõ két szint szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite {deconvnet}\relax }{figure.caption.52}{}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.8.}{\ignorespaces Az fels\H obb r\'etegek sz\H ur\H oi egy konvoluci\'os h\'alozatban. Forr\'as: "Visualizing and Understanding Convolutional Neural Networks" \cite  {deconvnet}\relax }}{21}{figure.caption.53}}
+\newlabel{fig:deconvnet2}{{2.8}{21}{Az felsõbb rétegek szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite {deconvnet}\relax }{figure.caption.53}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Matematikai interpret\'aci\'oja}{21}{section*.54}}
 \citation{deconvnet}
 \citation{deconvnet}
 \citation{alexNet}
 \citation{deconvnet}
 \citation{googLeNet}
 \citation{resNet}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.6.}{\ignorespaces Az MLP fejl\H od\'ese a CIFAR-10 adahalmazon. (1) Logiszikus regresszi\'o feh\'er\IeC {\'\i }tett adatokon; (2) Tiszta backpropagation egy 782-10000-10 m\'eret\H u h\'al\'ozaton; (3) Tiszta backpropagation egy 782-10000-10000-10 m\'eret\H u h\'al\'ozaton. (4) Egy 10000-10000-10es h\'al\'ozaton, RBM el\H otan\IeC {\'\i }t\'assal, az utols\'o r\'eteg logisztikus regresszi\'o; (5) Egyr\'eteg\H u 10000 neuronos h\'al\'ozat logisztikus regresszi\'os kimenettel, RBM el\H otan\IeC {\'\i }t\'assal; (6) "Fastfood FFT" model (7) Zerobias autoencoder h\'al\'ozat 4000 rejtett neuronnal \'es logisztikus regresszi\'os kimenettel; (8) 782-4000-1000-4000-10 Z-Lin h\'al\'ozat; (9) 782-4000-1000-4000-1000-4000-1000-4000-10 Z-Lin h\'al\'ozat dropoutokkal; (10) Ugyanaz mint a (8), csak adat augment\'aci\'oval. Az (1)-(5) eredm\'enyek Krizhevsky \'es Hinton 2009-es publik\'aci\'oj\'ab\'ol sz\'armaznak. A legutols\'o az\'ert sz\"urk\IeC {\'\i }tett, mert adat augment\'aci\'ot haszn\'al.\relax }}{20}{figure.caption.49}}
-\newlabel{fig:mlpEvolution}{{2.6}{20}{Az MLP fejlõdése a CIFAR-10 adahalmazon. (1) Logiszikus regresszió fehérített adatokon; (2) Tiszta backpropagation egy 782-10000-10 méretû hálózaton; (3) Tiszta backpropagation egy 782-10000-10000-10 méretû hálózaton. (4) Egy 10000-10000-10es hálózaton, RBM elõtanítással, az utolsó réteg logisztikus regresszió; (5) Egyrétegû 10000 neuronos hálózat logisztikus regressziós kimenettel, RBM elõtanítással; (6) "Fastfood FFT" model (7) Zerobias autoencoder hálózat 4000 rejtett neuronnal és logisztikus regressziós kimenettel; (8) 782-4000-1000-4000-10 Z-Lin hálózat; (9) 782-4000-1000-4000-1000-4000-1000-4000-10 Z-Lin hálózat dropoutokkal; (10) Ugyanaz mint a (8), csak adat augmentációval. Az (1)-(5) eredmények Krizhevsky és Hinton 2009-es publikációjából származnak. A legutolsó azért szürkített, mert adat augmentációt használ.\relax }{figure.caption.49}{}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Az IMAGNET}{20}{section*.54}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{\'Ert\'ekel\'es}{20}{section*.56}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.7.}{\ignorespaces Az els\H o k\'et szint sz\H ur\H oi egy konvoluci\'os h\'alozatban. Forr\'as: "Visualizing and Understanding Convolutional Neural Networks" \cite  {deconvnet}\relax }}{21}{figure.caption.52}}
-\newlabel{fig:deconvnet}{{2.7}{21}{Az elsõ két szint szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite {deconvnet}\relax }{figure.caption.52}{}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.8.}{\ignorespaces Az fels\H obb r\'etegek sz\H ur\H oi egy konvoluci\'os h\'alozatban. Forr\'as: "Visualizing and Understanding Convolutional Neural Networks" \cite  {deconvnet}\relax }}{21}{figure.caption.53}}
-\newlabel{fig:deconvnet}{{2.8}{21}{Az felsõbb rétegek szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite {deconvnet}\relax }{figure.caption.53}{}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.9.}{\ignorespaces Az fels\H obb r\'etegek sz\H ur\H oi egy konvoluci\'os h\'alozatban. Forr\'as: "Visualizing and Understanding Convolutional Neural Networks" \cite  {deconvnet}\relax }}{22}{figure.caption.55}}
+\newlabel{fig:leNet}{{2.9}{22}{Az felsõbb rétegek szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite {deconvnet}\relax }{figure.caption.55}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Az IMAGNET}{22}{section*.56}}
+\@writefile{lot}{\select@language{magyar} \contentsline {table}{\numberline {2.3.}{\ignorespaces Az ILSVRC gy\H oztesei\relax }}{22}{table.caption.57}}
+\newlabel{tab:ImagenetTable}{{2.3}{22}{Az ILSVRC gyõztesei\relax }{table.caption.57}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{\'Ert\'ekel\'es}{22}{section*.58}}
 \citation{rcnn}
 \citation{genAdvNet}
-\@writefile{lot}{\select@language{magyar} \contentsline {table}{\numberline {2.3.}{\ignorespaces Az ILSVRC gy\H oztesei\relax }}{22}{table.caption.55}}
-\newlabel{tab:ImagenetTable}{{2.3}{22}{Az ILSVRC gyõztesei\relax }{table.caption.55}{}}
-\@writefile{toc}{\select@language{magyar} \contentsline {section}{\numberline {2.3}Tov\'abbi \'erdekes ir\'anyok a neur\'alis k\'epfeldolgoz\'asban}{22}{section.2.3}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{R\'egi\'o alap\'u konvoluci\'os h\'al\'ozatok\cite  {rcnn}}{22}{section*.57}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.9.}{\ignorespaces A Faster R-CNN munkafolyamata\relax }}{22}{figure.caption.58}}
-\newlabel{fig:FasterRCNN}{{2.9}{22}{A Faster R-CNN munkafolyamata\relax }{figure.caption.58}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {section}{\numberline {2.3}Tov\'abbi \'erdekes ir\'anyok a neur\'alis k\'epfeldolgoz\'asban}{23}{section.2.3}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{R\'egi\'o alap\'u konvoluci\'os h\'al\'ozatok\cite  {rcnn}}{23}{section*.59}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.10.}{\ignorespaces A Faster R-CNN munkafolyamata\relax }}{23}{figure.caption.60}}
+\newlabel{fig:FasterRCNN}{{2.10}{23}{A Faster R-CNN munkafolyamata\relax }{figure.caption.60}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite  {genAdvNet}}{23}{section*.61}}
 \citation{genImgDesc}
 \citation{generatingImageDesc}
 \citation{stn}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite  {genAdvNet}}{23}{section*.59}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.10.}{\ignorespaces Jobbra: Eredeti k\'ep, k\"oz\'epen: Pertub\'aci\'ok, balra: Pertub\'alt k\'ep. A jobb oldalit helyesen, a bal-t pedig hib\'asan oszt\'alyozn\'a egy CNN.\relax }}{23}{figure.caption.60}}
-\newlabel{fig:adversarial}{{2.10}{23}{Jobbra: Eredeti kép, középen: Pertubációk, balra: Pertubált kép. A jobb oldalit helyesen, a bal-t pedig hibásan osztályozná egy CNN.\relax }{figure.caption.60}{}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite  {genImgDesc}}{23}{section*.61}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.11.}{\ignorespaces A Faster R-CNN munkafolyamata\relax }}{23}{figure.caption.62}}
-\newlabel{fig:generatingImageDesc}{{2.11}{23}{A Faster R-CNN munkafolyamata\relax }{figure.caption.62}{}}
-\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{T\'erbeli transzform\'aci\'os h\'al\'ozatok (STN \cite  {stn})}{23}{section*.63}}
-\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.12.}{\ignorespaces Egy t\'erbeli transzform\'aci\'os h\'al\'ozat l\'ep\'esei.\relax }}{24}{figure.caption.64}}
-\newlabel{fig:STN}{{2.12}{24}{Egy térbeli transzformációs hálózat lépései.\relax }{figure.caption.64}{}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.11.}{\ignorespaces Jobbra: Eredeti k\'ep, k\"oz\'epen: Pertub\'aci\'ok, balra: Pertub\'alt k\'ep. A jobb oldalit helyesen, a bal-t pedig hib\'asan oszt\'alyozn\'a egy CNN.\relax }}{24}{figure.caption.62}}
+\newlabel{fig:adversarial}{{2.11}{24}{Jobbra: Eredeti kép, középen: Pertubációk, balra: Pertubált kép. A jobb oldalit helyesen, a bal-t pedig hibásan osztályozná egy CNN.\relax }{figure.caption.62}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite  {genImgDesc}}{24}{section*.63}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.12.}{\ignorespaces A Faster R-CNN munkafolyamata\relax }}{24}{figure.caption.64}}
+\newlabel{fig:generatingImageDesc}{{2.12}{24}{A Faster R-CNN munkafolyamata\relax }{figure.caption.64}{}}
+\@writefile{toc}{\select@language{magyar} \contentsline {paragraph}{T\'erbeli transzform\'aci\'os h\'al\'ozatok (STN \cite  {stn})}{24}{section*.65}}
+\@writefile{lof}{\select@language{magyar} \contentsline {figure}{\numberline {2.13.}{\ignorespaces Egy t\'erbeli transzform\'aci\'os h\'al\'ozat l\'ep\'esei.\relax }}{25}{figure.caption.66}}
+\newlabel{fig:STN}{{2.13}{25}{Egy térbeli transzformációs hálózat lépései.\relax }{figure.caption.66}{}}
 \@setckpt{neural_image_classification}{
-\setcounter{page}{25}
+\setcounter{page}{26}
 \setcounter{equation}{11}
 \setcounter{enumi}{4}
 \setcounter{enumii}{5}
@@ -115,7 +122,7 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{12}
+\setcounter{figure}{13}
 \setcounter{table}{3}
 \setcounter{parentequation}{0}
 \setcounter{endNonectr}{11}

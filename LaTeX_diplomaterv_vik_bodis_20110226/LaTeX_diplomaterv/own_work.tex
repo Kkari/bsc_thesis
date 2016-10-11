@@ -24,9 +24,9 @@ A Tensorflow ökoszisztéma nagyon jó pontja a csúcsra járatott monitorozási lehet
 
 \section{A saját implementációk bemutatása}
 \subsection{A hálózatok monitorozása}
-A Tensorflow érett API-t kínál a hálózat paramétereinek követésére tanulás közben, de nem ment le automatikusan minden egyes lefutáskor minden változó értékét, mivel ez egy modern hálózatnál több millió értéket is jelenthet. A VGG konvoluciós háló például 140 millió paramétert tartalmaz. A hálózat változóiról általánosságban a következõ értékeket mentettem le: minimum érték, maximum érték, közép érték és a standardizált szórásukat. hogy ezeket ne kelljen minden változóra kiadni, ezért a \listingref{variableSummaries}-es függvényt alkalmaztam.
+A Tensorflow érett API-t kínál a hálózat paramétereinek követésére tanulás közben, de nem ment le automatikusan minden egyes lefutáskor minden változó értékét, mivel ez egy modern hálózatnál több millió értéket is jelenthet. A VGG konvoluciós háló például 140 millió paramétert tartalmaz. A hálózat változóiról általánosságban a következõ értékeket mentettem le: minimum érték, maximum érték, közép érték és a standardizált szórásukat. hogy ezeket ne kelljen minden változóra kiadni, ezért a \listref{variableSummaries}-es függvényt alkalmaztam.
 
-\begin{lstlisting}[frame=single,float=!ht,caption= A változók mentése label=listing:variableSummaries, mathescape=true]
+\begin{lstlisting}[frame=single,float=!ht,caption= A változók mentése, label=listing:variableSummaries, mathescape=true]
 def variable_summaries(name, var):
     """Attach a lot of summaries to a Tensor."""
     with tf.name_scope('summaries'):
@@ -74,6 +74,27 @@ def fully_connected(batch_data, batch_labels):
 \end{lstlisting}
 
 Mint látható nagyon könnyen állíthatóak a reguralizációs tagok, megadható több félet optimalizáló és hibafüggvény is, ami igazán könnyûvé tette a kísérletezést.
+
+Az MLP-ben használt elemi alkotóelemeim:
+\begin{itemize}
+\item \emph{fc:} A teljesen kapcsolt réteg, minden neuron, minden elõbbi réteg neuronjával össze van kötve, ennek a definicióját a \eqref{fullyConnected}-képlet mutatja be, ahol l a réteg sorszáma, és "Activation" egy tetszõleges aktivációs függvény.
+
+\item \emph{reLu:} A rektifikált lineáris egység (reLu) egy aktivációs függvény, ezeket a teljesen kapcsolt réteg után kapcsoljuk, azért hogy nem-linearitásokat vigyünk a rendszerbe. így növelve a leképzõ képességét. A reLu definiciója a \eqref{reLu}~képleten látható.
+\item \emph{sgm:} A sigmoid aktivációs függvény amely szintén egy aktivációs függvény mint a relu, de nehezebb a deriváltját számolni, és érzékenyebb az adatok normalizáltságára. Az sigmoid definiciója \eqref{sigmoid}~képleten látszik.
+\end{itemize}
+
+\begin{align} \label{fullyConnected}
+X^{(l)} = W*Activation(X^{(l-1)})
+\end{align}
+
+\begin{align} \label{reLu}
+reLu(x) = max(0, x)
+\end{align}
+
+\begin{align} \label{sigmoid}
+sgm(x) = \frac{1}{1 + e^x}
+\end{align}
+
 
 \subsection{Az RBM hálózat}
 Mint mondtam a TF-Slim nagyon kényelmes volt addig amíg olyan struktúrákkal dolgoztam amik könnyen definiálhatóak. Viszont csak többrétegû perceptronok és konvoluciós hálózatokat lehet benne egyelõre alkotni. Az korlátozott boltzmann gép implementálásához le kellett mennem a Tensorflow alacsony szintû interfacéhez amiben a hálózat implementálása több mint egy hét volt. Viszont ezalatt értettem meg igazán hogy hogyan mûködik egyrészt a könyvtár, másrészt pedig az RBM-ek. 
@@ -124,8 +145,28 @@ Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy u
 \label{fig:convnet_1}
 \end{figure}
 
+Az egyes operációkat szeretném megymagyarázni röviden amiket a konvoluciós modelljeimben használtam:
+\begin{itemize}
+\item \emph{conv(magasság, szélesség, mélység):} Kétdimenziós, diszkrét konvolució. Ahol a magasság és a szélesség adják meg a képfolt nagyságát. A mélység pedig hogy hány neuron legyen az adott rétegben. A kétdimenziós konvolicó definicióját a \eqref{convDef}-képlet mutatja be.
+\item \emph{maxpool(magasság, szélesség)} Egy alulmintavételezési operátor a térbeli dimenziókban(magasság, szélesség). Ezzel csökkentjük drasztikusan a jellemzõterek nagyságát, és adunk transzlációs invarianciát a rendszerhez, mindig a legerõsebb jelet viszi keresztül a pooling foltból.
+\item \emph{fc(neuronok száma):} A teljesen kapcsolt rétegeket a hálózat végére kapcsoljuk. Amíg a konvoluciós rétegek egy magas absztrakcióval rendelkezõ, viszonylag transzláció invariáns jellemzõteret nyújtanak a képrõl, addig a hálózat végén lévõ teljesen kapcsolt rétegek teszik lehetõvé a nemlineáris leképzéseket ebben a jellemzõtérben. Az itteni teljesen kapcsolt réteget és a hozzá tartozó nemlineritásokat is az \eqref{fullyConnected}, \eqref{sigmoid}, \eqref{reLu} írja le.
+\item \emph{lrn:} Elvileg a reLu aktivációs függvény nem érzékeny annyira az adatok normalizálására, mégis kiderül a \cite{alexNet} publikációból hogy egy lokális normalizálási eljárás statisztikailag szignifikáns javulást képest hozni a hálózat osztályozó képességében. Ezt a matematikai struktúrát a \eqref{Lrn}~képlet szemlélteti. Ez is egy biológiailag inspirált eljárás. A bilógiai neve ennek az eljárásnak laterális inhibició.
+\end{itemize}
+
+\begin{align}
+\label{convDef}
+h^k_{ij} = activation((W^k * x)_{ij} + b_{k}) \quad ahol \quad * \text{ konvoluciós operátor.}
+\end{align}
+\begin{align}
+b^i_{x,y} = a^i_{x,y}/\Bigg(k + \alpha\sum^{min(N-1,i+n/2)}_{j=max(0,i-n/2)}(a^j_{x,y})^2\Bigg)^\beta \\
+\text{Ahol } a^i_{x,y} \text{ az i-edik kernel-t alkalmazzuk az (x,y) beli pozicióra.} \notag \\ 
+b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\
+\text{És n a vizsgált pozició szomszédos kernel térképei, N az összes} \notag\\
+\text{kernel a rétegben és } \alpha,\beta \text{ és k pedig további hiperparaméterek.} \notag
+\end{align}
+
 \subsection{A konvoluciós modell skálázása}
-Az elõbbiekben bemutatott konvoluciós modell könnyedén tanítható pár perc alatt egy korszerû CPU-n, viszont ha az ember nagyobb modelleket szeretne tanítani akkor ez már nem egy reális alternatíva. Ezekre az esetekre egy nagyobb hálózattal kísérleteztem a CIFAR-10 adathalmazon, aminek a felépítéséte a \figref{convnet_2}~ábra mutatja. 
+Az elõbbiekben bemutatott konvoluciós modell könnyedén tanítható pár perc/óra alatt egy korszerû CPU-n, viszont ha az ember nagyobb modelleket szeretne tanítani akkor ez már nem egy reális alternatíva. Ezekre az esetekre egy nagyobb hálózattal kísérleteztem a CIFAR-10 adathalmazon amit az alábbi instrukciók alapján készítettem el\cite{scalingCNN}, aminek a felépítését a \figref{convnet_2}~ábra mutatja. 
 
 \begin{figure}[!ht]
 \centering

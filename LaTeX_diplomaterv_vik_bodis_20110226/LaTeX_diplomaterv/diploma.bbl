@@ -33,11 +33,21 @@ Yann~LeCun et~al.
 \newblock Gradient-based learning applied to document recognition.
 \newblock November 1998.
 
+\bibitem{cybenko}
+Cybenko G.
+\newblock Approximations by superpositions of sigmoidal functions.
+\newblock 1989.
+
 \bibitem{rbmGuide}
 Geoffrey Hinton.
 \newblock A practical guide to training restricted boltzmann machines, aug
   2010.
 \newblock http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf.
+
+\bibitem{hornik}
+Kurt Hornik.
+\newblock Approximation capabilities of multilayer feedforward network.
+\newblock 1991.
 
 \bibitem{svmCIFAR}
 Tong~Zhang Kai~Yu.

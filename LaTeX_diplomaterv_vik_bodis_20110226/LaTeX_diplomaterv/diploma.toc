@@ -52,40 +52,40 @@
 \select@language {magyar} \contentsline {paragraph}{Tov\'abbi kutat\'asok}{19}{section*.48}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.2.4}Konvoluci\'os h\'al\'ozatok}{19}{subsection.2.2.4}
 \select@language {magyar} \contentsline {paragraph}{Bevezet\'es}{19}{section*.50}
-\select@language {magyar} \contentsline {paragraph}{Az intuici\'o}{19}{section*.51}
-\select@language {magyar} \contentsline {paragraph}{Az IMAGNET}{20}{section*.54}
-\select@language {magyar} \contentsline {paragraph}{\'Ert\'ekel\'es}{20}{section*.56}
-\select@language {magyar} \contentsline {section}{\numberline {2.3}Tov\'abbi \'erdekes ir\'anyok a neur\'alis k\'epfeldolgoz\'asban}{22}{section.2.3}
-\select@language {magyar} \contentsline {paragraph}{R\'egi\'o alap\'u konvoluci\'os h\'al\'ozatok\cite {rcnn}}{22}{section*.57}
-\select@language {magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite {genAdvNet}}{23}{section*.59}
-\select@language {magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite {genImgDesc}}{23}{section*.61}
-\select@language {magyar} \contentsline {paragraph}{T\'erbeli transzform\'aci\'os h\'al\'ozatok (STN \cite {stn})}{23}{section*.63}
-\select@language {magyar} \contentsline {chapter}{\numberline {3}H\'al\'ozatok impelment\'al\'asa \'es elemz\'ese tensorflowban}{25}{chapter.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.1}A baseline oszt\'alyoz\'ok}{25}{section.3.1}
-\select@language {magyar} \contentsline {section}{\numberline {3.2}A saj\'at magam \'altal kialak\IeC {\'\i }tott fejleszt\H ok\"ornyezet}{25}{section.3.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.3}A saj\'at implement\'aci\'ok bemutat\'asa}{26}{section.3.3}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.1}A h\'al\'ozatok monitoroz\'asa}{26}{subsection.3.3.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.2}A logiszikus regresszi\'o}{26}{subsection.3.3.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.3}A t\"obbr\'eteg\H u perceptron}{27}{subsection.3.3.3}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.4}Az RBM h\'al\'ozat}{27}{subsection.3.3.4}
-\select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{28}{section*.67}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.5}Hibrid modellek}{29}{subsection.3.3.5}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.6}A Konvoluci\'os modell}{29}{subsection.3.3.6}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.3.7}A konvoluci\'os modell sk\'al\'az\'asa}{30}{subsection.3.3.7}
-\select@language {magyar} \contentsline {chapter}{\numberline {4}A m\'er\'esi eredm\'enyeim \"osszegz\'ese}{32}{chapter.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{32}{section.4.1}
-\select@language {magyar} \contentsline {section}{\numberline {4.2}Rendszer szint\H u m\'er\'esek.}{33}{section.4.2}
-\select@language {magyar} \contentsline {section}{\numberline {4.3}A baseline eredm\'enyek ismertet\'ese}{34}{section.4.3}
-\select@language {magyar} \contentsline {section}{\numberline {4.4}Az MLP-vel elv\'egzett m\'er\'eseim eredm\'enyei}{35}{section.4.4}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Az MNIST m\'er\'esek}{35}{subsection.4.4.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}A CIFAR-10 m\'er\'esek}{36}{subsection.4.4.2}
-\select@language {magyar} \contentsline {paragraph}{Az MNIST \'es a CIFAR k\"ul\"onbs\'egei}{36}{section*.82}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Az el\H otan\IeC {\'\i }t\'as eredm\'enyeinek \"osszefoglal\'asa}{37}{subsection.4.4.3}
-\select@language {magyar} \contentsline {paragraph}{Az el\H otanul\'assal tan\IeC {\'\i }tott h\'al\'ok m\'er\'ese}{37}{section*.84}
-\select@language {magyar} \contentsline {paragraph}{El\H otanul\'asb\'ol levont k\"ovetkeztet\'esek}{37}{section*.87}
-\select@language {magyar} \contentsline {section}{\numberline {4.5}A konvoluci\'os h\'al\'ozatok eredm\'enyei}{37}{section.4.5}
-\select@language {magyar} \contentsline {section}{\numberline {4.6}A konvoluci\'os \'es az MLP h\'al\'ozatok \"osszehasonl\IeC {\'\i }t\'asa}{39}{section.4.6}
-\select@language {magyar} \contentsline {section}{\numberline {4.7}A hibrid architekt\'ur\'ak eredm\'enyei}{40}{section.4.7}
-\select@language {magyar} \contentsline {paragraph}{Normaliz\'alt CIFAR10 RBM SVM}{41}{section*.97}
-\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{42}{chapter*.98}
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{43}{chapter*.99}
+\select@language {magyar} \contentsline {paragraph}{Az intuici\'o}{20}{section*.51}
+\select@language {magyar} \contentsline {paragraph}{Matematikai interpret\'aci\'oja}{21}{section*.54}
+\select@language {magyar} \contentsline {paragraph}{Az IMAGNET}{22}{section*.56}
+\select@language {magyar} \contentsline {paragraph}{\'Ert\'ekel\'es}{22}{section*.58}
+\select@language {magyar} \contentsline {section}{\numberline {2.3}Tov\'abbi \'erdekes ir\'anyok a neur\'alis k\'epfeldolgoz\'asban}{23}{section.2.3}
+\select@language {magyar} \contentsline {paragraph}{R\'egi\'o alap\'u konvoluci\'os h\'al\'ozatok\cite {rcnn}}{23}{section*.59}
+\select@language {magyar} \contentsline {paragraph}{Generat\IeC {\'\i }v adverzi\'alis h\'al\'ozatok\cite {genAdvNet}}{23}{section*.61}
+\select@language {magyar} \contentsline {paragraph}{K\'eple\IeC {\'\i }r\'asok gener\'al\'asa\cite {genImgDesc}}{24}{section*.63}
+\select@language {magyar} \contentsline {paragraph}{T\'erbeli transzform\'aci\'os h\'al\'ozatok (STN \cite {stn})}{24}{section*.65}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}H\'al\'ozatok impelment\'al\'asa \'es elemz\'ese tensorflowban}{26}{chapter.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}A baseline oszt\'alyoz\'ok}{26}{section.3.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}A saj\'at magam \'altal kialak\IeC {\'\i }tott fejleszt\H ok\"ornyezet}{26}{section.3.2}
+\select@language {magyar} \contentsline {section}{\numberline {3.3}A saj\'at implement\'aci\'ok bemutat\'asa}{27}{section.3.3}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.1}A h\'al\'ozatok monitoroz\'asa}{27}{subsection.3.3.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.2}A logiszikus regresszi\'o}{27}{subsection.3.3.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.3}A t\"obbr\'eteg\H u perceptron}{28}{subsection.3.3.3}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.4}Az RBM h\'al\'ozat}{29}{subsection.3.3.4}
+\select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{29}{section*.69}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.5}A DBN strukt\'ura}{30}{subsection.3.3.5}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.6}Hibrid modellek}{30}{subsection.3.3.6}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.7}A Konvoluci\'os modell}{31}{subsection.3.3.7}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.3.8}A konvoluci\'os modell sk\'al\'az\'asa}{32}{subsection.3.3.8}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}A m\'er\'esi eredm\'enyeim \"osszegz\'ese}{34}{chapter.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{34}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}Rendszer szint\H u m\'er\'esek.}{35}{section.4.2}
+\select@language {magyar} \contentsline {section}{\numberline {4.3}A baseline eredm\'enyek ismertet\'ese}{36}{section.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.4}Az MLP-vel elv\'egzett m\'er\'eseim eredm\'enyei}{37}{section.4.4}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Az MNIST m\'er\'esek}{37}{subsection.4.4.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}A CIFAR-10 m\'er\'esek}{38}{subsection.4.4.2}
+\select@language {magyar} \contentsline {paragraph}{Az MNIST \'es a CIFAR k\"ul\"onbs\'egei}{38}{section*.84}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Az el\H otan\IeC {\'\i }t\'as eredm\'enyeinek \"osszefoglal\'asa}{38}{subsection.4.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.5}A konvoluci\'os h\'al\'ozatokkal elv\'egzett m\'er\'eseim eredm\'enyei}{39}{section.4.5}
+\select@language {magyar} \contentsline {section}{\numberline {4.6}A konvoluci\'os \'es az MLP h\'al\'ozatok \"osszehasonl\IeC {\'\i }t\'asa}{41}{section.4.6}
+\select@language {magyar} \contentsline {section}{\numberline {4.7}A hibrid architekt\'ur\'ak eredm\'enyei}{43}{section.4.7}
+\select@language {magyar} \contentsline {paragraph}{Normaliz\'alt CIFAR10 RBM SVM}{43}{section*.97}
+\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{44}{chapter*.98}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{45}{chapter*.99}

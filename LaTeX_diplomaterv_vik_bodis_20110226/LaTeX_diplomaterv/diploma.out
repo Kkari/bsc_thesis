@@ -24,19 +24,20 @@
 \BOOKMARK [2][-]{subsection.3.3.2}{A logiszikus regresszi\363}{section.3.3}% 24
 \BOOKMARK [2][-]{subsection.3.3.3}{A t\366bbr\351tegu perceptron}{section.3.3}% 25
 \BOOKMARK [2][-]{subsection.3.3.4}{Az RBM h\341l\363zat}{section.3.3}% 26
-\BOOKMARK [2][-]{subsection.3.3.5}{Hibrid modellek}{section.3.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.6}{A Konvoluci\363s modell}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.7}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.3}% 29
-\BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 30
-\BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.4}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.4.1}{Az MNIST m\351r\351sek}{section.4.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.2}{A CIFAR-10 m\351r\351sek}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.4}% 37
-\BOOKMARK [1][-]{section.4.5}{A konvoluci\363s h\341l\363zatok eredm\351nyei}{chapter.4}% 38
-\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s \351s az MLP h\341l\363zatok \366sszehasonl\355t\341sa}{chapter.4}% 39
-\BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 40
-\BOOKMARK [0][-]{chapter*.98}{K\366sz\366netnyilv\341n\355t\341s}{}% 41
-\BOOKMARK [0][-]{chapter*.99}{Irodalomjegyz\351k}{}% 42
+\BOOKMARK [2][-]{subsection.3.3.5}{A DBN strukt\372ra}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.6}{Hibrid modellek}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.7}{A Konvoluci\363s modell}{section.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.8}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.3}% 30
+\BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 31
+\BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.4}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.4.1}{Az MNIST m\351r\351sek}{section.4.4}% 36
+\BOOKMARK [2][-]{subsection.4.4.2}{A CIFAR-10 m\351r\351sek}{section.4.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.4}% 38
+\BOOKMARK [1][-]{section.4.5}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s \351s az MLP h\341l\363zatok \366sszehasonl\355t\341sa}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 41
+\BOOKMARK [0][-]{chapter*.98}{K\366sz\366netnyilv\341n\355t\341s}{}% 42
+\BOOKMARK [0][-]{chapter*.99}{Irodalomjegyz\351k}{}% 43
