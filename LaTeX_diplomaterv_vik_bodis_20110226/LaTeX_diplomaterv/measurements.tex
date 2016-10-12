@@ -7,13 +7,31 @@ Ebben a fejezetben szeretném bemutatni az általam elkészített hálózatok futásána
 \item A konvoluciós hálózatokkal elért eredmények és ennek összegzése.
 \item A hibrid hálózatokkal elért eredmények.
 \end{enumerate}
+Illetve nagyon sok olyan dolog is van amirõl tudom hogy hozzátartozik a modellalkotói munkához, de itt nem foglalkoztam vele, egyrészt a véges erõforrások, másrészt pedig a véges idõ miatt. Illetve nem láttam volna hogy hozzáadtak volna jelentõs mértékben a szakdolgozatom céljához. Ezek voltak:
+\begin{itemize}
+\item A hiperparaméterek végletekig menõ tuningolása grid search-el.
+\item A hiperparaméter halmazok összehasonlítása, akár kereszt validációval, és egy végleges hiperparaméter beállítás kiválasztása a teszt halmazon való kiértékeléshez.
+\item A lépésszámok pontos kíkisérletezése, és korai leállási feltételek megfogalmazása és implementálása.
+\item Az adatok átfogó elõfeldolgozása. Minden adatot normalizáltam, de nem végeztem több elõfeldolgozást, pl fehérítést.
+\item Az adathalmaz bõvítése. Ide tartoznak a képek véletlenszerû tükrözése, kivágása, rotációi, egyes értékek disztorciói (pl kontraszt).
+\end{itemize}
+Tehát a modelljeimet empirikus paraméterekkel, a nyers adatokon teszteltem. Mindeközben tisztában voltam az összes architektúra elméleti teljesítményének a határával, ez is egy érdekes tanulság volt, hogy ilyen "naiv" megközelítéssel milyen közel tudok jutni egy-egy kutatás eredményéhez.
 
 A gép specifikáció amin általánosságban teszteltem (eltekintve a GPU skálázás résztõl) a következõek:
 \begin{itemize}
 \item Memória: 8 Gigabyte DDR4
 \item CPU: Intel Core i7-4702MQ CPU @ 2.20GHz x 8
 \end{itemize}
-A gépben elhelyezkedõ grafikus kártyát nem használtam, az Nvidia hibás eszköz meghajtó programja miatt.
+A gépben elhelyezkedõ grafikus kártyát nem használtam, az Nvidia hibás eszköz meghajtó programja miatt. Egy GPU-n mért teljesítmény karakterisztikák eltérhetnek, fõleg egy olyan hatékony implementáció mellett mint a cuDNN, az Nvidia által fejlesztett mély neurális rendszerekhez használt könyvtár, ami nagyon hatékony implementációkat tartalmaz a Neurális hálózatok legtöbb operációjára.
+A mértékek szemléltetéséhez a \figref{teslaTrumpsCPU}~ábra szemlélteti. Érdemes hozzátenni hogy egyetlen Tesla 40M ára most kb 1,3 millió forint. Amíg a CPU-s tesztben két Intel Xeon E5-2699v3 szerepelt, jelenlegi darab ára hozzávetõlegesen 1 millió forint. Tehát a GPU-s megoldásnál hozzávetõleges 2.6-szor drágább volt csak a megoldás magját képezõ számítási felszerelés. Nyílván ilyen eszközöket már csak nagy tõkével rendelkezõ szervezetek engedhetnek meg maguknak.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/teslaTrumpsCPU}
+\caption{Az alexNet tanítása high end szerver két CPU-s intel xeon e5-2699v3 szerveren, és 4 elembõl álló Tesla M40 griden. Forrás:\url{http://images.nvidia.com/content/products/hpc/fasterperformance-than-cpu.png}.} 
+\label{fig:teslaTrumpsCPU}
+\end{figure}
+
 
 \section{A keretrendszer általános teljesítménye}
 Ebben a részben azt vizsgáltam hogy a tensorflow hogyan bánik az erõforrásokkal. Ennek érdekében több dolgot tettem:
@@ -73,7 +91,7 @@ Az MNIST-en elért eredmények nem a legjobbak, de egészen optimális eredmények il
 	\hline
 	tanuló metódus & Teszt halmaz hiba százaléka \\ \hline
 	Logisztikus regresszió & 62\%\\
-	Linear SVM with improved LCC & 26\%\\
+	SVM poly kernel, coef0=1 fokszám=3 & 55\%\\
 	\hline
 	\end{tabular}
 \end{table}
@@ -359,7 +377,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 	\end{tabular}
 \end{table}
 
-\paragraph{Normalizált CIFAR10} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. És a klasszifikációs eredmények is nagyon sokat javultak, ezt a \tabref{cifarGoodRbmSvm}~táblázat mutatja. Érdekes megfigyelni hogy a színek szerint szétszedett SVM lényegesen jobban teljesített mint az egyben tanított, pedig ugyanannyi neuront használtak és ugyanaddig tanítottam õket.
+\paragraph{Normalizált CIFAR10} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. És a klasszifikációs eredmények is nagyon sokat javultak, ezt a \tabref{cifarGoodRbmSvm}~táblázat mutatja. Érdekes megfigyelni hogy a színek szerint szétszedett SVM lényegesen jobban teljesített mint az egyben tanított, pedig ugyanannyi neuront használtak és ugyanaddig tanítottam õket. Mindkét struktúra esetében jelentõs teljesítmény javulást értem el a nyers adatokon tanított SVM-hez képset, egyenként kb 2 óra alatt futottak le a 7 helyett. Sõt ha az olvasó visszaemlékszik a nyers SVM teljesítménye \emph{55\%} hibaszázalék volt, ettõl az egyben tanított SVM alig marad le 1\%-al, a szétdarabolt pedig 4\%-al jobban teljesít.
 
 \begin{table}[ht]
 	\footnotesize
@@ -373,3 +391,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 	\hline
 	\end{tabular}
 \end{table}
+
+\paragraph{A hibrid architektúra értékelése} Úgy gondolom hogy a jelentõs sebességnövekedés, és ha jól ki van alakítva akkor a klasszifikációs teljesítmény növekedése indokoltá teszi az ilyen struktúrák alkalmazásának megfontolását egyes szcenáriókban.
+
+\section{A CNN és az SVM+RBM összehasonlítása}

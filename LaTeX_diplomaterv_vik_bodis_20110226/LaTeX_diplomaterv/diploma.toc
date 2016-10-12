@@ -79,20 +79,22 @@
 \select@language {magyar} \contentsline {paragraph}{Sz\'am\IeC {\'\i }t\'as eloszt\'as}{33}{section*.79}
 \select@language {magyar} \contentsline {paragraph}{Adatok dinamikus felolvas\'asa}{34}{section*.82}
 \select@language {magyar} \contentsline {chapter}{\numberline {4}A m\'er\'esi eredm\'enyeim \"osszegz\'ese}{37}{chapter.4}
-\select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{37}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{38}{section.4.1}
 \select@language {magyar} \contentsline {section}{\numberline {4.2}Rendszer szint\H u m\'er\'esek.}{38}{section.4.2}
-\select@language {magyar} \contentsline {section}{\numberline {4.3}A baseline eredm\'enyek ismertet\'ese}{39}{section.4.3}
-\select@language {magyar} \contentsline {section}{\numberline {4.4}Az MLP-vel elv\'egzett m\'er\'eseim eredm\'enyei}{40}{section.4.4}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Az MNIST m\'er\'esek}{40}{subsection.4.4.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}A CIFAR-10 m\'er\'esek}{41}{subsection.4.4.2}
-\select@language {magyar} \contentsline {paragraph}{Az MNIST \'es a CIFAR k\"ul\"onbs\'egei}{41}{section*.91}
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Az el\H otan\IeC {\'\i }t\'as eredm\'enyeinek \"osszefoglal\'asa}{41}{subsection.4.4.3}
-\select@language {magyar} \contentsline {section}{\numberline {4.5}A konvoluci\'os h\'al\'ozatokkal elv\'egzett m\'er\'eseim eredm\'enyei}{42}{section.4.5}
-\select@language {magyar} \contentsline {section}{\numberline {4.6}A konvoluci\'os \'es az MLP h\'al\'ozatok \"osszehasonl\IeC {\'\i }t\'asa}{44}{section.4.6}
-\select@language {magyar} \contentsline {section}{\numberline {4.7}A hibrid architekt\'ur\'ak eredm\'enyei}{46}{section.4.7}
-\select@language {magyar} \contentsline {paragraph}{MNIST}{46}{section*.102}
-\select@language {magyar} \contentsline {paragraph}{Aktiv\'aci\'ok vizsg\'alata}{46}{section*.104}
-\select@language {magyar} \contentsline {paragraph}{Naiv CIFAR}{47}{section*.107}
-\select@language {magyar} \contentsline {paragraph}{Normaliz\'alt CIFAR10}{47}{section*.109}
-\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{49}{chapter*.111}
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{51}{chapter*.112}
+\select@language {magyar} \contentsline {section}{\numberline {4.3}A baseline eredm\'enyek ismertet\'ese}{40}{section.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.4}Az MLP-vel elv\'egzett m\'er\'eseim eredm\'enyei}{41}{section.4.4}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Az MNIST m\'er\'esek}{41}{subsection.4.4.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}A CIFAR-10 m\'er\'esek}{42}{subsection.4.4.2}
+\select@language {magyar} \contentsline {paragraph}{Az MNIST \'es a CIFAR k\"ul\"onbs\'egei}{42}{section*.92}
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Az el\H otan\IeC {\'\i }t\'as eredm\'enyeinek \"osszefoglal\'asa}{42}{subsection.4.4.3}
+\select@language {magyar} \contentsline {section}{\numberline {4.5}A konvoluci\'os h\'al\'ozatokkal elv\'egzett m\'er\'eseim eredm\'enyei}{43}{section.4.5}
+\select@language {magyar} \contentsline {section}{\numberline {4.6}A konvoluci\'os \'es az MLP h\'al\'ozatok \"osszehasonl\IeC {\'\i }t\'asa}{45}{section.4.6}
+\select@language {magyar} \contentsline {section}{\numberline {4.7}A hibrid architekt\'ur\'ak eredm\'enyei}{47}{section.4.7}
+\select@language {magyar} \contentsline {paragraph}{MNIST}{47}{section*.103}
+\select@language {magyar} \contentsline {paragraph}{Aktiv\'aci\'ok vizsg\'alata}{47}{section*.105}
+\select@language {magyar} \contentsline {paragraph}{Naiv CIFAR}{48}{section*.108}
+\select@language {magyar} \contentsline {paragraph}{Normaliz\'alt CIFAR10}{48}{section*.110}
+\select@language {magyar} \contentsline {paragraph}{A hibrid architekt\'ura \'ert\'ekel\'ese}{49}{section*.112}
+\select@language {magyar} \contentsline {section}{\numberline {4.8}A CNN \'es az SVM+RBM \"osszehasonl\IeC {\'\i }t\'asa}{49}{section.4.8}
+\select@language {magyar} \contentsline {chapter}{K\"osz\"onetnyilv\'an\IeC {\'\i }t\'as}{50}{chapter*.113}
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{52}{chapter*.114}

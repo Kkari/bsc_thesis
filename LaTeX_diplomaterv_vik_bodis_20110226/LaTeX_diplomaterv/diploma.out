@@ -39,5 +39,6 @@
 \BOOKMARK [1][-]{section.4.5}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 39
 \BOOKMARK [1][-]{section.4.6}{A konvoluci\363s \351s az MLP h\341l\363zatok \366sszehasonl\355t\341sa}{chapter.4}% 40
 \BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 41
-\BOOKMARK [0][-]{chapter*.111}{K\366sz\366netnyilv\341n\355t\341s}{}% 42
-\BOOKMARK [0][-]{chapter*.112}{Irodalomjegyz\351k}{}% 43
+\BOOKMARK [1][-]{section.4.8}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 42
+\BOOKMARK [0][-]{chapter*.113}{K\366sz\366netnyilv\341n\355t\341s}{}% 43
+\BOOKMARK [0][-]{chapter*.114}{Irodalomjegyz\351k}{}% 44
