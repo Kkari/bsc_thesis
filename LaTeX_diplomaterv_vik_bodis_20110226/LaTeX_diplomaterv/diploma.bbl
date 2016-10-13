@@ -79,6 +79,12 @@ Rob~Fergus Matthew D.~Zieler.
 \newblock Visualizing and understanding convolutional neural networks.
 \newblock November 2013.
 
+\bibitem{tensorflow}
+Google research.
+\newblock Tensorflow: Large-scale machinelearning on heterogeneous distributed
+  systems.
+\newblock 2016.
+
 \bibitem{backProp}
 Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
 \newblock Rumelhart, david e.; hinton, geoffrey e.; williams, ronald j.

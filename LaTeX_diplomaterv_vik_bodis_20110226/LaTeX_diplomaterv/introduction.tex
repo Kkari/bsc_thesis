@@ -13,7 +13,7 @@
 \end{enumerate}
 Ezek véleményem szerint mind kifejezetten izgalmas eredmények, tisztán látszik hogy a a terület él, fejlõdik és napról napra formálja a jelfeldolgozásról alkotott képünket.
 
-\paragraph{Jelen Dolgozat célja} A dolgozat fõ csapásiránya egy áttekintõ kép alkotása a neurális hálózatok felhasználásáról, különös tekintettel a neurális hálózatokkal történõ képosztályozásra. A dolgozatomban arra törekszem hogy a neurális hálózatok gyakorlati alkalmazását ezen az alterületen keresztül ismerjem meg. Mivel tanulmányaim során ilyesféle - matematikai vonatkozású - programozással nem találkoztam jelentõs mértékben, ezért ez egy jó alkalom arra hogy lássam hogy komplex matematikai absztrakciók hogyan öltenek testet szoftverként. Példáúl a sztochasztikus generativ vagy a konvoluciós neurális hálózatok hogyan fordíthatóak le effektív programmá, és hogyan lehet belõlük értékes alkalmazásokat készíteni. A szakdolgozat egy hosszabb projekt része, ahol egy Tegra mobil chipen kell majd képosztályzó algoritmusokat alkalmazni. A dolgozat írása alatt értékelõdik ki hogy a projektben a Tensorflow reális alternatíva lesz-e a további munkához, illetve hogy melyik képosztályzó eljárás felelne meg legjobban a céljainknak.
+\paragraph{Jelen Dolgozat célja} A dolgozat fõ csapásiránya egy áttekintõ kép alkotása a neurális hálózatok felhasználásáról, különös tekintettel a neurális hálózatokkal történõ képosztályozásra. A dolgozatomban arra törekszem hogy a neurális hálózatok gyakorlati alkalmazását ezen az alterületen keresztül ismerjem meg. Mivel tanulmányaim során ilyesféle - matematikai vonatkozású - programozással nem találkoztam jelentõs mértékben, ezért ez egy jó alkalom arra hogy lássam hogy komplex matematikai absztrakciók hogyan öltenek testet szoftverként. Példáúl a sztochasztikus generativ vagy a konvoluciós neurális hálózatok hogyan fordíthatóak le effektív programmá, és hogyan lehet belõlük értékes alkalmazásokat készíteni. A szakdolgozat egy hosszabb projekt része, ahol egy Tegra mobil chipen kell majd képosztályzó algoritmusokat alkalmazni ami egy robotrepülõgépen fog valós idejû döntéseket hozni. A dolgozat írása alatt értékelõdik ki hogy a projektben a Tensorflow reális alternatíva lesz-e a további munkához, illetve hogy melyik képosztályzó eljárás felelne meg legjobban a céljainknak.
 
 \paragraph{Érdeklõdésem a neurális hálózatok iránt} Az önálló labor munkám során és a szakirányomon oktatott kooperatív és tanuló rendszerek tárgyban találkoztam elõször ezzel a megközelítéssel. Az egyre modernebb ajánló algoritmusok keresése közepedte rá kellett eszmélnem hogy az ajánlórendszerek jövõje is összefonódik a neurális hálózatokéval, így ez a dolgozat habár elsõ látásra nem is látszik, de az önálló laboratóriumi projekt munkám továbbvitele. Egy potenciálisan érdekes, még alig kutatott terület, hogy a termékek hibás és hiányos leírását hogyan lehet augmentálni a termékek feltöltött képeibõl kinyert címke felhõvel. Erre nagy valószínûséggel alkalmazható hálózatok lennének a regionális konvoluciós hálózatok amiket érintõlegesen tárgyalok majd a konvuluciós hálózatokat taglaló fejezetben.
 
@@ -45,10 +45,9 @@ A szakdolgozat végére reményeim szerint az egyetemi tárgyak anyagát továbbfejles
 \item \ A tárgyterület irodalmának áttekintése, szemlézve a következõ struktúrákat:
 \begin{enumerate}
 \item \ Egyszerû többrétegû perceptron.
-\item \ Korlátozott boltzmann gépek.
-\item \ Mély hiedelem hálózatok.
+\item \ Korlátozott boltzmann gépek, és variánsai
 \item \ Konvoluciós Neurális hálózatok
-\item \ A legújabb fejlemények a neurális képfeldolgozás területén.
+\item \ A friss fejlemények a neurális képosztályozás területén.
 \end{enumerate}
 \item \ A saját fejlesztéseim bemutatása, amely egy két egyszerûbb struktúra a fent bemutatottak közül a tensorflow könyvtárral.
 \item \ A mérési eredményeim kiértékelése, tanulságok levonása.

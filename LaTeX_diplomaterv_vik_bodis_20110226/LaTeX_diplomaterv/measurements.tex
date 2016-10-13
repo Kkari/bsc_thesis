@@ -98,8 +98,33 @@ Az MNIST-en elért eredmények nem a legjobbak, de egészen optimális eredmények il
 
 Mint látni lehet itt ezek a metódusok már közel sem teljesítenek annyira fényesen. Az SVM-et nem én futtattam le, mert ahhoz a teszt gép nem volt elég erõs. A legjobb eredmény amit elértek az adathalmazon SVM-el az \emph{25,5\%} volt. Ez egy ICML 2010-es konferencián bemutatott eredmény volt, amit a "Improved Local Coordinate Coding using Local Tangents"\cite{svmCIFAR}-ban publikáltak.
 
-\section{Az MLP-vel elvégzett méréseim eredményei}
+\section{Az RBM struktúra optimalizálása}
+Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el méréseket az RBM struktúrával hogy megfigyeljem hogyan hasonlunak egymáshoz. Elõször a szabad energia függvények külöbségét definiáltam a \eqref{rbmPFromEnergy} szerint, és ezt optimalizáltam, majd simán hozzáadtamz általam lederivált gradienseket. A rekonstrukciós függvények lefutását a\figref{rbmReconstructionAdamSgdManual}-ábra szemlélteti. Látható hogy a 3 megközelítés között alig van különbség, az erõforrás felhasználasukban viszont jelentõs van, ezt a \tabref{rbmResourceTable}~táblázat szemlélteti. Jól látszik hogy az adaptív optimizátor megnövekedett számításigénnyel jár, az SGD ugyanannyi memóriát igényel, mert kb ugyanazt az impicit konstruált gráfot használja de kevésbé terheli a processzort, amíg a kézi optimalizálás még ennél is lényegesen kevesebb erõforrást igényel minden tekintetben. Éppen ezért a kézzel kiegészített megoldást választottam. Ez a megoldás jobban is skálázódik több számítási egységre, ha nagyobb RBM-et akar tanítani az ember, mert a rekonstrukciós gráf miatt nem fog kommunikációs overhead fellépni az eszközök között, mivel ez a gráf nem jön létre.
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/rbmReconstructionAdamSgdManual}
+\caption{Az RBM rekonstrukciós hibájának csökkenése a tanító batcheken. Az (a) ADAM optimizátorral, (b) SGD optimizátorral, (c) a gradiensek manuális megadásával.} 
+\label{fig:rbmReconstructionAdamSgdManual}
+\end{figure}
+
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\caption{Az RBM erõforrás mefelhasználása és hiba százaléka 10 epoch után, 256 neuron mellett különözõ optimizátorokkal.} \label{tab:mnistMlpMeasurements}
+	\begin{tabular}{ | l | c | c | c |}
+	\hline
+	optimizátor & Memória & Batch idõ & rekonstrukciós hiba \\
+	ADAM & 11.8 ms & 10.7 MB & 0.077 \\
+	SGD, tanulási ráta: 0.1 & 7.78 ms & 10.7 MB & 0.087 \\
+	SGD, tanulási ráta: 0.01 & 7.78 ms & 10.7 MB &  0.084 \\
+	SGD, tanulási ráta: 0.001 & 7.78 ms & 10.7 MB & 0.12 \\
+	Manuális & 2.67 ms & 5.62 MB & 0.07 \\
+	\hline
+	\end{tabular}
+\end{table}
+ 
+\section{Az MLP-vel elvégzett méréseim eredményei}
 \subsection{Az MNIST mérések}
 A többrétegû perceptronokról ismeretes hogy a rétegek között teljes kapcsolat van, és az adathalmaznak semmilyen tulajdonságát nem építik bele az architektúrába a priori. A konvoluciós hálózatok esetében, viszont a transzlációs invariancia elõre feltételezett. és maga a hálózat tartalmazza a kényszereket. Ez alapvetõen abban is megnyílvánul hogy a hálózat nem egy három dimenziós bemenetre (magasság, szélesség, mélység(RGB)) támaszaszkodik, hanem egy egyszerû vektorra. Az MNIST-en elért eredményeimet egy ilyen egyszerû struktúrával a \tabref{mnistMlpMeasurements}~táblázat mutatja be, a méréseket a fejezet elején ismertetett tesztgép CPU-ján végeztem. A bemenet egy 784 elemû vektor volt, ami praktikusan az MNIST adathalmaz egyetlen vektorba lapítva sorról sorra.
 
@@ -395,3 +420,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 \paragraph{A hibrid architektúra értékelése} Úgy gondolom hogy a jelentõs sebességnövekedés, és ha jól ki van alakítva akkor a klasszifikációs teljesítmény növekedése indokoltá teszi az ilyen struktúrák alkalmazásának megfontolását egyes szcenáriókban.
 
 \section{A CNN és az SVM+RBM összehasonlítása}
+A neurális hálózatok és a kernel metódusok között van egy ciklusosság hogy éppen melyiknek a kutatása jár elõrébb, és melyiket érdemes használni. Én személyes érdeklõdésbõl hoztam be a dolgozatomba az RBM + SVM kombinációját, ami sokáig egy nagyon jó klasszifikátornak számított, de talán mondhatjuk hogy eljárt felette az idõ. Egy félig meddig épkézláb konvoluciós hálózat a CIFAR-10 osztályozásának a problémáját kevesebb erõforrásból és kevesebb idõ alatt \emph{25\%}-al jobb eredményt tudott hozni mint az elõbb említett hibrid megoldás, és még a legjobb SVM-es eredménynél \cite{svmCIFAR} is fél százalékkal jobb eredményt volt képes hozni. Az \url{http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130}-en összeszedett listából az látszok hogy az eddig elért legjobb eredmény az adathalmazon \emph{3.47\%} ami \emph{21.43\%}-al jobb mint a legjobb SVM-es megoldás. Nagyon meg kellene fontolnom manapság hogy milyen feladatoknál használnék SVM-eket ANN-ek helyett.
+
+\section{A három megközelítés végsõ összehasonlítása}
+Úgy gondolom hogy ha az ember ki tud a tanulás jellege miatt térbeli struktúrákat használni, akkor nagyon indokolt eredményekkel kell alátámasztani hogy az ember a konvoluciós neurális hálózatokkal szemben, egy másik architektúra javára döntsön. Ehhez viszont számolni kell a megnövekedett erõforrás igényekkel tanítás közben. Az MLP-ket úgy tudom elképzelni hogy a közeljövõben egy nagyobb architektúra részeként lehet majd használni, mint például az adaptív aktivációs függvényeknél ahogyan azt a "Learning Activations Functions to Improve Deep Neural Networks"\cite{learnActivationFunc} is taglalja. A kernel gépeknek most egy kicsit hidegebb korszakát éljük, mert ezeket a struktúrákat tudtommal lényegesen nehezebb nagyon nagy adathalmazokon tanítani, de úgy gondolom hogy mivel még ezeken a módszereken is nagyon sokan dolgoznak esetleg elképzelhetõ hogy pár év múlva ugyanakkora népszerûségnek fognak örvendeni mint 2012-ben. De én most nem látnám indokoltnak hogy ezeket a struktúrákat használjam képosztályozási feladatokra, még fejlesztett lokalitású\cite{svmCIFAR} kernelekkel sem.

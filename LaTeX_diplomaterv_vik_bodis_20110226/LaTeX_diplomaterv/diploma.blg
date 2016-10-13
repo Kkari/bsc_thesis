@@ -11,6 +11,7 @@ A level-1 auxiliary file: tensorflow.aux
 A level-1 auxiliary file: neural_image_classification.aux
 A level-1 auxiliary file: own_work.aux
 A level-1 auxiliary file: measurements.aux
+A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
@@ -18,6 +19,7 @@ Warning--I didn't find a database entry for "imagenetSample"
 Warning--I didn't find a database entry for "ExploringStrategies"
 Warning--I didn't find a database entry for "genAdvNet"
 Warning--I didn't find a database entry for "generatingImageDesc"
+Warning--I didn't find a database entry for "learnActivationFunc"
 Warning--to sort, need author or key in scalingCNN
 Warning--empty journal in genImgDesc
 Warning--empty journal in alexNet
@@ -36,48 +38,49 @@ Warning--empty journal in hrbm
 Warning--empty journal in svmCIFAR
 Warning--empty journal in sag
 Warning--empty journal in deconvnet
+Warning--empty journal in tensorflow
 Warning--empty journal in backProp
 Warning--empty journal in mlpFrontier
 Warning--empty journal in waveNet
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            593 strings with 6075 characters,
-and the built_in function-call counts, 3848 in all, are:
-= -- 351
-> -- 127
+            599 strings with 6228 characters,
+and the built_in function-call counts, 4051 in all, are:
+= -- 370
+> -- 134
 < -- 0
-+ -- 56
-- -- 36
-* -- 178
-:= -- 702
-add.period$ -- 53
-call.type$ -- 19
-change.case$ -- 75
++ -- 59
+- -- 38
+* -- 186
+:= -- 740
+add.period$ -- 56
+call.type$ -- 20
+change.case$ -- 79
 chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 184
-empty$ -- 335
-format.name$ -- 36
-if$ -- 760
+cite$ -- 42
+duplicate$ -- 194
+empty$ -- 352
+format.name$ -- 38
+if$ -- 800
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 17
-newline$ -- 94
-num.names$ -- 36
-pop$ -- 125
+int.to.str$ -- 20
+missing$ -- 18
+newline$ -- 99
+num.names$ -- 38
+pop$ -- 131
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 59
 quote$ -- 0
-skip$ -- 130
+skip$ -- 137
 stack$ -- 0
-substring$ -- 96
+substring$ -- 101
 swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 76
-warning$ -- 21
-while$ -- 36
-width$ -- 21
-write$ -- 166
-(There were 25 warnings)
+type$ -- 80
+warning$ -- 22
+while$ -- 38
+width$ -- 22
+write$ -- 175
+(There were 27 warnings)

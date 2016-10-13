@@ -3,7 +3,7 @@
 \BOOKMARK [0][-]{chapter*.4}{Bevezeto}{}% 3
 \BOOKMARK [1][-]{section.0.1}{Motiv\341ci\363}{chapter*.4}% 4
 \BOOKMARK [1][-]{section.0.2}{A g\351pi tanul\341s igen r\366vid t\366rt\351nelme}{chapter*.4}% 5
-\BOOKMARK [0][-]{chapter.1}{A Tensorflow \366kosziszt\351ma \341ttekint\351se}{}% 6
+\BOOKMARK [0][-]{chapter.1}{A Tensorflowtensorflow \366kosziszt\351ma \341ttekint\351se}{}% 6
 \BOOKMARK [1][-]{section.1.1}{A Tensorflow k\366nyvt\341r.}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.2}{A Tensorflow modellek monitoroz\341sa \351s hibamentes\355t\351se}{chapter.1}% 8
 \BOOKMARK [1][-]{section.1.3}{A Tensorflow fut\341s k\366zben}{chapter.1}% 9
@@ -19,26 +19,30 @@
 \BOOKMARK [0][-]{chapter.3}{H\341l\363zatok impelment\341l\341sa \351s elemz\351se tensorflowban}{}% 19
 \BOOKMARK [1][-]{section.3.1}{A baseline oszt\341lyoz\363k}{chapter.3}% 20
 \BOOKMARK [1][-]{section.3.2}{A saj\341t magam \341ltal kialak\355tott fejlesztok\366rnyezet}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.3}{A saj\341t implement\341ci\363k bemutat\341sa}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.3.1}{A h\341l\363zatok monitoroz\341sa}{section.3.3}% 23
-\BOOKMARK [2][-]{subsection.3.3.2}{A logiszikus regresszi\363}{section.3.3}% 24
-\BOOKMARK [2][-]{subsection.3.3.3}{A t\366bbr\351tegu perceptron}{section.3.3}% 25
-\BOOKMARK [2][-]{subsection.3.3.4}{Az RBM h\341l\363zat}{section.3.3}% 26
-\BOOKMARK [2][-]{subsection.3.3.5}{A DBN strukt\372ra}{section.3.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.6}{Hibrid modellek}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.7}{A Konvoluci\363s modell}{section.3.3}% 29
-\BOOKMARK [2][-]{subsection.3.3.8}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.3}% 30
-\BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 31
-\BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.4}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.1}{Az MNIST m\351r\351sek}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.2}{A CIFAR-10 m\351r\351sek}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.4}% 38
-\BOOKMARK [1][-]{section.4.5}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 39
-\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s \351s az MLP h\341l\363zatok \366sszehasonl\355t\341sa}{chapter.4}% 40
-\BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 41
-\BOOKMARK [1][-]{section.4.8}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 42
-\BOOKMARK [0][-]{chapter*.116}{K\366sz\366netnyilv\341n\355t\341s}{}% 43
-\BOOKMARK [0][-]{chapter*.117}{Irodalomjegyz\351k}{}% 44
+\BOOKMARK [1][-]{section.3.3}{A k\355s\351rletek alatt haszn\341lt optimiz\341torok}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.4}{A saj\341t implement\341ci\363k bemutat\341sa}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.4.1}{A h\341l\363zatok monitoroz\341sa}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.2}{A logiszikus regresszi\363}{section.3.4}% 25
+\BOOKMARK [2][-]{subsection.3.4.3}{A t\366bbr\351tegu perceptron}{section.3.4}% 26
+\BOOKMARK [2][-]{subsection.3.4.4}{Az RBM h\341l\363zat}{section.3.4}% 27
+\BOOKMARK [2][-]{subsection.3.4.5}{A DBN strukt\372ra}{section.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.4.6}{Hibrid modellek}{section.3.4}% 29
+\BOOKMARK [2][-]{subsection.3.4.7}{A Konvoluci\363s modell}{section.3.4}% 30
+\BOOKMARK [2][-]{subsection.3.4.8}{A konvoluci\363s modell sk\341l\341z\341sa}{section.3.4}% 31
+\BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 32
+\BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.4}{Az RBM strukt\372ra optimaliz\341l\341sa}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.5}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.5.1}{Az MNIST m\351r\351sek}{section.4.5}% 38
+\BOOKMARK [2][-]{subsection.4.5.2}{A CIFAR-10 m\351r\351sek}{section.4.5}% 39
+\BOOKMARK [2][-]{subsection.4.5.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.5}% 40
+\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.7}{A konvoluci\363s \351s az MLP h\341l\363zatok \366sszehasonl\355t\341sa}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.8}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.9}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.10}{A h\341rom megk\366zel\355t\351s v\351gso \366sszehasonl\355t\341sa}{chapter.4}% 45
+\BOOKMARK [0][-]{chapter.5}{Az eredm\351nyek \366sszefoglal\363 \351rt\351kel\351se}{}% 46
+\BOOKMARK [0][-]{chapter*.121}{K\366sz\366netnyilv\341n\355t\341s}{}% 47
+\BOOKMARK [0][-]{chapter*.122}{Irodalomjegyz\351k}{}% 48

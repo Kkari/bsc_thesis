@@ -1,0 +1,13 @@
+\chapter{Az eredmények összefoglaló értékelése}
+\paragraph{Megszerzett tudás}Ebben a szakdolgozatban úgy vélem hogy az egyetemen megszerzett tudásbázisomra alapozva képes voltam lényegesen tovább bõvíteni az ismereteimet a gépi tanulás, ezen felül is a képosztályozás témakörében. A következõ ismeretek megszerzését tartom kifejezetten elõnyösnek:
+\begin{itemize}
+\item A domináns irányzatok és architektúrák megismerése a neurális hálózatokkal való képosztályozásban.
+\item Az egyes adathalmazok megismerése amin az ember érdemben össze tudja hasonlítani a munkáját másokéval.
+\item Több fejlesztési keretrendszer futólagos, és a Tensorflow -mint a neurális hálózatok fejlesztésére alkalmas eszköz- mélyebb megismerése
+\item Tapasztalat szerzése abban hogy hogyan kell teljesítmény méréseket végezni a hálózatokon, amik egy erõforrás korlátozott alkalmazásnál igen fontosak lehetnek.
+\item A neurális hálózatok tanítására használt hardwarek lehetõségeinek és korlátjainak megismerése, illetve futólagos érintése az olyan új megoldásoknak mint az nvidia jetson platform.
+\end{itemize}
+
+\paragraph{A végsõ konkluziók levonása} Mint azt a dolgozatom elején is említettem, ezeket az eljárásokat azzal a céllal értékeltem hogy ki, hogy egy valós projektben legyenek majd majdan alkalmazva, ahol videofelvételeken szeretnénk majd objektumokat felismerni egy erõforrás korlátos rendszerben. Arra a konkluzióra jutottam hogy a Tensorflow a megfelelõ keret rendszer lenne a céljainknak, mégpedig azért mert igen könnyen tudnánk vele a hálózatokat fejleszteni, finomhangolni, nagyteljesítményû GPU griden tanítani, majd egy erõforrás korlátos beágyazott rendszerre telepíteni. Architektúrális szempontból én úgy gondolom hogy a projektnek legmegfelelõbb alap struktúra a konvoluciós hálózatok lennének, mivel igazán nagy memória és számítási igényük csak tanítás közben van, de utána egy korszerû GPU-n kb 200 képet tudnak kiértékelni másodpercenként, ami számunkra kielégítõ sebesség.
+
+\paragraph{További munka, és fejlesztési lehetõségek} Az elsõdleges célunk az lesz hogy a jelenlegi tudásunkra építve egy prototípus képosztályzó rendszert építsünk a robotrepülõgéphez. Ehhez hozzá tartozik majd további irodalomkutatás a konvoluciós hálókkal való videofeldolgozás területén, ami egy fantasztikusan izgalmas terület. Egy másik potenciális, lényegesen alapkutatás jellegûbb irány amivel külsõ konzulensem foglalkozik. Mint a láthattuk a modern hálózatoknak hatalmas paraméter terük van, és az ebben való optimalizálás komoly problémákat tud okozni algoritmikai komplexitása, és erõforrás igénye miatt. Egy megfelelõen választott hibafüggvénnyel viszont esetlegesen el lehetne érni hogy csak egy kissebb, de azonos tulajdonságokkal rendelkezõ hálót keljen tanítani. 
