@@ -97,11 +97,10 @@ class Rbm:
         self.g = tf.Graph()
         with self.g.as_default():
             self.build_rbm()
-            self.rbm_merged = tf.merge_all_summaries()
             if self.num_classes != 0:
                 self.optimizer, self.accuracy = self.build_predictive_layer()
-                self.all_merged = tf.merge_all_summaries()
 
+            self.merged_summary = tf.merge_all_summaries()
             self.tf_session = tf.Session(config=tf.ConfigProto(**self.config))
             self.tf_session.run(tf.initialize_all_variables())
             self.saver = tf.train.Saver()
@@ -219,16 +218,16 @@ class Rbm:
                                                        tf.reduce_mean(self.input_data - v_prob, 0))
                 tf.histogram_summary('rbm/visible_bias_update', self.v_bias_upd8)
 
-            self.updates = [self.w_upd8, self.v_bias_upd8, self.h_bias_upd8]
+            # self.updates = [self.w_upd8, self.v_bias_upd8, self.h_bias_upd8]
 
-            # cost = tf.reduce_mean(self.free_energy(self.input_data)) - tf.reduce_mean(self.free_energy(v_state))
-            # optimizer = tf.train.GradientDescentOptimizer(self.learning_rate).minimize(cost, var_list=[
-            #     self.W,
-            #     self.h_biases,
-            #     self.v_biases
-            # ])
-            #
-            # self.updates = optimizer
+            cost = tf.reduce_mean(self.free_energy(self.input_data)) - tf.reduce_mean(self.free_energy(v_state))
+            optimizer = tf.train.GradientDescentOptimizer(learning_rate=self.learning_rate).minimize(cost, var_list=[
+                self.W,
+                self.h_biases,
+                self.v_biases
+            ])
+
+            self.updates = optimizer
 
             with tf.name_scope('reconstruction_cost_function'):
                 # Create a mean square cost function node.
@@ -306,6 +305,7 @@ class Rbm:
         }
 
     def fit(self, train_dataset, validation_dataset, num_epochs=10):
+        step = 0
         for i in range(num_epochs):
             print("epoch: %s" % i)
             permutation = np.random.permutation(train_dataset.shape[0])
@@ -315,24 +315,39 @@ class Rbm:
 
             # print('Batches shape: %s' % len(batches))
             for j, batch in enumerate(batches):
+                step = step + 1
                 # print('batch shape: ', batch.shape)
-                if j % 1000 == 0:
+                if j % 100 == 0:
                     print("batch_number: %s" % j)
-                self.tf_session.run(
-                    self.updates,
-                    feed_dict=self._create_feed_dict(batch)
-                )
 
-            run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
-            run_metadata = tf.RunMetadata()
-            rec_loss = self.tf_session.run(
-                self.reconstruction_cost,
-                run_metadata=run_metadata,
-                options=run_options,
-                feed_dict=self._create_feed_dict(validation_dataset))
-            # self.train_writer.add_run_metadata(run_metadata, 'step_ep%d_step%d' % (i, j))
-            # self.train_writer.add_summary(summary, j)
-            print('rec_loss: %s' % rec_loss)
+                    run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+                    run_metadata = tf.RunMetadata()
+                    # print(batch)
+                    rec_loss, summary = self.tf_session.run(
+                        [self.updates, self.merged_summary],
+                        run_metadata=run_metadata,
+                        options=run_options,
+                        feed_dict=self._create_feed_dict(batch)
+                    )
+                    self.train_writer.add_run_metadata(run_metadata, 'step_ep%d_step%d' % (i, j))
+                    print(step)
+                    self.train_writer.add_summary(summary, step)
+                else:
+                    self.tf_session.run(
+                        self.updates,
+                        feed_dict=self._create_feed_dict(batch)
+                    )
+
+        run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+        run_metadata = tf.RunMetadata()
+        rec_loss, summary = self.tf_session.run(
+            [self.reconstruction_cost, self.merged_summary],
+            run_metadata=run_metadata,
+            options=run_options,
+            feed_dict=self._create_feed_dict(validation_dataset))
+        self.train_writer.add_run_metadata(run_metadata, 'step_ep%d_step%d' % (i, j))
+        self.train_writer.add_summary(summary, step)
+        print('rec_loss: %s' % rec_loss)
 
         # self.saver.save(sess, './rbmModelTrained')
 

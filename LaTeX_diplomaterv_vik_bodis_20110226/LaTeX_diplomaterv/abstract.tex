@@ -3,7 +3,15 @@
 %----------------------------------------------------------------------------
 \chapter*{Kivonat}\addcontentsline{toc}{chapter}{Kivonat}
 
-Jelen dokumentum egy diplomaterv sablon, amely formai keretet ad a BME Villamosmérnöki és Informatikai Karán végzõ hallgatók által elkészítendõ szakdolgozatnak és diplomatervnek. A sablon használata opcionális. Ez a sablon \LaTeX~alapú, a \emph{TeXLive} \TeX-implementációval és a PDF-\LaTeX~fordítóval mûködõképes.
+A szakdolgozatomnak két súlypontja volt, az egyik hogy elmélyítsem a tudásomat a mesterséges neurális architektúrák területén elméleti síkon, a másik hogy elsajátítsam a Tensorflow - ami egy elosztott, gráf alapú numerikus könyvtár a Googletõl -  ökoszisztémájának kezelését az elõbb említett hálózatok programozásán keresztül. Mivel ez mindenféle keret nélkül hatalmas témakör lenne, ezért a dolgozat fókuszául a képosztályozást választottam.
+
+A szakdolgozat elõször is arra a kérdésre próbál meg röviden választ adni hogy miért kell még ma is effektív tudással rendelkeznie az embernek a hálók mûködésérõl ahhoz hogy valóban komplex rendszerekben használni tudja õket, még akkor is ha az eddig elkészült architektúrák nagy része sokszor elõre elkészítve, sõt akár bizonyos feladatokra elõre tanítva is elérhetõ. Ezután egy rövid történelmi összefoglalóval teszem kontextusba a dolgozat témakörét.
+
+A dolgozat irodalom kutatással foglalkozó részében a tensorflow ökoszisztémáját, és a mesterséges neurális hálózatokkal való képosztályozás elméletét tekintem át, véleményem szerint az összes fõ témakört érintve. Ezek sorrendben az elõtanulás nélküli többrétegû perceptronok, az elõtanított többrétegû perceptronok, a konvoluciós hálózatok, és a hibrid architektúrák. A hibrid architektúrákon belül kitérek két megközelítésre is. Az elsõ amikor egy generatív architektúrát kombinálunk egy teljesen külön álló diszkriminatív osztályzóval,  esetemben egy korlátozott boltzmann gépet egy szupport vektor géppel. A második amikor maga a neurális architektúra hibrid, tehát egyben modellben ötvözi a generatív és a diszkriminatív megközelítést. Ez a hibrid korlátozott boltzmann gépek megközelítése ami egy igen új fejlemény. Ezek után ismertetem a terület egy-két számomra izgalmas és új fejleményét.
+
+A kísérleti részben az elõbbiekben leírt elméleti részbõl kísérletezem számos architektúrával az MNIST és a CIFAR-10 adathalmazokon. Itt inkább elõtérbe helyezem az egyes architektúrákat, és a hálózatok futás idejû karakterszitikáit, és elhanyagolom az olyan témaköröket mint a bemeneti adatok elõfeldolgozása, a tanítás korai megállítása vagy a hiperparaméter térben való effektív keresés és ezek kombinációinak a (kereszt)-validációja. Az elõbb említett pontok természetesen egy valós ipari környezetben nagy jelentõséggel bírnának, de egyenként is érdemesek lennének akár egy egész TDK, szakdolgozat vagy diploma témának. De sajnos elvennék a fókuszt attól amivel foglalkozni szerettem volna, nevezetesen a különbözõ modellekkel való kísérletezéstõl.
+
+A dolgozatot az elõbbi fejezetekbõl levont tanulságokkal zárom.
 \vfill
 
 %----------------------------------------------------------------------------
@@ -11,6 +19,14 @@ Jelen dokumentum egy diplomaterv sablon, amely formai keretet ad a BME Villamosm
 %----------------------------------------------------------------------------
 \chapter*{Abstract}\addcontentsline{toc}{chapter}{Abstract}
 
-This document is a \LaTeX-based skeleton for BSc/MSc~theses of students at the Electrical Engineering and Informatics Faculty, Budapest University of Technology and Economics. The usage of this skeleton is optional. It has been tested with the \emph{TeXLive} \TeX~implementation, and it requires the PDF-\LaTeX~compiler.
+I emphasised two main aspects in my B.Sc thesis. On one hand, I have wanted to deepen my theoretical knowledge in the area of artificial neural networks. On the other, I have wanted to master Tensorflow - a computational graph based distributed numerical framework from Google - through the programming of neural networks. However, it would have been an enormous topic to cover without any constraints, so I have chosen image classification as my topic of focus.
+
+First, I explain the motivation behind my work. The reason why I think that it is still relevant to have profound knowledge of neural architectures if someone wants to use them in a complex application, even though there are a lot of architectures out there ready-made or even pretrained for a specific task.
+
+In the literature research section I have glanced through the ecosystem of Tensorflow and the theory behind neural image classification, covering the most important topics I believe. These were as follows: multilayer perceptrons with and without pretraining, convolutional networks and the hybrid architectures. I have written briefly over two approaches regarding the hybrid solutions. The first one is when one has separately a generative model and a discriminative classifier, in my case this would be a restricted boltzmann machine for the former and a support vector machine for the latter. The second one is when these two are fusioned into one model, which is fascinating to me. I have found two such approaches, the hybrid restricted boltzmann machine (Larochelle 2008), and its stacked version the stacked boltzmann expert network (Alexander G. 2015). In the last section of my research I have highlighted some newer, intriguing advancements in the field.
+
+In the measurements section of my thesis I did plenty of experimentation on some of the models that I have mentioned before, for evaluation I have used the MNIST and the CIFAR-10 datasets. I had to make a decisive decision which parts of a full experimentational setting to neglect. I have chosen to pay little to no attention to the preprocessing of data, optimal early stopping algorithms for training, effective search and evaluation in the hyperparameter space. These could make good candidates for a thesis on their own, but they would have gravely drawn the attention from my main goal which was to experiment on a wide range of models. 
+
+I conclude my thesis with a brief summarization of what I have learned from the previous sections.
 \vfill
 

@@ -9,11 +9,25 @@ A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyam
 \subsection{Az adathalmazok}
 \paragraph{Bevezetés} Mint a legtöbb kutatási területnek, ennek is vannak jól ismert "benchmark" adathalmazai, amelyek viszonyítási alapként lehetõséget biztosítanak az egymástól eltérõ algoritmusok egymáshoz való kiértékelésére. Mivel ezekre az adathalmazokra sokat fogok hivatkozni, ezért szeretném õket egy-egy bekezdésben bemutatni.
 
-\paragraph{MNIST} Az MNIST adatbázis fekete fehért 20x20 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legalapabb adathalmaz 
+\paragraph{MNIST} Az MNIST adatbázis fekete fehért 20x20 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legalapabb adathalmaz. Erre egy pékdát mutat az \figref{mnistSample}~ábra. 
 
-\paragraph{CIFAR-10} A CIFAR-10 egy jóval összetettebb adathalmaz, 60'0000 annotált 32x32 pixeles, színes képet tartalmaz. A képek 10 osztályra vannak felosztva, osztályonként 6000 képpel. Az adathalmazból 50'000 kép van tanításra, és 10'000 tesztelésre fenntartva. 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/mnistSample.png}
+\caption{Példa az MNIST adathalmaz képeire. Forrás: \url{http://knowm.org/wp-content/uploads/Screen-Shot-2015-08-14-at-2.44.57-PM.png}.} 
+\label{fig:mnistSample}
+\end{figure}
 
-\paragraph{CIFAR-100} A CIFAR-100 felépítése megegyezik a CIFAR-10el, de osztályrendszere az elõbbinél lényegesen összetettebb, 100 osztályt tartalmaz és minden osztályhoz 600 képt tartozik, ezen felül még 20 általánosabb osztályba is be vannak sorolva a képek, hogy a hálózat általánosításáról következtetéseket lehessen levonni. Például az halak szuperosztályhoz tartozik a rája, lazac, stb.
+\paragraph{CIFAR-10} A CIFAR-10 egy jóval összetettebb adathalmaz, 60'0000 annotált 32x32 pixeles, színes képet tartalmaz. A képek 10 osztályra vannak felosztva, osztályonként 6000 képpel. Az adathalmazból 50'000 kép van tanításra, és 10'000 tesztelésre fenntartva. Erre egy példát mutat a \figref{cifarSample}~ábra.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/cifarSample.png}
+\caption{Példa a CIFAR-10/100 adathalmaz képeire. Forrás:\url{http://www.cs.toronto.edu/~kriz/cifar.html}} 
+\label{fig:cifarSample}
+\end{figure}
+
+\paragraph{CIFAR-100} A CIFAR-100 felépítése megegyezik a CIFAR-10el, de osztályrendszere az elõbbinél lényegesen összetettebb, 100 osztályt tartalmaz és minden osztályhoz 600 képt tartozik, ezen felül még 20 általánosabb osztályba is be vannak sorolva a képek, hogy a hálózat általánosításáról következtetéseket lehessen levonni. Például az halak szuperosztályhoz tartozik a rája, lazac, stb. Példának úgyanúgy a CIFAR-10 mintája, a \figref{cifar10Sample}~ábra tekinthetõ.
 
 \paragraph{IMAGENET} Az IMAGENET a világ legnagyobb képgyüjteménye, a WordNet lexikális adatbázis szinoníma halmazai szerint vannak annotálva a képek. Jelenlegi statiszikái:
 \begin{itemize}
@@ -23,7 +37,14 @@ A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyam
 \item 1'000 szinoníma halmazhoz tartozik SIFT jellemzõkkel ellátott kép
 \item 1'200'000 kép van SIFT jellemzõkkel ellátva.
 \end{itemize}
-Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, példáúl út, ég, ember vagy ágy.
+Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, példáúl út, ég, ember vagy ágy. A \cite{imagenetSample}~ábra erre mutat pár példát.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=100mm, keepaspectratio]{figures/imagenetSample.png}
+\caption{Példa az IMAGENET adathalmaz képeire. Forrás: \url{http://5047-presscdn.pagely.netdna-cdn.com/wp-content/uploads/2014/12/imagenet.jpg}.} 
+\label{fig:imagenetSample}
+\end{figure}
 
 \subsubsection{A metrika}
 \paragraph{MNIST és CIFAR} Az MNIST és a CIFAR-10/100 Adathalmazok esetében mindig az egyszerû pontosság értéket nézzük, tehát az eltalált képek számát osztva a hibásan osztályozott képet számával.

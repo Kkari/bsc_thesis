@@ -47,12 +47,17 @@ if __name__ == '__main__':
     test_images = test_images[shuffle_test]
     test_labels = test_labels[shuffle_test]
 
-    rbm = Rbm(num_hidden=128, num_classes=10, num_features=784, learning_rate=0.01)
+    rbm = Rbm(num_hidden=256, num_classes=0, num_features=784, learning_rate=0.1)
     rbm.init_rbm()
-    # rbm.fit(mnist.train.images, mnist.test.images, num_epochs=1)
-    rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
-                      test_data=mnist.test.images, test_labels=mnist.test.labels, num_steps=30000)
+    rbm.fit(mnist.train.images, mnist.test.images, num_epochs=10)
+    # rbm.fit_predictor(train_data=mnist.train.images, train_labels=mnist.train.labels,
+    #                   test_data=mnist.test.images, test_labels=mnist.test.labels, num_steps=30000)
 
     # rbm = RBM(num_hidden=250, verbose=1)
     # rbm.fit(mnist.train.images, mnist.test.images)
     #
+    # nongrad = 0.0695756
+    # adam = : 0.0771948
+    # sgd 0.1: 0.0873572
+    # sgd 0.01: 0.0837903
+    # sgd 0.001: 0.119547

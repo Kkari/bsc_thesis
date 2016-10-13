@@ -14,6 +14,7 @@ A level-1 auxiliary file: measurements.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
+Warning--I didn't find a database entry for "imagenetSample"
 Warning--I didn't find a database entry for "ExploringStrategies"
 Warning--I didn't find a database entry for "genAdvNet"
 Warning--I didn't find a database entry for "generatingImageDesc"
@@ -40,7 +41,7 @@ Warning--empty journal in mlpFrontier
 Warning--empty journal in waveNet
 You've used 19 entries,
             2118 wiz_defined-function locations,
-            591 strings with 6047 characters,
+            593 strings with 6075 characters,
 and the built_in function-call counts, 3848 in all, are:
 = -- 351
 > -- 127
@@ -79,4 +80,4 @@ warning$ -- 21
 while$ -- 36
 width$ -- 21
 write$ -- 166
-(There were 24 warnings)
+(There were 25 warnings)
