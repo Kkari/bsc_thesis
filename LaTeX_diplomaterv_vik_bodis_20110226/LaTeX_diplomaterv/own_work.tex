@@ -11,7 +11,7 @@ A következõ részben szeretném bemutatni saját mukámat és mérési eredményeimet. A
 \end{enumerate}
 
 \section{A baseline osztályozók}
-Természetesen nem lehet méréseket végezni referencia adatok nélkül, ezért a CIFAR-10 és az MNIST adathalmazon is lefuttattam két ismert, minden nehézség nélkül használható osztályozó algoritmust. Az egyik a Logisztikus regresszió volt, a másik pedig az SVM. Mindkettõ bemenetére közvetlen a kép pixeljeit tettem.
+Természetesen nem lehet méréseket végezni referencia adatok nélkül, ezért a CIFAR-10 és az MNIST adathalmazon is lefuttattam két ismert, minden nehézség nélkül használható osztályzó algoritmust. Az egyik a Logisztikus regresszió volt, a másik pedig az SVM. Mindkettõ bemenetére közvetlen a kép pixeljeit tettem.
 
 \section{A saját magam által kialakított fejlesztõkörnyezet}
 A Tensorflow ökoszisztéma nagyon jó pontja a csúcsra járatott monitorozási lehetõségek, viszont nem triviális egy olyan struktúra kialakítása ahol az ember nagy hatékonysággal dolgozhat. Hosszas kísérletezés után a következõ munkafolyamatot találtam a legjobbnak:
@@ -27,7 +27,7 @@ A Tensorflow ökoszisztéma nagyon jó pontja a csúcsra járatott monitorozási lehet
 Nagyon sok optimizátor létezik a numerikus optimalizálási feladatok megoldására, ezt most nem is szeretném különösebben taglalni mert ez egy olyan terület amibõl már sok szép Phd. munka született és hozzávetõlegesen 20-30 oldallal növelné meg a dolgozatomat.
 Dióhéjjban, én két optimizátorral kísérleteztem, a klasszikus \emph{sztochasztikus mini-batch} és az \emph{adaptiv momentum becslési} módszerrel. Az elsõ elõnye hogy kevesebbet kell számolni, de vagy konstans tanulási rátát használ, vagy kívülrõl kell valamilyen lehûléses algortimussal kontrollálni ezt, ami nehezebbé teszi a használatát. 
 A második egy adaptív módszer, ahol az optimizátorba bele van építve a tanulási ráta beállítása, így dinamikusan tudja lekezelni a hibafelület topológiájának a változását. Ennek az algoritmusnak két hiperparamétere van, de ezeket nem feltétlen kell megadni, mert a módszer szerzõ mindkettõhöz megadtak általánosságban jól mûködõ értékeket.
-A különözõ optimizátorok összehasonlításáról az érdeklõdõek \url{http://sebastianruder.com/optimizing-gradient-descent} ezen a honlapon olvashatnak egy nagyon jó összefoglalást.
+A különözõ optimizátorok összehasonlításáról az érdeklõdõk \url{http://sebastianruder.com/optimizing-gradient-descent} ezen a honlapon olvashatnak egy nagyon jó összefoglalást.
 
 \section{A saját implementációk bemutatása}
 \subsection{A hálózatok monitorozása}
@@ -90,15 +90,15 @@ Az MLP-ben használt elemi alkotóelemeim:
 \item \emph{sgm:} A sigmoid aktivációs függvény amely szintén egy aktivációs függvény mint a relu, de nehezebb a deriváltját számolni, és érzékenyebb az adatok normalizáltságára. Az sigmoid definiciója \eqref{sigmoid}~képleten látszik.
 \end{itemize}
 
-\begin{align} \label{fullyConnected}
+\begin{align} \label{eq:fullyConnected}
 X^{(l)} = W*Activation(X^{(l-1)})
 \end{align}
 
-\begin{align} \label{reLu}
+\begin{align} \label{eq:reLu}
 reLu(x) = max(0, x)
 \end{align}
 
-\begin{align} \label{sigmoid}
+\begin{align} \label{eq:sigmoid}
 sgm(x) = \frac{1}{1 + e^x}
 \end{align}
 
@@ -113,7 +113,7 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 \item Átvezettem egy relu rétegen, amitõl 0 és 1 közé normalizálódott.
 \end{enumerate}
 
-\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és adaptív gradiens (ADAM) optimizátorral. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{RbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Illetve a kísérletezés egy másik dimenziója az volt hogy egyes esetekben megengedtem az RBM felé kapcsolt regresszornak hogy az elõre megtanult súlyokat változtassa (ezt hívjuk fine-tuning-nak), más esetben pedig nem. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide} alapján végeztem.
+\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és adaptív gradiens (ADAM) optimizátorral. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{RbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Illetve a kísérletezés egy másik dimenziója az volt hogy egyes esetekben megengedtem az RBM felé kapcsolt regresszornak hogy az elõre megtanult súlyokat változtassa (ezt hívjuk fine-tuning-nak), más esetben pedig nem. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide}-ben leírtak alapján végeztem, de az osztályozásban meg hoztak érzékelhetõ javulást, ezért ezeket a méréseknél nem fejtem ki részletesen.
 
 \begin{figure}[!ht]
 \centering
@@ -133,7 +133,7 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 Miután az RBM struktrát megalkottam természetesen le szerettem volna tesztelni többrétegû elõre tanított hálózatok teljesítményét is. Erre nem a saját RBM hálózatomat használtam, hanem egy külsõ könyvtárat, ami viszont hibás volt úgyhogy helyenként meg kellett foltoznom. Itt jött jól az a tudás amit az RBM programozásánál szereztem, mert magabiztosan mozogtam a pythonban írt tensorflow kódban.
 
 \subsection{Hibrid modellek}
-A kísérletezésünk során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM-nek. Így hatalmas dimenzió csökkenést értünk el, pl 784-rõl 64-re az MNIST esetében, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit sajnos nem is tudtam megtanítani reális idõ alatt egy SVM-nek. Ezért letömörítettem az az 3072 dimenziós CIFAR-10 adathalmazt egy 783 dimenziós térbe RBM-ek segítségével ami mindemellé még jellemzõ kiemelést is végzett, és ott tanítottam rajta a szupport vektor gépet, remélve hogy jó osztályozási eredményeket kapok. Ezt két megközelítésben próbáltam meg, az egyik az volt amikor egyetlen RBM-em volt, 3072 bemeneti és 783 kimeneti neuronnal, a másik az volt amikor 3 RBM-et tanítottam meg, minden színcsatornára egyet, és utána ezeket egy tömbbé összefûzve adtam át az SVM-nek. A két megközelítést a \figref{svmRbm}~ábra szemlélteti.
+A kísérletezésem során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM-nek. Így hatalmas dimenzió csökkenést értünk el, pl 784-rõl 64-re az MNIST esetében, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit iszonyatosan hosszú idõ alatt tudtam megtanítani egy SVM-nek. Ezért letömörítettem az az 3072 dimenziós CIFAR-10 adathalmazt egy 783 dimenziós térbe RBM-ek segítségével ami mindemellé még jellemzõ kiemelést is végzett, és ott tanítottam rajta a szupport vektor gépet, remélve hogy jó osztályozási eredményeket kapok. Ezt két megközelítésben próbáltam meg, az egyik az volt amikor egyetlen RBM-em volt, 3072 bemeneti és 783 kimeneti neuronnal, a másik az volt amikor 3 RBM-et tanítottam meg, minden színcsatornára egyet, és utána ezeket egy tömbbé összefûzve adtam át az SVM-nek. A két megközelítést a \figref{svmRbm}~ábra szemlélteti.
 
 \begin{figure}[!ht]
 \centering
@@ -161,7 +161,7 @@ Az egyes operációkat szeretném megymagyarázni röviden amiket a konvoluciós model
 \end{itemize}
 
 \begin{align}
-\label{convDef}
+\label{eq:convDef}
 h^k_{ij} = activation((W^k * x)_{ij} + b_{k}) \quad ahol \quad * \text{ konvoluciós operátor.}
 \end{align}
 \begin{align}
@@ -183,7 +183,7 @@ b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\
 \end{figure}
 
 \paragraph{Számítás elosztás}Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
-Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is tul nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
+Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is túl nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
 
 \begin{figure}[!ht]
 \centering

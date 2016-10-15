@@ -16,15 +16,17 @@ A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
 Warning--I didn't find a database entry for "imagenetSample"
-Warning--I didn't find a database entry for "ExploringStrategies"
-Warning--I didn't find a database entry for "genAdvNet"
-Warning--I didn't find a database entry for "generatingImageDesc"
 Warning--I didn't find a database entry for "learnActivationFunc"
+Warning--to sort, need author or key in mnist
+Warning--to sort, need author or key in cifar
 Warning--to sort, need author or key in scalingCNN
 Warning--empty journal in genImgDesc
+Warning--empty journal in cat
 Warning--empty journal in alexNet
 Warning--empty year in alexNet
 Warning--empty journal in sben
+Warning--empty journal in exploringStrategies
+Warning--empty journal in genAdvNets
 Warning--empty journal in resNet
 Warning--empty year in resNet
 Warning--empty journal in stn
@@ -33,6 +35,7 @@ Warning--empty journal in googLeNet
 Warning--empty year in googLeNet
 Warning--empty journal in leNet
 Warning--empty journal in cybenko
+Warning--empty journal in rbmGuide
 Warning--empty journal in hornik
 Warning--empty journal in hrbm
 Warning--empty journal in svmCIFAR
@@ -42,45 +45,45 @@ Warning--empty journal in tensorflow
 Warning--empty journal in backProp
 Warning--empty journal in mlpFrontier
 Warning--empty journal in waveNet
-You've used 20 entries,
+You've used 25 entries,
             2118 wiz_defined-function locations,
-            599 strings with 6228 characters,
-and the built_in function-call counts, 4051 in all, are:
-= -- 370
-> -- 134
+            612 strings with 6581 characters,
+and the built_in function-call counts, 4990 in all, are:
+= -- 459
+> -- 157
 < -- 0
-+ -- 59
-- -- 38
-* -- 186
-:= -- 740
-add.period$ -- 56
-call.type$ -- 20
-change.case$ -- 79
++ -- 72
+- -- 44
+* -- 224
+:= -- 894
+add.period$ -- 70
+call.type$ -- 25
+change.case$ -- 97
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 194
-empty$ -- 352
-format.name$ -- 38
-if$ -- 800
+cite$ -- 53
+duplicate$ -- 241
+empty$ -- 444
+format.name$ -- 44
+if$ -- 997
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 18
-newline$ -- 99
-num.names$ -- 38
-pop$ -- 131
+int.to.str$ -- 25
+missing$ -- 22
+newline$ -- 123
+num.names$ -- 44
+pop$ -- 161
 preamble$ -- 1
-purify$ -- 59
+purify$ -- 72
 quote$ -- 0
-skip$ -- 137
+skip$ -- 174
 stack$ -- 0
-substring$ -- 101
-swap$ -- 2
+substring$ -- 128
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
-warning$ -- 22
-while$ -- 38
-width$ -- 22
-write$ -- 175
-(There were 27 warnings)
+type$ -- 100
+warning$ -- 28
+while$ -- 44
+width$ -- 27
+write$ -- 217
+(There were 30 warnings)

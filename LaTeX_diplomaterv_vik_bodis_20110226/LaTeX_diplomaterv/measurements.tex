@@ -96,10 +96,10 @@ Az MNIST-en elért eredmények nem a legjobbak, de egészen optimális eredmények il
 	\end{tabular}
 \end{table}
 
-Mint látni lehet itt ezek a metódusok már közel sem teljesítenek annyira fényesen. Az SVM-et nem én futtattam le, mert ahhoz a teszt gép nem volt elég erõs. A legjobb eredmény amit elértek az adathalmazon SVM-el az \emph{25,5\%} volt. Ez egy ICML 2010-es konferencián bemutatott eredmény volt, amit a "Improved Local Coordinate Coding using Local Tangents"\cite{svmCIFAR}-ban publikáltak.
+Mint látni lehet itt ezek a metódusok már közel sem teljesítenek annyira fényesen. A legjobb eredmény amit elértek az adathalmazon SVM-el az \emph{25,5\%} volt. Ez egy ICML 2010-es konferencián bemutatott eredmény volt, amit a "Improved Local Coordinate Coding using Local Tangents"\cite{svmCIFAR}-ban publikáltak.
 
 \section{Az RBM struktúra optimalizálása}
-Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el méréseket az RBM struktúrával hogy megfigyeljem hogyan hasonlunak egymáshoz. Elõször a szabad energia függvények külöbségét definiáltam a \eqref{rbmPFromEnergy} szerint, és ezt optimalizáltam, majd simán hozzáadtamz általam lederivált gradienseket. A rekonstrukciós függvények lefutását a\figref{rbmReconstructionAdamSgdManual}-ábra szemlélteti. Látható hogy a 3 megközelítés között alig van különbség, az erõforrás felhasználasukban viszont jelentõs van, ezt a \tabref{rbmResourceTable}~táblázat szemlélteti. Jól látszik hogy az adaptív optimizátor megnövekedett számításigénnyel jár, az SGD ugyanannyi memóriát igényel, mert kb ugyanazt az impicit konstruált gráfot használja de kevésbé terheli a processzort, amíg a kézi optimalizálás még ennél is lényegesen kevesebb erõforrást igényel minden tekintetben. Éppen ezért a kézzel kiegészített megoldást választottam. Ez a megoldás jobban is skálázódik több számítási egységre, ha nagyobb RBM-et akar tanítani az ember, mert a rekonstrukciós gráf miatt nem fog kommunikációs overhead fellépni az eszközök között, mivel ez a gráf nem jön létre.
+Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el méréseket az RBM struktúrával hogy megfigyeljem hogyan hasonlunak egymáshoz. Elõször a szabad energia függvények külöbségét definiáltam a \eqref{rbmPFromEnergy} szerint, és ezt optimalizáltam, majd simán hozzáadtamz általam lederivált gradienseket. A rekonstrukciós függvények lefutását a\figref{rbmReconstructionAdamSgdManual}-ábra szemlélteti. Látható hogy a 3 megközelítésnek a lefutásában és erõforrás felhasználásában is jelentõs különbség van, ezt a \tabref{rbmResourceTable}~táblázat szemlélteti. Jól látszik hogy az adaptív optimizátor megnövekedett számításigénnyel jár, az SGD ugyanannyi memóriát igényel, mert kb ugyanazt az impicit konstruált gráfot használja de kevésbé terheli a processzort, amíg a kézi optimalizálás még ennél is lényegesen kevesebb erõforrást igényel minden tekintetben. Éppen ezért a kézzel kiegészített megoldást választottam. Ez a megoldás jobban is skálázódik több számítási egységre, ha nagyobb RBM-et akar tanítani az ember, mert a gradiens frissítõ gráf miatt nem fog kommunikációs overhead fellépni az eszközök között, mivel ez a gráf nem jön létre.
 
 \begin{figure}[!ht]
 \centering
@@ -111,10 +111,10 @@ Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el 
 \begin{table}[ht]
 	\footnotesize
 	\centering
-	\caption{Az RBM erõforrás mefelhasználása és hiba százaléka 10 epoch után, 256 neuron mellett különözõ optimizátorokkal.} \label{tab:mnistMlpMeasurements}
+	\caption{Az RBM erõforrás mefelhasználása és hiba százaléka 10 epoch után, 256 neuron mellett különözõ optimizátorokkal.} \label{tab:rbmResourceTable}
 	\begin{tabular}{ | l | c | c | c |}
 	\hline
-	optimizátor & Memória & Batch idõ & rekonstrukciós hiba \\
+	optimizátor & Batch idõ & Memória & Rekonstrukciós hiba \\
 	ADAM & 11.8 ms & 10.7 MB & 0.077 \\
 	SGD, tanulási ráta: 0.1 & 7.78 ms & 10.7 MB & 0.087 \\
 	SGD, tanulási ráta: 0.01 & 7.78 ms & 10.7 MB &  0.084 \\
@@ -280,7 +280,7 @@ Látszik hogy az MNIST-en is egész jól teljesítenek a konvoluciós hálózatok, de a
 
 A Legjobb eredmény amit konvoluciós hálózattal a CIFAR adathalmazon elértem az \emph{18}\% százalékos hiba volt, a fent ismertetett lokális válasz normált struktúrával, csak 2 GPU-n 300'000 lépésen keresztûl tanítottam. Ez már egy egészen tisztességes eredménynek számít az adathalmazon.
 
-\section{A konvoluciós és az MLP hálózatok összehasonlítása}
+\section{A konvoluciós és az MLP hálózatok erõforrás igényének az összehasonlítása}
 Észrevételeim szerint az MLP hálózatok kis költségráfordítás mellett teljesítenek olyan jól az MNIST adathalmazon mint a konvoluciós hálózatok. Ugyanakkor úgy vélem hogy ez az elõny csak az MNIST végtelen egyszerûségébõl fakad. A CIFAR10-es adathalmazon már jól észrevehetõ a konvoluciós hálózatok elsöprõ fölénye, ha komplex képosztályozási feladatokról van szó. 
 
 Két struktúrának mértem össze a paramétereit az MNIST adathalmazon. Egy MLP-ét, és egy konvoluciós hálózatét. A hálózatok az alábbi struktúrával épültek fel, ebben a sorrendben:
@@ -420,7 +420,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 \paragraph{A hibrid architektúra értékelése} Úgy gondolom hogy a jelentõs sebességnövekedés, és ha jól ki van alakítva akkor a klasszifikációs teljesítmény növekedése indokoltá teszi az ilyen struktúrák alkalmazásának megfontolását egyes szcenáriókban.
 
 \section{A CNN és az SVM+RBM összehasonlítása}
-A neurális hálózatok és a kernel metódusok között van egy ciklusosság hogy éppen melyiknek a kutatása jár elõrébb, és melyiket érdemes használni. Én személyes érdeklõdésbõl hoztam be a dolgozatomba az RBM + SVM kombinációját, ami sokáig egy nagyon jó klasszifikátornak számított, de talán mondhatjuk hogy eljárt felette az idõ. Egy félig meddig épkézláb konvoluciós hálózat a CIFAR-10 osztályozásának a problémáját kevesebb erõforrásból és kevesebb idõ alatt \emph{25\%}-al jobb eredményt tudott hozni mint az elõbb említett hibrid megoldás, és még a legjobb SVM-es eredménynél \cite{svmCIFAR} is fél százalékkal jobb eredményt volt képes hozni. Az \url{http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130}-en összeszedett listából az látszok hogy az eddig elért legjobb eredmény az adathalmazon \emph{3.47\%} ami \emph{21.43\%}-al jobb mint a legjobb SVM-es megoldás. Nagyon meg kellene fontolnom manapság hogy milyen feladatoknál használnék SVM-eket ANN-ek helyett.
+A neurális hálózatok és a kernel metódusok között van egy ciklusosság hogy éppen melyiknek a kutatása jár elõrébb, és melyiket érdemes használni. Én személyes érdeklõdésbõl hoztam be a dolgozatomba az RBM + SVM kombinációját, ami sokáig egy nagyon jó klasszifikátornak számított, de talán mondhatjuk hogy eljárt felette az idõ. Egy félig meddig épkézláb konvoluciós hálózat a CIFAR-10 osztályozásának a problémáját kevesebb erõforrásból és kevesebb idõ alatt \emph{25\%}-al jobb eredményt tudott hozni mint az elõbb említett hibrid megoldás, és még a legjobb SVM-es eredménynél \cite{svmCIFAR} is fél százalékkal jobb eredményt volt képes hozni. Az \url{http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130}-en összeszedett listából az látszik hogy az eddig elért legjobb eredmény az adathalmazon \emph{3.47\%} ami \emph{21.43\%}-al jobb mint a legjobb SVM-es megoldás. Nagyon meg kellene fontolnom manapság hogy milyen feladatoknál használnék SVM-eket ANN-ek helyett.
 
 \section{A három megközelítés végsõ összehasonlítása}
 Úgy gondolom hogy ha az ember ki tud a tanulás jellege miatt térbeli struktúrákat használni, akkor nagyon indokolt eredményekkel kell alátámasztani hogy az ember a konvoluciós neurális hálózatokkal szemben, egy másik architektúra javára döntsön. Ehhez viszont számolni kell a megnövekedett erõforrás igényekkel tanítás közben. Az MLP-ket úgy tudom elképzelni hogy a közeljövõben egy nagyobb architektúra részeként lehet majd használni, mint például az adaptív aktivációs függvényeknél ahogyan azt a "Learning Activations Functions to Improve Deep Neural Networks"\cite{learnActivationFunc} is taglalja. A kernel gépeknek most egy kicsit hidegebb korszakát éljük, mert ezeket a struktúrákat tudtommal lényegesen nehezebb nagyon nagy adathalmazokon tanítani, de úgy gondolom hogy mivel még ezeken a módszereken is nagyon sokan dolgoznak esetleg elképzelhetõ hogy pár év múlva ugyanakkora népszerûségnek fognak örvendeni mint 2012-ben. De én most nem látnám indokoltnak hogy ezeket a struktúrákat használjam képosztályozási feladatokra, még fejlesztett lokalitású\cite{svmCIFAR} kernelekkel sem.
