@@ -2,7 +2,7 @@
 \chapter{Hálózatok impelmentálása és elemzése tensorflowban}
 %----------------------------------------------------------------------------
 
-A következõ részben szeretném bemutatni saját mukámat és mérési eredményeimet. Az elõzõ részben bemutatott hálózatfajtákból megvalósítottam számtalan példányt tensorflowban, és méréseket végeztem rajtuk az MNIST és a CIFAR-10 adathalmazon. A munkám célja az volt hogy leteszteljem a tensorflow lehetõségeit kísérleti hálózatok kifejlesztésére és monitorozására. A fejezet a következõ részekre tagolható:
+A következõ részben szeretném bemutatni saját mukámat és mérési eredményeimet. Az elõzõ részben bemutatott hálózatfajtákból megvalósítottam számtalan példányt Tensorflowban, és méréseket végeztem rajtuk az MNIST és a CIFAR-10 adathalmazon. A munkám célja az volt hogy leteszteljem a tensorflow lehetõségeit kísérleti hálózatok kifejlesztésére és monitorozására. A fejezet a következõ részekre tagolható:
 \begin{enumerate}
 \item A baseline metódusok bemutatása.
 \item A fejlesztési környezet bemutatása.
@@ -48,7 +48,7 @@ def variable_summaries(name, var):
 \end{lstlisting}
 
 \subsection{A logiszikus regresszió}
-Az elsõ modell amit implementáltam Tensorflowban az a logisztikus regresszió volt. A célja az volt hogy összehasonlítsam a Tensorflow erõforrás igényét egy klasszikus python machine learning csomag, a Scikit-learn igényeivel. A struktúrát az <szám>~ábra szemlélteti. Egybõl látszódhat hogy az avatatlan szem számára a tensorboard eléggé nehezen értelmezhetõ lehet, ezért is szokták mondani hogy a tensorflownak a tanulási görbéje viszonylag nagy. Szerencse hogy lehet benne névtereket létrehozni hogy a gráfok könnyebben átláthatóak legyenek. Az egész tanulási gráfot a járulékos nodeokkal az <szám>~ábra szemlélteti.
+Az elsõ modell amit implementáltam Tensorflowban az a logisztikus regresszió volt. A célja az volt hogy összehasonlítsam a Tensorflow erõforrás igényét egy klasszikus python machine learning csomag, a Scikit-learn igényeivel.% A struktúrát az <szám>~ábra szemlélteti. Egybõl látszódhat hogy az avatatlan szem számára a tensorboard eléggé nehezen értelmezhetõ lehet, ezért is szokták mondani hogy a tensorflownak a tanulási görbéje viszonylag nagy. Szerencse hogy lehet benne névtereket létrehozni hogy a gráfok könnyebben átláthatóak legyenek. Az egész tanulási gráfot a járulékos nodeokkal az <szám>~ábra szemlélteti.
 
 \subsection{A többrétegû perceptron}
 A többrétegû perceptronnal való kísérletezést a TF-Slim API nagyon megkönnyíti, minden nehézség nélkül a rétegeket egymás után tenni, ha pedig egyedi elemet szeretne az ember definiálni akkor arra is lehetõség van. Hasonló architektúrákat teszteltem az MNIST és a CIFAR-10 adathalmazon is, ami nagyon jól megfogta a két adathalmaz közötti különbséget. A \listref{MlpDef}-listázás egy ilyen háló definicióját szemlélteti.
@@ -157,14 +157,15 @@ Az egyes operációkat szeretném megymagyarázni röviden amiket a konvoluciós model
 \item \emph{conv(magasság, szélesség, mélység):} Kétdimenziós, diszkrét konvolució. Ahol a magasság és a szélesség adják meg a képfolt nagyságát. A mélység pedig hogy hány neuron legyen az adott rétegben. A kétdimenziós konvolicó definicióját a \eqref{convDef}-képlet mutatja be.
 \item \emph{maxpool(magasság, szélesség)} Egy alulmintavételezési operátor a térbeli dimenziókban(magasság, szélesség). Ezzel csökkentjük drasztikusan a jellemzõterek nagyságát, és adunk transzlációs invarianciát a rendszerhez, mindig a legerõsebb jelet viszi keresztül a pooling foltból.
 \item \emph{fc(neuronok száma):} A teljesen kapcsolt rétegeket a hálózat végére kapcsoljuk. Amíg a konvoluciós rétegek egy magas absztrakcióval rendelkezõ, viszonylag transzláció invariáns jellemzõteret nyújtanak a képrõl, addig a hálózat végén lévõ teljesen kapcsolt rétegek teszik lehetõvé a nemlineáris leképzéseket ebben a jellemzõtérben. Az itteni teljesen kapcsolt réteget és a hozzá tartozó nemlineritásokat is az \eqref{fullyConnected}, \eqref{sigmoid}, \eqref{reLu} írja le.
-\item \emph{lrn:} Elvileg a reLu aktivációs függvény nem érzékeny annyira az adatok normalizálására, mégis kiderül a \cite{alexNet} publikációból hogy egy lokális normalizálási eljárás statisztikailag szignifikáns javulást képest hozni a hálózat osztályozó képességében. Ezt a matematikai struktúrát a \eqref{Lrn}~képlet szemlélteti. Ez is egy biológiailag inspirált eljárás. A bilógiai neve ennek az eljárásnak laterális inhibició.
+\item \emph{lrn:} Elvileg a reLu aktivációs függvény nem érzékeny annyira az adatok normalizálására, mégis kiderül a \cite{alexNet} publikációból hogy egy lokális normalizálási eljárás statisztikailag szignifikáns javulást képest hozni a hálózat osztályozó képességében. Ezt a matematikai struktúrát a \eqref{lrn}~képlet szemlélteti. Ez is egy biológiailag inspirált eljárás. A bilógiai neve ennek az eljárásnak laterális inhibició.
+\item \emph{flatten:} Az elsõ teljesen kapcsolt, és az utolsó konvoluciós réteg között ki kell lapítani a 3 dimenziós konvoluciós struktúrát egy vektorba hogy össze lehessen kapcsolni a következõ réteggel. Ezt az operációt hívjuk angolul flattennek.
 \end{itemize}
 
 \begin{align}
 \label{eq:convDef}
 h^k_{ij} = activation((W^k * x)_{ij} + b_{k}) \quad ahol \quad * \text{ konvoluciós operátor.}
 \end{align}
-\begin{align}
+\begin{align} \label{eq:lrn}
 b^i_{x,y} = a^i_{x,y}/\Bigg(k + \alpha\sum^{min(N-1,i+n/2)}_{j=max(0,i-n/2)}(a^j_{x,y})^2\Bigg)^\beta \\
 \text{Ahol } a^i_{x,y} \text{ az i-edik kernel-t alkalmazzuk az (x,y) beli pozicióra.} \notag \\ 
 b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\

@@ -7,7 +7,7 @@
 \BOOKMARK [1][-]{section.1.1}{A Tensorflow k\366nyvt\341r.}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.2}{A Tensorflow modellek monitoroz\341sa \351s hibamentes\355t\351se}{chapter.1}% 8
 \BOOKMARK [1][-]{section.1.3}{A Tensorflow fut\341s k\366zben}{chapter.1}% 9
-\BOOKMARK [0][-]{chapter.2}{A Neur\341lis h\341l\363zatokkal val\363 k\351pfeldolgoz\341s lehetos\351geinek \341ttekint\351se}{}% 10
+\BOOKMARK [0][-]{chapter.2}{A Neur\341lis h\341l\363zatokkal val\363 k\351poszt\341lyoz\341s lehetos\351geinek \341ttekint\351se}{}% 10
 \BOOKMARK [1][-]{section.2.1}{Az algoritmusok ki\351rt\351kel\351se}{chapter.2}% 11
 \BOOKMARK [2][-]{subsection.2.1.1}{Az adathalmazok}{section.2.1}% 12
 \BOOKMARK [1][-]{section.2.2}{A Legelterjedtebb neur\341lis h\341l\363zatok k\351pfeldolgoz\341shoz}{chapter.2}% 13
@@ -32,17 +32,18 @@
 \BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 32
 \BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 33
 \BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.4}{Az RBM strukt\372ra optimaliz\341l\341sa}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.5}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.5.1}{Az MNIST m\351r\351sek}{section.4.5}% 38
-\BOOKMARK [2][-]{subsection.4.5.2}{A CIFAR-10 m\351r\351sek}{section.4.5}% 39
-\BOOKMARK [2][-]{subsection.4.5.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.5}% 40
-\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 41
-\BOOKMARK [1][-]{section.4.7}{A konvoluci\363s \351s az MLP h\341l\363zatok eroforr\341s ig\351ny\351nek az \366sszehasonl\355t\341sa}{chapter.4}% 42
-\BOOKMARK [1][-]{section.4.8}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 43
-\BOOKMARK [1][-]{section.4.9}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 44
-\BOOKMARK [1][-]{section.4.10}{A h\341rom megk\366zel\355t\351s v\351gso \366sszehasonl\355t\341sa}{chapter.4}% 45
-\BOOKMARK [0][-]{chapter.5}{Az eredm\351nyek \366sszefoglal\363 \351rt\351kel\351se}{}% 46
-\BOOKMARK [0][-]{chapter*.122}{K\366sz\366netnyilv\341n\355t\341s}{}% 47
-\BOOKMARK [0][-]{chapter*.123}{Irodalomjegyz\351k}{}% 48
+\BOOKMARK [2][-]{subsection.4.2.1}{A GPU gyors\355t\341s m\351r\351se}{section.4.2}% 35
+\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.4}{Az RBM strukt\372ra optimaliz\341l\341sa}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.5}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.5.1}{Az MNIST m\351r\351sek}{section.4.5}% 39
+\BOOKMARK [2][-]{subsection.4.5.2}{A CIFAR-10 m\351r\351sek}{section.4.5}% 40
+\BOOKMARK [2][-]{subsection.4.5.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.5}% 41
+\BOOKMARK [1][-]{section.4.6}{A konvoluci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.7}{A konvoluci\363s \351s az MLP h\341l\363zatok eroforr\341s ig\351ny\351nek az \366sszehasonl\355t\341sa}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.8}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.9}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.10}{A h\341rom megk\366zel\355t\351s v\351gso \366sszehasonl\355t\341sa}{chapter.4}% 46
+\BOOKMARK [0][-]{chapter.5}{Az eredm\351nyek \366sszefoglal\363 \351rt\351kel\351se}{}% 47
+\BOOKMARK [0][-]{chapter*.128}{K\366sz\366netnyilv\341n\355t\341s}{}% 48
+\BOOKMARK [0][-]{chapter*.129}{Irodalomjegyz\351k}{}% 49

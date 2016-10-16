@@ -67,6 +67,11 @@ Yann~LeCun et~al.
 \newblock Gradient-based learning applied to document recognition.
 \newblock November 1998.
 
+\bibitem{learnActivationFunc}
+Matthew Hoffman et~al. Forest~Agostinelli.
+\newblock Learning activations functions to improve deep neural networks.
+\newblock April 2015.
+
 \bibitem{cybenko}
 Cybenko G.
 \newblock Approximations by superpositions of sigmoidal functions.

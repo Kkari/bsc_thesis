@@ -1,8 +1,8 @@
 %----------------------------------------------------------------------------
-\chapter{A Neurális hálózatokkal való képfeldolgozás lehetõségeinek áttekintése}
+\chapter{A Neurális hálózatokkal való képosztályozás lehetõségeinek áttekintése}
 %----------------------------------------------------------------------------
 
-A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán nagyon sok sikeres és sikertelen kísérlet született annak érdekében hogy hogyan lehetne neurális hálózatokkal képi adatokat feldolgozni. Talán mondhatjuk hogy ezek a hálózatok a legsikeresebb képosztályozó eljárások, de korántsem triviális hogy mik az elõnyeik, hátrányaik és az egyes típusok milyen komplexitású jelekkel képesek megbírkózni. Elõször szeretném bemutatni az adathalmazokat amiken ezeket az algoritmusokat kiértékelik, majd eljutni az többrétegû perceptronoktól a konvoluciós hálózatokig, végül a legújabb trendek ismertetésével zárni a fejezetet.
+A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán nagyon sok sikeres és sikertelen kísérlet született annak érdekében hogy hogyan lehetne neurális hálózatokkal képeket osztályozni. Talán mondhatjuk hogy ezek a hálózatok a legsikeresebb képosztályozó eljárások, de korántsem triviális hogy mik az elõnyeik, hátrányaik és az egyes típusok milyen komplexitású jelekkel képesek megbírkózni. Elõször szeretném bemutatni az adathalmazokat amiken ezeket az algoritmusokat kiértékelik, majd eljutni az többrétegû perceptronoktól a konvoluciós hálózatokig, végül a legújabb trendek ismertetésével zárni a fejezetet.
 
 \section{Az algoritmusok kiértékelése}
 
@@ -22,7 +22,7 @@ A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyam
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=100mm, keepaspectratio]{figures/cifarSample.png}
+\includegraphics[width=120mm, keepaspectratio]{figures/cifarSample.png}
 \caption{Példa a CIFAR-10/100 adathalmaz képeire. Forrás:\url{http://www.cs.toronto.edu/~kriz/cifar.html}} 
 \label{fig:cifarSample}
 \end{figure}
@@ -37,7 +37,7 @@ A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyam
 \item 1'000 szinoníma halmazhoz tartozik SIFT jellemzõkkel ellátott kép
 \item 1'200'000 kép van SIFT jellemzõkkel ellátva.
 \end{itemize}
-Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, példáúl út, ég, ember vagy ágy. A \cite{imagenetSample}~ábra ebbõl az adathalmazból mutat pár példát.
+Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, példáúl út, ég, ember vagy ágy. A \figref{imagenetSample}~ábra ebbõl az adathalmazból mutat pár példát.
 
 \begin{figure}[!ht]
 \centering
@@ -49,7 +49,7 @@ Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel i
 \subsubsection{A metrika}
 \paragraph{MNIST és CIFAR} Az MNIST és a CIFAR-10/100 Adathalmazok esetében mindig az egyszerû pontosság értéket nézzük, tehát az eltalált képek számát osztva a hibásan osztályozott képet számával.
 
-\paragraph{IMAGENET} Mivel az IMAGENET egy ennyire bonyolult adathalmaz, itt top 5 hibát szoktak nézni, ahol az számít sikeres találatnak ha a helyes címket a háló 5 legnagyobb valószínûséggel bíró tippjében benne van.
+\paragraph{IMAGENET} Mivel az IMAGENET egy ennyire bonyolult adathalmaz, itt top 1 és top 5 hibát is szoktak nézni. A top 5 hiba ahol az számít sikeres találatnak ha a helyes címkét a háló 5 legnagyobb valószínûséggel bíró tippjében benne van.
 
 \section{A Legelterjedtebb neurális hálózatok képfeldolgozáshoz}
 
@@ -98,14 +98,16 @@ látható hálózat tanításához a \listref{Backpropagation}-lista mutatja.
 	\begin{tabular}{ | l | c | c |}
 	\hline
 	Rétegek száma & neuron struktúra & Teszt szet hiba százalék \\ \hline
-	3-réteg & 768-300-10 & 4.7\\
+	2-réteg & 300-10 & 4.7 \\
+	2-réteg & 800-10 & 1.6 \\
 	\hline
 	\end{tabular}
 \end{table}
+Az MLP hálózatoknál jelentõs javulást hozott amikor a hibafüggvényt négyzetes középértékrõl kereszt-entrópiára cserélték ki. Ma már osztályozási feladatoknál szinte csak a kereszt-entrópia hibafüggvényt használjuk.
 
 \subsubsection{MLP hiányosságai} 
 
-\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagrammja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de ezt a tulajdonságát jól szemlélteti. 
+\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagrammja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de azt a tulajdonságot jól semlélteti, hogy több fennsík alakúl ki, ahol a derivált 0 lesz. 
 
 \paragraph{A struktúra kialakítása} Az MLP annyira általános struktúrát használ, hogy lényegében semmilyen a priori tudást nem használunk fel a hálózat tanításakor. Ez azt eredményezi hogy hatalmas kapacítás kell a képekben megjelenõ bonyolult struktúrák megtanulásához, és a hálózat különbözõ részei kénytelenek rendre ugyanazt megtanulni. Sajnos az elõbbi cél csak a hálózat növelésével érhetõ el, az MLP paraméter tere viszont nagyon rosszl skálázódik. Ha veszünk egy 6 rétegû hálózatot aminek a rétegjei rendre 2500-2000-1500-1000-500-10 neuronból állnak, és az MNIST esetén 784 elemû bemeneti vektorral rendelkezik, akkor optimalizálandó paraméter tér mérete annak folytán hogy minden réteg teljesen össze van kapcsolva már:
 $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 11 965 000$, ami már nyilvánvalóan hatalmas. Ez is tanítható sikeresen, de ahhoz már a továbbiakban bemutott kisegítõ neurális struktúrák szükségesek.
@@ -117,9 +119,12 @@ $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 
 \label{fig:sigmaContour}
 \end{figure}
 
+\paragraph{konkluzió}
+Jól látszik hogy az MLP hálózatok ilyen naív formájukban nem igazán felelnek meg az elvárásainknak, ezt a késõbbiekben bemutatott mérési eredményeim meg is erõsítik. A továbbiakban bemutatok egy kisegítõ neurális struktúrát, amivel sikeresen inicializálták az MLP súlyait hogy jobb eredményeket érjenek el.
+
 \subsection{A Korlátozott Boltzmann Gép}
 \paragraph{Bevezetés} A korlátozott boltzmann gép (továbbiakban RBM - Restricted Boltzmann Machine, \figref{rbm}~ábra) egy szochasztikus generatív neurális számítási modell. Mûködése az eddig tárgyalt MLP-tõl györekesen eltér, funkciója a bemenet jellemzõinek (featureinek) a megtanulása, és nem az egyes minták helyes osztályozása. Az intuitív jelentõsége abban rejlik hogy feltehetjük hogy a naív MLP a kapzsi tanulása miatt nem képes megtanulni a minták valódi reprezentációját, de ha az MLP súlyait úgy tudnánk inicializálni, hogy a mintákban lévõ szabályosságokat már eleve ismerje, akkor ebbõl könnyebben meg tudná tanulni hogy melyik jellemzõ mely osztályt azonsítja.
-Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az Autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat, és a "stacked" autoencodereket.
+Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat, és a stacked autoencodereket.
 Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet, és kevésbé bonyolult ezért gyakorlatban az ajánlott, én mégis az RBM-et választottam érdekes struktúrája miatt. Hugo Larochelle et al. hozott ki egy áttekintõ tanulmányt az elõtanulásról a mélyebben érdeklõdõknek "Exploring Strategies for Training Deep Neural Networks" \cite{exploringStrategies} címmel.
 
 \paragraph{Az RBM struktúrája} Az RBM mint említettem egy sztochasztikus generatív számítási modell, amelyben fontos hogy az egyes neuronok egy páros gráfot alkotnak (\figref{rbm}~ábra). A generatív modell egy régi statisztikából származó fogalom ami azt foglalja magában hogy a model képes megfigyelhetõ adatpontokat véletlenszerûen generálni. Az RBM egyik legtriviálisabb mérõszáma a rekonstrukciós hiba azt méri hogy ha egy adatpontot a háló bemenetére teszek, akkor azt milyen részletesen tudja visszagenerálni. Tehát az adatpont az a háló tanulási terében egy stabil pontnak számít-e. Ez a hiba mérték nem jó az RBM általánosító képességének mérésére, mégis sokan használják praktikus egyszerûsége miatt. Akit bõvebben érdekel a téma a \cite{rbmGuide}-es referenciában talál bõséges irodalmat az RBM tanítását illetõen. Itt csak az alapokra szorítkozok.
@@ -138,7 +143,7 @@ Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet
 \label{fig:rbmFilters}
 \end{figure}
 
-\paragraph{Az RBM tanítása} Az RBM azért érdekes megközelítés a többi hálózathoz képest, mert probablisztikus alapokon nyugszik. Az úgynevezett energia alapú hálózatok felfoghatóak úgy, hogy a hálózat minden konfigurációjához tartozik egy $p(x)$ valószínûség, hogy mekkora valõszínûséggel tartózkodik a háló az adott konfigurációban. Azt szeretnénk elérni hogy az alacsony energiájú konfigurációknak nagy legyen a valószínûsége. Ez formalizálva a következõ képpen néz ki:
+\paragraph{Az RBM tanítása} Ebben a bekezdésben belemegyek kicsit az RBM tanításának matematikájába, mert az implementáció tárgyalásánál fontos lesz. Az RBM azért érdekes megközelítés a többi hálózathoz képest, mert probablisztikus alapokon nyugszik. Az úgynevezett energia alapú hálózatok felfoghatóak úgy, hogy a hálózat minden konfigurációjához tartozik egy $p(x)$ valószínûség, hogy mekkora valõszínûséggel tartózkodik a háló az adott konfigurációban. Azt szeretnénk elérni hogy az alacsony energiájú konfigurációknak nagy legyen a valószínûsége. Ez formalizálva a következõ képpen néz ki:
 
 \begin{align} \label{eq:probFirst}
 p(x) = \frac{e^{(-E(x))}}{Z} = \sum_{h}\frac{e^{(-E(x,h))}}{Z}
@@ -147,7 +152,7 @@ p(x) = \frac{e^{(-E(x))}}{Z} = \sum_{h}\frac{e^{(-E(x,h))}}{Z}
 Z = \sum_{x} e^{-E(x)}
 \end{align}
 
-Ahol az E az energiafüggvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve, azért hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
+Ahol az E az energiafüggvényt, Z pedig a particiós függvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve, azért hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
 \begin{align}
 \mathcal{L}(\theta, x) = \frac{1}{N}\sum_{x^(i) \in \mathcal{D}}log(p(x^{(i)})
 \end{align}
@@ -201,7 +206,9 @@ v^{n+1} \quad \sim \quad sigm(W^Th^{(n)} + b)
 \label{fig:gibbs}
 \end{figure}
 
-Ahol $c$ és $b$ az eltolás súlyvektorokat jelzik.
+Ahol $c$ és $b$ az eltolás súlyvektorokat jelzik. Ezekre a képletekre fogok majd a dolgozat késõbbi részeiben hivatkozni, amikor az általam megírt RBM struktúrát optimalizálom.
+
+\paragraph{Az RBM és DBN elõtanulás} Az elõbbiekben bemutatott tanítással megcsinálhatjuk azt, hogy egy MLP egyes rétegeit rétegenként elõtanítjuk. Így a felügyelt tanítás elején az MLP súlyai már rögtön a bemenet tulajdonságaira lesznek rászabva.
 
 \paragraph{Az RBM és DBN elõtanulás eredményei} Az hogy a hálót elõtanítjuk fantasztikus eredményjavulást hozott, amely beigazolta hogy valóban a számok valós jellemzõ reprezentációihoz közel helyezkedik el egy nagyon optimális lokális minimum. Az \tabref{MlpEloTablazat}~táblázat szemlélteti az eredményeit az MNIST adathalmazon. Látszik hogy ennek segítségével jóval nagyobb hálók képezhetõek ki és lényeges jobb eredményre vezetnek.
 
@@ -213,8 +220,8 @@ Ahol $c$ és $b$ az eltolás súlyvektorokat jelzik.
 	\begin{tabular}{ | l | c | c |}
 	\hline
 	Rétegek száma & neuron struktúra & Teszt szet hiba százalék \\ \hline
-	3-réteg & 768-800-10 & 0.7 \\
-	6-réteg & 784-2500-2000-1500-1000-500-10 & 0.35 \\
+	2-réteg & 800-10 & 0.7 \\
+	5-réteg & 2500-2000-1500-1000-500-10 & 0.35 \\
 	\hline
 	\end{tabular}
 \end{table}
@@ -243,7 +250,7 @@ A struktúrát a \figref{hrbm}~ábra szemlélteti.
 \end{figure}
 
 \subsection{State of the art MLP hálózatok}
-\paragraph{További kutatások} Az MLP hálózatokat a mai napig nagy érdeklõdés övezi egyszerû struktúrájuk miatt. Látszik hogy az MNIST adathalmazon már nem nagyon van hova javítani az MLP-k teljesítményét, viszony mint azt pár paragrafussal elõbb megemlítettem a paraméter tér csökkentésében, és komplexebb adathalmazokhoz még van fejleszteni való ezeken a struktúrákon. Egy igen friss publikáció amelynek címe "How far can we go without convolution: Improving fully-connected networks"\cite{mlpFrontier} arra mutat rá hogy hogyan lehet az MLP hálózatok paraméter terét úgy csökkenteni hogy a sigmoid rétegek közé kis méretû lineáris rétegeket teszünk be, példának okáért legyen a két réteg 1500-2000 neuron, akkor a teljes paraméter terük $1500 * 2000 = 3 000 000$, de ha közé teszünk egy 500 neuronos lineáris rétege, akkor ez lecsökken $150 * 500 + 2000 * 500 = 1 075 000$ paraméterre, ami igen szignifikáns redukciót jelent a hálózat komplexításában. Ez a redukció oly mértékû hogy a fentebb említett publikációban vizsgált legnagyobb struktúra paraméter terét 112 millióról 2.5 millióra csökkentették, összehasonlítás képpen egy modern konvoluciós hálónak 3.5 millió paramétere van. Látható hogy ezzel sikerült a kutatóknak megoldania a többrétegû perceptron gépek egyik legnagyobb problémáját, a mértéktelenûl burjánzó paraméter teret. Ezen felül az eltünõ gradiensek problémáját is orvosolja, amivel itt bõvebben nem foglalkozunk. Viszont az eredményeit a CIFAR-10 \figref{mlpEvolution}~ábra szemlélteti. Az elõbb említett táblázat nagyon jól összefoglalja az MLP-k teljesítményének a fejlõdését a CIFAR-10es adathalmazt használva.
+\paragraph{További kutatások} Az MLP hálózatokat a mai napig nagy érdeklõdés övezi egyszerû struktúrájuk miatt. Látszik hogy az MNIST adathalmazon már nem nagyon van hova javítani az MLP-k teljesítményét, viszont mint azt pár paragrafussal elõbb megemlítettem a paraméter tér csökkentésében, és komplexebb adathalmazokhoz még van fejleszteni való ezeken a struktúrákon. Egy igen friss publikáció amelynek címe "How far can we go without convolution: Improving fully-connected networks"\cite{mlpFrontier} arra mutat rá hogy hogyan lehet az MLP hálózatok paraméter terét úgy csökkenteni hogy a sigmoid rétegek közé kis méretû lineáris rétegeket teszünk be, példának okáért legyen a két réteg 1500-2000 neuron, akkor a teljes paraméter terük $1500 * 2000 = 3 000 000$, de ha közé teszünk egy 500 neuronos lineáris rétege, akkor ez lecsökken $150 * 500 + 2000 * 500 = 1 075 000$ paraméterre, ami igen szignifikáns redukciót jelent a hálózat komplexításában. Ez a redukció oly mértékû hogy a fentebb említett publikációban vizsgált legnagyobb struktúra paraméter terét 112 millióról 2.5 millióra csökkentették, összehasonlítás képpen egy modern konvoluciós hálónak 3.5 millió paramétere van. Látható hogy ezzel sikerült a kutatóknak megoldania a többrétegû perceptron gépek egyik legnagyobb problémáját, a mértéktelenûl burjánzó paraméter teret. Ezen felül az eltünõ gradiensek problémáját is orvosolja, amivel itt bõvebben nem foglalkozunk. Viszont az eredményeit a CIFAR-10 \figref{mlpEvolution}~ábra szemlélteti. Az elõbb említett táblázat nagyon jól összefoglalja az MLP-k teljesítményének a fejlõdését a CIFAR-10es adathalmazt használva.
 
 \begin{figure}[!ht]
 \centering
@@ -252,9 +259,10 @@ A struktúrát a \figref{hrbm}~ábra szemlélteti.
 \label{fig:mlpEvolution}
 \end{figure}
 
+\paragraph{konkluzió} Ezzel a végére értem az MLP-vel való képosztályozás lehetõségeinek. Lászik hogy igen nagy eredmény javulást hoztak az új kutatások. A paraméter teret 112 milliórol 2.5 millióra csökkentették, és a CIFAR-10en a Hinton féle eredeti hálózathoz képest \emph{37\%}-ot javítottak a háló osztályozó képességén. De ez még mindig kevés a következõleg bemutatott struktúrákhoz képest.
 
 \subsection{Konvoluciós hálózatok}
-\paragraph{Bevezetés} A szakdolgozatom harmadik nagy részét a konvoluciós hálózatok teszik ki. Miután az irodalomkutatásom közben rá kellett jönnöm hogy az általam tanult klasszikus MLP struktúrák nem képesek a komplex jelek, mint példáúl az MNIST adathalmaznál összetettebb képek kielégítõ megtanulására, kénytelen voltam új irányok után nézni. Így találtam meg a konvoluciós architektúrákat. Ezek korunk legjobban teljesítõ architektúrái, ennek oka hogy a jelek nagy része amit fel szeretnénk dolgozni az emberi érzékszervek által érzékelt jelek - példáúl képek - amik jelentõs transzlációs invarianciával rendelkeznek, és ezek a hálózatok ezt az a priori tudást beleépítik az architektúrába, így lényegesen kevesebb paramétert kell megtanulnunk mint egy \emph{elméleti síkon} hasonló teljesítményû MLP-nél. Mivel természetesen tudjuk Cybenko (1989)\cite{cybenko} és Kurt Hornik (1991)\cite{hornik} publikációi után hogy egy kétrétegû MLP-vel tetszõleges függvényt képes approximálni, de ehhez annyi neuron kellene a komplex jelek esetében mint a képek hogy praktikusan nem kivitelezhetõek ezek a hálózatok. A rétegek növelésével és hálózati kényszerek bevezetésével ez a paraméter tér jelentõsen csökkenthetõ.
+\paragraph{Bevezetés} A szakdolgozatom harmadik nagy részét a konvoluciós hálózatok teszik ki. Miután az irodalomkutatásom közben rá kellett jönnöm hogy az általam tanult klasszikus MLP struktúrák nem képesek a komplex jelek, mint például az MNIST adathalmaznál összetettebb képek kielégítõ megtanulására, kénytelen voltam új irányok után nézni. Így találtam meg a konvoluciós architektúrákat. Ezek korunk legjobban teljesítõ architektúrái, ennek oka hogy a jelek nagy része amit fel szeretnénk dolgozni az emberi érzékszervek által érzékelt jelek - példáúl képek - amik jelentõs transzlációs invarianciával rendelkeznek, és ezek a hálózatok ezt az a priori tudást beleépítik az architektúrába, így lényegesen kevesebb paramétert kell megtanulnunk mint egy \emph{elméleti síkon} hasonló teljesítményû MLP-nél. Természetesen tudjuk Cybenko (1989)\cite{cybenko} és Kurt Hornik (1991)\cite{hornik} publikációi után hogy egy kétrétegû MLP-vel tetszõleges függvényt képes approximálni, de ehhez annyi neuron kellene a komplex jelek esetében mint a képek hogy praktikusan nem kivitelezhetõek ezek a hálózatok. A rétegek növelésével és hálózati kényszerek bevezetésével ez a paraméter tér jelentõsen csökkenthetõ.
 
 \paragraph{Az intuició} A konvoluciós architektúra teljes mértékben biológiailag inspirált, a macska vizuális kortexének a feltérképezésénél találtak hasonló kapcsolatokat az állat agyában\cite{cat}, és ennek a mintájára építették fel a mesterséges hálózatot. Alapötlete hogy magába a hálózati struktúrába foglaljuk bele a jel transzlációs invarianciáját. A modellt eleinte képek feldolgozására alkották meg, és az elõbbi mondat itt is szemléltethetõ a legintuitivabban. Tegyük fel hogy van egy képünk amin vagy egy objektum, akkor ha fel kell ismerni hogy a kép az adott objektumnak a jellemzõit tartalmazza-e akkor nekünk adott esetben ugyan annyi információval szolgál ha ez a jellemzõ (mondjuk egy sarok) a bal vagy a jobb oldalon van a képen. Természetesen ezek a lokális struktúrák a rétegekkel felfele egyre globálisabbak lesznek, az egyre magasabb szinteken pedig több jellemzõbõl komponált össztetett jellemzõk jelennek meg. És a hálózat az összetett jellemzõk jelenlétébõl következtet a kép osztályára. Ezt hivatott szemléltetni a \figref{deconvnet}~ábra és \figref{deconvnet2}~ábra amely egy konvoluciós háló egyes rétegeinek a szûrõit mutatja be, és hogy milyen képelemek aktiválták õket a leginkább. Az elsõ sikeres alkalmazása ennek a modellnek a LeNet\cite{leNet} volt 1990-ben, amelyet irányítószámok, karakterek és hasonló dolgok felismerésére használtak, de a modell sokáig nem kapott nagy érdeklõdést.
 
@@ -339,4 +347,4 @@ Itt, az irodalom kutatásom tárgyalásának végén elértünk arra a pontra ahol éppen
 \label{fig:STN}
 \end{figure}
 
-\paragraph{irodalomkutatás összefoglalása} Ezzel az irodalom kutatásom végére értem. Úgy vélem hogy a neurális képosztályozás legtöbb fontos architektúrájára kitértem, és kaptam egy átfogó képet arról hogy hol tart a terület, és milyen módszerekkel érdemes nekiállni egy ilyen problémának. A továbbiakban szeretném bemutatni a saját munkámat, hogy mely hálózatokat implementáltam, mértem le a saját rendszeremen, és ebbõl milyen tanulságokat vontam le.
+\paragraph{Irodalomkutatás összefoglalása} Ezzel az irodalom kutatásom végére értem. Úgy vélem hogy a neurális képosztályozás legtöbb fontos architektúrájára kitértem, és kaptam egy átfogó képet arról hogy hol tart a terület, és milyen módszerekkel érdemes nekiállni egy ilyen problémának. A továbbiakban szeretném bemutatni a saját munkámat, hogy mely hálózatokat implementáltam, mértem le a saját rendszeremen, és ebbõl milyen tanulságokat vontam le.

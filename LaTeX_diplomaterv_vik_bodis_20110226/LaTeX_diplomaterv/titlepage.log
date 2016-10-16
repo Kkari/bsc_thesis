@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  29 SEP 2016 14:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  16 OCT 2016 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,8 +252,8 @@ Missing character: There is no í in font cmti10!
 ! Undefined control sequence.
 <argument> \vikszerzo 
                       
-l.19  \makebox[7cm]{\vikszerzo}
-                                & \makebox[7cm]{\vikkonzulens}
+l.19  \makebox[5cm]{\vikszerzo}
+                                & \makebox[5cm]{\vikkonzulens}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -263,7 +263,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> \vikkonzulens 
                          
-l.19 ...\vikszerzo} & \makebox[7cm]{\vikkonzulens}
+l.19 ...\vikszerzo} & \makebox[5cm]{\vikkonzulens}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -271,13 +271,37 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+! Undefined control sequence.
+<argument> \vikszerzo 
+                      
+l.20  \makebox[5cm]{\vikszerzo}
+                                & \makebox[5cm]{Daróczy Bálint}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Overfull \hbox (398.33856pt too wide) in paragraph at lines 17--21
+Missing character: There is no D in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no ó in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no á in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+
+Overfull \hbox (569.05511pt too wide) in paragraph at lines 17--22
  [][] 
  []
 
 ! Undefined control sequence.
-l.23 {\large
+l.24 {\large
              \today}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -286,7 +310,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.23 {\large \today
+l.24 {\large \today
                    }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -301,7 +325,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.25 \end{titlepage}
+l.26 \end{titlepage}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,

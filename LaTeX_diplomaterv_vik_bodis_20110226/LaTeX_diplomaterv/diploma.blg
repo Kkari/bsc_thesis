@@ -1,8 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: diploma.aux
-A level-1 auxiliary file: guideline.aux
-A level-1 auxiliary file: project.aux
 A level-1 auxiliary file: titlepage.aux
 A level-1 auxiliary file: declaration.aux
 A level-1 auxiliary file: abstract.aux
@@ -15,8 +13,6 @@ A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
-Warning--I didn't find a database entry for "imagenetSample"
-Warning--I didn't find a database entry for "learnActivationFunc"
 Warning--to sort, need author or key in mnist
 Warning--to sort, need author or key in cifar
 Warning--to sort, need author or key in scalingCNN
@@ -34,6 +30,7 @@ Warning--empty journal in rcnn
 Warning--empty journal in googLeNet
 Warning--empty year in googLeNet
 Warning--empty journal in leNet
+Warning--empty journal in learnActivationFunc
 Warning--empty journal in cybenko
 Warning--empty journal in rbmGuide
 Warning--empty journal in hornik
@@ -45,45 +42,45 @@ Warning--empty journal in tensorflow
 Warning--empty journal in backProp
 Warning--empty journal in mlpFrontier
 Warning--empty journal in waveNet
-You've used 25 entries,
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            612 strings with 6581 characters,
-and the built_in function-call counts, 4990 in all, are:
-= -- 459
-> -- 157
+            610 strings with 6633 characters,
+and the built_in function-call counts, 5195 in all, are:
+= -- 478
+> -- 164
 < -- 0
-+ -- 72
-- -- 44
-* -- 224
-:= -- 894
-add.period$ -- 70
-call.type$ -- 25
-change.case$ -- 97
++ -- 75
+- -- 46
+* -- 234
+:= -- 932
+add.period$ -- 73
+call.type$ -- 26
+change.case$ -- 101
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 241
-empty$ -- 444
-format.name$ -- 44
-if$ -- 997
+cite$ -- 55
+duplicate$ -- 251
+empty$ -- 461
+format.name$ -- 46
+if$ -- 1037
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 22
-newline$ -- 123
-num.names$ -- 44
-pop$ -- 161
+int.to.str$ -- 26
+missing$ -- 23
+newline$ -- 128
+num.names$ -- 46
+pop$ -- 167
 preamble$ -- 1
-purify$ -- 72
+purify$ -- 75
 quote$ -- 0
-skip$ -- 174
+skip$ -- 181
 stack$ -- 0
-substring$ -- 128
+substring$ -- 133
 swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
-warning$ -- 28
-while$ -- 44
-width$ -- 27
-write$ -- 217
-(There were 30 warnings)
+type$ -- 104
+warning$ -- 29
+while$ -- 46
+width$ -- 28
+write$ -- 226
+(There were 29 warnings)
