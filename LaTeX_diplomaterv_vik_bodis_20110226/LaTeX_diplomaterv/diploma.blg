@@ -13,74 +13,55 @@ A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
+Warning--to sort, need author or key in TfSlim
+Warning--to sort, need author or key in Keras
 Warning--to sort, need author or key in mnist
 Warning--to sort, need author or key in cifar
+Warning--to sort, need author or key in imagenet
 Warning--to sort, need author or key in scalingCNN
-Warning--empty journal in genImgDesc
-Warning--empty journal in cat
-Warning--empty journal in alexNet
-Warning--empty year in alexNet
-Warning--empty journal in sben
-Warning--empty journal in exploringStrategies
-Warning--empty journal in genAdvNets
-Warning--empty journal in resNet
-Warning--empty year in resNet
-Warning--empty journal in stn
-Warning--empty journal in rcnn
-Warning--empty journal in googLeNet
-Warning--empty year in googLeNet
-Warning--empty journal in leNet
-Warning--empty journal in learnActivationFunc
-Warning--empty journal in cybenko
-Warning--empty journal in rbmGuide
-Warning--empty journal in hornik
-Warning--empty journal in hrbm
-Warning--empty journal in svmCIFAR
-Warning--empty journal in sag
-Warning--empty journal in deconvnet
-Warning--empty journal in tensorflow
+Warning--to sort, need author or key in TensorflowPipeline
+Warning--empty journal in minsky1969perceptrons
+Warning--empty year in sben
 Warning--empty journal in backProp
-Warning--empty journal in mlpFrontier
-Warning--empty journal in waveNet
-You've used 26 entries,
+You've used 34 entries,
             2118 wiz_defined-function locations,
-            610 strings with 6633 characters,
-and the built_in function-call counts, 5195 in all, are:
-= -- 478
-> -- 164
-< -- 0
-+ -- 75
-- -- 46
-* -- 234
-:= -- 932
-add.period$ -- 73
-call.type$ -- 26
-change.case$ -- 101
+            697 strings with 9715 characters,
+and the built_in function-call counts, 11626 in all, are:
+= -- 1123
+> -- 553
+< -- 11
++ -- 226
+- -- 188
+* -- 762
+:= -- 1815
+add.period$ -- 97
+call.type$ -- 34
+change.case$ -- 194
 chr.to.int$ -- 0
-cite$ -- 55
-duplicate$ -- 251
-empty$ -- 461
-format.name$ -- 46
-if$ -- 1037
+cite$ -- 44
+duplicate$ -- 461
+empty$ -- 941
+format.name$ -- 188
+if$ -- 2500
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 23
-newline$ -- 128
-num.names$ -- 46
-pop$ -- 167
+int.to.str$ -- 34
+missing$ -- 27
+newline$ -- 166
+num.names$ -- 54
+pop$ -- 253
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 160
 quote$ -- 0
-skip$ -- 181
+skip$ -- 379
 stack$ -- 0
-substring$ -- 133
-swap$ -- 3
-text.length$ -- 0
+substring$ -- 653
+swap$ -- 134
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 104
-warning$ -- 29
-while$ -- 46
-width$ -- 28
-write$ -- 226
-(There were 29 warnings)
+type$ -- 136
+warning$ -- 10
+while$ -- 96
+width$ -- 36
+write$ -- 339
+(There were 10 warnings)

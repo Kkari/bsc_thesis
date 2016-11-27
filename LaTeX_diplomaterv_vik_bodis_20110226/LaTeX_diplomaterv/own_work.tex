@@ -183,13 +183,14 @@ b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\
 \label{fig:convnet_2}
 \end{figure}
 
-\paragraph{Számítás elosztás}Ezt a hálózatot teszteltem CPU-n, 1 GPU-n, majd 2 GPU-n. A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
+\paragraph{Számítás elosztás}Ezt a hálózatot teszteltem CPU-n illetve a laptopom NVIDIA 740M típusú videokártyáján, ezen felül a tensorflow oldalán találtam adatokat egy NVIDIA Tesla K40c-n futtatott scientific accelerator cardon elért eredményekrõl is ugyanezen az adathalmazon. A program erõsen párhuzamosított volt, és a felépítése lehetõvé tette volna tetszõleges számú GPU-ra való kiterjesztését, ennek a program felépítésének a részleteit szeretném a következõ bekezdésben megosztani.
+\paragraph{?} A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
 Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is túl nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm, keepaspectratio]{figures/device_distro}
-\caption{} 
+\caption{Forrás: \cite{tensorflow}} 
 \label{fig:device_distro}
 \end{figure}
 
@@ -197,7 +198,7 @@ Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat vesz
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm, keepaspectratio]{figures/tower_parallel}
-\caption{} 
+\caption{Forrás:\cite{scalingCNN}} 
 \label{fig:tower_parallel}
 \end{figure}
 
@@ -220,7 +221,7 @@ Ez jelentõsen növeli a háló általánosító képességét. Majd ezeket az adatokat bea
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm, keepaspectratio]{figures/tfPipeline}
-\caption{} 
+\caption{Forrás:\cite{TensorflowPipeline}} 
 \label{fig:tfPipeline}
 \end{figure}
 
