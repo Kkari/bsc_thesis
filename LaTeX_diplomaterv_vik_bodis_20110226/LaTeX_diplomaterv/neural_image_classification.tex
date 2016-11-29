@@ -2,14 +2,14 @@
 \chapter{A Neurális hálózatokkal való képosztályozás lehetõségeinek áttekintése}
 %----------------------------------------------------------------------------
 
-A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán nagyon sok sikeres és sikertelen kísérlet született annak érdekében hogy hogyan lehetne neurális hálózatokkal képeket osztályozni. Talán mondhatjuk hogy ezek a hálózatok a legsikeresebb képosztályozó eljárások, de korántsem triviális hogy mik az elõnyeik, hátrányaik és az egyes típusok milyen komplexitású jelekkel képesek megbírkózni. Elõször szeretném bemutatni az adathalmazokat amiken ezeket az algoritmusokat kiértékelik, majd eljutni az többrétegû perceptronoktól a konvoluciós hálózatokig, végül a legújabb trendek ismertetésével zárni a fejezetet.
+A kutatómunka jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán nagyon sok sikeres és sikertelen kísérlet született annak érdekében hogy hogyan lehetne neurális hálózatokkal képeket osztályozni. Talán mondhatjuk hogy ezek a hálózatok a legsikeresebb képosztályozó eljárások, de korántsem triviális hogy mik az elõnyeik, hátrányaik és az egyes típusok milyen komplexitású jelekkel képesek megbírkózni. Elõször szeretném bemutatni az adathalmazokat amiken ezeket az algoritmusokat kiértékelik, majd eljutni az többrétegû perceptronoktól a konvoluciós hálózatokig, végül egy-két újabb trend ismertetésével zárni a fejezetet.
 
 \section{Az algoritmusok kiértékelése}
 
 \subsection{Az adathalmazok}
 \paragraph{Bevezetés} Mint a legtöbb kutatási területnek, ennek is vannak jól ismert "benchmark" adathalmazai, amelyek viszonyítási alapként lehetõséget biztosítanak az egymástól eltérõ algoritmusok egymáshoz képesti kiértékelésére. Mivel ezekre az adathalmazokra sokat fogok hivatkozni, ezért szeretném õket egy-egy bekezdésben bemutatni.
 
-\paragraph{MNIST\cite{mnist}} Az MNIST adatbázis fekete-fehér, 28x28 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legalapabb adathalmaz. Erre egy pékdát mutat az \figref{mnistSample}~ábra. 
+\paragraph{MNIST\cite{mnist}} Az MNIST adatbázis fekete-fehér, 28x28 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legalapabb adathalmaz. Az adathalmazból a \figref{mnistSample}~ábra mutat egy-két példát. 
 
 \begin{figure}[!ht]
 \centering
@@ -18,7 +18,7 @@ A kutatómunka egy jelentõs részét tette ki a dolgozatomnak, mivel az évek folyam
 \label{fig:mnistSample}
 \end{figure}
 
-\paragraph{CIFAR-10\cite{cifar}} A CIFAR-10 egy jóval összetettebb adathalmaz, 60'0000 annotált 32x32 pixeles, színes képet tartalmaz. A képek 10 osztályra vannak felosztva, osztályonként 6000 képpel. Az adathalmazból 50'000 kép van tanításra, és 10'000 tesztelésre fenntartva. Erre egy példát mutat a \figref{cifarSample}~ábra.
+\paragraph{CIFAR-10\cite{cifar}} A CIFAR-10 egy jóval összetettebb adathalmaz, 60'000 annotált 32x32 pixeles, színes képet tartalmaz. A képek 10 osztályra vannak felosztva, osztályonként 6000 képpel. Az adathalmazból 50'000 kép van tanításra, és 10'000 tesztelésre fenntartva. Az adathalmazból a \figref{cifarSample}~ábra mutat egy-két példát.
 
 \begin{figure}[!ht]
 \centering
@@ -107,9 +107,9 @@ Az MLP hálózatoknál jelentõs javulást hozott amikor a hibafüggvényt négyzetes kö
 
 \subsubsection{MLP hiányosságai} 
 
-\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagrammja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de azt a tulajdonságot jól semlélteti, hogy több fennsík alakúl ki, ahol a derivált 0 lesz. 
+\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagrammja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de azt a tulajdonságot jól szemlélteti, hogy több fennsík alakúl ki, ahol a derivált 0 lesz. 
 
-\paragraph{A struktúra kialakítása} Az MLP annyira általános struktúrát használ, hogy lényegében semmilyen a priori tudást nem használunk fel a hálózat tanításakor. Ez azt eredményezi hogy hatalmas kapacítás kell a képekben megjelenõ bonyolult struktúrák megtanulásához, és a hálózat különbözõ részei kénytelenek rendre ugyanazt megtanulni. Sajnos az elõbbi cél csak a hálózat növelésével érhetõ el, az MLP paraméter tere viszont nagyon rosszl skálázódik. Ha veszünk egy 6 rétegû hálózatot aminek a rétegjei rendre 2500-2000-1500-1000-500-10 neuronból állnak, és az MNIST esetén 784 elemû bemeneti vektorral rendelkezik, akkor optimalizálandó paraméter tér mérete annak folytán hogy minden réteg teljesen össze van kapcsolva már:
+\paragraph{A struktúra kialakítása} Az MLP annyira általános struktúrát használ, hogy lényegében semmilyen a priori tudást nem használunk fel a hálózat tanításakor. Ez azt eredményezi hogy hatalmas kapacítás kell a képekben megjelenõ bonyolult struktúrák megtanulásához, és a hálózat különbözõ részei kénytelenek rendre ugyanazt megtanulni. Sajnos az elõbbi cél csak a hálózat növelésével érhetõ el, az MLP paraméter tere viszont nagyon rosszúl skálázódik. Ha veszünk egy 6 rétegû hálózatot aminek a rétegjei rendre 2500-2000-1500-1000-500-10 neuronból állnak, és az MNIST esetén 784 elemû bemeneti vektorral rendelkezik, akkor optimalizálandó paraméter tér mérete annak folytán hogy minden réteg teljesen össze van kapcsolva már:
 $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 11 965 000$, ami már nyilvánvalóan hatalmas. Ez is tanítható sikeresen, de ahhoz már a továbbiakban bemutott kisegítõ neurális struktúrák szükségesek.
 
 \begin{figure}[!ht]
@@ -127,7 +127,7 @@ Jól látszik hogy az MLP hálózatok ilyen naív formájukban nem igazán felelnek meg
 Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat, és a stacked autoencodereket.
 Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet, és kevésbé bonyolult ezért gyakorlatban az ajánlott, én mégis az RBM-et választottam érdekes struktúrája miatt. Hugo Larochelle et al. hozott ki egy áttekintõ tanulmányt az elõtanulásról a mélyebben érdeklõdõknek "Exploring Strategies for Training Deep Neural Networks" \cite{exploringStrategies} címmel.
 
-\paragraph{Az RBM struktúrája} Az RBM mint említettem egy sztochasztikus generatív számítási modell, amelyben fontos hogy az egyes neuronok egy páros gráfot alkotnak (\figref{rbm}~ábra). A generatív modell egy régi statisztikából származó fogalom ami azt foglalja magában hogy a model képes megfigyelhetõ adatpontokat véletlenszerûen generálni. Az RBM egyik legtriviálisabb mérõszáma a rekonstrukciós hiba azt méri hogy ha egy adatpontot a háló bemenetére teszek, akkor azt milyen részletesen tudja visszagenerálni. Tehát az adatpont az a háló tanulási terében egy stabil pontnak számít-e. Ez a hiba mérték nem jó az RBM általánosító képességének mérésére, mégis sokan használják praktikus egyszerûsége miatt. Akit bõvebben érdekel a téma a \cite{rbmGuide}-es referenciában talál bõséges irodalmat az RBM tanítását illetõen. Itt csak az alapokra szorítkozok.
+\paragraph{Az RBM struktúrája} Az RBM mint említettem egy sztochasztikus generatív számítási modell, amelyben fontos hogy az egyes neuronok egy páros gráfot alkotnak (\figref{rbm}~ábra). A generatív modell egy régi, statisztikából származó fogalom ami azt foglalja magában hogy a model képes megfigyelhetõ adatpontokat véletlenszerûen generálni. Az RBM egyik legtriviálisabb mérõszáma a rekonstrukciós hiba azt méri hogy ha egy adatpontot a háló bemenetére teszek, akkor azt milyen részletesen tudja visszagenerálni. Tehát az adatpont az a háló tanulási terében egy stabil pontnak számít-e. Ez a hiba mérték nem jó az RBM általánosító képességének mérésére, mégis sokan használják praktikus egyszerûsége miatt. Akit bõvebben érdekel a téma a "A practical guide to training restricted boltzmann machines"\cite{rbmGuide} referenciában talál bõséges irodalmat az RBM tanítását illetõen. Itt csak az alapokra szorítkozok.
 
 \begin{figure}[!ht]
 \centering
@@ -152,9 +152,9 @@ p(x) = \frac{e^{(-E(x))}}{Z} = \sum_{h}\frac{e^{(-E(x,h))}}{Z}
 Z = \sum_{x} e^{-E(x)}
 \end{align}
 
-Ahol az E az energiafüggvényt, Z pedig a particiós függvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve, azért hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
+Ahol az E az energiafüggvényt, Z pedig a particiós függvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve. A cél az volt, hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
 \begin{align}
-\mathcal{L}(\theta, x) = \frac{1}{N}\sum_{x^(i) \in \mathcal{D}}log(p(x^{(i)})
+\mathcal{L}(\theta, x) = \frac{1}{N}\sum_{x^{(i)} \in \mathcal{D}}log(p(x^{(i)})
 \end{align}
 
 Definiáljuk a szintén a temodinamikából származó szabad energia függvényt:
@@ -212,7 +212,7 @@ Ahol $c$ és $b$ az eltolás súlyvektorokat jelzik. Ezekre a képletekre fogok majd
 
 \paragraph{Az RBM és DBN elõtanulás} Az elõbbiekben bemutatott tanítással megcsinálhatjuk azt, hogy egy MLP egyes rétegeit rétegenként elõtanítjuk. Így a felügyelt tanítás elején az MLP súlyai már rögtön a bemenet tulajdonságaira lesznek rászabva.
 
-\paragraph{Az RBM és DBN elõtanulás eredményei} Az hogy a hálót elõtanítjuk fantasztikus eredményjavulást hozott, amely beigazolta hogy valóban a számok valós jellemzõ reprezentációihoz közel helyezkedik el egy nagyon optimális lokális minimum. Az \tabref{MlpEloTablazat}~táblázat szemlélteti az eredményeit az MNIST adathalmazon. Látszik hogy ennek segítségével jóval nagyobb hálók képezhetõek ki és lényeges jobb eredményre vezetnek.
+\paragraph{Az RBM és DBN elõtanulás eredményei} A hálók elõtanításával jelentõs teljesítmény javulást értek el a kutatók nagy paraméter térrel rendelkezõ hálózatok esetében. Ez azt bizonyítja hogy valóban a jellemzõ reprezentációihoz közel helyezkedik el egy nagyon optimális lokális minimum. Az \tabref{MlpEloTablazat}~táblázat szemlélteti az eredményeit az MNIST adathalmazon. Látszik hogy ennek segítségével jóval nagyobb hálók képezhetõek ki és lényeges jobb eredményre vezetnek.
 
 \begin{table}[ht]
 	\footnotesize
