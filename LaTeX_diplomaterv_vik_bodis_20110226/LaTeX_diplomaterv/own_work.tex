@@ -2,7 +2,7 @@
 \chapter{Hálózatok impelmentálása és elemzése tensorflowban}
 %----------------------------------------------------------------------------
 
-A következõ részben szeretném bemutatni saját mukámat és mérési eredményeimet. Az elõzõ részben bemutatott hálózatfajtákból megvalósítottam számtalan példányt Tensorflowban, és méréseket végeztem rajtuk az MNIST és a CIFAR-10 adathalmazon. A munkám célja az volt hogy leteszteljem a tensorflow lehetõségeit kísérleti hálózatok kifejlesztésére és monitorozására. A fejezet a következõ részekre tagolható:
+A következõ részben szeretném bemutatni saját mukámat és mérési eredményeimet. Az elõzõ részben bemutatott hálózatfajtákból megvalósítottam néhány példányt Tensorflowban és méréseket végeztem rajtuk az MNIST és a CIFAR-10 adathalmazon. A munkám célja az volt hogy leteszteljem a tensorflow lehetõségeit kísérleti hálózatok kifejlesztésére és monitorozására. A fejezet a következõ részekre tagolható:
 \begin{enumerate}
 \item A baseline metódusok bemutatása.
 \item A fejlesztési környezet bemutatása.
@@ -24,14 +24,14 @@ A Tensorflow ökoszisztéma nagyon jó pontja a csúcsra járatott monitorozási lehet
 \end{itemize}
 
 \section{A kísérletek alatt használt optimizátorok}
-Nagyon sok optimizátor létezik a numerikus optimalizálási feladatok megoldására, ezt most nem is szeretném különösebben taglalni mert ez egy olyan terület amibõl már sok szép Phd. munka született és hozzávetõlegesen 20-30 oldallal növelné meg a dolgozatomat.
-Dióhéjjban, én két optimizátorral kísérleteztem, a klasszikus \emph{sztochasztikus mini-batch} és az \emph{adaptiv momentum becslési} módszerrel. Az elsõ elõnye hogy kevesebbet kell számolni, de vagy konstans tanulási rátát használ, vagy kívülrõl kell valamilyen lehûléses algortimussal kontrollálni ezt, ami nehezebbé teszi a használatát. 
+Nagyon sok optimizátor létezik a numerikus optimalizálási feladatok megoldására, mivel a dolgozatom fókusza nem ezeknek a beutatása, ezért csak futólag szeretném itt megemlíteni az általam használt változatokat.
+Én két optimizátorral kísérleteztem, a klasszikus \emph{sztochasztikus mini-batch} és az \emph{adaptiv momentum becslési} módszerrel. Az elsõ elõnye hogy kevesebbet kell számolni, de vagy konstans tanulási rátát használ, vagy kívülrõl kell valamilyen lehûléses algortimussal kontrollálni ezt, ami nehezebbé teszi a használatát. 
 A második egy adaptív módszer, ahol az optimizátorba bele van építve a tanulási ráta beállítása, így dinamikusan tudja lekezelni a hibafelület topológiájának a változását. Ennek az algoritmusnak két hiperparamétere van, de ezeket nem feltétlen kell megadni, mert a módszer szerzõ mindkettõhöz megadtak általánosságban jól mûködõ értékeket.
 A különözõ optimizátorok összehasonlításáról az érdeklõdõk \url{http://sebastianruder.com/optimizing-gradient-descent} ezen a honlapon olvashatnak egy nagyon jó összefoglalást.
 
 \section{A saját implementációk bemutatása}
 \subsection{A hálózatok monitorozása}
-A Tensorflow érett API-t kínál a hálózat paramétereinek követésére tanulás közben, de nem ment le automatikusan minden egyes lefutáskor minden változó értékét, mivel ez egy modern hálózatnál több millió értéket is jelenthet. A VGG konvoluciós háló például 140 millió paramétert tartalmaz. A hálózat változóiról általánosságban a következõ értékeket mentettem le: minimum érték, maximum érték, közép érték és a standardizált szórásukat. hogy ezeket ne kelljen minden változóra kiadni, ezért a \listref{variableSummaries}-es függvényt alkalmaztam.
+A Tensorflow érett API-t kínál a hálózat paramétereinek követésére tanulás közben, de nem ment le automatikusan minden egyes lefutáskor minden változó értékét, mivel ez egy modern hálózatnál több millió értéket is jelenthet. A VGG konvoluciós háló például 140 millió paramétert tartalmaz. A hálózat változóiról általánosságban a következõ értékeket mentettem le: minimum érték, maximum érték, közép érték és a standardizált szórásukat. Annak érdekében hogy ezeket ne kelljen minden változóra kiadni, ezért a \listref{variableSummaries}-es függvényt alkalmaztam.
 
 \begin{lstlisting}[frame=single,float=!ht,caption= A változók mentése, label=listing:variableSummaries, mathescape=true]
 def variable_summaries(name, var):
@@ -48,7 +48,7 @@ def variable_summaries(name, var):
 \end{lstlisting}
 
 \subsection{A logiszikus regresszió}
-Az elsõ modell amit implementáltam Tensorflowban az a logisztikus regresszió volt. A célja az volt hogy összehasonlítsam a Tensorflow erõforrás igényét egy klasszikus python machine learning csomag, a Scikit-learn igényeivel.% A struktúrát az <szám>~ábra szemlélteti. Egybõl látszódhat hogy az avatatlan szem számára a tensorboard eléggé nehezen értelmezhetõ lehet, ezért is szokták mondani hogy a tensorflownak a tanulási görbéje viszonylag nagy. Szerencse hogy lehet benne névtereket létrehozni hogy a gráfok könnyebben átláthatóak legyenek. Az egész tanulási gráfot a járulékos nodeokkal az <szám>~ábra szemlélteti.
+Az elsõ modell amit implementáltam Tensorflowban az a logisztikus regresszió neurális megközelítése volt. A célja az volt hogy összehasonlítsam a Tensorflow erõforrás igényét egy klasszikus python machine learning csomag, a Scikit-learn igényeivel.
 
 \subsection{A többrétegû perceptron}
 A többrétegû perceptronnal való kísérletezést a TF-Slim API nagyon megkönnyíti, minden nehézség nélkül a rétegeket egymás után tenni, ha pedig egyedi elemet szeretne az ember definiálni akkor arra is lehetõség van. Hasonló architektúrákat teszteltem az MNIST és a CIFAR-10 adathalmazon is, ami nagyon jól megfogta a két adathalmaz közötti különbséget. A \listref{MlpDef}-listázás egy ilyen háló definicióját szemlélteti.
@@ -106,14 +106,14 @@ sgm(x) = \frac{1}{1 + e^x}
 \subsection{Az RBM hálózat}
 Mint mondtam a TF-Slim nagyon kényelmes volt addig amíg olyan struktúrákkal dolgoztam amik könnyen definiálhatóak. Viszont csak többrétegû perceptronok és konvoluciós hálózatokat lehet benne egyelõre alkotni. Az korlátozott boltzmann gép implementálásához le kellett mennem a Tensorflow alacsony szintû interfacéhez amiben a hálózat implementálása több mint egy hét volt. Viszont ezalatt értettem meg igazán hogy hogyan mûködik egyrészt a könyvtár, másrészt pedig az RBM-ek. 
 Az RBM struktúra legtrükkösebb része a kontrasztív divergencia volt, mivel az egy valószínûségi döntés, de az egyes batchek futása közben nem tudok közvetlenül a gráfon belûl véletlen számokat generálni változtatható mennyiségben. Azért nem lehet egy adott méretben generálni, mert a batch méret változik, és minden számnak kellett generálni.
-A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanításnál egy akkora mátrixot véletlen számokból mint amekkora a tanító halmazom volt. Majd a bináris 0-1 döntést a következõ képpen szimuláltam:
+A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanításnál egy akkora mátrixot véletlen számokból mint amekkora a batch mérete volt és ezt egy placeholderen keresztül injektáltam bele a hálóba. Majd a bináris 0-1 döntést a következõ képpen szimuláltam:
 \begin{enumerate}
 \item Kivontam a valósziníségi mátrixot a random számokból
 \item Vettem az eljöjelét a keletkezett mátrixnak
-\item Átvezettem egy relu rétegen, amitõl 0 és 1 közé normalizálódott.
+\item Átvezettem egy relu rétegen, aminek a kimenete az elõjeltõl függõen stabil 0 vagy 1 lett.
 \end{enumerate}
 
-\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és adaptív gradiens (ADAM) optimizátorral. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{RbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Illetve a kísérletezés egy másik dimenziója az volt hogy egyes esetekben megengedtem az RBM felé kapcsolt regresszornak hogy az elõre megtanult súlyokat változtassa (ezt hívjuk fine-tuning-nak), más esetben pedig nem. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide}-ben leírtak alapján végeztem, de az osztályozásban meg hoztak érzékelhetõ javulást, ezért ezeket a méréseknél nem fejtem ki részletesen.
+\paragraph{A tanítás} A tanítást kétféle képpen végeztem el, egyrészrõl definiáltam a szabad energia függvényt és a keretrendszerrel számoltattam ki a \eqref{rbmPFromEnergy} függvénybõl és különbözõ beépített optimalizátorokkal teszteltem, gradientdescenttel és adaptív gradiens (ADAM) optimizátorral. Másrészt közvetlen kiszámoltam a gibbs sampling utáni értékekbõl \eqref{RbmWDirect}, \eqref{RbmCDirect} és \eqref{RbmBDirect} függvényeket és egyszerûen csak hozzáadtam õket a súlyvektorhoz. A \figref{rbmClosed}~ábra a hálózat madártávlati struktúráját szemlélteti. Illetve a kísérletezés egy másik dimenziója az volt hogy egyes esetekben megengedtem az RBM felé kapcsolt regresszornak hogy az elõre megtanult súlyokat változtassa (ezt hívjuk fine-tuning-nak), más esetben pedig nem. Könnyen kivehetõ hogy egy softmax réteg is hozzá van csatolva az RBM magjához, miután felügyelet nélkül tanítom az RBM-et az a réteg végzi az osztályzást. A \figref{rbmExpanded}~ábra pedig az RBM belsõ strukturját mutatja. Itt látszik igazán hogy a Tensorboard grafikonjai milyen kifonomult vizualizációt tesznek lehetõvé. A tanítás optimalizálását a \cite{rbmGuide}-ben leírtak alapján végeztem, de az osztályozásban meg hoztak érzékelhetõ javulást, ezért ezeket a méréseknél nem fejtem ki részletesen.
 
 \begin{figure}[!ht]
 \centering
@@ -133,7 +133,7 @@ A megoldás amit alkalmaztam az az volt hogy numpy-ban legeneráltam minden tanítá
 Miután az RBM struktrát megalkottam természetesen le szerettem volna tesztelni többrétegû elõre tanított hálózatok teljesítményét is. Erre nem a saját RBM hálózatomat használtam, hanem egy külsõ könyvtárat, ami viszont hibás volt úgyhogy helyenként meg kellett foltoznom. Itt jött jól az a tudás amit az RBM programozásánál szereztem, mert magabiztosan mozogtam a pythonban írt tensorflow kódban.
 
 \subsection{Hibrid modellek}
-A kísérletezésem során elkezdtünk olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM-nek. Így hatalmas dimenzió csökkenést értünk el, pl 784-rõl 64-re az MNIST esetében, ami jelentõsen meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit iszonyatosan hosszú idõ alatt tudtam megtanítani egy SVM-nek. Ezért letömörítettem az az 3072 dimenziós CIFAR-10 adathalmazt egy 783 dimenziós térbe RBM-ek segítségével ami mindemellé még jellemzõ kiemelést is végzett, és ott tanítottam rajta a szupport vektor gépet, remélve hogy jó osztályozási eredményeket kapok. Ezt két megközelítésben próbáltam meg, az egyik az volt amikor egyetlen RBM-em volt, 3072 bemeneti és 783 kimeneti neuronnal, a másik az volt amikor 3 RBM-et tanítottam meg, minden színcsatornára egyet, és utána ezeket egy tömbbé összefûzve adtam át az SVM-nek. A két megközelítést a \figref{svmRbm}~ábra szemlélteti.
+A kísérletezésem során elkezdtem olyan architektúrákkal foglalkozni ahol a kimenet nem a neurális hálózat része, mint például az RBM osztályozók általam tesztelt variánsánál, hanem a kimeneti aktivációk valószínûségi eloszlását adtam be mintánként egy SVM-nek. Így jelentõs dimenzió csökkenést értünk el, pl 784-rõl 64-re az MNIST esetében, ami kifejezetten meggyorsította az SVM tanítását, anélkül hogy a nyers pixeladatokon tanított SVM-hez képest romlott volna a modell predikciós képessége. Az általam használt teszt gépen a CIFAR-10es adathalmaz nyers pixeljeit nagyon hosszú idõ alatt tudtam megtanítani egy SVM-nek. Ezért letömörítettem az az 3072 dimenziós CIFAR-10 adathalmazt egy 783 dimenziós térbe RBM-ek segítségével ami mindemellé még jellemzõ kiemelést is végzett és ott tanítottam rajta a szupport vektor gépet, remélve hogy jó osztályozási eredményeket kapok. Ezt két megközelítésben próbáltam meg, az egyik az volt amikor egyetlen RBM-em volt, 3072 bemeneti és 783 kimeneti neuronnal, a másik az volt amikor 3 RBM-et tanítottam meg, minden színcsatornára egyet, és utána ezeket egy tömbbé összefûzve adtam át az SVM-nek. A két megközelítést a \figref{svmRbm}~ábra szemlélteti.
 
 \begin{figure}[!ht]
 \centering
@@ -143,7 +143,7 @@ A kísérletezésem során elkezdtünk olyan architektúrákkal foglalkozni ahol a kime
 \end{figure}
 
 \subsection{A Konvoluciós modell}
-Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy ugyanazt a modellt probálom ki az MNIST és a CIFAR-10 adathalmazon, és megnézni hogy melyik modell hogyan reagál az adat megnövekedett komplexitására. Több hálózatot kiróbáltam, az alapmodell felépítését a \figref{convnet_1}~ábra mutatja. A kísérleteim arra irányultak hogy plusz teljesen összekötött rétegek hozzáadása, esetleg a konvoluciós rétegek más elrendezése milyen eredményre juttat.
+Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy ugyanazt a modellt probálom ki az MNIST és a CIFAR-10 adathalmazon, és megnéznem hogy melyik modell hogyan reagál az adat megnövekedett komplexitására. Több hálózatot kiróbáltam, az alapmodell felépítését a \figref{convnet_1}~ábra mutatja. Arra is irányultak kísérleteim hogy plusz teljesen összekötött rétegek hozzáadása, esetleg a konvoluciós rétegek más elrendezése milyen eredményre juttat.
 
 \begin{figure}[!ht]
 \centering
@@ -155,8 +155,8 @@ Több konvoluciós modell-t kipróbáltam, a méréseim egyik fõ iránya az volt hogy u
 Az egyes operációkat szeretném megymagyarázni röviden amiket a konvoluciós modelljeimben használtam:
 \begin{itemize}
 \item \emph{conv(magasság, szélesség, mélység):} Kétdimenziós, diszkrét konvolució. Ahol a magasság és a szélesség adják meg a képfolt nagyságát. A mélység pedig hogy hány neuron legyen az adott rétegben. A kétdimenziós konvolicó definicióját a \eqref{convDef}-képlet mutatja be.
-\item \emph{maxpool(magasság, szélesség)} Egy alulmintavételezési operátor a térbeli dimenziókban(magasság, szélesség). Ezzel csökkentjük drasztikusan a jellemzõterek nagyságát, és adunk transzlációs invarianciát a rendszerhez, mindig a legerõsebb jelet viszi keresztül a pooling foltból.
-\item \emph{fc(neuronok száma):} A teljesen kapcsolt rétegeket a hálózat végére kapcsoljuk. Amíg a konvoluciós rétegek egy magas absztrakcióval rendelkezõ, viszonylag transzláció invariáns jellemzõteret nyújtanak a képrõl, addig a hálózat végén lévõ teljesen kapcsolt rétegek teszik lehetõvé a nemlineáris leképzéseket ebben a jellemzõtérben. Az itteni teljesen kapcsolt réteget és a hozzá tartozó nemlineritásokat is az \eqref{fullyConnected}, \eqref{sigmoid}, \eqref{reLu} írja le.
+\item \emph{maxpool(magasság, szélesség)} Egy alulmintavételezési operátor a térbeli dimenziókban(magasság, szélesség). Ezzel csökkentjük drasztikusan a jellemzõterek nagyságát és adunk transzlációs invarianciát a rendszerhez. Mindig a legerõsebb jelet viszi keresztül a pooling foltból.
+\item \emph{fc(neuronok száma):} A teljesen kapcsolt rétegeket a hálózat végére kapcsoljuk. Amíg a konvoluciós rétegek egy magas absztrakcióval rendelkezõ, viszonylag transzláció invariáns jellemzõteret nyújtanak a képrõl, addig a hálózat végén lévõ teljesen kapcsolt rétegek teszik lehetõvé a nemlineáris leképzéseket ebben a jellemzõtérben. Az itteni teljesen kapcsolt réteget és a hozzá tartozó nemlineritásokat is a \eqref{reLu}, \eqref{sigmoid} írja le.
 \item \emph{lrn:} Elvileg a reLu aktivációs függvény nem érzékeny annyira az adatok normalizálására, mégis kiderül a \cite{alexNet} publikációból hogy egy lokális normalizálási eljárás statisztikailag szignifikáns javulást képest hozni a hálózat osztályozó képességében. Ezt a matematikai struktúrát a \eqref{lrn}~képlet szemlélteti. Ez is egy biológiailag inspirált eljárás. A bilógiai neve ennek az eljárásnak laterális inhibició.
 \item \emph{flatten:} Az elsõ teljesen kapcsolt, és az utolsó konvoluciós réteg között ki kell lapítani a 3 dimenziós konvoluciós struktúrát egy vektorba hogy össze lehessen kapcsolni a következõ réteggel. Ezt az operációt hívjuk angolul flattennek.
 \end{itemize}
@@ -183,8 +183,8 @@ b^i_{x,y} \text{ a normalizáció utáni eredmény} \notag\\
 \label{fig:convnet_2}
 \end{figure}
 
-\paragraph{Számítás elosztás}Ezt a hálózatot teszteltem CPU-n illetve a laptopom NVIDIA 740M típusú videokártyáján, ezen felül a tensorflow oldalán találtam adatokat egy NVIDIA Tesla K40c-n futtatott scientific accelerator cardon elért eredményekrõl is ugyanezen az adathalmazon. A program erõsen párhuzamosított volt, és a felépítése lehetõvé tette volna tetszõleges számú GPU-ra való kiterjesztését, ennek a program felépítésének a részleteit szeretném a következõ bekezdésben megosztani.
-\paragraph{?} A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat, ahogyan a \figref{device_distro}~ábra szemlélteti.
+\paragraph{Használt eszközök}Ezt a hálózatot teszteltem CPU-n illetve a laptopom NVIDIA 740M típusú videokártyáján, ezen felül a tensorflow oldalán találtam adatokat egy NVIDIA Tesla K40c-n futtatott scientific accelerator cardon elért eredményekrõl is ugyanezen az adathalmazon. A program erõsen párhuzamosított volt, és a felépítése lehetõvé tette volna tetszõleges számú GPU-ra való kiterjesztését, ennek a program felépítésének a részleteit szeretném a következõ bekezdésben megosztani.
+\paragraph{A számítás elosztása} A Tensorflow képes a számításokat automatikusan elosztani az eszközök között olyan módon hogy heurisztikusan megkeresi hogy mely operációk mentén érdemes szétvágni a számítási gráfot, majd azokhoz az élekhez berak küldõ és fogadó csomópontokat ahogyan a \figref{device_distro}~ábra szemlélteti.
 Ez sok esetben teljesen megfelel az elvárásainknak, ha nem szeretnénk sokat veszõdni a hálózat elosztásával, vagy amúgy is túl nagy a hálónk, és nem férne el gradiens számítással együtt rendesen egyetlen eszközön. De ha kissebb a háló és több eszközünk van akkor felmerülhet a lehetõség hogy esetleg jobban megérné a gráfot egy az egyben lemásolni az egyes eszközökre, és a súlyokat a fõ memóriában tartani, majd az egyes párhuzamos futások után itt szinkronizálni a lefutásokat. Én ezt a megközelítést teszteltem le, aminek a neve torony párhuzamos tanítás, ezt a \figref{tower_parallel}~ábra mutatja.
 
 \begin{figure}[!ht]
@@ -216,7 +216,7 @@ Ezen felül definiálhatunk még elõfeldolgozási lépéseket minden képhez, az általa
 \item A kép világosságába való véletlenszerû zaj bevezetése.
 \item A kép kontrasztjának véletlenszerû torzítása.
 \end{itemize}
-Ez jelentõsen növeli a háló általánosító képességét. Majd ezeket az adatokat beadja egy új sorba, ami véletlenszerû batcheket generál a 16 szál képeibõl, és megadhatjuk hogy hány modell vegye kis és dolgozza fel õket egyszerre. Esetemben a torony-parallel elrendezésben ez a GPU-k számától függ.
+Ez jelentõsen növeli a háló általánosító képességét. Majd ezeket az adatokat beadja egy új sorba, ami véletlenszerû batcheket generál a 16 szál képeibõl, és megadhatjuk hogy hány modell vegye kis és dolgozza fel õket egyszerre. Esetemben a torony-párhuzamos elrendezésben ez a GPU-k számától függ.
 
 \begin{figure}[!ht]
 \centering
