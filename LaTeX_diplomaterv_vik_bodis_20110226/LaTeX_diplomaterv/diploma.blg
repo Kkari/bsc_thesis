@@ -23,45 +23,45 @@ Warning--to sort, need author or key in TensorflowPipeline
 Warning--empty journal in minsky1969perceptrons
 Warning--empty year in sben
 Warning--empty journal in backProp
-You've used 34 entries,
+You've used 35 entries,
             2118 wiz_defined-function locations,
-            697 strings with 9715 characters,
-and the built_in function-call counts, 11626 in all, are:
-= -- 1123
-> -- 553
+            704 strings with 9836 characters,
+and the built_in function-call counts, 11959 in all, are:
+= -- 1158
+> -- 566
 < -- 11
-+ -- 226
-- -- 188
-* -- 762
-:= -- 1815
-add.period$ -- 97
-call.type$ -- 34
-change.case$ -- 194
++ -- 231
+- -- 192
+* -- 788
+:= -- 1870
+add.period$ -- 100
+call.type$ -- 35
+change.case$ -- 199
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 461
-empty$ -- 941
-format.name$ -- 188
-if$ -- 2500
+cite$ -- 45
+duplicate$ -- 472
+empty$ -- 968
+format.name$ -- 192
+if$ -- 2568
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 27
-newline$ -- 166
-num.names$ -- 54
-pop$ -- 253
+int.to.str$ -- 35
+missing$ -- 28
+newline$ -- 171
+num.names$ -- 56
+pop$ -- 256
 preamble$ -- 1
-purify$ -- 160
+purify$ -- 164
 quote$ -- 0
-skip$ -- 379
+skip$ -- 387
 stack$ -- 0
-substring$ -- 653
-swap$ -- 134
+substring$ -- 683
+swap$ -- 135
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 136
+type$ -- 140
 warning$ -- 10
-while$ -- 96
-width$ -- 36
-write$ -- 339
+while$ -- 100
+width$ -- 37
+write$ -- 350
 (There were 10 warnings)

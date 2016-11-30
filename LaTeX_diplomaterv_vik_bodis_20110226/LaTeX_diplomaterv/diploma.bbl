@@ -48,6 +48,11 @@ Corinna Cortes and Vladimir Vapnik.
 \newblock Support-vector networks.
 \newblock {\em Machine learning}, 20(3):273--297, 1995.
 
+\bibitem{decoste2002training}
+Dennis Decoste and Bernhard Sch{\"o}lkopf.
+\newblock Training invariant support vector machines.
+\newblock {\em Machine learning}, 46(1-3):161--190, 2002.
+
 \bibitem{rcnn}
 Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
 \newblock Rich feature hierarchies for accurate object detection and semantic

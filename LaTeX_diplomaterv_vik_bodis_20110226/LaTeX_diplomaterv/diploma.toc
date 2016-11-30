@@ -78,13 +78,13 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}A t\"obbr\'eteg\H u perceptron}{30}{subsection.3.4.3}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.4}Az RBM h\'al\'ozat}{31}{subsection.3.4.4}
 \select@language {magyar} \contentsline {paragraph}{A tan\IeC {\'\i }t\'as}{32}{section*.81}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.4.5}A DBN strukt\'ura}{33}{subsection.3.4.5}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.5}A DBN strukt\'ura}{32}{subsection.3.4.5}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.6}Hibrid modellek}{33}{subsection.3.4.6}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.7}A Konvoluci\'os modell}{34}{subsection.3.4.7}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.8}A konvoluci\'os modell sk\'al\'az\'asa}{35}{subsection.3.4.8}
 \select@language {magyar} \contentsline {paragraph}{Indokl\'as}{35}{section*.86}
-\select@language {magyar} \contentsline {paragraph}{Sz\'am\IeC {\'\i }t\'as eloszt\'as}{35}{section*.88}
-\select@language {magyar} \contentsline {paragraph}{?}{35}{section*.89}
+\select@language {magyar} \contentsline {paragraph}{Haszn\'alt eszk\"oz\"ok}{35}{section*.88}
+\select@language {magyar} \contentsline {paragraph}{A sz\'am\IeC {\'\i }t\'as eloszt\'asa}{35}{section*.89}
 \select@language {magyar} \contentsline {paragraph}{Adatok dinamikus felolvas\'asa}{36}{section*.92}
 \select@language {magyar} \contentsline {chapter}{\numberline {4}A m\'er\'esi eredm\'enyeim \"osszegz\'ese}{38}{chapter.4}
 \select@language {magyar} \contentsline {section}{\numberline {4.1}A keretrendszer \'altal\'anos teljes\IeC {\'\i }tm\'enye}{39}{section.4.1}
