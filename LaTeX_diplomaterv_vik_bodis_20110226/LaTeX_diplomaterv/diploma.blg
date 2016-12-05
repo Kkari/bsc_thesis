@@ -13,55 +13,57 @@ A level-1 auxiliary file: conclusion.aux
 A level-1 auxiliary file: acknowledgement.aux
 The style file: plain.bst
 Database file #1: mybib.bib
+Warning--to sort, need author or key in Kubernetes
 Warning--to sort, need author or key in TfSlim
 Warning--to sort, need author or key in Keras
 Warning--to sort, need author or key in mnist
 Warning--to sort, need author or key in cifar
 Warning--to sort, need author or key in imagenet
+Warning--to sort, need author or key in Tensorboard
 Warning--to sort, need author or key in scalingCNN
 Warning--to sort, need author or key in TensorflowPipeline
+Warning--empty journal in aarts1988simulated
 Warning--empty journal in minsky1969perceptrons
 Warning--empty year in sben
-Warning--empty journal in backProp
-You've used 35 entries,
+You've used 45 entries,
             2118 wiz_defined-function locations,
-            704 strings with 9836 characters,
-and the built_in function-call counts, 11959 in all, are:
-= -- 1158
-> -- 566
-< -- 11
-+ -- 231
-- -- 192
-* -- 788
-:= -- 1870
-add.period$ -- 100
-call.type$ -- 35
-change.case$ -- 199
+            752 strings with 11620 characters,
+and the built_in function-call counts, 15603 in all, are:
+= -- 1495
+> -- 787
+< -- 14
++ -- 320
+- -- 270
+* -- 1071
+:= -- 2466
+add.period$ -- 128
+call.type$ -- 45
+change.case$ -- 266
 chr.to.int$ -- 0
-cite$ -- 45
-duplicate$ -- 472
-empty$ -- 968
-format.name$ -- 192
-if$ -- 2568
+cite$ -- 57
+duplicate$ -- 591
+empty$ -- 1236
+format.name$ -- 270
+if$ -- 3318
 int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 28
-newline$ -- 171
-num.names$ -- 56
-pop$ -- 256
+int.to.str$ -- 45
+missing$ -- 37
+newline$ -- 219
+num.names$ -- 72
+pop$ -- 334
 preamble$ -- 1
-purify$ -- 164
+purify$ -- 222
 quote$ -- 0
-skip$ -- 387
+skip$ -- 474
 stack$ -- 0
-substring$ -- 683
-swap$ -- 135
-text.length$ -- 11
+substring$ -- 875
+swap$ -- 158
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
-warning$ -- 10
-while$ -- 100
-width$ -- 37
-write$ -- 350
-(There were 10 warnings)
+type$ -- 178
+warning$ -- 12
+while$ -- 129
+width$ -- 47
+write$ -- 452
+(There were 12 warnings)

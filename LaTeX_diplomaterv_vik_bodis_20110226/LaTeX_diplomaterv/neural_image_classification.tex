@@ -9,7 +9,7 @@ A kutatómunka jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán n
 \subsection{Az adathalmazok}
 \paragraph{Bevezetés} Mint a legtöbb kutatási területnek, ennek is vannak jól ismert "benchmark" adathalmazai, amelyek viszonyítási alapként lehetõséget biztosítanak az egymástól eltérõ algoritmusok egymáshoz képesti kiértékelésére. Mivel ezekre az adathalmazokra sokat fogok hivatkozni, ezért szeretném õket egy-egy bekezdésben bemutatni.
 
-\paragraph{MNIST\cite{mnist}} Az MNIST adatbázis fekete-fehér, 28x28 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legalapabb adathalmaz. Az adathalmazból a \figref{mnistSample}~ábra mutat egy-két példát. 
+\paragraph{MNIST\cite{mnist}} Az MNIST adatbázis fekete-fehér, 28x28 pixelre normalizált írott számjegyeket tartalmaz nullától kilencig, azaz tíz osztállyal rendelkezik. Az adatbázis 60'000 annotált tanító képet és 10'000 annotált teszt képet tartalmaz. Ez a legismertebb adathalmaz. Az adathalmazból a \figref{mnistSample}~ábra mutat egy-két példát. 
 
 \begin{figure}[!ht]
 \centering
@@ -46,19 +46,19 @@ Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel i
 \label{fig:imagenetSample}
 \end{figure}
 
-\subsubsection{A metrika}
+\subsection{Az adathalmazokon értelmezett tipikus metrikák}
 \paragraph{MNIST és CIFAR} Az MNIST és a CIFAR-10/100 Adathalmazok esetében mindig az egyszerû pontosság értéket nézzük, tehát az eltalált képek számát osztva a hibásan osztályozott képet számával.
 
 \paragraph{IMAGENET} Mivel az IMAGENET egy ennyire bonyolult adathalmaz, itt top 1 és top 5 hibát is szoktak nézni. A top 5 hiba ahol az számít sikeres találatnak ha a helyes címkét a háló 5 legnagyobb valószínûséggel bíró tippjében benne van.
 
 \section{A Legelterjedtebb neurális hálózatok képfeldolgozáshoz}
 
-\paragraph{Bevezetés} Az évek során számos neurális hálózattal kísérleteztek a kutatók annak érdekében hogy rájöjjenek melyek képesek legjobban megtanulni a képekeben elõforduló szabályosságokat, és ez alapján osztályozni õket. Ezekbõl szeretném a fõ állomásokat kiemelni, és leírni hogy mik voltak a hiányosságok a meglévõ architektúrákban amik új struktúrák létrehozását motiválták. Az áttekintésben nem ejtek szót a minden hálózat típusra érvényes általános, különféle reguralizációs eljárásokról, mint a súlyok felejtése vagy a dropout metódus. Csak a hálózatok felépítésének és tanításának architektúrális különbségeit veszem górcsõ alá.
+\paragraph{Bevezetés} Az évek során számos neurális hálózattal kísérleteztek a kutatók annak érdekében hogy rájöjjenek melyek képesek legjobban megtanulni a képekeben elõforduló szabályosságokat, és ez alapján osztályozni õket. Ezekbõl szeretném a fõ állomásokat kiemelni, és leírni hogy mik voltak a hiányosságok a meglévõ architektúrákban amik új struktúrák létrehozását motiválták. Az áttekintésben nem ejtek szót a minden hálózat típusra érvényes általános, különféle reguralizációs eljárásokról, mint a súlyok felejtése\cite{moody1995simple} vagy a dropout metódus\cite{srivastava2014dropout}. Csak a hálózatok felépítésének és tanításának architektúrális különbségeit veszem górcsõ alá.
 
 \subsection{A többrétegû perceptron (MLP)}
 
 \subsubsection{Az MLP elõzményei és megalkotása}
-\paragraph{Elõzmények} Miután Rosenblatt megalkotta az elsõ perceptron struktúrát a kései ötvenes években, a kutatók elkezdtek azon gondolkodni hogy hogyan lehetne ezeket a neuronokat összerendezni úgy, hogy együtt tanuljanak, és komplex regressziók, illetve osztályozási feladatok elvégzésére legyenek képesek. De ezek a kutatások sokáig igen meddõek voltak.
+\paragraph{Elõzmények} Miután Rosenblatt megalkotta az elsõ perceptron struktúrát a kései ötvenes években\cite{rosenblatt1958perceptron}, a kutatók elkezdtek azon gondolkodni hogy hogyan lehetne ezeket a neuronokat összerendezni úgy, hogy együtt tanuljanak, és komplex regressziók, illetve osztályozási feladatok elvégzésére legyenek képesek. De ezek a kutatások sokáig igen meddõek voltak.
 
 \begin{figure}[!ht]
 \centering
@@ -103,7 +103,16 @@ látható hálózat tanításához a \listref{Backpropagation}-lista mutatja.
 	\hline
 	\end{tabular}
 \end{table}
-Az MLP hálózatoknál jelentõs javulást hozott amikor a hibafüggvényt négyzetes középértékrõl kereszt-entrópiára cserélték ki. Ma már osztályozási feladatoknál szinte csak a kereszt-entrópia hibafüggvényt használjuk.
+Az MLP hálózatoknál jelentõs javulást hozott amikor a hibafüggvényt négyzetes középértékrõl\eqref{mse} kereszt-entrópiára\eqref{crossEntropy} cserélték ki. Ma már osztályozási feladatoknál szinte csak a kereszt-entrópia hibafüggvényt használjuk.
+
+\begin{align} \label{eq:mse}
+L = - \sum_{i=1}^{n}y_{i}log(\widehat{y}_{i})
+\end{align}
+
+\begin{align} \label{eq:crossEntropy}
+MSE = \frac{1}{n} \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})^2
+\end{align}
+
 
 \subsubsection{MLP hiányosságai} 
 
@@ -122,10 +131,10 @@ $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 
 \paragraph{konkluzió}
 Jól látszik hogy az MLP hálózatok ilyen naív formájukban nem igazán felelnek meg az elvárásainknak, ezt a késõbbiekben bemutatott mérési eredményeim meg is erõsítik. A továbbiakban bemutatok egy kisegítõ neurális struktúrát, amivel sikeresen inicializálták az MLP súlyait hogy jobb eredményeket érjenek el.
 
-\subsection{A Korlátozott Boltzmann Gép}
+\subsection{A Korlátozott Boltzmann Gép\cite{rbmGuide}}
 \paragraph{Bevezetés} A korlátozott boltzmann gép (továbbiakban RBM - Restricted Boltzmann Machine, \figref{rbm}~ábra) egy szochasztikus generatív neurális számítási modell. Mûködése az eddig tárgyalt MLP-tõl györekesen eltér, funkciója a bemenet jellemzõinek (featureinek) a megtanulása, és nem az egyes minták helyes osztályozása. Az intuitív jelentõsége abban rejlik hogy feltehetjük hogy a naív MLP a kapzsi tanulása miatt nem képes megtanulni a minták valódi reprezentációját, de ha az MLP súlyait úgy tudnánk inicializálni, hogy a mintákban lévõ szabályosságokat már eleve ismerje, akkor ebbõl könnyebben meg tudná tanulni hogy melyik jellemzõ mely osztályt azonsítja.
-Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat, és a stacked autoencodereket.
-Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet, és kevésbé bonyolult ezért gyakorlatban az ajánlott, én mégis az RBM-et választottam érdekes struktúrája miatt. Hugo Larochelle et al. hozott ki egy áttekintõ tanulmányt az elõtanulásról a mélyebben érdeklõdõknek "Exploring Strategies for Training Deep Neural Networks" \cite{exploringStrategies} címmel.
+Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat\cite{salakhutdinov2009deep}, és a stacked autoencodereket\cite{vincent2010stacked}.
+Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet, és kevésbé bonyolult ezért gyakorlatban az ajánlott, én mégis az RBM-et választottam érdekes struktúrája miatt. Hugo Larochelle et al. publikált egy hosszabb, több módszert tartalmazó cikket az elõtanulásról a mélyebben érdeklõdõknek "Exploring Strategies for Training Deep Neural Networks" \cite{exploringStrategies} címmel.
 
 \paragraph{Az RBM struktúrája} Az RBM mint említettem egy sztochasztikus generatív számítási modell, amelyben fontos hogy az egyes neuronok egy páros gráfot alkotnak (\figref{rbm}~ábra). A generatív modell egy régi, statisztikából származó fogalom ami azt foglalja magában hogy a model képes megfigyelhetõ adatpontokat véletlenszerûen generálni. Az RBM egyik legtriviálisabb mérõszáma a rekonstrukciós hiba azt méri hogy ha egy adatpontot a háló bemenetére teszek, akkor azt milyen részletesen tudja visszagenerálni. Tehát az adatpont az a háló tanulási terében egy stabil pontnak számít-e. Ez a hiba mérték nem jó az RBM általánosító képességének mérésére, mégis sokan használják praktikus egyszerûsége miatt. Akit bõvebben érdekel a téma a "A practical guide to training restricted boltzmann machines"\cite{rbmGuide} referenciában talál bõséges irodalmat az RBM tanítását illetõen. Itt csak az alapokra szorítkozok.
 
@@ -143,7 +152,7 @@ Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet
 \label{fig:rbmFilters}
 \end{figure}
 
-\paragraph{Az RBM tanítása} Ebben a bekezdésben belemegyek kicsit az RBM tanításának matematikájába, mert az implementáció tárgyalásánál fontos lesz. Az RBM azért érdekes megközelítés a többi hálózathoz képest, mert probablisztikus alapokon nyugszik. Az úgynevezett energia alapú hálózatok felfoghatóak úgy, hogy a hálózat minden konfigurációjához tartozik egy $p(x)$ valószínûség, hogy mekkora valõszínûséggel tartózkodik a háló az adott konfigurációban. Azt szeretnénk elérni hogy az alacsony energiájú konfigurációknak nagy legyen a valószínûsége. Ez formalizálva a következõ képpen néz ki:
+\paragraph{Az RBM tanítása} Ebben a bekezdésben belemegyek kicsit az RBM tanításának részleteibe, mert az implementáció tárgyalásánál fontos lesz. Az RBM azért érdekes megközelítés a többi hálózathoz képest, mert probablisztikus alapokon nyugszik. Az úgynevezett energia alapú hálózatok felfoghatóak úgy, hogy a hálózat minden konfigurációjához tartozik egy $p(x)$ valószínûség, hogy mekkora valõszínûséggel tartózkodik a háló az adott konfigurációban. Azt szeretnénk elérni hogy az alacsony energiájú konfigurációknak nagy legyen a valószínûsége. Ez formalizálva a következõ képpen néz ki:
 
 \begin{align} \label{eq:probFirst}
 p(x) = \frac{e^{(-E(x))}}{Z} = \sum_{h}\frac{e^{(-E(x,h))}}{Z}
@@ -152,7 +161,7 @@ p(x) = \frac{e^{(-E(x))}}{Z} = \sum_{h}\frac{e^{(-E(x,h))}}{Z}
 Z = \sum_{x} e^{-E(x)}
 \end{align}
 
-Ahol az E az energiafüggvényt, Z pedig a particiós függvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve. A cél az volt, hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
+Ahol az E az energiafüggvényt, Z pedig a particiós függvényt jelenti. A fizikában jártasabb olvasók megfigyelhetik hogy ez a valószínûségi függvény megfelel a termodinamikában használt Boltzmann eloszlás valószínûségi függvényének. Az eredeti boltzmann gépet egy fizikus alkotta meg, pont erre az analógiára építve\cite{aarts1988simulated}. A cél az volt, hogy a Hopfield hálózatok gyengeségeit kiküszöbölje. A \eqref{probFirst} képletet felhasználva megalkothatjuk a hibafüggvényünket, amely a negatív logaritmikus valószínûségi függvény (negative log likelihood function) lesz:
 \begin{align}
 \mathcal{L}(\theta, x) = \frac{1}{N}\sum_{x^{(i)} \in \mathcal{D}}log(p(x^{(i)})
 \end{align}
@@ -231,7 +240,7 @@ Ahol $c$ és $b$ az eltolás súlyvektorokat jelzik. Ezekre a képletekre fogok majd
 \paragraph{További módszerek az RBM használatára osztályozáshoz} Az elõtanulásban nem merül ki az RBM jellegû hálózatok potenciálja, ha osztályozási feldatokról van szó, egy pár további lehetõséget szeretnék még érintõlegesen megemlíteni. 
 \begin{itemize}
 \item Egy másik, lehetõség szerint az egyes osztályoknak egy RBM-et hozunk létre, és egy Softmax modell-t tanítunk a szabad energia függvényükön. A particiós függvényt ebben az esetben a softmax paraméterei approximálják.\cite{rbmGuide}
-\item Egy harmadik lehetõség hogy két külön látható réteg csoportot tartunk, egyet a kép adatoknak, egy másikat pedig a tanító cimkéknek, ebben az esetben az osztályhoz tartozási valószínûséget a teszt vektor, és a cimkék szabad energiájájának eloszlásában határozzunk meg. Tehát minnél alacsonyabb lesz a szabad energia egy cimkével, annál valószínûbb hogy a teszt vektor abba az osztályba tartozik, itt végülis tanulásnál a cimkék és a mintapontok együttes valószínûségi sûrûségfüggvényét becsüljük.\cite{rbmGuide}
+\item Egy harmadik lehetõség hogy két külön látható réteg csoportot tartunk, egyet a kép adatoknak, egy másikat pedig a tanító cimkéknek, ebben az esetben az osztályhoz tartozási valószínûséget a teszt vektor, és a cimkék szabad energiájájának eloszlásában határozunk meg. Tehát minnél alacsonyabb lesz a szabad energia egy cimkével, annál valószínûbb hogy a teszt vektor abba az osztályba tartozik, itt végülis tanulásnál a cimkék és a mintapontok együttes valószínûségi sûrûségfüggvényét becsüljük.\cite{rbmGuide}
 \item Egy újabb fejlemény Hugo Larochelle Hibrid RBM \cite{hrbm} struktúrája, amit közvetlen az RBM-en belül kombinálja a generatív és a diszkriminatív modellek elõnyeit, és egyszerre tud tanulni on-line jelleggel cimkézett és cimkézetlen adatokból egyaránt.
 A struktúrát a \figref{hrbm}~ábra szemlélteti.
 \item A Larochelle féle strúktúra továbbfejlesztését szintén a \figref{hrbm}~ábra szemlélteti. Ez az úgynevezett "Stacked Boltzmann Experts Network"\cite{sben}. Itt minden szint ad egy valószínûséget a tanító minta osztályzására, és ezeknek az átlagolásával születik meg a végleges predikció. Ezek a hálózatok azért végtelenül izgalmasak, mert habár ha sok a tanító minta, akkor ugyanolyan a teljesítménye mint a klasszikus módszereknek, de ha kevés cimkézet adat áll rendelkezésre, akkor lényegesen jobb a teljesítménye mint ahogyan az a \figref{sbenPerf}~ábra is mutatja. Érdemes megemlíteni hogy a publikációban újságcikkeken, és nem képeken tesztelték.
@@ -282,7 +291,7 @@ A struktúrát a \figref{hrbm}~ábra szemlélteti.
 \label{fig:deconvnet2}
 \end{figure}
 
-\paragraph{Matematikai interpretációja} Tegyük fel hogy van egy $32x32x3$-as képünk. Ahhoz hogy egy teljes rétegbe kapcsoljuk bele mondjuk $1024$ neuronnal ki kellene lapítanunk, és egy $32 * 32 * 3 * 1024 = 3'145'728$ paraméterünk lenne az elsõ rétegben. De tegyük fel hogy a legkissebb jellemzõ amit érzékelni akarunk az egy $3x3$ méretû patchen van a képen, viszont akárhol lehet, akkor ha az elsõ rétegben $32$ jellemzõt szeretnénk érzékelni, akkor csak $3 * 3 * 32 = 288$ paraméterre lesz szükségünk az elsõ rétegben, ami jelentõs redukció. Ezután a következõ réteg ehhez a $288$ neuronhoz fog kapcsolódni, és ha ott 64 neuron lesz akkor $3*3*64 = 567$ neuronra kell majd, amik az eredeti képbõl viszont már egy $5x5$-ös szeletet fognak indirekt módon lefedni. Ezt mutatja be egy klasszikus architektúra a leNet a \figref{leNet}~ábrán.
+\paragraph{Matematikai interpretációja} Tegyük fel hogy van egy $32x32x3$-as képünk. Ahhoz hogy egy teljes rétegbe kapcsoljuk bele mondjuk $1024$ neuronnal ki kellene lapítanunk, és egy $32 * 32 * 3 * 1024 = 3'145'728$ paraméterünk lenne az elsõ rétegben. De tegyük fel hogy a legkissebb jellemzõ amit érzékelni akarunk az egy $3x3$ méretû patchen van a képen, viszont akárhol lehet, akkor ha az elsõ rétegben $32$ jellemzõt szeretnénk érzékelni, akkor csak $3 * 3 * 32 = 288$ paraméterre lesz szükségünk az elsõ rétegben, ami jelentõs redukció. Ezután a következõ réteg ehhez a $288$ neuronhoz fog kapcsolódni, és ha ott 64 neuron lesz akkor $3*3*64 = 567$ neuron kell majd, amik az eredeti képbõl viszont már egy $5x5$-ös szeletet fognak indirekt módon lefedni. Ezt mutatja be egy klasszikus architektúra a leNet\cite{leNet} a \figref{leNet}~ábrán.
 
 \begin{figure}[!ht]
 \centering
@@ -290,7 +299,7 @@ A struktúrát a \figref{hrbm}~ábra szemlélteti.
 \caption{Az felsõbb rétegek szûrõi egy konvoluciós hálozatban. Forrás: "Visualizing and Understanding Convolutional Neural Networks" \cite{deconvnet}} 
 \label{fig:leNet}
 \end{figure}
-\paragraph{Az IMAGNET} 2012-ben az AlexNet nevû konvoluciós hálózat amelyet Alex Krizhevsky, Ilya Sutskever és Geoffrey Hinton alkottak fölényesen megnyerte az azévi ILSVRC versenyt. A háló top 5 hibája (az olvasó konzultáljon az adathalmazokat bemutató résszel a metrika leírásáért.) 16\% volt, míg a második helyezet ami egy SVM-eket használó modell volt 26\%-os hibát produkált. Ez a 10\%-os különség az egekbe emelte a konvoluciós hálózatok népszerûségét, és hivatalosan is elhozta a neurális képfeldolgozás korát. Innentõl kezdve minden évben konvoluciós hálózatok nyerték meg az ILSVRC-t. A \tabref{ImagenetTable}~táblázat bemutatja az egyes évek eredményeit a hálót néhány paraméterével együtt. Összehasonlítás képpen, egy átlagos ember teljesítménye az adathalmazon 5-10 hibaszázalék körül mozog. 
+\paragraph{Az IMAGNET} 2012-ben az AlexNet nevû konvoluciós hálózat amelyet Alex Krizhevsky, Ilya Sutskever és Geoffrey Hinton alkottak fölényesen megnyerte a 2012-es ILSVRC versenyt. A háló top 5 hibája (az olvasó konzultáljon az adathalmazokat bemutató résszel a metrika leírásáért.) 16\% volt, míg a második helyezet ami egy SVM-eket használó modell volt 26\%-os hibát produkált. Ez a 10\%-os különség az egekbe emelte a konvoluciós hálózatok népszerûségét, és hivatalosan is elhozta a neurális képfeldolgozás korát. Innentõl kezdve minden évben konvoluciós hálózatok nyerték meg az ILSVRC-t. A \tabref{ImagenetTable}~táblázat bemutatja az egyes évek eredményeit a hálót néhány paraméterével együtt. Összehasonlítás képpen, egy átlagos ember teljesítménye az adathalmazon 5-10 hibaszázalék körül mozog\cite{russakovsky2015imagenet}. 
 
 \begin{table}[ht]
 	\footnotesize
@@ -307,7 +316,7 @@ A struktúrát a \figref{hrbm}~ábra szemlélteti.
 	\end{tabular}
 \end{table}
 
-\paragraph{Értékelés} Látható hogy a legújabb konvoluciós architektúrák már az emberi kiértékelésnél is pontosabb eredményt hoznak. Ráadásul a kezdeti naív megközelítést követõen a paraméter tér is drasztikus csökkenésnek indult. Manapság ha valaki képosztályozási feladatot szeretne végezni neurális hálózatokkal, akkor egy ilyen elõre elkészített architektúrát fog használni. Sajnos az is jól nyomonkövethetõ hogy a hálózatok fejlõdésével a szükséges hardware kapacitás is meredek emelkedésnek indult. Ha az ember egy konvoluciós architektúrát egy saját adathalmazra szeretne megtanítani akkor komoly infrastruktúrával kell rendelkeznie hozzá. Éppen itt domborodik ki a tensorflownak a dolgozat elején említett elõnye, hogy miután pythonban specifikáltuk a struktúrát azt képesek vagyunk minden erõfeszítés nélkül egy 8 GPU-s fürtre szétterjeszteni és tanítani, majd utána a paraméter teret lementve akár egy mobilon a megtanított hálót újra betölteni és akár valós idejû inferenciát futtatni. A paraméter tér ha 16 bites floatokkal számol az ember akkor 4 millió paraméternél kb 8 megabyte lesz, ami még egy igen kezelhetõ mennyiség.
+\paragraph{Értékelés} Látható hogy a legújabb konvoluciós architektúrák már az emberi pontossághoz nagyon közeli eredményt hoznak\cite{russakovsky2015imagenet}. Ráadásul a kezdeti naív megközelítést követõen a paraméter tér is drasztikus csökkenésnek indult. Manapság ha valaki képosztályozási feladatot szeretne végezni neurális hálózatokkal, akkor egy ilyen elõre elkészített architektúrát fog használni. Sajnos az is jól nyomonkövethetõ hogy a hálózatok fejlõdésével a szükséges hardware kapacitás is meredek emelkedésnek indult. Ha az ember egy konvoluciós architektúrát egy saját adathalmazra szeretne megtanítani akkor komoly infrastruktúrával kell rendelkeznie hozzá. Éppen itt domborodik ki a tensorflownak a dolgozat elején említett elõnye, hogy miután pythonban specifikáltuk a struktúrát azt képesek vagyunk minden erõfeszítés nélkül egy 8 GPU-s fürtre szétterjeszteni és tanítani, majd utána a paraméter teret lementve akár egy mobilon a megtanított hálót újra betölteni és akár valós idejû inferenciát futtatni. A paraméter tér ha 16 bites floatokkal számol az ember akkor 4 millió paraméternél kb 8 megabyte lesz, ami még egy igen kezelhetõ mennyiség.
 
 \section{További érdekes irányok a neurális képfeldolgozásban}
 
@@ -331,12 +340,12 @@ Itt, az irodalom kutatásom tárgyalásának végén elértünk arra a pontra ahol a neu
 \label{fig:adversarial}
 \end{figure}
 
-\paragraph{Képleírások generálása\cite{genImgDesc}} A nem olyan távoli múltban nagyon sok érdekes publikáció jelent meg olyan neurális struktúrákról amelyek képek leírására alkalmasak. Lényegében egy CNN és egy RNN hálózat mûködik együtt, és fantasztikus dolgokra képesek. Tovább nem is taglalnám, mert viszonylag sok elõismeretet igényel a téma, az érdeklõdõk a megfelelõ publikációt megtalálják az irodalomjegyzékben. A \figref{generatingImageDesc} mutatja az eredményt.
+\paragraph{Képleírások generálása\cite{genImgDesc}} A nem olyan távoli múltban nagyon sok érdekes publikáció jelent meg olyan neurális struktúrákról amelyek képek leírására alkalmasak. Lényegében egy CNN és egy RNN\cite{mikolov2010recurrent} hálózat mûködik együtt, és fantasztikus dolgokra képesek. Tovább nem is taglalnám, mert viszonylag sok elõismeretet igényel a téma, az érdeklõdõk a megfelelõ publikációt megtalálják a "Deep visual-semantic alignments for generating image descriptions"\cite{genImgDesc} publikációban. A \figref{generatingImageDesc} mutatja az eredményt.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=70mm, keepaspectratio]{figures/caption}
-\caption{A Faster R-CNN munkafolyamata} 
+\caption{Egy képleíró hálózat által generált annotációk.} 
 \label{fig:generatingImageDesc}
 \end{figure}
 

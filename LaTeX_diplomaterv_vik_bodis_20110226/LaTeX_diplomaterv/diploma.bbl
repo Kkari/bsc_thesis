@@ -12,6 +12,10 @@ Imagenet.
 Keras.
 \newblock \url{https://keras.io/}.
 
+\bibitem{Kubernetes}
+Kubernetes, production-grade container orchestration.
+\newblock \url{http://kubernetes.io/}.
+
 \bibitem{mnist}
 The mnist dataset.
 \newblock \url{http://yann.lecun.com/exdb/mnist}.
@@ -26,10 +30,20 @@ Scaling convolutional networks.
 \newblock
   \url{https://www.tensorflow.org/versions/r0.11/tutorials/deep_cnn/index.html}.
 
+\bibitem{Tensorboard}
+Tensorboard, visualizing learning with tensorflow.
+\newblock
+  \url{https://www.tensorflow.org/versions/r0.12/how_tos/summaries_and_tensorboard/index.html}.
+
 \bibitem{TfSlim}
 Tensorflow-slim, a high level api for tensorflow.
 \newblock
   \url{https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim}.
+
+\bibitem{aarts1988simulated}
+Emile Aarts and Jan Korst.
+\newblock Simulated annealing and boltzmann machines.
+\newblock 1988.
 
 \bibitem{tensorflow}
 Mart{\i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
@@ -134,10 +148,27 @@ Zhouhan Lin, Roland Memisevic, and Kishore Konda.
   networks.
 \newblock {\em arXiv preprint arXiv:1511.02580}, 2015.
 
+\bibitem{neuralNetworksHorvath}
+Altrichter Marta.
+\newblock {\em Neuralis halozatok}.
+\newblock Hungarian Edition Panem Könyvkiadó Kft., Budapest, 2006.
+
+\bibitem{mikolov2010recurrent}
+Tomas Mikolov, Martin Karafi{\'a}t, Lukas Burget, Jan Cernock{\`y}, and Sanjeev
+  Khudanpur.
+\newblock Recurrent neural network based language model.
+\newblock In {\em Interspeech}, volume~2, page~3, 2010.
+
 \bibitem{minsky1969perceptrons}
 Marvin Minsky and Seymour Papert.
 \newblock Perceptrons.
 \newblock 1969.
+
+\bibitem{moody1995simple}
+J~Moody, S~Hanson, Anders Krogh, and John~A Hertz.
+\newblock A simple weight decay can improve generalization.
+\newblock {\em Advances in neural information processing systems}, 4:950--957,
+  1995.
 
 \bibitem{waveNet}
 Aaron van~den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals,
@@ -152,11 +183,30 @@ Alexander~G Ororbia~II, C~Lee Giles, and David Reitter.
   Natural Language Processing (EMNLP), Lisbon, Portugal, 2015a. UR L
   http://www. david-reitter. com/pub/ororbia2015learning-deep-hybrid. pdf}.
 
+\bibitem{ren2015faster}
+Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun.
+\newblock Faster r-cnn: Towards real-time object detection with region proposal
+  networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  91--99, 2015.
+
 \bibitem{rosenblatt1958perceptron}
 Frank Rosenblatt.
 \newblock The perceptron: a probabilistic model for information storage and
   organization in the brain.
 \newblock {\em Psychological review}, 65(6):386, 1958.
+
+\bibitem{backProp}
+David~E Rumelhart, Geoffrey~E Hinton, and Ronald~J Williams.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Cognitive modeling}, 5(3):1, 1988.
+
+\bibitem{russakovsky2015imagenet}
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, et~al.
+\newblock Imagenet large scale visual recognition challenge.
+\newblock {\em International Journal of Computer Vision}, 115(3):211--252,
+  2015.
 
 \bibitem{salakhutdinov2009deep}
 Ruslan Salakhutdinov and Geoffrey~E Hinton.
@@ -168,12 +218,25 @@ Mark Schmidt, Nicolas~Le Roux, and Francis Bach.
 \newblock Minimizing finite sums with the stochastic average gradient.
 \newblock {\em arXiv preprint arXiv:1309.2388}, 2013.
 
+\bibitem{srivastava2014dropout}
+Nitish Srivastava, Geoffrey~E Hinton, Alex Krizhevsky, Ilya Sutskever, and
+  Ruslan Salakhutdinov.
+\newblock Dropout: a simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15(1):1929--1958, 2014.
+
 \bibitem{googLeNet}
 Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
   Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
 \newblock Going deeper with convolutions.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 1--9, 2015.
+
+\bibitem{vincent2010stacked}
+Pascal Vincent, Hugo Larochelle, Isabelle Lajoie, Yoshua Bengio, and
+  Pierre-Antoine Manzagol.
+\newblock Stacked denoising autoencoders: Learning useful representations in a
+  deep network with a local denoising criterion.
+\newblock {\em Journal of Machine Learning Research}, 11(Dec):3371--3408, 2010.
 
 \bibitem{svmCIFAR}
 Kai Yu and Tong Zhang.
@@ -186,10 +249,5 @@ Matthew~D Zeiler and Rob Fergus.
 \newblock Visualizing and understanding convolutional networks.
 \newblock In {\em European Conference on Computer Vision}, pages 818--833.
   Springer, 2014.
-
-\bibitem{backProp}
-Kishore~Konda Zhouhan~Lin, Roland~Memisevic.
-\newblock Rumelhart, david e.; hinton, geoffrey e.; williams, ronald j.
-\newblock October 1986.
 
 \end{thebibliography}
