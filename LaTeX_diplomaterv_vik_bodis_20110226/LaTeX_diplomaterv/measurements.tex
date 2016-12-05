@@ -4,10 +4,10 @@ Ebben a fejezetben szeretném bemutatni az általam elkészített hálózatok futásána
 \item A keretrendszer általános teljesítménye.
 \item A baseline eredmények bemutatása.
 \item Az MLP hálózattal elért eredmények és az ezekbõl levont tanulságok.
-\item A konvoluciós hálózatokkal elért eredmények és ennek összegzése.
+\item A konvolúciós hálózatokkal elért eredmények és ennek összegzése.
 \item A hibrid hálózatokkal elért eredmények.
 \end{enumerate}
-Sok olyan dolog is van amirõl tudom hogy hozzátartozik a modellalkotói munkához, de nem képezte a dolgozatom fókuszát. Egyrészt a véges erõforrások, másrészt pedig a véges idõ miatt. Illetve nem láttam volna hogy hozzáadtak volna jelentõs mértékben a szakdolgozatom céljához. Ezek a következõk voltak:
+Fontosnak tartom megemlíteni a következõ problémákat amelyekrõl nem volt szó a szakdolgozatomban, ezzel is jelezve hogy a terület rendkívül változatos matematikai kihívásokat állít:
 \begin{itemize}
 \item A hiperparaméterek végletekig menõ tuningolása grid search-el.
 \item A hiperparaméter halmazok összehasonlítása, akár kereszt validációval, és egy végleges hiperparaméter beállítás kiválasztása a teszt halmazon való kiértékeléshez.
@@ -38,11 +38,12 @@ Ebben a részben azt vizsgáltam hogy a tensorflow hogyan bánik az erõforrásokkal.
 \begin{itemize}
 \item Egyszerû rendszerszintû méréseket futtattam.
 \item A Tensorboardon keresztül vizsgáltam a hálók teljesítmény és erõforrás karakterisztikáját.
-\item Egy konvoluciós hálót kiskáláztam a CPU-ról GPU-ra, majd összevetettem egy HPC GPU teljesítményével ugyanazon az adathalmazon.
+\item Egy konvolúciós hálót kiskáláztam a CPU-ról GPU-ra, majd összevetettem egy HPC GPU teljesítményével ugyanazon az adathalmazon.
 \end{itemize}
 
 \section{Rendszer szintû mérések.}
-Amikor nem sikerült lefuttatnom egy logisztikus regressziót Scikit segítségével a CIFAR-10 adathalmazon mert a teszt gép használhatlanná vált, akkor felütötte a fejét a kérdés nálam hogy mégis hogyan viszonyul teljesítményben a tensorflow a Python de facto gépi tanulás könyvtárához, a Scikit-learn könyvtárhoz. A két mérés erõforrás karakterisztikáját a \figref{sklearn_cpu}~ábra és a \figref{tf_cpu}~ábra mutatja, ahol az elõbbi a Scikit-learn-ben elindított logisztikus regresszió, az utóbbi pedig a Tensorflowban megvalósított közelítõ Logisztikus Regresszió.
+
+Az elsõ kérdés ami felmerült bennem, az az volt hogy egy egyszerû logisztikus regresszió esetén hogyan viszonyul a tensorflow erõforrás igénye a Python de facto gépi tanulás könyvtárához, a Sci-kit learnhöz. Ezt a CIFAR-10 adathalmazon teszteltem, mivel az MNIST számításigénye túl kicsi lett volna ehhez a teszthez. A két mérés erõforrás karakterisztikáját a \figref{sklearn_cpu}~ábra és a \figref{tf_cpu}~ábra mutatja, ahol az elõbbi a Scikit-learn-ben elindított logisztikus regresszió, az utóbbi pedig a Tensorflowban megvalósított közelítõ Logisztikus Regresszió.
 
 \begin{figure}[!ht]
 \centering
@@ -58,18 +59,21 @@ Amikor nem sikerült lefuttatnom egy logisztikus regressziót Scikit segítségével 
 \label{fig:tf_cpu}
 \end{figure}
 
-Mint látható a scikit-learnben elindított futtatás a teszt gép összes memóriáját felemésztette, illetve a magok kihasználása is nagyon rossz volt, mindössze egyetlen magot használt ki. Ezzel szemben a Tensorflowban approximált modell nagyon egyenletes magkihasználtság mellett minimális memória igénnyel oldotta meg a feladatot. Természetesen nem állítom hogy a két feladat identikus volt, mivel más algoritmusokkal jutottak el a végeredményig. További kutatásaimból kiderült hogy ez a Scikit-learn alapértelmezett optimalizációs algoritmusának köszönhetõ amit a liblinear könyvtár valósít meg. Amikor ezt kicseréltem SAG megoldóra, akkor a gép lefagyásának problémája eltünt, de még mindig konvergencia problémák léptek fel. Az SAG egy kifejezetten új fejlemény a numerikus optimalizáció területén, amit egy 2013-as publikáció mutat be "Minimizing Finite Sums with Stochastic Average Gradient"\cite{sag}.
-Ezen felül még megprobáltam az adathalmazt a Newton konjugált-gradiens módszerrel megtanulni, de ez is sikertelen lett az erõforrások hiánya miatt. Ami érthetõ, hiszen a Newton-cg optimizátor gyors konvergenciát igér, de még a sima liblinear megoldónál is nagyobb erõforrás igényel.
+Mint látható a scikit-learnben elindított futtatás a teszt gép összes memóriáját felemésztette, illetve a magok kihasználása is nagyon rossz volt, mindössze egyetlen magot használt ki. Ezzel szemben a Tensorflowban approximált modell nagyon egyenletes magkihasználtság mellett minimális memória igénnyel oldotta meg a feladatot. Természetesen nem állítom hogy a két feladat identikus volt, mivel más algoritmusokkal jutottak el a végeredményig. További kutatásaimból kiderült hogy ez a Scikit-learn alapértelmezett optimalizációs algoritmusának köszönhetõ amit a liblinear könyvtár valósít meg. Amikor ezt kicseréltem SAG megoldóra, akkor a gép lefagyásának problémája eltûnt, de még mindig konvergencia problémák léptek fel. Az SAG egy kifejezetten új fejlemény a numerikus optimalizáció területén, amit egy 2013-as publikáció mutat be "Minimizing Finite Sums with Stochastic Average Gradient"\cite{sag}.
+Ezen felül még megpróbáltam az adathalmazt a Newton konjugált-gradiens módszerrel megtanulni, de ez is sikertelen lett az erõforrások hiánya miatt. Ami érthetõ, hiszen a Newton-cg optimizátor gyors konvergenciát ígér, de még a sima liblinear megoldónál is nagyobb erõforrás igényel.
 
 Ez a mérési sorozat úgy gondolom hogy egyértelmûen rávilágít a numerikus optimalizáció kiemelkedõ fontosságára a gépi tanulás applikációkban. Az adathalmaz amin teszteltem a metódusokat nem volt nagy, a CIFAR-10 mindössze 180 megabyte. Amennyiben ezeket a méréseket az akadémia szerverein végeztem volna el, akkor gond nélkül taníthattam volna akármelyik módszerrel. Viszont így, hogy a tesztrendszer is igen korlátozott jól megvilágította a nagy adathalmazokon való tanulás egyik nagy problémáját. Habár a mostani szevereink már hatalmas erõforrásokkal bírnak, a klasszikus módszereink amik folyamatosan az egész adathalmazzal való interakciót igénylik, mint mondjuk az eredeti logisztikus regresszió vagy svm tanító algoritmusok mégsem lesznek használhatóak egyszerûen az adathalmaz puszta nagysága miatt. Ezért is fontos hogy a mostani kutatások nagyrésze a numerikus optmalizáció terén a sztochasztikus módszerekre koncentrál amik véletlenszerûen összeválogatott kis tanító halmazokkal approximálják a teljes adathalmaz tulajdonságait.
 
 \subsection{A GPU gyorsítás mérése}
-Mint már említettem a saját GPU-mon probáltam ki, illetve ezt összevetettem egy nagyon erõs scientific acceleratoron futtatot méréssel\cite{scalingCNN} ugyan azon az adathalmazon, a két eszköz paraméterei:
+Mint már említettem a saját GPU-mon próbáltam ki, illetve ezt összevetettem egy nagyon erõs scientific acceleratoron futtatot méréssel\cite{scalingCNN} ugyan azon az adathalmazon, ugyanazzal az általam használt CNN architektúrával. 
+A hálózat rétegei a következõképp néztek ki:
+\emph{conv2d(5,5,32) -> maxpool(2,2) -> lrn -> conv2d(5,5,64) -> lrn -> maxpool(2,2) -> flatten -> fullyconnected(1024) -> dropout(0.5) -> fullyconnected(1024) -> softmax}.
+\paragraph{}A két eszköz paraméterei:
 \begin{itemize}
 \item Nvidia GeForce GT 740M: 384 Cuda mag, 2GB GDDR5 memória. Ez egy teljesen átlagos laptop GPU, leginkább a játékos réteget célozta meg 3 éve, de CUDA 3.0 képes.
 \item Nvidia Tesla K40c: 2880 Cuda mag, 12GB GPU Acceletaor memória. Ez egy high performance computing(HPC) gyorsító(accelerator), itt a GPU már csak az architektúrára utal, de nincsen rajta grafikus pipeline. Az egyetlen dolga hogy nagyon gyorsan tud számolni. Big Data analitikára, és nagy méretû tudományos számításokhoz lett tervezve. A \figref{teslaTrumpsCPU}~ábrán található Tesla 40M ennek a családnak a legújabb tagja.
 \end{itemize}
-Az eredményeimet a \tabref{gpuTable}~táblázat mutatja. A mérték amit használtam hogy a CIFAR-10 adathalmazon hány képet tudok másodpercenként feldolgozni tanítás közben a \figref{convnet_2}~ábrán mutatott hálózaton. 
+Arról nincsen információm hogy a Tesla K40c-t milyen CPU vezérelte, illetve hogy mennyi RAM volt a tesztgépükben. Az eredményeimet a \tabref{gpuTable}~táblázat mutatja. A mérték amit használtam azt mutatja hogy a CIFAR-10 adathalmazon hány képet tudok másodpercenként feldolgozni tanítás közben a fentebb bemutatott hálózaton. 
 
 \begin{table}[ht]
 	\footnotesize
@@ -88,14 +92,13 @@ Az eredményeimet a \tabref{gpuTable}~táblázat mutatja. A mérték amit használtam 
 
 A táblázatból a következõ tanulságokat vontam le:
 \begin{itemize}
-\item A CPU sokkal jobban ingadozik, ez nyilvánvaló, mert amellett hogy számolnia kell a hálózatot minden mást is el kell látni a számítógép müködésével kapcsolatban. Például a sor feltöltése és a képek elõfeldolgozása. Ezt a GPU esteben is 16 CPU szál csinálja, ezért ezzel nem kell foglalkoznia a grafikus egységnek.
+\item A CPU sokkal jobban ingadozik, ez nyilvánvaló, mert amellett hogy számolnia kell a hálózatot minden mást is el kell látni a számítógép mûködésével kapcsolatban. Például a sor feltöltése és a képek elõfeldolgozása. Ezt a GPU esteben is 16 CPU szál csinálja, ezért ezzel nem kell foglalkoznia a grafikus egységnek.
 \item Éppen ezért a GPU megoldások sokkal stabilabb teljesítményt adtak.
-\item Érdekes módon nem volt akkor különbség ebben az esetben egy HPC GPU és egy Commodity GPU között. Szerintem túl kicsi volt a feladat ahhoz hogy érdemben kihasználja a HPC GPU teljesítményét, de azért itt a peak teljesítmények eltérésén itt is látszik hogy mennyivel erõssebb mint a mezei GPU.
-\item A mérésekbõl az szûrtem le, hogy minimum 1 GPU-t mindenképpen érdemes használni tanításra. Ha van lehetõség egy nagyot vagy több kicsit használni, akkor egy munkaállomásba inkább 2 mezei GPU-t tennék, és a Teslákat csak kifejezetten több felhasználóra vagy nagyon nagy terhelésekre használnám.
+\item Érdekes módon nem volt akkor különbség ebben az esetben egy HPC GPU és egy Commodity GPU között. Szerintem túl kicsi volt a feladat ahhoz hogy érdemben kihasználja a HPC GPU teljesítményét, de azért itt a peak teljesítmények eltérésén itt is látszik hogy mennyivel erõsebb mint a mezei GPU.
 \end{itemize}
 
 \section{A baseline eredmények ismertetése}
-Mint már említettem, a két alap metódus amihez a saját eredményeimet mértem a logsztikus regresszió, és egy egyszerû SVM volt, amihez polynomiális kernelt használtam 3 as fokszámmal és az elsõ rendû tagokat használva. Az eredményeim az eredményiemet az MNIST és a CIFAR adathalmazon a \tabref{baselineMNIST}~táblázat, és a \tabref{baselineCIFAR}~táblázat szemlélteti.
+Mint már említettem, a két alap metódus amihez a saját eredményeimet mértem a logisztikus regresszió\cite{hosmer2000introduction}, és egy egyszerû SVM\cite{cortes1995support} volt, amihez polinomiális kernelt használtam 3 as fokszámmal és az elsõ rendû tagokat használva. Az eredményeim az eredményiemet az MNIST és a CIFAR adathalmazon a \tabref{baselineMNIST}~táblázat, és a \tabref{baselineCIFAR}~táblázat szemlélteti.
 
 \begin{table}[ht]
 	\footnotesize
@@ -128,7 +131,7 @@ Az MNIST-en elért eredmények nem a legjobbak, de egészen optimális eredmények il
 Mint látni lehet itt ezek a metódusok már közel sem teljesítenek annyira fényesen. A legjobb eredmény amit elértek az adathalmazon SVM-el az \emph{25,5\%} volt. Ez egy ICML 2010-es konferencián bemutatott eredmény volt, amit a "Improved Local Coordinate Coding using Local Tangents"\cite{svmCIFAR}-ban publikáltak.
 
 \section{Az RBM struktúra optimalizálása}
-Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el méréseket az RBM struktúrával hogy megfigyeljem hogyan hasonulnak egymáshoz. Elõször a szabad energia függvények külöbségét definiáltam a \eqref{rbmPFromEnergy} szerint, és ezt optimalizáltam, majd egyszerûen hozzá adtam az általam lederivált gradienseket. A rekonstrukciós hiba függvények lefutását a \figref{rbmReconstructionAdamSgdManual}-ábra szemlélteti. Látható hogy a 3 megközelítésnek a lefutásában és erõforrás felhasználásában is jelentõs különbség van, ezt a \tabref{rbmResourceTable}~táblázat szemlélteti. Jól látszik hogy az adaptív optimizátor megnövekedett számításigénnyel jár, az SGD ugyanannyi memóriát igényel, mert kb ugyanazt az impicit konstruált gráfot használja de kevésbé terheli a processzort, amíg a kézi optimalizálás még ennél is lényegesen kevesebb erõforrást igényel minden tekintetben. Éppen ezért a kézzel kiegészített megoldást választottam. Ez a megoldás jobban is skálázódik több számítási egységre, ha nagyobb RBM-et akar tanítani az ember, mert a gradiens frissítõ gráf miatt nem fog kommunikációs overhead fellépni az eszközök között, mivel ez a gráf nem jön létre.
+Ahogyan azt a saját munkám leírásánál is taglaltam többféleképpen végeztem el méréseket az RBM struktúrával hogy megfigyeljem hogyan hasonulnak egymáshoz. Elõször a szabad energia függvények különbségét definiáltam a \eqref{rbmPFromEnergy} szerint, és ezt optimalizáltam, majd egyszerûen hozzá adtam az általam lederivált gradienseket. A rekonstrukciós hiba függvények lefutását a \figref{rbmReconstructionAdamSgdManual}-ábra szemlélteti. Látható hogy a 3 megközelítésnek a lefutásában és erõforrás felhasználásában is jelentõs különbség van, ezt a \tabref{rbmResourceTable}~táblázat szemlélteti. Jól látszik hogy az adaptív optimizátor megnövekedett számításigénnyel jár, az SGD ugyanannyi memóriát igényel, mert körülbelül ugyanazt az impicit konstruált gráfot használja de kevésbé terheli a processzort, amíg a kézi optimalizálás még ennél is lényegesen kevesebb erõforrást igényel minden tekintetben. Éppen ezért a kézzel kiegészített megoldást választottam. Ez a megoldás jobban is skálázódik több számítási egységre, ha nagyobb RBM-et akar tanítani az ember, mert a gradiens frissítõ gráf miatt nem fog kommunikációs overhead fellépni az eszközök között, mivel ez a gráf nem jön létre.
 
 \begin{figure}[!ht]
 \centering
@@ -155,7 +158,7 @@ Ahogyan azt a saját munkám leírásánál is taglaltam több féle képpen végeztem el 
  
 \section{Az MLP-vel elvégzett méréseim eredményei}
 \subsection{Az MNIST mérések}
-A többrétegû perceptronokról ismeretes hogy a rétegek között teljes kapcsolat van, és az adathalmaznak semmilyen tulajdonságát nem építik bele az architektúrába a priori. A konvoluciós hálózatok esetében, viszont a transzlációs invariancia elõre feltételezett és maga a hálózat tartalmazza a kényszereket. Ez alapvetõen abban is megnyílvánul hogy a hálózat nem egy három dimenziós bemenetre (magasság, szélesség, mélység(RGB)) támaszaszkodik, hanem egy egyszerû vektorra. Az MNIST-en elért eredményeimet MLP-vel a \tabref{mnistMlpMeasurements}~táblázat mutatja be, a méréseket a fejezet elején ismertetett tesztgép CPU-ján végeztem. A bemenet egy 784 elemû vektor volt, ami praktikusan az MNIST adathalmaz egyetlen vektorba lapítva sorról sorra.
+A többrétegû perceptronokról ismeretes hogy a rétegek között teljes kapcsolat van, és az adathalmaznak semmilyen tulajdonságát nem építik bele az architektúrába a priori. A konvolúciós hálózatok esetében, viszont a transzlációs invariancia elõre feltételezett és maga a hálózat tartalmazza a kényszereket. Ez alapvetõen abban is megnyilvánul hogy a hálózat nem egy három dimenziós bemenetre (magasság, szélesség, mélység(RGB)) támaszkodik, hanem egy egyszerû vektorra. Az MNIST-en elért eredményeimet MLP-vel a \tabref{mnistMlpMeasurements}~táblázat mutatja be, a méréseket a fejezet elején ismertetett tesztgép CPU-ján végeztem. A bemenet egy 784 elemû vektor volt, ami praktikusan az MNIST adathalmaz egyetlen vektorba lapítva sorról sorra.
 
 \begin{table}[ht]
 	\footnotesize
@@ -174,9 +177,9 @@ A többrétegû perceptronokról ismeretes hogy a rétegek között teljes kapcsolat va
 	\end{tabular}
 \end{table}
 
-Látható hogy az elsõ struktúra a logisztikus regresszióval azonos eredményt ad, ami nem meglepõ, hiszen egy egyrétegû struktúra softmax függvénnyel a végén praktikusan ugyanakkora általánosító képességgel rendelkezik mint egy klasszikus módszerekkel tanított multinomiális logisztikus regresszor. Ezen az eredményen lényegesen tudtam javítani miután hozzáadtam egy 1024 elemû rejtett réteget, ami növelte a háló általánosító képessegét, de 20'000 lépés alatt nem volt képes túltanulás nélkül megtanulni a feladatot. Ahogyan csökkentettem a hálózat méretét az csökkentette a túltanulás mértékét és jelentõs teljesítmény növekedést hozott. A 2.00\%-os hiba eredmény már elmondható hogy egészen közel van az eddigi legjobb elért eredményhez 1 rejtett réteggel, ami 0.7\%. Azt vártam volna hogy az Adaptív momentum közelítõ (ADAM) módszer javít a hálózat eredményén, de nem így lett. Általában az Adam optimalizátor elõnye abban rejlik hogy mivel a momentumot és a tanulási rátát adaptívan számítja minden batchre, ezért kevesebb hiperparamétert kell állítani. Ez természetesen megnövekedett számítás igénnyel szokott járni.
+Látható hogy az elsõ struktúra a logisztikus regresszióval azonos eredményt ad, ami nem meglepõ, hiszen egy egyrétegû struktúra softmax függvénnyel a végén praktikusan ugyanakkora általánosító képességgel rendelkezik mint egy klasszikus módszerekkel tanított multinomiális logisztikus regresszor. Ezen az eredményen lényegesen tudtam javítani miután hozzáadtam egy 1024 elemû rejtett réteget, ami növelte a háló általánosító képességét, de 20'000 lépés alatt nem volt képes túltanulás nélkül megtanulni a feladatot. Ahogyan csökkentettem a hálózat méretét az csökkentette a túltanulás mértékét és jelentõs teljesítmény növekedést hozott. A 2.00\%-os hiba eredmény már elmondható hogy egészen közel van az eddigi legjobb elért eredményhez 1 rejtett réteggel, ami 0.7\%. Azt vártam volna hogy az Adaptív momentum közelítõ (ADAM) módszer javít a hálózat eredményén, de nem így lett. Általában az Adam optimalizátor elõnye abban rejlik hogy mivel a momentumot és a tanulási rátát adaptívan számítja minden batchre, ezért kevesebb hiperparamétert kell állítani. Ez természetesen megnövekedett számítás igénnyel szokott járni.
 
-A \figref{adamsSum}~ábra és a \figref{sgdSum}~ábra mutatja hogy mekkora hatással van az gradiens keresési eljárás a megtanult súlyokra. Látszik hogy a két eredmény merõben más optimumra állt be. Mint ahogyan a \tabref{MLPTablazat}~tábláztból is látszik, az SGD és az ADAM hasonló általánosítást ért el. Az is nagyon jól látszik a képeken hogy az ADAM optimizátor úgy alakította az együtthatókat, hogy lényegesen kissebb változtatásokat tegyen a felületen, ezért egyáltalán nem ugrált annyira a súlyok értéke mint az SGD-nél. Viszont mind a kettõ a veszteségfüggvény stabilítási pontját olyan 2000 iteráció után érte el, onnantól már csak oszcilláltak a maradék 18000 lépésben.
+A \figref{adamsSum}~ábra és a \figref{sgdSum}~ábra mutatja hogy mekkora hatással van az gradiens keresési eljárás a megtanult súlyokra. Látszik hogy a két eredmény merõben más optimumra állt be. Mint ahogyan a \tabref{MLPTablazat}~táblázatból is látszik, az SGD és az ADAM hasonló általánosítást ért el. Az is nagyon jól látszik a képeken hogy az ADAM optimizátor úgy alakította az együtthatókat, hogy lényegesen kissebb változtatásokat tegyen a felületen, ezért egyáltalán nem ugrált annyira a súlyok értéke mint az SGD-nél. Viszont mind a kettõ változat a veszteségfüggvény kvázi-stabilítási pontját 2000 iteráció után érte el, onnantól már csak oszcilláltak a maradék 18000 lépésben.
 
 \begin{figure}[!ht]
 \centering
@@ -194,7 +197,7 @@ A \figref{adamsSum}~ábra és a \figref{sgdSum}~ábra mutatja hogy mekkora hatással
 
 
 \subsection{A CIFAR-10 mérések}
-\paragraph{Az MNIST és a CIFAR különbségei} Miután az MNIST adathalmazon sikeres méréseket végeztem egészen egyszerû MLP hálózatokkal kiváncsi lettem hogy ezek a hálózatok mennyire viszik át a teljesítményüket egy fokkal bonyolultabb adathalmazra. A két adathalmaz tulajdonságai egymáshoz képest:
+\paragraph{Az MNIST és a CIFAR különbségei} Miután az MNIST adathalmazon sikeres méréseket végeztem egészen egyszerû MLP hálózatokkal kíváncsi lettem hogy ezek a hálózatok mennyire viszik át a teljesítményüket egy fokkal bonyolultabb adathalmazra. A két adathalmaz tulajdonságai egymáshoz képest:
 
 \begin{itemize}
 \item Mindkét adathalmaz 10 osztályt tartalmaz.
@@ -203,7 +206,7 @@ A \figref{adamsSum}~ábra és a \figref{sgdSum}~ábra mutatja hogy mekkora hatással
 \item Amíg az MNIST 28x28as fekete fehér képeket tartalmazott, addig a CIFAR-10 32x32-es színes képeket tartalmaz.
 \end{itemize}
 
-Ami rögtön szembetûnik hogy amíg az MNIST 784 dimenziót tartalmazott, addig a CIFAR-10 egy 3072 dimenziós adathalmaz, tehát az adathalmaz komplexitása ha csak tisztán a dimenziókat nézzük akkor a négyszeresére nõtt. Ennek megfelelõen a hálózatok ha ugyanazokat a hálózatokat probáljuk használni, akkor drasztikus teljesítmény csökkenést vagyunk kénytelenek tapasztalni.
+Ami rögtön szembetûnik hogy amíg az MNIST 784 dimenziót tartalmazott, addig a CIFAR-10 egy 3072 dimenziós adathalmaz, tehát az adathalmaz komplexitása ha csak tisztán a dimenziókat nézzük akkor a négyszeresére nõtt. Ennek megfelelõen a hálózatok ha ugyanazokat a hálózatokat próbáljuk használni, akkor drasztikus teljesítmény csökkenést vagyunk kénytelenek tapasztalni.
 
 \begin{table}[ht]
 	\footnotesize
@@ -229,7 +232,7 @@ Arra a számomra meglepõ eredményre jutottam hogy az elõtanítás az az én méréseim
 	\caption{Az elõtanított MLP hálozatok eredménye a MNIST adathalmazon, 25 elemû batchekkel.} \label{tab:mnistMlpPretrainedTable}
 	\begin{tabular}{ | l | c | c | c |}
 	\hline
-	neuron struktúra & \parbox[c]{4cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{4cm}{Teszt szet hiba százalék\\elõtanítássa / nélküle} \\ \hline
+	neuron struktúra & \parbox[c]{4cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{4cm}{Teszt szet hiba százalék\\elõtanítással / nélküle} \\ \hline
 	800 - 10 & 15/30 & SGD learning-rate: 0.05 & 92\% / 0.9\% \\
 	500-500-2000-30 & 15/30 & SGD learning-rate: 0.001 & 88.5\% / 3.2\% \\
 	\hline
@@ -242,15 +245,15 @@ Arra a számomra meglepõ eredményre jutottam hogy az elõtanítás az az én méréseim
 	\caption{Az elõtanított MLP hálozatok eredménye a CIFAR adathalmazon, 25 elemû batchekkel.} \label{tab:cifarMlpPretrainedTable}
 	\begin{tabular}{ | l | c | c | c |}
 	\hline
-	neuron struktúra & \parbox[c]{4cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{4cm}{Teszt szet hiba százalék\\elõtanítássa / nélküle} \\ \hline
+	neuron struktúra & \parbox[c]{4cm}{nem-felügyelt/felügyelt\\epoch szám} & Optimalizáló algoritmus & \parbox[c]{4cm}{Teszt szet hiba százalék\\elõtanítással / nélküle} \\ \hline
 	400 - 10 & 10/10 & SGD learning-rate: 0.001 & 91\% / 55\% \\
 	500-500-2000-30 & 10/10 & SGD learning-rate: 0.001 & 88.5\% / 57.5\% \\
 	\hline
 	\end{tabular}
 \end{table}
 
-Úgy magyarázom ezeket az elszomorító eredményeket hogy az elõtanítás következtében egy rossz lokális minimumba ragadt be a háló, ahonnan nem tudodd kijönni egyik esetben sem. Ahhoz hogy ezt a feltevésemet igazolja mmegnéztem az mnist adathalmazon tanított nagyméretû (500-500-2000-30 neuron) hálónak a veszteségfüggvényét és a pontosságának a növekedését a validációs adathalmazon.
-Ez elõtanítás nélküli háló mért eredményei a \figref{bigDbnNotPretrained}~ábrán, az elõtanítással tanított hálóé pedig a \figref{bigDbnPretrained}~ábrán láthatóak. Az ábrákon szépen kijön hogy amíg az elõtanítás nélküli háló mindkét mértéket tenkintve egy viszonylag sima, egyenletes görbét ír le, ami egy minimumhoz konvergál, addig az elõtanított háló beragadt egy rossz lokális minimumba, ahonnan nem tud kikerülni. Ebbõl azt szûrtem le, hogy érdekes módon nem feltétlen azok a jó jellemzõk osztályozáshoz, amik a rekonstrukcióhoz. Pedig nekem egészen intutív lett volna, és az irodalomban is sokat olvastam róla hogy ez az elõnye az RBM-ekkel való elõtanításnak.
+Úgy magyarázom ezeket az elszomorító eredményeket hogy az elõtanítás következtében egy rossz lokális minimumba ragadt be a háló, ahonnan nem tudott kijönni egyik esetben sem. Ahhoz hogy ezt a feltevésemet igazolja megnéztem az MNIST adathalmazon tanított nagyméretû (500-500-2000-30 neuron) hálónak a veszteségfüggvényét és a pontosságának a növekedését a validációs adathalmazon.
+Ez elõtanítás nélküli háló mért eredményei a \figref{bigDbnNotPretrained}~ábrán, az elõtanítással tanított hálóé pedig a \figref{bigDbnPretrained}~ábrán láthatóak. Az ábrákon szépen kijön hogy amíg az elõtanítás nélküli háló mindkét mértéket tekintve egy viszonylag sima, egyenletes görbét ír le, ami egy minimumhoz konvergál, addig az elõtanított háló beragadt egy rossz lokális minimumba, ahonnan nem tud kikerülni. Ebbõl azt szûrtem le, hogy érdekes módon nem feltétlen azok a jó jellemzõk osztályozáshoz, amik a rekonstrukcióhoz.
 
 \begin{figure}[!ht]
 \centering
@@ -268,8 +271,8 @@ Ez elõtanítás nélküli háló mért eredményei a \figref{bigDbnNotPretrained}~ábrán,
 
 
 
-\section{A konvoluciós hálózatokkal elvégzett méréseim eredményei}
-Miután láthattuk hogy az MLP-k már nehezen bírkóznak meg a CIFAR-10 komplexitású feladatokkal a figyelmemet az elméleti részben oly sok helyet elfoglaló konvoluciós architektúrák felé fordítottam. Mivel ezek az architektúrák érik el jelenleg a legjobb eredményeket a neurális jelfeldolgozás széles területén, nem csak képosztályozásban hanem akár beszédszintetizálásban is, ezért nagy reményekkel fordultam ezekhez a struktúrákhoz. Az eredményeimet a \tabref{CnnMnistTablazat}~táblázat mutatja az MNIST adathalmazon, és a \tabref{CnnCifarTablazat}~táblázat a CIFAR-10 adathalmazon. Az alábbi felsorolás az általam használt hálózatokat írja le.
+\section{A konvolúciós hálózatokkal elvégzett méréseim eredményei}
+Miután láthattuk hogy az MLP-k már nehezen birkóznak meg a CIFAR-10 komplexitású feladatokkal a figyelmemet az elméleti részben oly sok helyet elfoglaló konvolúciós architektúrák felé fordítottam. Mivel ezek az architektúrák érik el jelenleg a legjobb eredményeket a neurális jelfeldolgozás széles területén, nem csak képosztályozásban hanem akár beszédszintetizálásban is, ezért nagy reményekkel fordultam ezekhez a struktúrákhoz. Az eredményeimet a \tabref{CnnMnistTablazat}~táblázat mutatja az MNIST adathalmazon, és a \tabref{CnnCifarTablazat}~táblázat a CIFAR-10 adathalmazon. Az alábbi felsorolás az általam használt hálózatokat írja le.
 \begin{enumerate}
 \item conv2d(5,5,32) -> flatten -> softmax
 \item conv2d(5,5,32) -> maxpool(2,2) -> flatten -> fullyconnected -> dropout(0.5) -> softmax
@@ -305,26 +308,26 @@ Miután láthattuk hogy az MLP-k már nehezen bírkóznak meg a CIFAR-10 komplexitású
 	\end{tabular}
 \end{table}
 
-Látszik hogy az MNIST-en is egész jól teljesítenek a konvoluciós hálózatok, de arra az adathalmazra elég egy egyszerû MLP modellezõ képessége is. Ami viszont érdekesebb hogy a CIFAR10-en, ahol láttuk hogy az MLP hálózatok igen szerény eredményeket érnek el, ott a CNN hálózatok már elkezdenek az MLP hálózatoknál lényegesen jobb eredményeket produkálni. Ennek a magyarázata a transzlációs invariancia által a súlyokra vetített kényszerek, amik természetesen jelen vannak a képi adatokban. Cserébe viszont a konvolució miatt lényegesen megnõ a számítási igény, és a hálózat végén található teljesen kapcsolt rétegek miatt bekövetkezett paraméter tér robbanás miatt hosszabb ideig is kell tanítani ezeket a hálózatokat. A lokális válasz normalizálás (Local Response Normalization) az én esetemben is 1\%-ot javított a teszt hiba százalékon, mint ahogyan azt Hintonék is tapasztalták a "ImageNet Classification with Deep Convolutional Neural Networks"\cite{alexNet} nevû publikációban. Cserébe a gradiensek kiszámolásának az idejét 174 ms-rõl, 355 ms-re emelték. Viszont megemelkedett memória igényük csak 3 MB volt. Ez érhetõ, hiszen ez az operáció nem foglal plusz memória területet mint a paraméterek, de a deriváltjának numerikus kiértékelése adott pontban igen számításigényes. 
+Látszik hogy az MNIST-en is egész jól teljesítenek a konvolúciós hálózatok, de arra az adathalmazra elég egy egyszerû MLP modellezõ képessége is. Ami viszont érdekesebb hogy a CIFAR10-en, ahol láttuk hogy az MLP hálózatok igen szerény eredményeket érnek el, ott a CNN hálózatok már elkezdenek az MLP hálózatoknál lényegesen jobb eredményeket produkálni. Ennek a magyarázata a transzlációs invariancia által a súlyokra vetített kényszerek, amik természetesen jelen vannak a képi adatokban. Cserébe viszont a konvolúció miatt lényegesen megnõ a számítási igény, és a hálózat végén található teljesen kapcsolt rétegek miatt bekövetkezett paraméter tér robbanás miatt hosszabb ideig is kell tanítani ezeket a hálózatokat. A lokális válasz normalizálás (Local Response Normalization) az én esetemben is 1\%-ot javított a teszt hiba százalékon, mint ahogyan azt Hintonék is tapasztalták a "ImageNet Classification with Deep Convolutional Neural Networks"\cite{alexNet} nevû publikációban. Cserébe a gradiensek kiszámolásának az idejét 174 ms-rõl, 355 ms-re emelték. Viszont megemelkedett memória igényük csak 3 MB volt. Ez érhetõ, hiszen ez az operáció nem foglal plusz memória területet mint a paraméterek, de a deriváltjának numerikus kiértékelése adott pontban igen számításigényes. 
 
-A Legjobb eredmény amit konvoluciós hálózattal a CIFAR adathalmazon elértem az \emph{18}\% százalékos hiba volt, a fent ismertetett lokális válasz normált struktúrával (a negyedik a felsorolásban). A tanítás GPU-n 300'000 lépésen keresztûl tartott. Ez már egy egészen tisztességes eredménynek számít az adathalmazon.
+A Legjobb eredmény amit konvolúciós hálózattal a CIFAR adathalmazon elértem az \emph{18}\% százalékos hiba volt, a fent ismertetett lokális válasz normált struktúrával (a negyedik a felsorolásban). A tanítás GPU-n 300'000 lépésen keresztül tartott. Ez már egy egészen tisztességes eredménynek számít az adathalmazon.
 
-\section{A konvoluciós és az MLP hálózatok erõforrás igényének az összehasonlítása}
-Észrevételeim szerint az MLP hálózatok kis költségráfordítás mellett teljesítenek olyan jól az MNIST adathalmazon mint a konvoluciós hálózatok. Ugyanakkor úgy vélem hogy ez az elõny csak az MNIST végtelen egyszerûségébõl fakad. A CIFAR10-es adathalmazon már jól észrevehetõ a konvoluciós hálózatok elsöprõ fölénye, ha komplex képosztályozási feladatokról van szó. 
+\section{A konvolúciós és az MLP hálózatok erõforrás igényének az összehasonlítása}
+Észrevételeim szerint az MLP hálózatok kis költségráfordítás mellett teljesítenek olyan jól az MNIST adathalmazon mint a konvolúciós hálózatok. Ugyanakkor úgy vélem hogy ez az elõny csak az MNIST végtelen egyszerûségébõl fakad. A CIFAR10-es adathalmazon már jól észrevehetõ a konvolúciós hálózatok elsöprõ fölénye, ha komplex képosztályozási feladatokról van szó. 
 
-Két struktúrának mértem össze a paramétereit az MNIST adathalmazon. Egy MLP-ét, és egy konvoluciós hálózatét. A hálózatok az alábbi struktúrával épültek fel, ebben a sorrendben:
+Két struktúrának mértem össze a paramétereit az MNIST adathalmazon. Egy MLP-ét, és egy konvolúciós hálózatét. A hálózatok az alábbi struktúrával épültek fel, ebben a sorrendben:
 \begin{itemize}
 \item input(784) -> fc(500) -> fc(500) -> fc(2000) -> fc(30) -> fc(10)
 \item input -> conv2d(5,5,32) ->  pool(2,2) -> conv2(5,5,64) -> pool(2,2) -> fc(1024)-> dropout(0.5) -> fc(1024) -> softmax
 \end{itemize}
-Érdemes megjegyezni hogy az MLP paraméter tere kb 1,8 millió paraméterbõl áll, amíg a konvoluciós hálózat kb 2,7 millió paraméterbõl. Habár eleinte úgy éreztem hogy a konvoluciós háló paraméter tere kissebb lesz, mégis az intuicióm becsapott.
+Érdemes megjegyezni hogy az MLP paraméter tere kb 1,8 millió paraméterbõl áll, amíg a konvolúciós hálózat kb 2,7 millió paraméterbõl. Habár eleinte úgy éreztem hogy a konvolúciós háló paraméter tere kisebb lesz, mégis az intuícióm becsapott.
 
-Mindkét hálózatban a gradiens kiszámítása igényelte a legtöbb erõforrást. Ennek a számításnak a részleteit a \tabref{resourceTableMLP}~tábla mutatja az MLP hálózatra, és a \tabref{resourceTableCNN}~tábla a konvoluciós hálózatra. A táblázatokból jól látható hogy a kovoluciós hálózat lényegesen több erõforrást fogyasztott. Ha az erõforrások növekedése lineárisan skálázódna a paraméter tér beli növekedéssel, akkor jóval kissebb növekvény lett volna várható.
+Mindkét hálózatban a gradiens kiszámítása igényelte a legtöbb erõforrást. Ennek a számításnak a részleteit a \tabref{resourceTableMLP}~tábla mutatja az MLP hálózatra, és a \tabref{resourceTableCNN}~tábla a konvolúciós hálózatra. A táblázatokból jól látható hogy a kovoluciós hálózat lényegesen több erõforrást fogyasztott. Ha az erõforrások növekedése lineárisan skálázódna a paraméter tér beli növekedéssel, akkor jóval kissebb növekvény lett volna várható.
 
 \begin{table}[ht]
 	\footnotesize
 	\centering
-	\caption{Az MLP hálózat  megmagasabb erõforrás igényû részei az MNIST adathalmaznál} \label{tab:resourceTableMLP}
+	\caption{Az MLP hálózat  legmagasabb erõforrás igényû részei az MNIST adathalmaznál} \label{tab:resourceTableMLP}
 	\begin{tabular}{ | l | c | c |}
 	\hline
 	Hálózati rész & Memória & Számítási idõ \\ \hline
@@ -341,23 +344,23 @@ Mindkét hálózatban a gradiens kiszámítása igényelte a legtöbb erõforrást. Ennek 
 \begin{table}[ht]
 	\footnotesize
 	\centering
-	\caption{A konvoluciós hálózat  megmagasabb erõforrás igényû részei az MNIST adathalmaznál} \label{tab:resourceTableCNN}
+	\caption{A konvolúciós hálózat  legmagasabb erõforrás igényû részei az MNIST adathalmaznál} \label{tab:resourceTableCNN}
 	\begin{tabular}{ | l | c | c |}
 	\hline
 	Hálózati rész & Memória & Számítási idõ \\ \hline
 	gradiens & 114 MB & 94.8 ms \\
-	A második konvoluciós réteg gradiense & 44.6 MB & 90.9 ms \\
-	Az elsõ konvoluciós réteg gradiense & 27.5 MB & 94.7 ms \\
+	A második konvolúciós réteg gradiense & 44.6 MB & 90.9 ms \\
+	Az elsõ konvolúciós réteg gradiense & 27.5 MB & 94.7 ms \\
 	ADAM optimizer & 8 B & 50.1 ms \\
 	Elsõ teljes réteg & 192 KB & 43.6 ms \\
-	Második elõrecsatolt konvoluciós ág & 2.3 MB & 36.8 ms \\
+	Második elõrecsatolt konvolúciós ág & 2.3 MB & 36.8 ms \\
 	\hline
 	\end{tabular}
 \end{table}
 
 A fenti két táblázatból több érdekes következtetést is levontam, ezeket az alábbi felsorolásban összegzem:
 \begin{itemize}
-\item A konvoluciós háló paraméter tere lényegesen nagyobb lett, pedig én intuitívan kissebbnek gondoltam volna mint az MLP-ét. Azt sejtettem hogy a paraméter tér robbanását a két teljesen csatolt réteg fogja okozni, de ennyire nagyra nem számítottam.
+\item A konvolúciós háló paraméter tere lényegesen nagyobb lett, pedig én intuitívan kissebbnek gondoltam volna mint az MLP-ét. Azt sejtettem hogy a paraméter tér robbanását a két teljesen csatolt réteg fogja okozni, de ennyire nagyra nem számítottam.
 \item A számítást magasan a gradiens kiszámítása dominálja mind a két hálónál, viszont ahhoz képest hogy a CNN paraméter tere kb 1.5-szer akkora, a gradiens számítás ötször annyi memóriát, és kb nyolcszor annyi számítási idõt igényel mint az MLP esetében.
 \item A CNN-ben a paraméter tér robbanásáért felelõs egy batch számításánál elhanyagolható többletmunkát jelentenek.
 \end{itemize}
@@ -371,12 +374,12 @@ A \figref{mlpCnnMnist}~ábra azt mutatja hogy az MNIST-en legjobban teljesítõ, 80
 \label{fig:mlpCnnMnist}
 \end{figure}
 
-Ugyanez a két metrika a CIFAR10 adathalmazon a \figref{mlpCnnCifar}~ábrán látható. tisztán látszik hogy ide ez az MLP hálózat már kevés volt. Sõt, én sokkal mélyebb MLP függvényekkel sem tudtam lényegesen jobb eredményt elérni, ezt tisztán mutatja hogy az ábra (a) pontja egy mély MLP háló, megfelelõ elõtanítás nélkül beragadt egy lokális minimumba és képtelen volt onnan tovább haladni. A (b) ábra a konvoluciós háló eredményét mutatja ami lényegesen simább lefutású volt, jobb eredményekkel. A (c) rész az a 800 neuronos 1 rejtett rétegû MLP volt, ami a már megismert 50\%-os hibánál kezdett el szaturálni. Ahogyan azt a \tabref{MLPTablazat}~táblázat eredményei is mutatják.
+Ugyanez a két metrika a CIFAR10 adathalmazon a \figref{mlpCnnCifar}~ábrán látható. tisztán látszik hogy ide ez az MLP hálózat már kevés volt. Sõt, én sokkal mélyebb MLP függvényekkel sem tudtam lényegesen jobb eredményt elérni, ezt tisztán mutatja hogy az ábra (a) pontja egy mély MLP háló, megfelelõ elõtanítás nélkül beragadt egy lokális minimumba és képtelen volt onnan tovább haladni. A (b) ábra a konvolúciós háló eredményét mutatja ami lényegesen simább lefutású volt, jobb eredményekkel. A (c) rész az a 800 neuronos 1 rejtett rétegû MLP volt, ami a már megismert 50\%-os hibánál kezdett el szaturálni. Ahogyan azt a \tabref{MLPTablazat}~táblázat eredményei is mutatják.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm, keepaspectratio]{figures/mlpCnnCifar}
-\caption{Az ábra (a) pontja egy mély MLP háló, megfelelõ elõtanítás nélkül beragadt egy lokális minimumba és képtelen volt onnan tovább haladni. A (b) ábra a konvoluciós háló eredményét mutatja ami lényegesen simább lefutású volt, jobb eredményekkel. A (c) rész az a 800 neuronos 1 rejtett rétegû MLP volt, ami a már megismert 50\%-os hibánál kezdett el szaturálni. } 
+\caption{Az ábra (a) pontja egy mély MLP háló, megfelelõ elõtanítás nélkül beragadt egy lokális minimumba és képtelen volt onnan tovább haladni. A (b) ábra a konvolúciós háló eredményét mutatja ami lényegesen simább lefutású volt, jobb eredményekkel. A (c) rész az a 800 neuronos 1 rejtett rétegû MLP volt, ami a már megismert 50\%-os hibánál kezdett el szaturálni. } 
 \label{fig:mlpCnnCifar}
 \end{figure}
 
@@ -403,7 +406,7 @@ Ugyanez a két metrika a CIFAR10 adathalmazon a \figref{mlpCnnCifar}~ábrán láthat
 	\end{tabular}
 \end{table}
 
-\paragraph{Aktivációk vizsgálata} Miután ilyen jó eredméneket hozott a 64 rejtett neuronos RBM az adathalmazon elkezdtem érdeklõdni hogy vajon már a neuronok aktivációibõl látszani fog-e az, hogy a kép melyik osztályba fog tartozni. Ehhez azt csináltam hogy az összes képre az MNIST-ben legeneráltam a rejtett neuronok aktivációs valószínûségét, és osztályonként vettem az átlagukat, a minimum és a maximum aktivációt. Ezeket az eredményeket a \figref{rbmActivationProbabilitiesNoFineTuning}~ábra szemlélteti. Felülrõl lefele helyezkednek el a számok 0-tól 9-ig, és a 0 átlagos aktivációs valószínûségei szerint van rendezve, hogy lássam esetleg szabad szemmel a triviális korrelációkat. Mint látható szabad szemmel semmilyen triviális korreláció nem vehetõ ki az értékekbõl, viszont azt érdekesnek találtam hogy a minimum aktivációknál van 1-2 nagyon erõs marker ami mindenképpen jelen van az osztályban, ha egy osztályozó ezt a mintázatot megtanulja, akkor már ez alapján is egészen jó eséllyel zárhat ki mintákat ha ezek az aktivációk hiányoznak. Abban is biztosak lehetünk hogy aminek ilyen magas a negatív értéke, azoknak nagyon kicsi lesz a szórása, mert egyszerûen nincsen hova szorniuk, mivel minden neuron legalább egyszer maximális értéket vesz fel. Persze egy valamire való algoritmus magasabb rendû összefüggéseket tanulna meg. Utánajártam a téma mûvelõi között, de nem authorativ szakirodalomban és azt tudtam meg hogy egy jól mûködõ RBM-nél ilyen véletlenszerûnek látszó aktivációkat kell látni az aktivációk középértékénel, de valóban nagyon jól disztingváló aktivációk is keletkeznek.
+\paragraph{Aktivációk vizsgálata} Miután ilyen jó eredményeket hozott a 64 rejtett neuronos RBM az adathalmazon elkezdtem érdeklõdni hogy vajon már a neuronok aktivációiból látszani fog-e az, hogy a kép melyik osztályba fog tartozni. Ehhez azt csináltam hogy az összes képre az MNIST-ben legeneráltam a rejtett neuronok aktivációs valószínûségét, és osztályonként vettem az átlagukat, a minimum és a maximum aktivációt. Ezeket az eredményeket a \figref{rbmActivationProbabilitiesNoFineTuning}~ábra szemlélteti. Felülrõl lefele helyezkednek el a számok 0-tól 9-ig, és a 0 átlagos aktivációs valószínûségei szerint van rendezve, hogy lássam esetleg szabad szemmel a triviális korrelációkat. Mint látható szabad szemmel semmilyen triviális korreláció nem vehetõ ki az értékekbõl, viszont azt érdekesnek találtam hogy a minimum aktivációknál van 1-2 nagyon erõs marker ami mindenképpen jelen van az osztályban, ha egy osztályozó ezt a mintázatot megtanulja, akkor már ez alapján is egészen jó eséllyel zárhat ki mintákat ha ezek az aktivációk hiányoznak. Abban is biztosak lehetünk hogy aminek ilyen magas a negatív értéke, azoknak nagyon kicsi lesz a szórása, mert egyszerûen nincsen hova szórniuk, mivel minden neuron legalább egyszer maximális értéket vesz fel. Persze egy valamire való algoritmus magasabb rendû összefüggéseket tanulna meg. Tehát összefoglalva azt szûrtem le hogy az aktivációk véletlenszerûnek látszanak az aktivációk közpértékénél, de valóban nagyon jól disztingváló aktivációk is keletkeznek.
 
 \begin{figure}[!ht]
 \centering
@@ -412,7 +415,7 @@ Ugyanez a két metrika a CIFAR10 adathalmazon a \figref{mlpCnnCifar}~ábrán láthat
 \label{fig:rbmActivationProbabilitiesNoFineTuning}
 \end{figure}
 
-Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafikont is, amit az \figref{rbmProbZeroViolin}~ábra mutat. A sok adat miatt nem lett egészen hegedû grafikon alakja, de nagyon jól szemlélteti amit látni szerettem volna. Van pár neuron aminek az aktivációja teljesen véletlenszerû az egész tartományban elterûl, de van olyan is ami nagyon jól lokalizált. Sõt, nem egy neuron van ami egy pontba omlik össze, tehát a nullás szám minden esetében 1-et vagy 0-át vesz fel. 
+Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafikont is, amit az \figref{rbmProbZeroViolin}~ábra mutat. A sok adat miatt nem lett egészen hegedû grafikon alakja, de nagyon jól szemlélteti amit látni szerettem volna. Van pár neuron aminek az aktivációja teljesen véletlenszerû az egész tartományban elterül, de van olyan is ami nagyon jól lokalizált. Sõt, nem egy neuron van ami egy pontba omlik össze, tehát a nullás szám minden esetében 1-et vagy 0-át vesz fel. 
 
 \begin{figure}[!ht]
 \centering
@@ -421,7 +424,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 \label{fig:rbmProbZeroViolin}
 \end{figure}
 
-\paragraph{Naiv CIFAR} Miután az MNIST eredményeken látszik hogy az RBM által eszközölt dimenziócsökkentéssel összekötött jellemzõ kiemelés lerövidítette a számítási idõt, és a nyers pixeleken alkalmazott SVM-hez képest nem rontott az osztályozás pontosságában elvégeztem ezeket a méréseket a CIFAR adathalmazon is. Ott kiábránító eredményeket kaptam, az alábbi táblázat közli õket. \tabref{cifarBadRbmSvm}. Mint látszik ez a 90\%-os teszt hiba elfogadhatatlan. Már tanítás közben gyanus volt hogy a 139.0-as pontos rekonstrukció hiba túl nagy az mnisten tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás után rájöttem hogy a probléma ott van hogy amíg az MNIST adahalmaz normalizálva van, a CIFAR-ra ez nem elmondható ott 0 és 255 között terjednek az értékek.
+\paragraph{Naiv CIFAR} Miután az MNIST eredményeken látszik hogy az RBM által eszközölt dimenzió csökkentéssel összekötött jellemzõ kiemelés lerövidítette a számítási idõt, és a nyers pixeleken alkalmazott SVM-hez képest nem rontott az osztályozás pontosságában elvégeztem ezeket a méréseket a CIFAR adathalmazon is. Ott kiábrándító eredményeket kaptam, az alábbi táblázat közli õket. \tabref{cifarBadRbmSvm}. Mint látszik ez a 90\%-os teszt hiba elfogadhatatlan. Már tanítás közben gyanus volt hogy a 139.0-as pontos rekonstrukció hiba túl nagy az MNIST-en tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás után rájöttem hogy a probléma ott van hogy amíg az MNIST adahalmaz normalizálva van, a CIFAR-ra ez nem elmondható ott 0 és 255 között terjednek az értékek.
 
 \begin{table}[ht]
 	\footnotesize
@@ -436,7 +439,7 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 	\end{tabular}
 \end{table}
 
-\paragraph{Normalizált CIFAR10} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. És a klasszifikációs eredmények is nagyon sokat javultak, ezt a \tabref{cifarGoodRbmSvm}~táblázat mutatja. Érdekes megfigyelni hogy a színek szerint szétszedett SVM lényegesen jobban teljesített mint az egyben tanított, pedig ugyanannyi neuront használtak és ugyanaddig tanítottam õket. Mindkét struktúra esetében jelentõs teljesítmény javulást értem el a nyers adatokon tanított SVM-hez képest, egyenként kb 2 óra alatt futottak le a 7 helyett. Sõt ha az olvasó visszaemlékszik a nyers SVM teljesítménye \emph{55\%} hibaszázalék volt, ettõl az egyben tanított SVM alig marad le 1\%-al, a szétdarabolt pedig 4\%-al jobban teljesít.
+\paragraph{Normalizált CIFAR10} Miután normalizáltam az adatokat a rekonstrukciós hiba leesett a várt értékre. És a klasszifikációs eredmények is nagyon sokat javultak, ezt a \tabref{cifarGoodRbmSvm}~táblázat mutatja. Érdekes megfigyelni hogy a színek szerint szétszedett SVM lényegesen jobban teljesített mint az egyben tanított, pedig ugyanannyi neuront használtak és ugyanaddig tanítottam õket. Mindkét struktúra esetében jelentõs teljesítmény javulást értem el a nyers adatokon tanított SVM-hez képest, egyenként kb 2 óra alatt futottak le a 7 helyett. Sõt ha az olvasó visszaemlékszik a nyers SVM teljesítménye \emph{55\%} hibaszázalék volt, ettõl az egyben tanított SVM alig marad le 1\%-al, a szétdarabolt pedig 4\%-al jobban teljesít. Ezen felül az MLP-nél is jobb teljesítményt nyújtott, ami meglepõ annak fényében hogy ez a megoldás lényegesen kisebb paraméter térrel rendelkezik.
 
 \begin{table}[ht]
 	\footnotesize
@@ -451,10 +454,10 @@ Hogy ezt egy kicsit tovább vizsgáljam a nullás számra csináltam egy hegedû grafi
 	\end{tabular}
 \end{table}
 
-\paragraph{A hibrid architektúra értékelése} Úgy gondolom hogy a jelentõs sebességnövekedés, és ha jól ki van alakítva akkor a klasszifikációs teljesítmény növekedése indokoltá teszi az ilyen struktúrák alkalmazásának megfontolását egyes szcenáriókban.
+\paragraph{A hibrid architektúra értékelése} Úgy gondolom hogy a jelentõs sebességnövekedés, és ha jól ki van alakítva akkor a klasszifikációs teljesítmény növekedése indokolttá teszi az ilyen struktúrák alkalmazásának megfontolását egyes szcenáriókban.
 
 \section{A CNN és az SVM+RBM összehasonlítása}
-A neurális hálózatok és a kernel metódusok között van egy ciklusosság hogy éppen melyiknek a kutatása jár elõrébb, és melyiket érdemes használni. Én személyes érdeklõdésbõl hoztam be a dolgozatomba az RBM + SVM kombinációját, ami sokáig egy nagyon jó klasszifikátornak számított, de talán mondhatjuk hogy eljárt felette az idõ. Egy félig meddig épkézláb konvoluciós hálózat a CIFAR-10 osztályozásának a problémáját kevesebb erõforrásból és kevesebb idõ alatt \emph{25\%}-al jobb eredményt tudott hozni mint az elõbb említett hibrid megoldás, és még a legjobb SVM-es eredménynél \cite{svmCIFAR} is fél százalékkal jobb eredményt volt képes hozni. Az \url{http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130}-en összeszedett listából az látszik hogy az eddig elért legjobb eredmény az adathalmazon \emph{3.47\%} ami \emph{21.43\%}-al jobb mint a legjobb SVM-es megoldás. Persze vannak adatstruktúrák ahol manapság is az SVM-ek hoznak dominánsan jobb eredményeket, de sok az emberek számára fontos klasszikus feldolgozási feladatnál, ahol spaciális kényszerek vannak jelen az adathalmazban, a konvoluciós hálózatok hoznak lényegesen jobb eredményeket.
+A neurális hálózatok és a kernel metódusok között van egy ciklusosság hogy éppen melyiknek a kutatása jár elõrébb, és melyiket érdemes használni. Én személyes érdeklõdésbõl hoztam be a dolgozatomba az RBM + SVM kombinációját, pedig ez nem egy kifejezetten populáris kombináció. Egy félig meddig épkézláb konvolúciós hálózat a CIFAR-10 osztályozásának a problémáját kevesebb erõforrásból és kevesebb idõ alatt \emph{25\%}-al jobb eredményt tudott hozni mint az elõbb említett hibrid megoldás, és még a legjobb SVM-es eredménynél \cite{svmCIFAR} is fél százalékkal jobb eredményt volt képes hozni. Az \url{http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#43494641522d3130}-en összeszedett listából az látszik hogy az eddig elért legjobb eredmény az adathalmazon \emph{3.47\%} ami \emph{21.43\%}-al jobb mint a legjobb SVM-es megoldás. Az SVM-ek és a neurális hálózatok világa egyelõre viszonylag jól szeparált, ennek az az oka hogy a neurális hálózat kimenetén lévõ szoftmax osztályozó réteget még nem sikerült lecserélni egy összetettebb klasszifikátorra, például egy SVM-re azért mert az ebbõl való gradiens visszaterjesztés egyelõre túlnyúlik a számítási kapacitásainkon, pedig ez is egy nagyon érdekes útvonal lenne hogy hogyan lehetne a két módszert kombinálni és vajon milyen eredményre vezetnének. A mai szeparált világnézettel vannak olyan adatstruktúrák ahol manapság is az SVM-ek hoznak dominánsan jobb eredményeket, viszont sok - az emberek számára fontos - klasszikus feldolgozási feladatnál, ahol spaciális kényszerek vannak jelen az adathalmazban ott a konvolúciós hálózatok hoznak lényegesen jobb eredményeket.
 
 \section{A három megközelítés végsõ összehasonlítása}
-Mint említettem, úgy gondolom hogy ha az ember ki tud a tanulás jellege miatt térbeli struktúrákat használni, akkor nagyon indokolt eredményekkel kell alátámasztani hogy az ember a konvoluciós neurális hálózatokkal szemben, egy másik architektúra javára döntsön. Ehhez viszont számolni kell a megnövekedett erõforrás igényekkel tanítás közben. Az MLP-ket úgy tudom elképzelni hogy a közeljövõben egy nagyobb architektúra részeként lehet majd használni, mint például az adaptív aktivációs függvényeknél ahogyan azt a "Learning Activations Functions to Improve Deep Neural Networks"\cite{learnActivationFunc} is taglalja. A kernel gépeknek most egy kicsit hidegebb korszakát éljük, mert ezeket a struktúrákat tudtommal lényegesen nehezebb nagyon nagy adathalmazokon tanítani, de úgy gondolom hogy mivel még ezeken a módszereken is nagyon sokan dolgoznak esetleg elképzelhetõ hogy pár év múlva ugyanakkora népszerûségnek fognak örvendeni mint 2012-ben. De én most nem látnám indokoltnak hogy ezeket a struktúrákat használjam képosztályozási feladatokra, még fejlesztett lokalitású\cite{svmCIFAR} kernelekkel sem.
+Mint említettem, úgy gondolom hogy ha az ember ki tud a tanulás jellege miatt térbeli struktúrákat használni, akkor nagyon indokolt eredményekkel kell alátámasztani hogy az ember a konvolúciós neurális hálózatokkal szemben, egy másik architektúra javára döntsön. Ehhez viszont számolni kell a megnövekedett erõforrás igényekkel tanítás közben. Az MLP-ket úgy tudom elképzelni hogy a közeljövõben egy nagyobb architektúra részeként lehet majd használni, mint például az adaptív aktivációs függvényeknél ahogyan azt a "Learning Activations Functions to Improve Deep Neural Networks"\cite{learnActivationFunc} is taglalja. A kernel gépeknek most egy kicsit hidegebb korszakát éljük, mert ezeket a struktúrákat tudtommal lényegesen nehezebb nagyon nagy adathalmazokon tanítani, de úgy gondolom hogy mivel még ezeken a módszereken is nagyon sokan dolgoznak esetleg elképzelhetõ hogy pár év múlva ugyanakkora népszerûségnek fognak örvendeni mint 2012-ben. De én most nem látnám indokoltnak hogy ezeket a struktúrákat használjam képosztályozási feladatokra, még fejlesztett lokalitású\cite{svmCIFAR} kernelekkel sem.

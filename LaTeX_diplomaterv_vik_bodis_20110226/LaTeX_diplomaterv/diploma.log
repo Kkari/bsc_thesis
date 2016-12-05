@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  4 DEC 2016 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.26)  5 DEC 2016 21:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -511,7 +511,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.83 ...onvoluci\'os modell}{34}{subsection.3.4.7}
+l.83 ...vol\'uci\'os modell}{35}{subsection.3.4.7}
                                                    [1
 
 
@@ -588,9 +588,9 @@ Overfull \hbox (24.8543pt too wide) in paragraph at lines 16--17
  []
 
 
-Overfull \hbox (2.95837pt too wide) in paragraph at lines 16--17
-\T1/cmr/m/n/10.95 képosztályzó algoritmusokat alkalmazni ami egy robotrepül®gép
-en fog valós idej¶ döntéseket
+Overfull \hbox (8.10007pt too wide) in paragraph at lines 16--17
+\T1/cmr/m/n/10.95 képosztályozó algoritmusokat alkalmazni ami egy robotrepül®gé
+pen fog valós idej¶ döntéseket
  []
 
 
@@ -888,9 +888,9 @@ Overfull \hbox (13.78828pt too wide) in paragraph at lines 70--73
  []
 
 
-Overfull \hbox (16.4044pt too wide) in paragraph at lines 70--73
+Overfull \hbox (21.24387pt too wide) in paragraph at lines 70--73
 \T1/cmr/m/n/10.95 elején referált cikkben további részleteket találhatnak. Az a
-lgoritmus pseudokód összefoglalását
+lgoritmus pszeudokód összefoglalását
  []
 
 [14 <./figures/imagenetSample.png>]
@@ -903,12 +903,6 @@ Overfull \hbox (46.04019pt too wide) in paragraph at lines 106--107
 Overfull \hbox (6.43944pt too wide) in paragraph at lines 119--120
  []\T1/cmr/bx/n/10.95 A tanulás jellege[] \T1/cmr/m/n/10.95 A felügyelt tanulás
  kapzsi módon a hibafüggvényt a súlyok gradiensének
- []
-
-
-Overfull \hbox (8.45453pt too wide) in paragraph at lines 119--120
-\T1/cmr/m/n/10.95 ([][]2.5[][]. ábra). Ez habár nem közvetlenül egy hibafüggvén
-y, de azt a tulajdonságot jól szemlélteti,
  []
 
 
@@ -973,7 +967,7 @@ elemegyek kicsit az RBM tanításának részleteibe,
 
 Overfull \hbox (5.70662pt too wide) in paragraph at lines 155--156
 \OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.9
-5 )$ \T1/cmr/m/n/10.95 valószín¶ség, hogy mekkora val®szín¶séggel tartózkodik a
+5 )$ \T1/cmr/m/n/10.95 valószín¶ség, hogy mekkora valószín¶séggel tartózkodik a
  háló az adott konfigurációban.
  []
 
@@ -985,241 +979,249 @@ knak nagy legyen a valószín¶sége.
 
 [17 <./figures/rbm.png>]
 Overfull \hbox (1.99373pt too wide) in paragraph at lines 164--165
-[]\T1/cmr/m/n/10.95 Ahol az E az energiafüggvényt, Z pedig a particiós függvény
+[]\T1/cmr/m/n/10.95 Ahol az E az energiafüggvényt, Z pedig a partíciós függvény
 t jelenti. A fizikában jártasabb
  []
 
 
-Overfull \hbox (57.04561pt too wide) in paragraph at lines 164--165
-\T1/cmr/m/n/10.95 hálózatok gyengeségeit kiküszöbölje. A ([][]2.3[][]) képletet
+Overfull \hbox (54.32372pt too wide) in paragraph at lines 164--165
+\T1/cmr/m/n/10.95 hálózatok gyengeségeit kiküszöbölje, a ([][]2.3[][]) képletet
  felhasználva megalkothatjuk a hibafüggvényünket,
  []
 
 [18 <./figures/rbmFilters.png (PNG copy)>]
-Overfull \hbox (8.89966pt too wide) in paragraph at lines 200--201
-\T1/cmr/m/n/10.95 gép korlátozott legyen, tehát egy páros gráp formáját vegye f
-el, mert így az egyes neuronokhoz
+Overfull \hbox (30.66911pt too wide) in paragraph at lines 203--204
+\T1/cmr/m/n/10.95 látható hogy az egyes deriváltak kiszámításához szükségünk va
+n a rejtett neuronok valószín¶ségére
+ []
+
+
+Overfull \hbox (0.63316pt too wide) in paragraph at lines 203--204
+\T1/cmr/m/n/10.95 a bemeneti neuronok állapotától függ®en. Ezért szükséges hogy
+ a boltzmann gép korlátozott
+ []
+
+
+Overfull \hbox (4.84729pt too wide) in paragraph at lines 203--204
+\T1/cmr/m/n/10.95 eljárás a kontrasztív divergencia algoritmus amelynek a valóz
+sín¶ségi mintavételét a [][]2.8[][]. ábra
  []
 
 <figures/gibbs.png, id=538, 1081.03876pt x 403.5075pt>
 File: figures/gibbs.png Graphic file (type png)
  <use figures/gibbs.png>
-Package pdftex.def Info: figures/gibbs.png used on input line 213.
+Package pdftex.def Info: figures/gibbs.png used on input line 216.
 (pdftex.def)             Requested size: 341.43306pt x 127.438pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--214
+Underfull \hbox (badness 10000) in paragraph at lines 217--217
 [][]|\T1/cmr/m/it/9 A gibbs mintavételezési eljárás. Forrás: [][]$\T1/cmtt/m/it
 /9 http : / /
  []
 
-[19 <./figures/gibbs.png>]
-Overfull \hbox (10.95229pt too wide) in paragraph at lines 224--225
+[19]
+Overfull \hbox (10.95229pt too wide) in paragraph at lines 227--228
 \T1/cmr/m/n/10.95 bizonyítja hogy valóban a jellemz® reprezentációihoz közel he
 lyezkedik el egy nagyon optimális
  []
 
 
-Overfull \hbox (1.24867pt too wide) in paragraph at lines 243--244
-\T1/cmr/m/n/10.95 tartozási valószín¶séget a teszt vektor, és a cimkék szabad e
+Overfull \hbox (1.24867pt too wide) in paragraph at lines 246--247
+\T1/cmr/m/n/10.95 tartozási valószín¶séget a teszt vektor, és a címkék szabad e
 nergiájájának eloszlásában
  []
 
-[20] <figures/hrbm.jpg, id=577, 1485.55pt x 456.70625pt>
+[20 <./figures/gibbs.png>] <figures/hrbm.jpg, id=578, 1485.55pt x 456.70625pt>
 File: figures/hrbm.jpg Graphic file (type jpg)
 
 <use figures/hrbm.jpg>
-Package pdftex.def Info: figures/hrbm.jpg used on input line 251.
+Package pdftex.def Info: figures/hrbm.jpg used on input line 254.
 (pdftex.def)             Requested size: 426.79134pt x 131.20795pt.
 
-<figures/sbenPerf.png, id=582, 998.73125pt x 268.00125pt>
+<figures/sbenPerf.png, id=583, 998.73125pt x 268.00125pt>
 File: figures/sbenPerf.png Graphic file (type png)
 
 <use figures/sbenPerf.png>
-Package pdftex.def Info: figures/sbenPerf.png used on input line 258.
+Package pdftex.def Info: figures/sbenPerf.png used on input line 261.
 (pdftex.def)             Requested size: 426.79134pt x 114.52673pt.
 
-Underfull \hbox (badness 1960) in paragraph at lines 259--259
+Underfull \hbox (badness 1960) in paragraph at lines 262--262
 \T1/cmr/m/it/9 (8 példa osztályonként). A mérés teljes riportját az SBEN
  []
 
-
-Overfull \hbox (8.80624pt too wide) in paragraph at lines 264--265
-\T1/cmr/m/n/10.95 Ezen felül az eltün® gradiensek problémáját is orvosolja, ami
-vel itt b®vebben nem foglalkozok.
- []
-
 [21 <./figures/hrbm.jpg> <./figures/sbenPerf.png>]
-<figures/mlpEvolution.png, id=597, 933.4875pt x 468.75125pt>
+<figures/mlpEvolution.png, id=600, 933.4875pt x 468.75125pt>
 File: figures/mlpEvolution.png Graphic file (type png)
 
 <use figures/mlpEvolution.png>
-Package pdftex.def Info: figures/mlpEvolution.png used on input line 268.
+Package pdftex.def Info: figures/mlpEvolution.png used on input line 271.
 (pdftex.def)             Requested size: 341.43306pt x 171.44682pt.
 
-Underfull \hbox (badness 1057) in paragraph at lines 269--269
+Underfull \hbox (badness 1057) in paragraph at lines 272--272
 [][]|\T1/cmr/m/it/9 Az MLP fejl®dése a CIFAR-10 adahalmazon. (1) Logiszikus
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 269--269
-\T1/cmr/m/it/9 782-10000-10000-10 méret¶ hálózaton. (4) Egy 10000-10000-
+Underfull \hbox (badness 1888) in paragraph at lines 272--272
+\T1/cmr/m/it/9 (5) Egyréteg¶ 10000 neuronos hálózat logisztikus regressziós
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 269--269
-\T1/cmr/m/it/9 regresszió; (5) Egyréteg¶ 10000 neuronos hálózat logisztikus
+Underfull \hbox (badness 1009) in paragraph at lines 272--272
+\T1/cmr/m/it/9 (ami itt a szerz®knél a Higgs adathalmazon való el®tanítást
  []
 
 
-Overfull \hbox (2.96248pt too wide) in paragraph at lines 276--277
+Overfull \hbox (2.96248pt too wide) in paragraph at lines 279--280
 \T1/cmr/m/n/10.95 ki. Miután az irodalomkutatásom közben rá kellett jönnöm hogy
  az általam tanult klasszikus
  []
 
 
-Overfull \hbox (20.52554pt too wide) in paragraph at lines 276--277
-\T1/cmr/m/n/10.95 emberi érzékszervek által érzékelt jelek - példáúl képek - am
+Overfull \hbox (20.52554pt too wide) in paragraph at lines 279--280
+\T1/cmr/m/n/10.95 emberi érzékszervek által érzékelt jelek - például képek - am
 ik jelent®s transzlációs invarianciával
  []
 
 
-Overfull \hbox (3.55067pt too wide) in paragraph at lines 276--277
+Overfull \hbox (3.55067pt too wide) in paragraph at lines 279--280
 \T1/cmr/m/n/10.95 teljesítmény¶ MLP-nél. Természetesen tudjuk Cybenko (1989)[[]
 ] és Kurt Hornik (1991)[[]]
  []
 
 [22 <./figures/mlpEvolution.png>]
-Overfull \hbox (5.31038pt too wide) in paragraph at lines 278--279
-\T1/cmr/m/n/10.95 össztetett jellemz®k jelennek meg. És a hálózat az összetett 
-jellemz®k jelenlétéb®l következtet
+Overfull \hbox (13.15172pt too wide) in paragraph at lines 281--282
+\T1/cmr/m/n/10.95 els® sikeres alkalmazása ennek a modellnek a LeNet[[]] volt 1
+990-ben, amelyet irányítószámok,
  []
 
-<figures/deconvnet.png, id=615, 682.80093pt x 313.17pt>
+<figures/deconvnet.png, id=616, 682.80093pt x 313.17pt>
 File: figures/deconvnet.png Graphic file (type png)
 
 <use figures/deconvnet.png>
-Package pdftex.def Info: figures/deconvnet.png used on input line 282.
+Package pdftex.def Info: figures/deconvnet.png used on input line 285.
 (pdftex.def)             Requested size: 341.43306pt x 156.60371pt.
 
-Underfull \hbox (badness 1142) in paragraph at lines 283--283
-[][]|\T1/cmr/m/it/9 Az els® két szint sz¶r®i egy konvoluciós hálozatban. Forrás
+Underfull \hbox (badness 1142) in paragraph at lines 286--286
+[][]|\T1/cmr/m/it/9 Az els® két szint sz¶r®i egy konvolúciós hálozatban. Forrás
 :
  []
 
-<figures/deconvnet2.png, id=618, 615.80063pt x 603.0028pt>
+<figures/deconvnet2.png, id=619, 615.80063pt x 603.0028pt>
 File: figures/deconvnet2.png Graphic file (type png)
 
 <use figures/deconvnet2.png>
-Package pdftex.def Info: figures/deconvnet2.png used on input line 289.
+Package pdftex.def Info: figures/deconvnet2.png used on input line 292.
 (pdftex.def)             Requested size: 341.43306pt x 334.33928pt.
- [23 <./figures/deconvnet.png>]
-<figures/leNet.png, id=635, 544.1931pt x 127.1952pt>
+
+<figures/leNet.png, id=624, 544.1931pt x 127.1952pt>
 File: figures/leNet.png Graphic file (type png)
  <use figures/leNet.png>
-Package pdftex.def Info: figures/leNet.png used on input line 298.
+Package pdftex.def Info: figures/leNet.png used on input line 301.
 (pdftex.def)             Requested size: 341.43306pt x 79.80345pt.
 
-Overfull \hbox (0.47713pt too wide) in paragraph at lines 302--303
- []\T1/cmr/bx/n/10.95 Az IMAGNET[] \T1/cmr/m/n/10.95 2012-ben az AlexNet nev¶ k
-onvoluciós hálózat amelyet Alex Krizhevsky,
+[23]
+Overfull \hbox (8.68661pt too wide) in paragraph at lines 305--306
+ []\T1/cmr/bx/n/10.95 Az IMAGENET[] \T1/cmr/m/n/10.95 2012-ben az AlexNet nev¶ 
+konvolúciós hálózat amelyet Alex Krizhevsky,
  []
 
 
-Overfull \hbox (3.37964pt too wide) in paragraph at lines 302--303
+Overfull \hbox (3.37964pt too wide) in paragraph at lines 305--306
 \T1/cmr/m/n/10.95 Ilya Sutskever és Geoffrey Hinton alkottak fölényesen megnyer
 te a 2012-es ILSVRC versenyt.
  []
 
-[24 <./figures/deconvnet2.png> <./figures/leNet.png>]
-Underfull \hbox (badness 1205) in paragraph at lines 313--313
+[24 <./figures/deconvnet.png> <./figures/deconvnet2.png>]
+Underfull \hbox (badness 1205) in paragraph at lines 316--316
 []\T1/cmr/m/n/9 "néhány high end GPU-n
  []
 
 
-Overfull \hbox (19.85628pt too wide) in paragraph at lines 308--317
+Overfull \hbox (19.85628pt too wide) in paragraph at lines 311--320
  [][] 
  []
 
 
-Overfull \hbox (4.0603pt too wide) in paragraph at lines 319--320
+Overfull \hbox (4.0603pt too wide) in paragraph at lines 322--323
  []\T1/cmr/bx/n/10.95 Értékelés[] \T1/cmr/m/n/10.95 Látható hogy a legújabb kon
-voluciós architektúrák már az emberi pontossághoz
+volúciós architektúrák már az emberi pontossághoz
  []
 
 
-Overfull \hbox (10.46921pt too wide) in paragraph at lines 319--320
+Overfull \hbox (10.46921pt too wide) in paragraph at lines 322--323
 \T1/cmr/m/n/10.95 paraméter tér is drasztikus csökkenésnek indult. Manapság ha 
 valaki képosztályozási feladatot
  []
 
 
-Overfull \hbox (15.36157pt too wide) in paragraph at lines 319--320
+Overfull \hbox (15.36157pt too wide) in paragraph at lines 322--323
 \T1/cmr/m/n/10.95 hardware kapacitás is meredek emelkedésnek indult. Ha az embe
-r egy konvoluciós architektúrát
+r egy konvolúciós architektúrát
  []
 
 
-Overfull \hbox (8.95009pt too wide) in paragraph at lines 319--320
+Overfull \hbox (8.95009pt too wide) in paragraph at lines 322--323
 \T1/cmr/m/n/10.95 egy saját adathalmazra szeretne megtanítani akkor komoly infr
 astruktúrával kell rendelkeznie
  []
 
 
-Overfull \hbox (16.94414pt too wide) in paragraph at lines 323--324
+Overfull \hbox (16.94414pt too wide) in paragraph at lines 326--327
 \T1/cmr/m/n/10.95 fejezetben röviden fel szeretném villantani a neurális képfel
 dolgozás néhány újabb és érdekesebb
  []
 
-[25] <figures/FasterRCNN.png, id=667, 423.83344pt x 386.94562pt>
+[25 <./figures/leNet.png>]
+<figures/FasterRCNN.png, id=668, 423.83344pt x 386.94562pt>
 File: figures/FasterRCNN.png Graphic file (type png)
 
 <use figures/FasterRCNN.png>
-Package pdftex.def Info: figures/FasterRCNN.png used on input line 329.
+Package pdftex.def Info: figures/FasterRCNN.png used on input line 332.
 (pdftex.def)             Requested size: 199.16928pt x 181.83495pt.
 
-Overfull \hbox (0.43217pt too wide) in paragraph at lines 334--335
+Overfull \hbox (0.43217pt too wide) in paragraph at lines 337--338
 \T1/cmr/m/n/10.95 képeket tudjon generálni amivel átveri a másik modell-t, ezér
 t hívják adverziális hálozatnak.
  []
 
-<figures/adversarial.png, id=670, 499.8675pt x 167.62625pt>
+<figures/adversarial.png, id=671, 499.8675pt x 167.62625pt>
 File: figures/adversarial.png Graphic file (type png)
 
 <use figures/adversarial.png>
-Package pdftex.def Info: figures/adversarial.png used on input line 338.
+Package pdftex.def Info: figures/adversarial.png used on input line 341.
 (pdftex.def)             Requested size: 199.16928pt x 66.7884pt.
 
-Overfull \hbox (1.45738pt too wide) in paragraph at lines 343--344
+Overfull \hbox (1.45738pt too wide) in paragraph at lines 346--347
 \T1/cmr/m/n/10.95 nem is taglalnám, mert viszonylag sok el®ismeretet igényel a 
 téma, az érdekl®d®k a megfelel®
  []
 
 
-Overfull \hbox (30.39577pt too wide) in paragraph at lines 343--344
+Overfull \hbox (30.39577pt too wide) in paragraph at lines 346--347
 \T1/cmr/m/n/10.95 publikációt megtalálják a "Deep visual-semantic alignments fo
 r generating image descriptions"[[]]
  []
 
-<figures/caption.png, id=675, 514.17094pt x 423.83344pt>
+[26 <./figures/FasterRCNN.png> <./figures/adversarial.png>]
+<figures/caption.png, id=688, 514.17094pt x 423.83344pt>
 File: figures/caption.png Graphic file (type png)
 
 <use figures/caption.png>
-Package pdftex.def Info: figures/caption.png used on input line 347.
+Package pdftex.def Info: figures/caption.png used on input line 350.
 (pdftex.def)             Requested size: 199.16928pt x 164.17554pt.
- [26 <./figures/FasterRCNN.png> <./figures/adversarial.png>] <figures/stn.png, 
-id=690, 392.46625pt x 292.09125pt>
+ <figures/stn.png, id=691, 392.46625pt x 292.09125pt>
 File: figures/stn.png Graphic file (type png)
 
 <use figures/stn.png>
-Package pdftex.def Info: figures/stn.png used on input line 356.
+Package pdftex.def Info: figures/stn.png used on input line 359.
 (pdftex.def)             Requested size: 199.16928pt x 148.23361pt.
 )
-Overfull \hbox (1.36021pt too wide) in paragraph at lines 361--157
+Overfull \hbox (1.36021pt too wide) in paragraph at lines 364--157
  []\T1/cmr/bx/n/10.95 Irodalomkutatás összefoglalása[] \T1/cmr/m/n/10.95 Ezzel 
 az irodalom kutatásom végére értem. Úgy vélem
  []
 
-[27 <./figures/caption.png> <./figures/stn.png>]
+[27 <./figures/caption.png> <./figures/stn.png>] [28]
 \openout2 = `own_work.aux'.
 
  (./own_work.tex
@@ -1235,16 +1237,22 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 16.
 
 
-Overfull \hbox (22.49565pt too wide) in paragraph at lines 20--21
-\T1/cmr/m/n/10.95 osztályba foglalni, és a fejlesztéshez PyCharm IDE-t használn
-i mert lényegesen gyorsabban
+Overfull \hbox (26.36348pt too wide) in paragraph at lines 20--21
+\T1/cmr/m/n/10.95 osztályba foglalni. A fejlesztéshez PyCharm IDE-t használtam,
+ mert lényegesen gyorsabban
  []
 
-[28
+[29
 
 
 
 ]
+Overfull \hbox (0.6367pt too wide) in paragraph at lines 21--22
+\T1/cmr/m/n/10.95 val érkez® Tensorboard a legalkalmasabb, mint majd látni fogj
+a az olvasó a modelljeim
+ []
+
+
 Overfull \hbox (5.34084pt too wide) in paragraph at lines 23--24
 \T1/cmr/m/n/10.95 fogjuk. Ez az alacsony API hatalmas szabadságot ad a programo
 zónak, de iszonyatosan
@@ -1263,25 +1271,18 @@ leteztem, a klasszikus \T1/cmr/m/it/10.95 sztochasztikus
  []
 
 
-Overfull \hbox (17.35847pt too wide) in paragraph at lines 27--31
-\T1/cmr/m/n/10.95 hiperparamétere van, de ezeket nem feltétlen kell megadni, me
-rt a módszer szerz® mindkett®höz
+Overfull \hbox (1.64975pt too wide) in paragraph at lines 27--31
+\T1/cmr/m/n/10.95 kell számolni, de vagy konstans tanulási rátát használ, vagy 
+kívülr®l kell valamilyen leh¶léses
  []
 
 
-Overfull \hbox (14.87308pt too wide) in paragraph at lines 27--31
-\T1/cmr/m/n/10.95 megadtak általánosságban jól m¶köd® értékeket. A különöz® opt
-imizátorok összehasonlításáról
+Overfull \hbox (16.76329pt too wide) in paragraph at lines 27--31
+\T1/cmr/m/n/10.95 tudja lekezelni a hibafelület topológiájának a változását. Az
+ algoritmusnak két hiperparamétere
  []
 
-
-Overfull \hbox (18.07753pt too wide) in paragraph at lines 27--31
-\T1/cmr/m/n/10.95 az érdekl®d®k [][]$\T1/cmtt/m/n/10.95 http : / / sebastianrud
-er . com / optimizing-[]gradient-[]descent$[][] \T1/cmr/m/n/10.95 ezen a honlap
-on
- []
-
-[29]
+[30]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 53.
@@ -1296,7 +1297,7 @@ Overfull \hbox (6.6067pt too wide) in paragraph at lines 71--72
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[30]
+[31]
 Overfull \hbox (0.24496pt too wide) in paragraph at lines 107--111
 \T1/cmr/m/n/10.95 Mint mondtam a TF-Slim nagyon kényelmes volt addig amíg olyan
  struktúrákkal dolgoztam
@@ -1305,38 +1306,26 @@ Overfull \hbox (0.24496pt too wide) in paragraph at lines 107--111
 
 Overfull \hbox (15.05922pt too wide) in paragraph at lines 107--111
 \T1/cmr/m/n/10.95 amik könnyen definiálhatóak. Viszont csak többréteg¶ perceptr
-onok és konvoluciós hálózatokat
+onok és konvolúciós hálózatokat
  []
 
-[31]
-Overfull \hbox (3.79109pt too wide) in paragraph at lines 116--117
-\T1/cmr/m/n/10.95 optimalizátorokkal teszteltem, sztochasztikus gradiens ereszk
-edés (SGD) és adaptív gradiens
- []
-
-
-Overfull \hbox (1.0356pt too wide) in paragraph at lines 116--117
-\T1/cmr/m/n/10.95 (ADAM) optimizátorral. Másrészt közvetlen kiszámoltam a gibbs
- sampling utáni értékekb®l
- []
-
-<figures/rbmClosed.png, id=781, 1129.21875pt x 814.04124pt>
+[32] <figures/rbmClosed.png, id=791, 1129.21875pt x 814.04124pt>
 File: figures/rbmClosed.png Graphic file (type png)
 
 <use figures/rbmClosed.png>
 Package pdftex.def Info: figures/rbmClosed.png used on input line 120.
 (pdftex.def)             Requested size: 284.52756pt x 205.11215pt.
 
-<figures/rbmExpanded.png, id=782, 1349.04pt x 653.44125pt>
+<figures/rbmExpanded.png, id=792, 1349.04pt x 653.44125pt>
 File: figures/rbmExpanded.png Graphic file (type png)
 
 <use figures/rbmExpanded.png>
 Package pdftex.def Info: figures/rbmExpanded.png used on input line 127.
 (pdftex.def)             Requested size: 284.52756pt x 137.81497pt.
 
-Overfull \hbox (7.53851pt too wide) in paragraph at lines 133--134
-\T1/cmr/m/n/10.95 Miután az RBM struktrát megalkottam természetesen le szerette
-m volna tesztelni többréteg¶
+Overfull \hbox (13.5869pt too wide) in paragraph at lines 133--134
+\T1/cmr/m/n/10.95 Miután az RBM struktúrát megalkottam természetesen le szerett
+em volna tesztelni többréteg¶
  []
 
 
@@ -1345,36 +1334,41 @@ Overfull \hbox (12.27568pt too wide) in paragraph at lines 133--134
 lyenként meg kellett foltoznom.
  []
 
-
+[33 <./figures/rbmClosed.png> <./figures/rbmExpanded.png>]
 Overfull \hbox (10.76573pt too wide) in paragraph at lines 136--137
 \T1/cmr/m/n/10.95 megtanítani egy SVM-nek. Ezért letömörítettem az az 3072 dime
 nziós CIFAR-10 adathalmazt
  []
 
-[32 <./figures/rbmClosed.png>]
-<figures/svmRbm.png, id=793, 1223.57124pt x 947.54pt>
+<figures/svmRbm.png, id=802, 1223.57124pt x 947.54pt>
 File: figures/svmRbm.png Graphic file (type png)
  <use figures/svmRbm.png>
 Package pdftex.def Info: figures/svmRbm.png used on input line 140.
 (pdftex.def)             Requested size: 284.52756pt x 220.32968pt.
 
-[33 <./figures/rbmExpanded.png> <./figures/svmRbm.png>]
-<figures/convnet_1.png, id=800, 624.3325pt x 140.525pt>
+[34 <./figures/svmRbm.png>]
+<figures/convnet_1.png, id=809, 624.3325pt x 140.525pt>
 File: figures/convnet_1.png Graphic file (type png)
 
 <use figures/convnet_1.png>
 Package pdftex.def Info: figures/convnet_1.png used on input line 150.
 (pdftex.def)             Requested size: 341.43306pt x 76.85155pt.
 
-Overfull \hbox (21.83867pt too wide) in paragraph at lines 155--156
-[]\T1/cmr/m/n/10.95 Az egyes operációkat szeretném megymagyarázni röviden amike
-t a konvoluciós modelljeimben
+Overfull \hbox (16.09251pt too wide) in paragraph at lines 155--156
+[]\T1/cmr/m/n/10.95 Az egyes operációkat szeretném megmagyarázni röviden amiket
+ a konvolúciós modelljeimben
  []
 
 
 Overfull \hbox (11.90668pt too wide) in paragraph at lines 157--158
 []\T1/cmr/m/it/10.95 conv(magasság, szélesség, mélység): \T1/cmr/m/n/10.95 Kétd
-imenziós, diszkrét konvolució. Ahol a magasság
+imenziós, diszkrét konvolúció. Ahol a magasság
+ []
+
+
+Overfull \hbox (3.54742pt too wide) in paragraph at lines 157--158
+\T1/cmr/m/n/10.95 legyen az adott rétegben. A kétdimenziós konvolúció definíció
+ját a ([][]3.4[][])-képlet mutatja
  []
 
 
@@ -1395,55 +1389,61 @@ Overfull \hbox (1.25247pt too wide) in paragraph at lines 159--160
 égén lév® teljesen kapcsolt
  []
 
-[34 <./figures/convnet_1.png>]
-<figures/convnet_2.png, id=815, 1025.8325pt x 212.795pt>
+
+Overfull \hbox (23.6007pt too wide) in paragraph at lines 160--161
+\T1/cmr/m/n/10.95 osztályozó képességében, mert csökkenti a szaturációt a relu 
+rétegekben. Ezt a matematikai
+ []
+
+[35 <./figures/convnet_1.png>]
+<figures/convnet_2.png, id=824, 1025.8325pt x 212.795pt>
 File: figures/convnet_2.png Graphic file (type png)
 
 <use figures/convnet_2.png>
-Package pdftex.def Info: figures/convnet_2.png used on input line 181.
+Package pdftex.def Info: figures/convnet_2.png used on input line 179.
 (pdftex.def)             Requested size: 341.43306pt x 70.82649pt.
 
-Overfull \hbox (29.86276pt too wide) in paragraph at lines 187--189
+Overfull \hbox (29.86276pt too wide) in paragraph at lines 185--187
 \T1/cmr/m/n/10.95 csomópontokat ahogyan a [][]3.6[][]. ábra szemlélteti. Ez sok
  esetben teljesen megfelel az elvárásainknak,
  []
 
-<figures/device_distro.png, id=818, 678.535pt x 304.13625pt>
+<figures/device_distro.png, id=827, 678.535pt x 304.13625pt>
 File: figures/device_distro.png Graphic file (type png)
 
 <use figures/device_distro.png>
-Package pdftex.def Info: figures/device_distro.png used on input line 192.
+Package pdftex.def Info: figures/device_distro.png used on input line 190.
 (pdftex.def)             Requested size: 341.43306pt x 153.03766pt.
 
-<figures/tower_parallel.png, id=821, 946.53625pt x 781.92125pt>
+<figures/tower_parallel.png, id=830, 946.53625pt x 781.92125pt>
 File: figures/tower_parallel.png Graphic file (type png)
 
 <use figures/tower_parallel.png>
-Package pdftex.def Info: figures/tower_parallel.png used on input line 200.
+Package pdftex.def Info: figures/tower_parallel.png used on input line 198.
 (pdftex.def)             Requested size: 341.43306pt x 282.0522pt.
- [35 <./figures/convnet_2.png>] [36 <./figures/device_distro.png> <./figures/to
-wer_parallel.png>]
-Overfull \hbox (19.0647pt too wide) in paragraph at lines 212--214
+ [36 <./figures/convnet_2.png>]
+Overfull \hbox (19.0647pt too wide) in paragraph at lines 210--212
 \T1/cmr/m/n/10.95 fileokból olvassanak fel, illetve ha példányosítunk egy koord
 inátor objektumot és beregisztráljuk
  []
 
-<figures/tfPipeline.png, id=844, 1310.8975pt x 337.26pt>
+[37 <./figures/device_distro.png> <./figures/tower_parallel.png>]
+<figures/tfPipeline.png, id=853, 1310.8975pt x 337.26pt>
 File: figures/tfPipeline.png Graphic file (type png)
 
 <use figures/tfPipeline.png>
-Package pdftex.def Info: figures/tfPipeline.png used on input line 223.
+Package pdftex.def Info: figures/tfPipeline.png used on input line 221.
 (pdftex.def)             Requested size: 341.43306pt x 87.8399pt.
-) [37 <./figures/tfPipeline.png>]
+) [38 <./figures/tfPipeline.png>]
 \openout2 = `measurements.aux'.
 
 
 (./measurements.tex
 4. fejezet.
 
-Overfull \hbox (2.8379pt too wide) in paragraph at lines 10--11
-\T1/cmr/m/n/10.95 miatt. Illetve nem láttam volna hogy hozzáadtak volna jelent®
-s mértékben a szakdolgozatom
+Overfull \hbox (52.94205pt too wide) in paragraph at lines 10--11
+\T1/cmr/m/n/10.95 Fontosnak tartom megemlíteni a következ® problémákat amelyekr
+®l nem volt szó a szakdolgozatomban,
  []
 
 
@@ -1452,7 +1452,7 @@ Overfull \hbox (2.08829pt too wide) in paragraph at lines 13--14
 lidációval, és egy végleges
  []
 
-[38
+[39
 
 
 
@@ -1468,7 +1468,7 @@ Overfull \hbox (12.04448pt too wide) in paragraph at lines 25--27
 tetéséhez a [][]4.1[][]. ábra szemlélteti.
  []
 
-<figures/teslaTrumpsCPU.png, id=864, 557.08125pt x 225.84375pt>
+<figures/teslaTrumpsCPU.png, id=873, 557.08125pt x 225.84375pt>
 File: figures/teslaTrumpsCPU.png Graphic file (type png)
 
 <use figures/teslaTrumpsCPU.png>
@@ -1500,406 +1500,396 @@ s er®forrás karakterisztikáját.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 44.
 
-[39 <./figures/teslaTrumpsCPU.png>]
-<figures/sklearn_cpu_liblinear.png, id=875, 701.62125pt x 311.1625pt>
+
+Overfull \hbox (34.3002pt too wide) in paragraph at lines 46--47
+\T1/cmr/m/n/10.95 MNIST számításigénye túl kicsi lett volna ehhez a teszthez. A
+ két mérés er®forrás karakterisztikáját
+ []
+
+<figures/sklearn_cpu_liblinear.png, id=878, 701.62125pt x 311.1625pt>
 File: figures/sklearn_cpu_liblinear.png Graphic file (type png)
 
 <use figures/sklearn_cpu_liblinear.png>
-Package pdftex.def Info: figures/sklearn_cpu_liblinear.png used on input line 4
-9.
+Package pdftex.def Info: figures/sklearn_cpu_liblinear.png used on input line 5
+0.
 (pdftex.def)             Requested size: 284.52756pt x 126.1863pt.
 
-<figures/tf_cpu.png, id=876, 700.6175pt x 306.14375pt>
+<figures/tf_cpu.png, id=879, 700.6175pt x 306.14375pt>
 File: figures/tf_cpu.png Graphic file (type png)
 
 <use figures/tf_cpu.png>
-Package pdftex.def Info: figures/tf_cpu.png used on input line 56.
+Package pdftex.def Info: figures/tf_cpu.png used on input line 57.
 (pdftex.def)             Requested size: 284.52756pt x 124.32854pt.
 
-Overfull \hbox (16.3647pt too wide) in paragraph at lines 61--63
+Overfull \hbox (16.3647pt too wide) in paragraph at lines 62--64
 []\T1/cmr/m/n/10.95 Mint látható a scikit-learnben elindított futtatás a teszt 
 gép összes memóriáját felemésztette,
  []
 
 
-Overfull \hbox (42.8264pt too wide) in paragraph at lines 61--63
+Overfull \hbox (42.8264pt too wide) in paragraph at lines 62--64
 \T1/cmr/m/n/10.95 További kutatásaimból kiderült hogy ez a Scikit-learn alapért
 elmezett optimalizációs algoritmusának
  []
 
 
-Overfull \hbox (7.64978pt too wide) in paragraph at lines 61--63
+Overfull \hbox (7.64978pt too wide) in paragraph at lines 62--64
 \T1/cmr/m/n/10.95 2013-as publikáció mutat be "Minimizing Finite Sums with Stoc
 hastic Average Gradient"[[]].
  []
 
-
-Overfull \hbox (10.27615pt too wide) in paragraph at lines 64--65
+[40 <./figures/teslaTrumpsCPU.png>]
+Overfull \hbox (10.27615pt too wide) in paragraph at lines 65--66
 \T1/cmr/m/n/10.95 logisztikus regresszió vagy svm tanító algoritmusok mégsem le
 sznek használhatóak egyszer¶en
  []
 
 
-Overfull \hbox (5.7993pt too wide) in paragraph at lines 64--65
-\T1/cmr/m/n/10.95 numerikus optmalizáció terén a sztochatsztikus módszerekre ko
-ncentrál amik véletlenszer¶en
+Overfull \hbox (1.56429pt too wide) in paragraph at lines 65--66
+\T1/cmr/m/n/10.95 numerikus optmalizáció terén a sztochasztikus módszerekre kon
+centrál amik véletlenszer¶en
  []
 
-[40 <./figures/sklearn_cpu_liblinear.png> <./figures/tf_cpu.png>]
-Overfull \hbox (21.79968pt too wide) in paragraph at lines 70--71
+[41 <./figures/sklearn_cpu_liblinear.png> <./figures/tf_cpu.png>]
+Overfull \hbox (21.79968pt too wide) in paragraph at lines 74--75
 \T1/cmr/m/n/10.95 performance computing(HPC) gyorsító(accelerator), itt a GPU m
 ár csak az architektúrára
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
+Overfull \hbox (4.61905pt too wide) in paragraph at lines 76--77
+\T1/cmr/m/n/10.95 használtam azt mutatja hogy a CIFAR-10 adathalmazon hány képe
+t tudok másodpercenként
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 []\T1/cmr/m/n/9 Minimum képszám
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 []\T1/cmr/m/n/9 Átlagos képszám
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 []\T1/cmr/m/n/9 Maximum képszám
  []
 
-[41]
-Overfull \hbox (3.00732pt too wide) in paragraph at lines 94--95
-[]\T1/cmr/m/n/10.95 A mérésekb®l az sz¶rtem le, hogy minimum 1 GPU-t mindenképp
-en érdemes használni
- []
-
-
-Overfull \hbox (33.42531pt too wide) in paragraph at lines 94--95
-\T1/cmr/m/n/10.95 tanításra. Ha van lehet®ség egy nagyot vagy több kicsit haszn
-álni, akkor egy munkaállomásba
- []
-
-
-Overfull \hbox (2.34471pt too wide) in paragraph at lines 98--99
+[42]
+Overfull \hbox (5.3708pt too wide) in paragraph at lines 101--102
 \T1/cmr/m/n/10.95 Mint már említettem, a két alap metódus amihez a saját eredmé
-nyeimet mértem a logsztikus
+nyeimet mértem a logisztikus
  []
 
 
-Overfull \hbox (12.26994pt too wide) in paragraph at lines 98--99
-\T1/cmr/m/n/10.95 regresszió, és egy egyszer¶ SVM volt, amihez polynomiális ker
-nelt használtam 3 as fokszámmal
- []
-
-
-Overfull \hbox (8.61302pt too wide) in paragraph at lines 113--114
+Overfull \hbox (8.61302pt too wide) in paragraph at lines 116--117
 \T1/cmr/m/n/10.95 adahalmazon annak a felépítése a következ® volt: \T1/cmr/m/it
 /10.95 Virtual SVM, deg-9 poly, 2-pixel jittered\T1/cmr/m/n/10.95 [[]],
  []
 
 
-Overfull \hbox (3.28079pt too wide) in paragraph at lines 113--114
+Overfull \hbox (3.28079pt too wide) in paragraph at lines 116--117
 \T1/cmr/m/n/10.95 el®feldolgozási lépésként csak kiegyenesítést használt (deske
 wing), az elért teszt hibaszázalék
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 118--118
+Underfull \hbox (badness 1337) in paragraph at lines 121--121
 [][]|\T1/cmr/m/it/9 A baseline mérések eremdénye az CIFAR-10 adathalmaz nyers p
 ixeljein, használt
  []
 
 
-Overfull \hbox (1.13576pt too wide) in paragraph at lines 131--132
+Overfull \hbox (5.98743pt too wide) in paragraph at lines 134--135
+\T1/cmr/m/n/10.95 egyszer¶en hozzá adtam az általam lederivált gradienseket. A 
+rekonstrukciós hiba függvények
+ []
+
+
+Overfull \hbox (1.13576pt too wide) in paragraph at lines 134--135
 \T1/cmr/m/n/10.95 lefutását a [][]4.4[][].-ábra szemlélteti. Látható hogy a 3 m
 egközelítésnek a lefutásában és er®forrás
  []
 
 
-Overfull \hbox (5.69379pt too wide) in paragraph at lines 131--132
+Overfull \hbox (5.69379pt too wide) in paragraph at lines 134--135
 \T1/cmr/m/n/10.95 minden tekintetben. Éppen ezért a kézzel kiegészített megoldá
 st választottam. Ez a megoldás
  []
 
-[42]
-<figures/rbmReconstructionAdamSgdManual.jpg, id=912, 948.54375pt x 243.91125pt>
+[43]
+<figures/rbmReconstructionAdamSgdManual.jpg, id=926, 948.54375pt x 243.91125pt>
 File: figures/rbmReconstructionAdamSgdManual.jpg Graphic file (type jpg)
 <use figures/rbmReconstructionAdamSgdManual.jpg>
 Package pdftex.def Info: figures/rbmReconstructionAdamSgdManual.jpg used on inp
-ut line 135.
+ut line 138.
 (pdftex.def)             Requested size: 426.79134pt x 109.74416pt.
 
-Underfull \hbox (badness 1048) in paragraph at lines 136--136
+Underfull \hbox (badness 1048) in paragraph at lines 139--139
 \T1/cmr/m/it/9 Az (a) ADAM optimizátorral, (b) SGD optimizátorral, (c) a
  []
 
 
-Overfull \hbox (1.5015pt too wide) in paragraph at lines 158--159
-\T1/cmr/m/n/10.95 nem egy három dimenziós bemenetre (magasság, szélesség, mélys
-ég(RGB)) támaszaszkodik,
- []
-
-
-Overfull \hbox (2.3294pt too wide) in paragraph at lines 177--178
+Overfull \hbox (2.3294pt too wide) in paragraph at lines 180--181
 \T1/cmr/m/n/10.95 multinomiális logisztikus regresszor. Ezen az eredményen lény
 egesen tudtam javítani miután
  []
 
 
-Overfull \hbox (9.74358pt too wide) in paragraph at lines 177--178
+Overfull \hbox (9.74358pt too wide) in paragraph at lines 180--181
 \T1/cmr/m/n/10.95 csökkentettem a hálózat méretét az csökkentette a túltanulás 
 mértékét és jelent®s teljesítmény
  []
 
-[43 <./figures/rbmReconstructionAdamSgdManual.jpg>]
-Overfull \hbox (6.34142pt too wide) in paragraph at lines 179--180
-\T1/cmr/m/n/10.95 annyira a súlyok értéke mint az SGD-nél. Viszont mind a kett®
- a veszteségfüggvény stabilítási
- []
-
-<figures/adamSum.jpg, id=924, 976.64874pt x 222.8325pt>
+[44 <./figures/rbmReconstructionAdamSgdManual.jpg>]
+<figures/adamSum.jpg, id=936, 976.64874pt x 222.8325pt>
 File: figures/adamSum.jpg Graphic file (type jpg)
 
 <use figures/adamSum.jpg>
-Package pdftex.def Info: figures/adamSum.jpg used on input line 183.
+Package pdftex.def Info: figures/adamSum.jpg used on input line 186.
 (pdftex.def)             Requested size: 426.79134pt x 97.37677pt.
- <figures/sgdSum.jpg, id=925, 967.615pt x 216.81pt>
+ <figures/sgdSum.jpg, id=937, 967.615pt x 216.81pt>
 File: figures/sgdSum.jpg Graphic file (type jpg)
 
 <use figures/sgdSum.jpg>
-Package pdftex.def Info: figures/sgdSum.jpg used on input line 190.
+Package pdftex.def Info: figures/sgdSum.jpg used on input line 193.
 (pdftex.def)             Requested size: 426.79134pt x 95.62827pt.
 
-Overfull \hbox (10.88892pt too wide) in paragraph at lines 197--198
+Overfull \hbox (10.88892pt too wide) in paragraph at lines 200--201
  []\T1/cmr/bx/n/10.95 Az MNIST és a CIFAR különbségei[] \T1/cmr/m/n/10.95 Miutá
 n az MNIST adathalmazon sikeres méréseket
  []
 
 
-Overfull \hbox (7.7227pt too wide) in paragraph at lines 197--198
-\T1/cmr/m/n/10.95 végeztem egészen egyszer¶ MLP hálózatokkal kiváncsi lettem ho
+Overfull \hbox (7.7227pt too wide) in paragraph at lines 200--201
+\T1/cmr/m/n/10.95 végeztem egészen egyszer¶ MLP hálózatokkal kíváncsi lettem ho
 gy ezek a hálózatok mennyire
  []
 
-[44 <./figures/adamSum.jpg>]
-Overfull \hbox (8.17552pt too wide) in paragraph at lines 202--203
+[45 <./figures/adamSum.jpg>]
+Overfull \hbox (8.17552pt too wide) in paragraph at lines 205--206
 []\T1/cmr/m/n/10.95 A CIFAR-10es adathalmaz 10'000-rel kevesebb tanító képet ta
 rtalmaz, ez osztályonként
  []
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 223.
+(hyperref)                removing `\H' on input line 226.
 
 
-Overfull \hbox (2.01137pt too wide) in paragraph at lines 224--225
+Overfull \hbox (2.01137pt too wide) in paragraph at lines 227--228
 \T1/cmr/m/n/10.95 várt eredmény az lett volna, hogy az el®tanítás jelent®sen ja
 vítani fog a hálók teljesítményén,
  []
 
 
-Overfull \hbox (18.21631pt too wide) in paragraph at lines 230--237
+Overfull \hbox (18.21631pt too wide) in paragraph at lines 233--240
  [][] 
  []
 
 
-Overfull \hbox (18.21631pt too wide) in paragraph at lines 243--250
+Overfull \hbox (18.21631pt too wide) in paragraph at lines 246--253
  [][] 
  []
 
-[45 <./figures/sgdSum.jpg>]
-<figures/bigDbnPretrained.jpg, id=943, 640.3925pt x 218.8175pt>
+[46 <./figures/sgdSum.jpg>]
+<figures/bigDbnPretrained.jpg, id=956, 640.3925pt x 218.8175pt>
 File: figures/bigDbnPretrained.jpg Graphic file (type jpg)
 
 <use figures/bigDbnPretrained.jpg>
-Package pdftex.def Info: figures/bigDbnPretrained.jpg used on input line 257.
+Package pdftex.def Info: figures/bigDbnPretrained.jpg used on input line 260.
 (pdftex.def)             Requested size: 284.52756pt x 97.22156pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--258
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 [][]|\T1/cmr/m/it/9 A 500-500-2000-30 neuronú el®tanított MLP
  []
 
-<figures/bigDbnNotPretrained.jpg, id=944, 643.40375pt x 219.82124pt>
+<figures/bigDbnNotPretrained.jpg, id=957, 643.40375pt x 219.82124pt>
 File: figures/bigDbnNotPretrained.jpg Graphic file (type jpg)
 
 <use figures/bigDbnNotPretrained.jpg>
-Package pdftex.def Info: figures/bigDbnNotPretrained.jpg used on input line 264
+Package pdftex.def Info: figures/bigDbnNotPretrained.jpg used on input line 267
 .
 (pdftex.def)             Requested size: 284.52756pt x 97.21135pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--265
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 [][]|\T1/cmr/m/it/9 A 500-500-2000-30 neuronú \T1/cmr/m/n/9 nem \T1/cmr/m/it/9 
 el®tanított MLP
  []
 
 
-Overfull \hbox (17.12927pt too wide) in paragraph at lines 272--274
+Overfull \hbox (17.12927pt too wide) in paragraph at lines 275--277
 \T1/cmr/m/n/10.95 feladatokkal a figyelmemet az elméleti részben oly sok helyet
- elfoglaló konvoluciós architektúrák
+ elfoglaló konvolúciós architektúrák
  []
 
 
-Overfull \hbox (50.81789pt too wide) in paragraph at lines 272--274
+Overfull \hbox (50.81789pt too wide) in paragraph at lines 275--277
 \T1/cmr/m/n/10.95 neurális jelfeldolgozás széles területén, nem csak képosztály
 ozásban hanem akár beszédszintetizálásban
  []
 
 
-Overfull \hbox (19.48076pt too wide) in paragraph at lines 272--274
+Overfull \hbox (19.48076pt too wide) in paragraph at lines 275--277
 \T1/cmr/m/n/10.95 is, ezért nagy reményekkel fordultam ezekhez a struktúrákhoz.
  Az eredményeimet a [][]4.9[][]. táblázat
  []
 
-[46 <./figures/bigDbnPretrained.jpg> <./figures/bigDbnNotPretrained.jpg>]
-Overfull \hbox (16.73814pt too wide) in paragraph at lines 308--309
+[47 <./figures/bigDbnPretrained.jpg> <./figures/bigDbnNotPretrained.jpg>]
+Overfull \hbox (16.73814pt too wide) in paragraph at lines 311--312
 \T1/cmr/m/n/10.95 produkálni. Ennek a magyarázata a transzlációs invariancia ál
 tal a súlyokra vetített kényszerek,
  []
 
-[47]
-Overfull \hbox (32.3267pt too wide) in paragraph at lines 312--312
-[]\T1/cmr/bx/n/12 A konvoluciós és az MLP hálózatok er®forrás igényének az össz
+
+Overfull \hbox (8.1698pt too wide) in paragraph at lines 311--312
+\T1/cmr/m/n/10.95 "ImageNet Classification with Deep Convolutional Neural Netwo
+rks"[[]] nev¶ publikációban.
+ []
+
+
+Overfull \hbox (32.3267pt too wide) in paragraph at lines 315--315
+[]\T1/cmr/bx/n/12 A konvolúciós és az MLP hálózatok er®forrás igényének az össz
 ehasonlítása 
  []
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 312.
+(hyperref)                removing `\H' on input line 315.
 
-
-Overfull \hbox (5.87149pt too wide) in paragraph at lines 320--321
-\T1/cmr/m/n/10.95 konvoluciós hálózat kb 2,7 millió paraméterb®l. Habár eleinte
- úgy éreztem hogy a konvoluciós
+[48]
+Overfull \hbox (5.87149pt too wide) in paragraph at lines 323--324
+\T1/cmr/m/n/10.95 konvolúciós hálózat kb 2,7 millió paraméterb®l. Habár eleinte
+ úgy éreztem hogy a konvolúciós
  []
 
 
-Overfull \hbox (7.26295pt too wide) in paragraph at lines 322--323
+Overfull \hbox (7.26295pt too wide) in paragraph at lines 325--326
 \T1/cmr/m/n/10.95 számításnak a részleteit a [][]4.11[][]. tábla mutatja az MLP
- hálózatra, és a [][]4.12[][]. tábla a konvoluciós
+ hálózatra, és a [][]4.12[][]. tábla a konvolúciós
  []
 
 
-Overfull \hbox (27.05048pt too wide) in paragraph at lines 322--323
+Overfull \hbox (27.05048pt too wide) in paragraph at lines 325--326
 \T1/cmr/m/n/10.95 fogyasztott. Ha az er®források növekedése lineárisan skálázód
 na a paraméter tér beli növekedéssel,
  []
 
 
-Overfull \hbox (17.75479pt too wide) in paragraph at lines 358--359
+Overfull \hbox (17.75479pt too wide) in paragraph at lines 361--362
 []\T1/cmr/m/n/10.95 A fenti két táblázatból több érdekes következtetést is levo
 ntam, ezeket az alábbi felsorolásban
  []
 
 
-Overfull \hbox (18.23738pt too wide) in paragraph at lines 360--361
-[]\T1/cmr/m/n/10.95 A konvoluciós háló paraméter tere lényegesen nagyobb lett, 
+Overfull \hbox (18.23738pt too wide) in paragraph at lines 363--364
+[]\T1/cmr/m/n/10.95 A konvolúciós háló paraméter tere lényegesen nagyobb lett, 
 pedig én intuitívan kissebbnek
  []
 
-[48]
-Overfull \hbox (9.74898pt too wide) in paragraph at lines 362--363
+[49]
+Overfull \hbox (9.74898pt too wide) in paragraph at lines 365--366
 []\T1/cmr/m/n/10.95 A CNN-ben a paraméter tér robbanásáért felel®s egy batch sz
 ámításánál elhanyagolható
  []
 
-<figures/mlpCnnMnist.jpg, id=975, 649.42625pt x 215.80624pt>
+<figures/mlpCnnMnist.jpg, id=987, 649.42625pt x 215.80624pt>
 File: figures/mlpCnnMnist.jpg Graphic file (type jpg)
 
 <use figures/mlpCnnMnist.jpg>
-Package pdftex.def Info: figures/mlpCnnMnist.jpg used on input line 369.
+Package pdftex.def Info: figures/mlpCnnMnist.jpg used on input line 372.
 (pdftex.def)             Requested size: 284.52756pt x 94.55pt.
 
-Overfull \hbox (4.04924pt too wide) in paragraph at lines 374--375
-\T1/cmr/m/n/10.95 volt onnan tovább haladni. A (b) ábra a konvoluciós háló ered
+Overfull \hbox (4.04924pt too wide) in paragraph at lines 377--378
+\T1/cmr/m/n/10.95 volt onnan tovább haladni. A (b) ábra a konvolúciós háló ered
 ményét mutatja ami lényegesen
  []
 
-<figures/mlpCnnCifar.jpg, id=978, 676.5275pt x 772.8875pt>
+<figures/mlpCnnCifar.jpg, id=990, 676.5275pt x 772.8875pt>
 File: figures/mlpCnnCifar.jpg Graphic file (type jpg)
 
 <use figures/mlpCnnCifar.jpg>
-Package pdftex.def Info: figures/mlpCnnCifar.jpg used on input line 378.
+Package pdftex.def Info: figures/mlpCnnCifar.jpg used on input line 381.
 (pdftex.def)             Requested size: 284.52756pt x 325.05867pt.
 
-Overfull \hbox (1.3363pt too wide) in paragraph at lines 385--386
+Overfull \hbox (1.3363pt too wide) in paragraph at lines 388--389
 \T1/cmr/m/n/10.95 a legtöbb kernel nagyjából ugyanúgy teljesít, kivéve a szigmo
 id kernel, mert az kiemelked®en
  []
 
 
-Overfull \hbox (3.85678pt too wide) in paragraph at lines 385--386
+Overfull \hbox (3.85678pt too wide) in paragraph at lines 388--389
 \T1/cmr/m/n/10.95 rosszul teljesít a többihez képest. Ennek az oka az, hogy a s
 zigmoid kernel sokkal érzényekebb
  []
 
-[49 <./figures/mlpCnnMnist.jpg>]
-Overfull \hbox (3.33739pt too wide) in paragraph at lines 406--407
+
+Overfull \hbox (3.33739pt too wide) in paragraph at lines 409--410
 \T1/cmr/m/n/10.95 aktivációs valószín¶ségei szerint van rendezve, hogy lássam e
 setleg szabad szemmel a triviális
  []
 
-[50 <./figures/mlpCnnCifar.jpg>]
-<figures/rbmActivationProbabilitiesNoFineTuning.jpg, id=995, 1976.38374pt x 381
-.425pt>
+[50 <./figures/mlpCnnMnist.jpg>]
+<figures/rbmActivationProbabilitiesNoFineTuning.jpg, id=1002, 1976.38374pt x 38
+1.425pt>
 File: figures/rbmActivationProbabilitiesNoFineTuning.jpg Graphic file (type jpg
 )
  <use figures/rbmActivationProbabilitiesNoFineTuning.jpg>
 Package pdftex.def Info: figures/rbmActivationProbabilitiesNoFineTuning.jpg use
-d on input line 410.
+d on input line 413.
 (pdftex.def)             Requested size: 426.79134pt x 82.36562pt.
 
-Overfull \hbox (4.79567pt too wide) in paragraph at lines 415--416
-\T1/cmr/m/n/10.95 teljesen véletlenszer¶ az egész tartományban elter¶l, de van 
+Overfull \hbox (4.79567pt too wide) in paragraph at lines 418--419
+\T1/cmr/m/n/10.95 teljesen véletlenszer¶ az egész tartományban elterül, de van 
 olyan is ami nagyon jól lokalizált.
  []
 
-<figures/rbmProbZeroViolin.jpg, id=997, 527.9725pt x 361.35pt>
+[51 <./figures/mlpCnnCifar.jpg>]
+<figures/rbmProbZeroViolin.jpg, id=1010, 527.9725pt x 361.35pt>
 File: figures/rbmProbZeroViolin.jpg Graphic file (type jpg)
 
 <use figures/rbmProbZeroViolin.jpg>
-Package pdftex.def Info: figures/rbmProbZeroViolin.jpg used on input line 419.
+Package pdftex.def Info: figures/rbmProbZeroViolin.jpg used on input line 422.
 (pdftex.def)             Requested size: 284.52756pt x 194.7291pt.
 
-Overfull \hbox (15.33223pt too wide) in paragraph at lines 424--425
+Overfull \hbox (15.33223pt too wide) in paragraph at lines 427--428
 \T1/cmr/m/n/10.95 kaptam, az alábbi táblázat közli ®ket. [][]4.14[][].. Mint lá
 tszik ez a 90%-os teszt hiba elfogadhatatlan.
  []
 
 
-Overfull \hbox (0.42009pt too wide) in paragraph at lines 424--425
-\T1/cmr/m/n/10.95 mnisten tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás u
-tán rájöttem hogy a probléma
+Overfull \hbox (13.3504pt too wide) in paragraph at lines 427--428
+\T1/cmr/m/n/10.95 MNIST-en tapasztalt 0.17-0.12-höz képest. Hosszas lamentálás 
+után rájöttem hogy a probléma
  []
 
-[51 <./figures/rbmActivationProbabilitiesNoFineTuning.jpg>]
-Overfull \hbox (3.07498pt too wide) in paragraph at lines 457--458
+[52 <./figures/rbmActivationProbabilitiesNoFineTuning.jpg> <./figures/rbmProbZe
+roViolin.jpg>]
+Overfull \hbox (3.07498pt too wide) in paragraph at lines 460--461
 \T1/cmr/m/n/10.95 A neurális hálózatok és a kernel metódusok között van egy cik
 lusosság hogy éppen melyiknek
  []
 
 
-Overfull \hbox (9.22392pt too wide) in paragraph at lines 457--458
-\T1/cmr/m/n/10.95 be a dolgozatomba az RBM + SVM kombinációját, ami sokáig egy 
-nagyon jó klasszifikátornak
+Overfull \hbox (37.6224pt too wide) in paragraph at lines 460--461
+\T1/cmtt/m/n/10.95 there _ yet / build / classification _ datasets _ results . 
+html # 43494641522d3130$[][]\T1/cmr/m/n/10.95 -en összeszedett
  []
 
 
-Overfull \hbox (9.81828pt too wide) in paragraph at lines 457--458
-\T1/cmr/m/n/10.95 képes hozni. Az [][]$\T1/cmtt/m/n/10.95 http : / / rodrigob .
- github . io / are _ we _ there _ yet / build / classification _
+Overfull \hbox (1.42598pt too wide) in paragraph at lines 460--461
+\T1/cmr/m/n/10.95 világnézettel vannak olyan adatstruktúrák ahol manapság is az
+ SVM-ek hoznak dominánsan
  []
 
-
-Overfull \hbox (4.47935pt too wide) in paragraph at lines 457--458
-\T1/cmr/m/n/10.95 feladatnál, ahol spaciális kényszerek vannak jelen az adathal
-mazban, a konvoluciós hálózatok
- []
-
-[52 <./figures/rbmProbZeroViolin.jpg>]
+[53]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 459.
+(hyperref)                removing `\H' on input line 462.
 
-) [53]
+) [54]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
@@ -1916,7 +1906,7 @@ Overfull \hbox (6.16196pt too wide) in paragraph at lines 11--12
 nvoluciós hálózatok lennének,
  []
 
-[54
+[55
 
 
 
@@ -1928,7 +1918,7 @@ Overfull \hbox (3.2313pt too wide) in paragraph at lines 13--160
 
 
 Overfull \hbox (21.8008pt too wide) in paragraph at lines 13--160
-\T1/cmr/m/n/10.95 Ehhez hozzá tartozik majd további irodalomkutatás a konvoluci
+\T1/cmr/m/n/10.95 Ehhez hozzá tartozik majd további irodalomkutatás a konvolúci
 ós hálókkal való videofeldolgozás
  []
 
@@ -1939,12 +1929,12 @@ láthattuk a modern hálózatoknak
  []
 
 
-Overfull \hbox (42.23067pt too wide) in paragraph at lines 13--160
+Overfull \hbox (37.93521pt too wide) in paragraph at lines 13--160
 \T1/cmr/m/n/10.95 hibafüggvénnyel viszont esetlegesen el lehetne érni hogy csak
- egy kissebb, de azonos tulajdonságokkal
+ egy kisebb, de azonos tulajdonságokkal
  []
 
-[55]
+[56]
 \openout2 = `acknowledgement.aux'.
 
  (./acknowledgement.tex)
@@ -1959,32 +1949,32 @@ Overfull \hbox (21.17076pt too wide) in paragraph at lines 5--162
 ulensnek való köszönetnyilvánítás
  []
 
-[56
+[57
 
 
 
-] (./diploma.bbl [57
+] (./diploma.bbl [58
 
 
-] [58]
-Underfull \hbox (badness 1742) in paragraph at lines 157--161
+] [59]
+Underfull \hbox (badness 1742) in paragraph at lines 167--171
 []\T1/cmr/m/n/10.95 Tomas Mikolov, Martin Karafiát, Lukas Burget, Jan Cernock^^
 @y, and Sanjeev
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 200--203
+Underfull \hbox (badness 1210) in paragraph at lines 210--213
 []\T1/cmr/m/n/10.95 David E Rumelhart, Geoffrey E Hinton, and Ronald J Williams
 .  Learning
  []
 
-[59])
+[60])
 \tf@thm=\write5
 \openout5 = `diploma.thm'.
 
  
 AED: lastpage setting LastPage
-[60]
+[61]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./diploma.aux (./titlepage.aux) (./declaration.aux) (./abstract.aux)
@@ -1994,7 +1984,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: D3199A27A6CEA9F99E59DA497F8BE3A8;4429.
+(rerunfilecheck)             Checksum: F6B754714EE0A0EC0A59FB8A922A7244;4444.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2002,13 +1992,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 174.
  ) 
 Here is how much of TeX's memory you used:
- 11335 strings out of 494910
- 170837 string characters out of 6179836
- 298239 words of memory out of 5000000
- 13973 multiletter control sequences out of 15000+600000
+ 11341 strings out of 494910
+ 170942 string characters out of 6179836
+ 298388 words of memory out of 5000000
+ 13975 multiletter control sequences out of 15000+600000
  26398 words of font info for 64 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 39i,12n,44p,1713b,1168s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,12n,44p,1716b,1168s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/kkari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/k
 kari/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/kkari/.texmf
 -var/fonts/pk/ljfour/jknappen/ec/ectt0800.600pk> </home/kkari/.texmf-var/fonts/
@@ -2031,10 +2021,10 @@ t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb>
-Output written on diploma.pdf (61 pages, 4866918 bytes).
+Output written on diploma.pdf (62 pages, 4869628 bytes).
 PDF statistics:
- 1959 PDF objects out of 2073 (max. 8388607)
- 1084 compressed objects within 11 object streams
- 386 named destinations out of 1000 (max. 500000)
+ 1972 PDF objects out of 2073 (max. 8388607)
+ 1095 compressed objects within 11 object streams
+ 390 named destinations out of 1000 (max. 500000)
  596 words of extra memory for PDF output out of 10000 (max. 10000000)
 
