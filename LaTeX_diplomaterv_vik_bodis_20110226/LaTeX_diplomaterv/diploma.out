@@ -32,19 +32,19 @@
 \BOOKMARK [2][-]{subsection.3.4.8}{A konvol\372ci\363s modell sk\341l\341z\341sa}{section.3.4}% 32
 \BOOKMARK [0][-]{chapter.4}{A m\351r\351si eredm\351nyeim \366sszegz\351se}{}% 33
 \BOOKMARK [1][-]{section.4.1}{A keretrendszer \341ltal\341nos teljes\355tm\351nye}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.2}{Rendszer szintu m\351r\351sek.}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.2.1}{A GPU gyors\355t\341s m\351r\351se}{section.4.2}% 36
-\BOOKMARK [1][-]{section.4.3}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.4}{Az RBM strukt\372ra optimaliz\341l\341sa}{chapter.4}% 38
-\BOOKMARK [1][-]{section.4.5}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 39
-\BOOKMARK [2][-]{subsection.4.5.1}{Az MNIST m\351r\351sek}{section.4.5}% 40
-\BOOKMARK [2][-]{subsection.4.5.2}{A CIFAR-10 m\351r\351sek}{section.4.5}% 41
-\BOOKMARK [2][-]{subsection.4.5.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.5}% 42
-\BOOKMARK [1][-]{section.4.6}{A konvol\372ci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 43
-\BOOKMARK [1][-]{section.4.7}{A konvol\372ci\363s \351s az MLP h\341l\363zatok eroforr\341s ig\351ny\351nek az \366sszehasonl\355t\341sa}{chapter.4}% 44
-\BOOKMARK [1][-]{section.4.8}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.9}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.10}{A h\341rom megk\366zel\355t\351s v\351gso \366sszehasonl\355t\341sa}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.1.1}{Rendszer szintu m\351r\351sek.}{section.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.1.2}{A GPU gyors\355t\341s m\351r\351se}{section.4.1}% 36
+\BOOKMARK [1][-]{section.4.2}{A baseline eredm\351nyek ismertet\351se}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.3}{Az RBM strukt\372ra optimaliz\341l\341sa}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.4}{Az MLP-vel elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.1}{Az MNIST m\351r\351sek}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.2}{A CIFAR-10 m\351r\351sek}{section.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.4.3}{Az elotan\355t\341s eredm\351nyeinek \366sszefoglal\341sa}{section.4.4}% 42
+\BOOKMARK [1][-]{section.4.5}{A konvol\372ci\363s h\341l\363zatokkal elv\351gzett m\351r\351seim eredm\351nyei}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.6}{A konvol\372ci\363s \351s az MLP h\341l\363zatok eroforr\341s ig\351ny\351nek az \366sszehasonl\355t\341sa}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.7}{A hibrid architekt\372r\341k eredm\351nyei}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.8}{A CNN \351s az SVM+RBM \366sszehasonl\355t\341sa}{chapter.4}% 46
+\BOOKMARK [1][-]{section.4.9}{A h\341rom megk\366zel\355t\351s v\351gso \366sszehasonl\355t\341sa}{chapter.4}% 47
 \BOOKMARK [0][-]{chapter.5}{Az eredm\351nyek \366sszefoglal\363 \351rt\351kel\351se}{}% 48
 \BOOKMARK [0][-]{chapter*.130}{K\366sz\366netnyilv\341n\355t\341s}{}% 49
 \BOOKMARK [0][-]{chapter*.131}{Irodalomjegyz\351k}{}% 50

@@ -37,7 +37,7 @@ A kutatómunka jelentõs részét tette ki a dolgozatomnak, mivel az évek folyamán n
 \item 1'000 szinoníma halmazhoz tartozik SIFT jellemzõkkel ellátott kép
 \item 1'200'000 kép van SIFT jellemzõkkel ellátva.
 \end{itemize}
-Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, például út, ég, ember vagy ágy. A \figref{imagenetSample}~ábra ebbõl az adathalmazból mutat pár példát.
+Látható hogy az elõzõ három adathalmazt az IMAGENET már csak puszta méreteivel is messze túlszárnyalja. Ezt mondhatjuk az etalon benchmarknak. Az évente megrendezett, a gépi látás "olimpiájának" számító ILSVRC(ImageNet Large Scale Visual Recognition Challenge) is ezen az adatsokaságon szokott megrendezésre kerülni, jellemzõen 4 kategóriában: objektum lokalizáció, objektum detekció, helyszín felismerés (pl tengerpart, hegyek), helyszín megértés. A legutóbbi nem takar kevesebbet mint egy kép szemantikus részekre való felosztása, például út, ég, ember vagy ágy. A \figref{imagenetSample}~ábra ebbõl az adathalmazból mutat pár példát.
 
 \begin{figure}[!ht]
 \centering
@@ -113,10 +113,11 @@ L = - \sum_{i=1}^{n}y_{i}log(\widehat{y}_{i})
 MSE = \frac{1}{n} \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})^2
 \end{align}
 
+Ahol $y_{i}$ az eredeti címke és $\widehat{y_{i}}$ a jósolt címke.
 
 \subsubsection{MLP hiányosságai} 
 
-\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagramja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de azt a tulajdonságot jól szemlélteti, hogy több fennsík alakúl ki, ahol a derivált 0 lesz. 
+\paragraph{A tanulás jellege} A felügyelt tanulás kapzsi módon a hibafüggvényt a súlyok gradiensének irányába optimalizálja, ezzel az a probléma hogy a hibafelület egy MLP esetében többé nem konvex mint egy egyszerû neuron esetében. A bonyolult hibafûggvény következtében lokális minimumok alakulnak ki. Sok esetben egy jó lokális minimumot sem érünk el naiv tanítással, a globális minimum elérésének az esélye pedig statisztikailag nulla. Ezt a jelenséget hivatott szemléltetni az alább egyszerû függvény $\sigma^2(\sigma(x) + \sigma(y))$ kontúr diagramja (\figref{sigmaContour}~ábra). Ez habár nem közvetlenül egy hibafüggvény, de azt a tulajdonságot jól szemlélteti, hogy több fennsík alakúl ki, ahol a derivált 0 lesz. 
 
 \paragraph{A struktúra kialakítása} Az MLP annyira általános struktúrát használ, hogy lényegében semmilyen a priori tudást nem használunk fel a hálózat tanításakor. Ez azt eredményezi hogy hatalmas kapacítás kell a képekben megjelenõ bonyolult struktúrák megtanulásához, és a hálózat különbözõ részei kénytelenek rendre ugyanazt megtanulni. Sajnos az elõbbi cél csak a hálózat növelésével érhetõ el, az MLP paraméter tere viszont nagyon rosszul skálázódik. Ha veszünk egy 6 rétegû hálózatot aminek a rétegei rendre 2500-2000-1500-1000-500-10 neuronból állnak, és az MNIST esetén 784 elemû bemeneti vektorral rendelkezik, akkor optimalizálandó paraméter tér mérete annak folytán hogy minden réteg teljesen össze van kapcsolva már:
 $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 11 965 000$, ami már nyilvánvalóan hatalmas. Ez is tanítható sikeresen, de ahhoz már a továbbiakban bemutott kisegítõ neurális struktúrák szükségesek.
@@ -132,7 +133,7 @@ $784 * 2500 + 2500 * 2000 + 2000 * 1500 + 1500 * 1000 + 1000 * 500 + 500 * 10 = 
 Jól látszik hogy az MLP hálózatok ilyen naív formájukban nem igazán felelnek meg az elvárásainknak, ezt a késõbbiekben bemutatott mérési eredményeim meg is erõsítik. A továbbiakban bemutatok egy kisegítõ neurális struktúrát, amivel sikeresen inicializálták az MLP súlyait hogy jobb eredményeket érjenek el.
 
 \subsection{A Korlátozott Boltzmann Gép\cite{rbmGuide}}
-\paragraph{Bevezetés} A korlátozott boltzmann gép (továbbiakban RBM - Restricted Boltzmann Machine, \figref{rbm}~ábra) egy sztochasztikus generatív neurális számítási modell. Mûködése az eddig tárgyalt MLP-tõl györekesen eltér, funkciója a bemenet jellemzõinek (featureinek) a megtanulása, és nem az egyes minták helyes osztályozása. Az intuitív jelentõsége abban rejlik hogy feltehetjük hogy a naív MLP a kapzsi tanulása miatt nem képes megtanulni a minták valódi reprezentációját, de ha az MLP súlyait úgy tudnánk inicializálni, hogy a mintákban lévõ szabályosságokat már eleve ismerje, akkor ebbõl könnyebben meg tudná tanulni hogy melyik jellemzõ mely osztályt azonsítja.
+\paragraph{Bevezetés} A korlátozott boltzmann gép (továbbiakban RBM - Restricted Boltzmann Machine, \figref{rbm}~ábra) egy sztochasztikus generatív neurális számítási modell. Mûködése az eddig tárgyalt MLP-tõl györekesen eltér, funkciója a bemenet jellemzõinek (featureinek) a megtanulása, és nem az egyes minták helyes osztályozása. Erre mutat példát a \figref{rbmFilters}-ábra. Az intuitív jelentõsége abban rejlik hogy feltehetjük hogy a naív MLP a kapzsi tanulása miatt nem képes megtanulni a minták valódi reprezentációját, de ha az MLP súlyait úgy tudnánk inicializálni, hogy a mintákban lévõ szabályosságokat már eleve ismerje, akkor ebbõl könnyebben meg tudná tanulni hogy melyik jellemzõ mely osztályt azonsítja.
 Ezt felügyelt tanulás elõtti fázist nem felügyelt elõtanulásnak hívjuk. Szokás még erre a célra Autoencoder hálózatokat használni, illetve mélyebb hálókra az RBM és az autoencoder többrétegû megfelelõit a mély hiedelem hálózatokat\cite{salakhutdinov2009deep}, és a stacked autoencodereket\cite{vincent2010stacked}.
 Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet, és kevésbé bonyolult ezért gyakorlatban az ajánlott, én mégis az RBM-et választottam érdekes struktúrája miatt. Hugo Larochelle et al. publikált egy hosszabb, több módszert tartalmazó cikket az elõtanulásról a mélyebben érdeklõdõknek "Exploring Strategies for Training Deep Neural Networks" \cite{exploringStrategies} címmel.
 
@@ -148,7 +149,7 @@ Habár a legújabb eredmények szerint az Autoencoder hasonlóan jó eredményre vezet
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=50mm, keepaspectratio]{figures/rbmFilters}
-\caption{Egy RBM által megtanult filterek. Forrás: \protect\url{http://www.pyimagesearch.com/wp-content/uploads/2014/06/rbm_filters.png}} 
+\caption{Egy RBM által megtanult filterek az MNIST adathalmazra. Forrás: \protect\url{http://www.pyimagesearch.com/wp-content/uploads/2014/06/rbm_filters.png}} 
 \label{fig:rbmFilters}
 \end{figure}
 
@@ -187,7 +188,7 @@ Ami megengedi hogy a következõ gradienst írhassuk fel:
 \sum_{\widehat{x} \in \mathcal{N}}
 \frac{\partial \widehat{x}}{\partial \theta}
 \end{align}
-Ahol $\mathcal{N}$ az úgynevezett negatív minták halmaza, ezek a modell által generált minták amiket lehetõség szerint a $p(x)$ eloszlásból szeretnénk generálni, erre egy MCMC (Markov Chain Monte Carlo) metódust használunk, aminek Gibbs mintavételezés a neve, ezt az eljárást lentebb fejtem ki.
+Ahol $\mathcal{N}$ az úgynevezett negatív minták halmaza, ezek a modell által generált minták amiket lehetõség szerint a $p(x)$ eloszlásból szeretnénk generálni, erre egy MCMC (Markov Chain Monte Carlo) metódust használunk aminek Gibbs mintavételezés a neve. Ezt az eljárást lentebb fejtem ki.
 
 Ha az elõbbi függvényt deriváljuk, akkor megkapjuk a súlyváltozók update függvényét:
 \begin{align} \label{eq:RbmWDirect}
@@ -203,7 +204,7 @@ Ha az elõbbi függvényt deriváljuk, akkor megkapjuk a súlyváltozók update függvén
 Ahol $W$ a súly paraméterek mátrixa, $v$ pedig a megfigyelhetõ neuronok halmaza. Ebbõl látható hogy az egyes deriváltak kiszámításához szükségünk van a rejtett neuronok valószínûségére a bemeneti neuronok állapotától függõen. Ezért szükséges hogy a boltzmann gép korlátozott legyen, tehát egy páros gráf formáját vegye fel, mert így az egyes neuronokhoz tartozó valószínûségek párhuzamosítva számolhatóak, mivel függetlenek egymástól. Erre egy gyors eljárás a kontrasztív divergencia algoritmus amelynek a valózsínûségi mintavételét a \figref{gibbs}~ábra szemlélteti. A Gibbs mintavételezéshez tartozó markov lánc lépéseinek a képleteit a \eqref{h1} és a \eqref{v1}~képlet írja le.
 
 \begin{align} \label{eq:h1}
-h^{n+1} \quad \sim \quad sigm(W^Tv{(n)} + c) 
+h^{n+1} \quad \sim \quad sigm(W^Tv^{(n)} + c) 
 \end{align}  
 
 \begin{align} \label{eq:v1}
